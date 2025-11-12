@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Knowledge Box — Tetrad User Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6;padding:2rem;max-width:900px;margin:auto;}
+    h1,h2,h3{line-height:1.2}
+    .callout{background:#f6f8ff;border:1px solid #e3e8ff;padding:12px 14px;border-radius:12px;margin:1rem 0}
+    .caveat{background:#fff7f7;border:1px solid #ffd1d1;padding:12px 14px;border-radius:12px;margin:1rem 0}
+    .tip{background:#f6fff6;border:1px solid #d7f5d7;padding:12px 14px;border-radius:12px;margin:1rem 0}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    ol{margin-top:.4rem}
+    .small{font-size:.95rem;color:#555}
+    a{color:#0a58ca;text-decoration:none}
+    a:hover{text-decoration:underline}
+    code{background:#f3f3f3;border-radius:6px;padding:2px 6px}
+    .example{background:#f7fff7;border:1px solid #d7f7d7;border-radius:10px;padding:8px 10px;margin:.5rem 0}
+  </style>
+</head>
+<body>
+
+  <h1>Knowledge Box</h1>
+  <p class="small">Encode background knowledge to guide searches: tiers (temporal/order constraints), required and forbidden edges, and optional variable groups. Most search algorithms in Tetrad will honor these constraints when linked as a parent to a Search box.</p>
+
+  <h2>What it’s for</h2>
+  <p>Provide prior structural information—like “X occurs before Y,” “no edge from Z to X,” or “W must cause V”—so discovery respects experiment design, time ordering, or domain facts.</p>
+
+  <h2>When to use it</h2>
+  <ul>
+    <li>You know a partial order over variables (e.g., interventions before outcomes; baseline before follow‑up).</li>
+    <li>You want to exclude scientifically implausible directions (forbidden edges).</li>
+    <li>You have strong causal requirements (required edges) from theory or experiment.</li>
+  </ul>
+
+  <h2>Inputs → Outputs</h2>
+  <ul>
+    <li><strong>Inputs:</strong> (Optional) parent Graph (to import variable names) or Data (to import columns).</li>
+    <li><strong>Outputs:</strong> A knowledge object consumable by Search (and some other boxes) to enforce constraints.</li>
+  </ul>
+
+  <h2>How to use</h2>
+  <ol>
+    <li><strong>Add variables:</strong> Link a parent with your variable names (Graph or Data), or enter them manually.</li>
+    <li><strong>Define tiers:</strong> Assign variables to numbered tiers so that edges are only allowed <em>forward</em> from lower to higher tiers.</li>
+    <li><strong>Add forbidden edges:</strong> Specify disallowed directions (e.g., <code>Y → X</code> forbidden).</li>
+    <li><strong>Add required edges:</strong> Specify edges that must appear (e.g., <code>X → Y</code> required).</li>
+    <li><strong>Save/load:</strong> Export/import knowledge to reuse across projects.</li>
+    <li><strong>Link to Search:</strong> Make the Knowledge box a parent of your Search box so constraints are applied during discovery.</li>
+  </ol>
+
+  <h2>Common tasks / recipes</h2>
+  <h3>Encode a basic time order with tiers</h3>
+  <ol>
+    <li>Create a Knowledge box and import variables from Data.</li>
+    <li>Put all baseline variables in <strong>Tier 0</strong>, treatments in <strong>Tier 1</strong>, outcomes in <strong>Tier 2</strong>.</li>
+    <li>Edges will only be allowed from lower→higher tiers (e.g., Tier 0→1, 0→2, 1→2).</li>
+  </ol>
+  <div class="example"><strong>Example:</strong> {Age, Sex} in Tier 0; {Dose} in Tier 1; {Biomarker, Outcome} in Tier 2.</div>
+
+  <h3>Forbid implausible directions</h3>
+  <ol>
+    <li>Open the Forbidden tab/list.</li>
+    <li>Add entries like <code>Outcome → Dose</code> (disallow reverse causation).</li>
+  </ol>
+
+  <h3>Require known causal relations</h3>
+  <ol>
+    <li>Open the Required tab/list.</li>
+    <li>Add entries like <code>Dose → Biomarker</code>.</li>
+  </ol>
+
+  <h3>Use knowledge with interventions</h3>
+  <ol>
+    <li>Mark interventional variables in Data (status/value columns or metadata as applicable).</li>
+    <li>In Knowledge, put interventions before outcomes via tiers; forbid edges into intervention assignment variables if appropriate.</li>
+  </ol>
+
+  <h2>Tips</h2>
+  <ul>
+    <li><strong>Tiers are partial orders:</strong> They constrain direction but do not force edges to exist.</li>
+    <li><strong>Required vs forbidden:</strong> If both could apply to a pair, ensure your entries are consistent. Required edges force inclusion; forbidden edges prevent them.</li>
+    <li><strong>Granularity:</strong> Prefer minimal constraints that reflect genuine prior knowledge; over‑constraining can mask misspecification and reduce discovery value.</li>
+  </ul>
+
+  <h2>Diagnostics</h2>
+  <ul>
+    <li><strong>Validate knowledge:</strong> Check for obvious conflicts (e.g., requiring edges that tiers would forbid).</li>
+    <li><strong>After search:</strong> If results seem inconsistent with knowledge, verify that the Knowledge box was linked as a parent and the algorithm supports knowledge constraints.</li>
+  </ul>
+
+  <h2>Caveats & limitations</h2>
+  <ul>
+    <li>Some algorithms or outputs may have limited support for certain constraint types; most core searches honor tiers and required/forbidden edges.</li>
+    <li>Tiers prohibit edges <em>backwards</em> in time/order but allow edges within the same tier unless otherwise restricted.</li>
+    <li>Knowledge entries refer to variable names; renaming variables later can orphan constraints.</li>
+  </ul>
+
+  <h2>Related boxes</h2>
+  <ul>
+    <li><strong>Data</strong> → source for variable names and intervention marks.</li>
+    <li><strong>Search</strong> → applies constraints during discovery.</li>
+    <li><strong>Graph</strong> → useful for visualizing required/forbidden edges and resulting orientations.</li>
+  </ul>
+
+  <h2>Where to find parameters</h2>
+  <p>Knowledge itself is structural input; algorithm parameters that interact with knowledge live in the <a href="parameter.definitions.txt">Parameter Reference</a> (Search Parameters).</p>
+
+</body>
+</html>

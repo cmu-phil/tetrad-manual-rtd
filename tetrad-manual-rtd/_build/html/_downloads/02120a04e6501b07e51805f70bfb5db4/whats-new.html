@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What’s New in Tetrad X.Y</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.55;padding:2rem;max-width:900px;margin:auto;}
+    h1,h2,h3{line-height:1.2}
+    .note{background:#f6f8ff;border:1px solid #e3e8ff;padding:12px 14px;border-radius:12px;margin:1rem 0}
+    .tip{background:#f6fff6;border:1px solid #d7f5d7;padding:12px 14px;border-radius:12px;margin:1rem 0}
+    .todo{background:#fff9f0;border:1px dashed #ffd7a4;padding:10px;border-radius:10px;margin:1rem 0;color:#7a5300}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    figure{margin:0}
+    figcaption{font-size:.9rem;color:#555;margin-top:6px}
+    code{background:#f3f3f3;border-radius:6px;padding:2px 6px}
+    ul{margin-top:.4rem}
+  </style>
+</head>
+<body>
+  <h1>What’s New in Tetrad <span class="version">X.Y</span></h1>
+  <p class="note">This page highlights changes since the previous release. Replace <code>X.Y</code> with your release number and drop this file into the manual’s navigation.</p>
+
+  <h2>Highlights</h2>
+  <ul>
+    <li><strong>Indicator expansion</strong> in <em>Data ▸ Transform</em>: one-click discrete→{0,1} dummies (<em>k−1</em> columns) while preserving rank.</li>
+    <li><strong>Bootstrap “Without replacement”</strong>: exact subsampling setting for small N experiments.</li>
+    <li><strong>Markov Checker</strong>: quick U(0,1) sanity check of implied independences (with tips on interpreting deviations).</li>
+    <li><strong>IDA Checker</strong>: CPDAG-wide min effect range auditing against true effects.</li>
+    <li><strong>Algcomparison</strong>: batch comparisons across simulations/algorithms/scores with exportable tables.</li>
+    <li><strong>Builds now on JDK 21</strong> with <strong>language level 24</strong>.</li>
+  </ul>
+
+  <h2>Data Transformations</h2>
+  <h3>Indicator Expansion</h3>
+  <p>Convert a discrete column into <em>k−1</em> indicator columns: <em>Data ▸ Transform ▸ Indicator</em>. Keeps matrices full rank for regression/SEM.</p>
+  <div class="grid">
+    <figure>
+      <img src="images/TODO-indicator-before.png" alt="Before indicator expansion (placeholder)">
+      <figcaption>Before: single discrete column.</figcaption>
+    </figure>
+    <figure>
+      <img src="images/TODO-indicator-after.png" alt="After indicator expansion (placeholder)">
+      <figcaption>After: <em>k−1</em> dummy columns.</figcaption>
+    </figure>
+  </div>
+  <div class="tip">Tip: Prefer indicators over arbitrary integer encodings; the latter induce spurious order.</div>
+
+  <h2>Resampling</h2>
+  <h3>Bootstrap “Without replacement”</h3>
+  <p>Enable <em>Without replacement</em> in the bootstrap dialog to perform exact subsampling. Useful when <em>N</em> is small and classical bootstrap overstates stability.</p>
+
+  <h2>Model Checking</h2>
+  <h3>Markov Checker</h3>
+  <p>Lists implied independences (by the graph) and their data p-values. Under the Markov Condition, p-values are approximately U(0,1). Use a quick histogram or A–D / K–S test to spot violations.</p>
+  <div class="todo">Screenshot placeholder: Markov Checker results table + simple histogram panel.</div>
+
+  <h3>IDA Checker</h3>
+  <p>Computes IDA min-effect ranges for all (X,Y) pairs in a linear CPDAG and checks whether true SEM-IM effects fall within ranges.</p>
+  <div class="todo">Screenshot placeholder: IDA summary table with a highlighted mismatch example.</div>
+
+  <h2>Algorithm Comparisons</h2>
+  <h3>Algcomparison</h3>
+  <p>Run grids over simulations × algorithms × scores/tests and export tables of edge/arrowhead metrics and timings. See the in-box Help tab for column definitions.</p>
+
+  <h2>Build & Compatibility</h2>
+  <ul>
+    <li><strong>JDK:</strong> 21</li>
+    <li><strong>Language level:</strong> 24</li>
+    <li>Feature availability varies by graph/data type (see each box page).</li>
+  </ul>
+
+</body>
+</html>

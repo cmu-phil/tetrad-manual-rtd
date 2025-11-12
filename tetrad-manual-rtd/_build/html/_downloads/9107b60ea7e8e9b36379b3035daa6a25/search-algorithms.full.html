@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"/><title>Tetrad Search Algorithms (Full)</title><meta content="width=device-width, initial-scale=1" name="viewport"/><style>body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.5;max-width:900px;margin:40px auto;padding:0 16px;}h1,h2,h3{margin-top:1.4em;}code,kbd{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;}a{color:inherit}hr{border:none;border-top:1px solid #ddd;margin:2rem 0}blockquote{border-left:4px solid #eee;padding:0.5rem 1rem;color:#555;background:#fafafa}ul,ol{padding-left:1.4rem}.note{font-size:0.95rem;color:#444;background:#f7fbff;border:1px solid #dbeafe;padding:12px;border-radius:8px}</style></head><body><h1>Tetrad Search Algorithms — Complete Extract</h1><p class="note">This document was programmatically extracted from the “Search Algorithms” section of your original manual (index.html). It preserves the algorithm entries verbatim, including descriptions and parameter links.</p><h2>Search Algorithms</h2>
+<h3>PC</h3>
+<h4>Description</h4>
+<div id="pc">
+<p>PC algorithm (Spirtes and Glymour, Social Science Computer
+            Review, 1991) is a CPDAG search which assumes that the underlying
+            causal structure of the input data is acyclic, and that no two
+            variables are caused by the same latent (unmeasured) variable. In
+            addition, it is assumed that the input data set is either entirely
+            continuous or entirely discrete; if the data set is continuous, it is
+            assumed that the causal relation between any two variables is linear,
+            and that the distribution of each variable is Normal. Finally, the
+            sample should ideally be i.i.d.. Simulations show that PC and several
+            of the other algorithms described here often succeed when these
+            assumptions, needed to prove their correctness, do not strictly hold.
+            The PC algorithm will sometimes output double-headed edges. In the
+            large sample limit, double-headed edges in the output indicate that
+            the adjacent variables have an unrecorded common cause, but PC tends
+            to produce false positive double-headed edges on small samples.</p>
+<p>The PC algorithm is correct whenever decision procedures for
+            independence and conditional independence are available. The
+            procedure conducts a sequence of independence and conditional
+            independence tests, and efficiently builds a CPDAG from the results
+            of those tests. As implemented in TETRAD, PC is intended for
+            multinomial and approximately Normal distributions with i.i.d. data.
+            The tests have an alpha value for rejecting the null hypothesis,
+            which is always a hypothesis of independence or conditional
+            independence. For continuous variables, PC uses tests of zero
+            correlation or zero partial correlation for independence or
+            conditional independence respectively. For discrete or categorical
+            variables, PC uses either a chi square or a g square test of
+            independence or conditional independence (see Causation, Prediction,
+            and Search for details on tests). In either case, the tests require
+            an alpha value for rejecting the null hypothesis, which can be
+            adjusted by the user. The procedures make no adjustment for multiple
+            testing. (For PC, CPC, FCI, all testing searches.) </p>
+<p>The PC algorithm as given in Causation, Prediction and Search (Spirtes,
+            Glymour, and Scheines, 2000) comes with three heuristics designed
+            to reduce dependence on the order of the variables. The heuristic PC-1
+            simple sorts the variables in alphabetical order. The heuristic PC-2
+            and PC-3 sort edges by their p-values in the search. PP-3 further sorts
+            parents of nodes in reverse order by the p-values of the conditional
+            independence facts used to removed edges in the search. Please see
+            Causation, Prediction, and Search for more details for these
+            heuristics.</p>
+<p>Note that it is possible for PC with some choices of parameters to output
+            bidirected edges or cycles, or to imply cycles by the Meek rules, against
+            assumption. Bidirected edges can be prevented by choosing an appropriate collider
+            conflict rule. Cycles can be prevented by setting the guaranteeCpdag
+            parameter to 'true' ('Yes). This parameter has two effects. First, it prevents
+            the orientation of any collider that would create a cycle in the graph.
+            Second, whenever the final Meek rules attempt to directed an undirected edge
+            as a directed edge, if this orientation would create a cycle, the edge
+            is oriented in reverse, adding one or more new (arbitrary) unshielded triples
+            to the graph. When this happens, the behavior is logged.</p>
+<p>Note: If one wants to analyze time series data using this algorithm,
+            one may set the time lag parameter to a value greater than 0, which
+            will automatically apply the time lag transform. The same goes for any
+            algorithm that has this parameter available in the interface.</p>
+</div>
+<h4>Input Assumptions</h4>
+<p>The algorithm effectively takes conditional independence facts as
+        input. Thus, it will work for any type of data for which a conditional
+        independence facts are known. In the interface, it will work for linear,
+        Gaussian data (the Fisher Z test), discrete multinomial data the Chi
+        Square test) and mixed multinomial/Gaussian data (the Conditional
+        Gaussian test).</p>
+<h4>Output Format</h4>
+<p>The graph outputs a CPDAG. This is an equivalence class of
+        directed acyclic graphs (DAGs). Each DAG in the equivalence class has all
+        the adjacencies (and no more) of the CPDAG. Each oriented edge in the
+        CPDAG is so oriented in each of the DAG in the equivalence class.
+        Unoriented edges in the equivalence class cannot be oriented by
+        conditional independence facts. For example, if the model is X-&gt;Y-&gt;Z, the
+        output will be X—Y—Z. There are no collider in this model, so the
+        algorithm will not detect one. Since there are no colliders, the Meek
+        cannot orient additional edges. If the model were X&lt;-Y&lt;-Z, the output
+        would also be X—Y—Z; this model is in the same equivalence class as
+        X-&gt;Y-&gt;Z. The model X-&gt;Y&lt;-Z would be its own equivalence class, since the
+        collider in this model can be oriented. See Spirtes et al. (2000) for
+        more details.</p>
+<h4>Parameters</h4>
+<p><a href="#alpha">alpha</a>, <a href="#depth">depth</a></p>
+<h3>The CPC Algorithm</h3>
+<h4>Description</h4>
+<div id="cpc">
+<p>The CPC (Conservative PC) algorithm (Ramsey et al., ??)
+            modifies the collider orientation step of PC to make it more
+            conservative—that is, to increase the precision of collider
+            orientations at the expense of recall. It does this as follows. Say
+            you want to orient X—Y—Z as a collider or a noncollider; the PC
+            algorithm looks at variables adjacent to X or variables adjacent to Z
+            to find a subset S such that X is independent of Z conditional on S.
+            The CPC algorithm considers all possible such sets and records the
+            set on which X is conditionally independent of Z. If all of these
+            sets contain Y, it orients X—Y—Z as a noncollider. If none of them
+            contains Z, if orient X—Y—Z as a collider. If some contain Z but
+            other don’t, it marks it as ambiguous, with an underline. Thus, the
+            output is ambiguous between CPDAGs; in order to get a specific CPDAG
+            out of the output, one needs first to decide whether the underlined
+            triples are colliders or noncolliders and then to apply the
+            orientation rules in Meek (1997).</p>
+<p>The PC algorithm is correct whenever decision procedures for
+            independence and conditional independence are available. The
+            procedure conducts a sequence of independence and conditional
+            independence tests, and efficiently builds a CPDAG from the results
+            of those tests. As implemented in TETRAD, PC is intended for
+            multinomial and approximately Normal distributions with i.i.d. data.
+            The tests have an alpha value for rejecting the null hypothesis,
+            which is always a hypothesis of independence or conditional
+            independence. For continuous variables, PC uses tests of zero
+            correlation or zero partial correlation for independence or
+            conditional independence respectively. For discrete or categorical
+            variables, PC uses either a chi square or a g square test of
+            independence or conditional independence (see Causation, Prediction,
+            and Search for details on tests). In either case, the tests require
+            an alpha value for rejecting the null hypothesis, which can be
+            adjusted by the user. The procedures make no adjustment for multiple
+            testing. (For PC, CPC, FCI, all testing searches.) </p>
+<p>Note: If one wants to analyze time series data using this algorithm,
+            one may set the time lag parameter to a value greater than 0, which
+            will automatically apply the time lag transform. The same goes for any
+            algorithm that has this parameter available in the interface.</p>
+</div>
+<h4>Input Assumptions</h4>
+<p>Same as for PC.</p>
+<h4>Output Format</h4>
+<p>An e-CPDAG (extended CPDAG), consistent of directed and undirected
+        edges where some of the triple may have been marked with underlines to
+        indicate ambiguity, as above. It may be that bidirected edges are
+        oriented as X-&gt;Y&lt;-&gt;X&lt;-W if two adjacent colliders are oriented; this is
+        not ruled out.</p>
+<h4>Parameters</h4>
+<p><a href="#alpha">alpha</a>, <a href="#depth">depth</a></p>
+<h3>The PcMax Algorithm</h3>
+<h4>Description</h4>
+<div id="pc-max">
+<p>Similar in spirit to CPC but orients all unshielded triples
+            using maximum likelihood conditioning sets. The idea is as follows.
+            The adjacency search is the same as for PC, but colliders are
+            oriented differently. Let X—Y—Z be an unshielded triple (X not
+            adjacent to Z) and find all subsets S from among the adjacents of X
+            or the adjacents of Z such that X is independent of Z conditional on
+            S. However, instead of using the CPC rule to orient the triple,
+            instead just list the p-values for each of these conditional
+            independence judgments and pick the set S’ that yields the highest
+            such p-value. Then orient X-&gt;Y&lt;-Z if S does not contain Y and X—Y—Z
+            otherwise. This orients all unshielded triples. It’s possible (though
+            rare) that adjacent triples both be oriented as 2-cycles,
+            X-&gt;Y&lt;-&gt;Z&lt;-W. If this happens, pick one of the other of these triples
+            or orient as a collider, arbitrarily. This guarantees that the
+            resulting graph will be a CPDAG.</p>
+<p>Note: If one wants to analyze time series data using this algorithm,
+            one may set the time lag parameter to a value greater than 0, which
+            will automatically apply the time lag transform. The same goes for any
+            algorithm that has this parameter available in the interface.</p>
+</div>
+<h4>Input Assumptions</h4>
+<p>Same as for PC.</p>
+<h4>Output Format</h4>
+<p>Same as PC, a CPDAG.</p>
+<h4>Parameters</h4>
+<p><a href="#alpha">alpha</a>, <a href="#depth">depth</a>, <a href="#useMaxPOrientationHeuristic">useMaxPOrientationHeuristic</a>, <a href="#maxPOrientationMaxPathLength">maxPOrientationMaxPathLength</a></p>
+<h3>The FGES Algorithm</h3>
+<h4>Description</h4>
+<div id="fges">
+<p> FGES is an optimized and parallelized version of an algorithm
+            developed by Meek [Meek, 1997] called the Greedy Equivalence Search
+            (GES). The algorithm was further developed and studied by Chickering
+            [Chickering, 2002]. GES is a Bayesian algorithm that heuristically
+            searches the space of CBNs and returns the model with the highest
+            Bayesian score it finds. In particular, GES starts its search with
+            the empty graph. It then performs a forward stepping search in which
+            edges are added between nodes in order to increase the Bayesian
+            score. This process continues until no single edge addition increases
+            the score. Finally, it performs a backward stepping search that
+            removes edges until no single edge removal can increase the score.
+            More information is available <a href="https://www.ccd.pitt.edu//wp-content/uploads/2018/10/FGES1c-
+        user-documentation-5_21_2016-sample-size.pdf">here</a> and <a href="https://www.ccd.pitt.edu//wp-content/uploads/2018/10/FGES1d-
+        user-documentation-7_20_2016-sample-size.pdf">here</a>. The reference
+            is Ramsey et al., 2017. </p>
+<p> The algorithm requires a decomposable score—that is, a score
+            that for the entire DAG model is a sum of logged scores of each
+            variables given its parents in the model. The algorithms can take all
+            continuous data (using the SEM BIC score), all discrete data (using
+            the BDeu score) or a mixture of continuous and discrete data (using
+            the Conditional Gaussian score); these are all decomposable scores.
+            Note that in all case, BIC is calculated as 2L - k ln N, so "higher
+            is better."
+        </p>
+<p>Note: If one wants to analyze time series data using this algorithm,
+            one may set the time lag parameter to a value greater than 0, which
+            will automatically apply the time lag transform. The same goes for any
+            algorithm that has this parameter available in the interface.</p>
+<p> Note: It is possible to run FGES followed some non-Gaussian
+            orientation algorithm like FASK-pairwise or R3 or RSkew. To do this,
+            see the FASK algorithm. There one can select an algorithm to
+            estimate adjacencies and a pairwise algorithm to estimate orientations.
+            This is for the linear, non-Gaussian case, where such pairwise
+            algorithms are effective.
+        </p>
+</div>
+<h4>Input Assumptions</h4>
+<p>Data that’s all continuous, all discrete, or a mixture of
+        continuous and discrete variables. Continuous variables will be assumed
+        to be linearly associated; discrete variable will be assumed to be
+        associated by multinomial conditional probability tables. Continuous
+        variables for the mixed case will be assumed to be jointly Gaussian.</p>
+<h4>Output Format</h4>
+<p>A CPDAG, same as PC.</p>
+<h3>The IMaGES Algorithm</h3>
+<h4>Description</h4>
+<div id="images">
+<p>
+            Adjusts the selected score for FGES to
+            allow for multiple datasets as input. The linear, Gaussian BIC scores
+            for each data set are averaged at each step of the algorithm,
+            producing a model for all data sets that assumes they have the same
+            graphical structure across dataset. Note that BIC is calculated
+            as 2L - k ln N, so "higher is better."</p>
+</div>
+<h4>Input Assumptions</h4>
+<p>A set of datasets consistent with the chosen score with the same variables and sample
+        sizes.</p>
+<h4>Output Format</h4>
+<p>A CPDAG, interpreted as a common model for all datasets.</p>
+<h4>Parameters</h4>
+<p>All the parameters from FGES are available for IMaGES.
+        Additionally:</p>
+<p><a href="#numRuns">numRuns</a>, <a href="#randomSelectionSize">randomSelectionSize</a></p>
+<h3>The IMaGES-BOSS Algorithm</h3>
+<h4>Description</h4>
+<div id="images-boss">
+<p>Wraps the IMaGES algorithm for continuous variables. This version uses the BOSS algorithm in place of
+            FGES.</p>
+<p>Requires that the parameter 'randomSelectionSize' be set to indicate how many datasets should be taken at a
+            time (randomly). This cannot be given multiple values.</p>
+</div>
+<h4>Input Assumptions</h4>
+<p>A set of datasets consistent with the chosen score with the same variables and sample
+        sizes.</p>
+<h4>Output Format</h4>
+<p>A CPDAG, interpreted as a common model for all datasets.</p>
+<h4>Parameters</h4>
+<p>All the parameters from FGES are available for IMaGES.
+        Additionally:</p>
+<p><a href="#numRuns">numRuns</a>, <a href="#randomSelectionSize">randomSelectionSize</a></p>
+<h3>The FCI Algorithm</h3>
+<h4>Description</h4>
+<div id="fci">
+<p>The FCI algorithm is a constraint-based algorithm that takes
+            as input sample data and optional background knowledge and in the
+            large sample limit outputs an equivalence class of CBNs that
+            (including those with hidden confounders) that entail the set of
+            conditional independence relations judged to hold in the population.
+            It is limited to several thousand variables, and on realistic sample
+            sizes it is inaccurate in both adjacencies and orientations. FCI has
+            two phases: an adjacency phase and an orientation phase. The
+            adjacency phase of the algorithm starts with a complete undirected
+            graph and then performs a sequence of conditional independence tests
+            that lead to the removal of an edge between any two adjacent
+            variables that are judged to be independent, conditional on some
+            subset of the observed variables; any conditioning set that leads to
+            the removal of an adjacency is stored. After the adjacency phase, the
+            resulting undirected graph has the correct set of adjacencies, but
+            all the edges are unoriented. FCI then enters an orientation phase
+            that uses the stored conditioning sets that led to the removal of
+            adjacencies to orient as many of the edges as possible. See [Spirtes,
+            1993].</p>
+<p>Note: If one wants to analyze time series data using this algorithm,
+            one may set the time lag parameter to a value greater than 0, which
+            will automatically apply the time lag transform. The same goes for any
+            algorithm that has this parameter available in the interface.</p>
+</div>
+<h4>Input Assumptions</h4>
+<p>The data are continuous, discrete, or mixed.</p>
+<h4>Output Format</h4>
+<p>A partial ancestral graph (see Spirtes et al., 2000).</p>
+<h4>Parameters</h4>
+<h3>The FCI-Max Algorithm</h3>
+<h4>Description</h4>
+<div id="fci-max">
+<p>The FCI-Max algorithm simply changes the first collider
+            orientation rule in FCI to use the PC-Max orientation.</p>
+<p>Note: If one wants to analyze time series data using this algorithm,
+            one may set the time lag parameter to a value greater than 0, which
+            will automatically apply the time lag transform. The same goes for any
+            algorithm that has this parameter available in the interface.</p>
+</div>
+<h4>Input Assumptions</h4>
+<p>The data are continuous, discrete, or mixed.</p>
+<h4>Output Format</h4>
+<p>A partial ancestral graph (see Spirtes et al., 2000).</p>
+<h4>Parameters</h4>
+<h3>The CFCI Algorithm</h3>
+<h4>Description</h4>
+<div id="cfci">
+<p>Adjusts FCI (see) to use conservative orientation as in CPC (see). Because the collider orientation is
+            conservative,
+            there may be ambiguous triples; these may be retrieved using that accessor method.</p>
+<p>This class is configured to respect knowledge of forbidden and required edges, including knowledge of
+            temporal
+            tiers.</p>
+</div>
+<h4>Input Assumptions</h4>
+<p>Data for which a conditional independence test is available.</p>
+<h4>Output Format</h4>
+<p>An adjustment to a partial ancestral graph (PAG), where ambiguous colliders are marked with underlings. See
+        Spirtes et al., 2000. Also, see the CPC algorithm.</p>
+<h4>Parameters</h4>
+<h3>The RFCI Algorithm</h3>
+<h4>Description</h4>
+<div id="rfci">
+<p>A modification of the FCI algorithm in which some expensive
+            steps are finessed and the output is somewhat differently
+            interpreted. In most cases this runs faster than FCI (which can be
+            slow in some steps) and is almost as informative. See Colombo et al.,
+            2012.</p>
+<p>Note: If one wants to analyze time series data using this algorithm,
+            one may set the time lag parameter to a value greater than 0, which
+            will automatically apply the time lag transform. The same goes for any
+            algorithm that has this parameter available in the interface.</p>
+</div>
+<h4>Input Assumptions</h4>
+<p>Data for which a conditional independence test is available.</p>
+<h4>Output Format</h4>
+<p>A partial ancestral graph (PAG). See Spirtes et al., 2000.</p>
+<div id="pag-sampling-rfci">
+<p>A modification of the RFCI algorithm which does probabilistic bootstrap
+            sampling with respect to the RFCI PAG output.For discrete data only.
+            Parameters are: (a) Number of search probabilistic models, (b) boostrap
+            ensemble method to use (see bootstrapping), (c) maximum size of
+            conditioning set (depth), (d) maximum length of any discriminating path
+            (a property for RFCI). This must use the probabilistic test, which must
+            be selected. Parameters for the probabilistic test are (d) independence
+            cutoff threshold, default 0.5, (e) prior equivalent sample size, and
+            (f) whether the cutoff in (d) is used in the independence test calculation;
+            if not, then a coin flip is used (probability 0.5).
+        </p>
+</div>
+<h4>Input Assumptions</h4>
+<p>A discrete dataset.</p>
+<h4>Output Format</h4>
+<p>A partial ancestral graph (PAG). See Spirtes et al., 2000.</p>
+<h3>The GFCI Algorithm</h3>
+<h4>Description</h4>
+<div id="gfci">
+<p>GFCI is a combination of the FGES [FGES, 2016] algorithm
+            and the FCI algorithm [Spirtes, 1993] that improves upon the accuracy
+            and efficiency of FCI. In order to understand the basic methodology
+            of FCI, it is necessary to understand some basic facts about the
+            FGES and FCI algorithms. The FGES algorithm is used to improve the
+            accuracy of both the adjacency phase and the orientation phase of FCI
+            by providing a more accurate initial graph that contains a subset of
+            both the non-adjacencies and orientations of the final output of FCI.
+            The initial set of nonadjacencies given by FGES is augmented by FCI
+            performing a set of conditional independence tests that lead to the
+            removal of some further adjacencies whenever a conditioning set is
+            found that makes two adjacent variables independent. After the
+            adjacency phase of FCI, some of the orientations of FGES are then
+            used to provide an initial orientation of the undirected graph that
+            is then augmented by the orientation phase of FCI to provide
+            additional orientations.
+
+        <p>Note: If one wants to analyze time series data using this algorithm,
+            one may set the time lag parameter to a value greater than 0, which
+            will automatically apply the time lag transform. The same goes for any
+            algorithm that has this parameter available in the interface.</p>
+</p></div>
+<h4>Input Assumptions</h4>
+<p>Same as for FCI.</p>
+<h4>Output Format</h4>
+<p>Same as for FCI.</p>
+<h4>Parameters</h4>
+<p>Uses all of the parameters of FCI (see Spirtes et al., 1993) and
+        FGES (see FGES, 2016).</p>
+<h3>The LV-Dumb Algorithm</h3>
+<h4>Description</h4>
+<div id="LV-Dumb">
+<p>LV-Dumb is a heuristic latent variable algorithm the calculates a DAG (directed
+            acyclic graph) using the BOSS algorithm (see) and the simply reports the PAG
+            (partial ancestral graph) that this DAG belongs to. It is a quite accurate
+            algorithm, but it is not correct. LV-Dumb serves as the initial PAG estimate
+            for the FCIT (FCI-Targeted-testing) algorithm (see), which does the extra work
+            to turn the LV-Dumb PAG estimate into a correct PAG. Note that the LV-Dumb
+            algorithm, since it does not do extra work to turn the graph into a correct PAG,
+            cannot orient bidirected edges.</p>
+<p>Note: If one wants to analyze time series data using this algorithm,
+            one may set the time lag parameter to a value greater than 0, which
+            will automatically apply the time lag transform. The same goes for any
+            algorithm that has this parameter available in the interface.</p>
+</div>
+<h4>Input Assumptions</h4>
+<p>Same as for FCI.</p>
+<h4>Output Format</h4>
+<p>Same as for FCI.</p>
+<h4>Parameters</h4>
+<p>Uses all of the parameters of FCI (see Spirtes et al., 1993) and
+        GRaSP.</p>
+<h3>The FCIT Algorithm</h3>
+<h4>Description</h4>
+<div id="FCIT">
+<p> FCIT with the LV-Dumb (see) output (i.e., runs BOSS, estimates a DAG, then reports the PAG that this
+            DAG belongs to), then does extra work to turn this PAG into a correct PAG for the latent variable
+            case. This work consists in using a recursive path blocking algorithm to find certain sepsets
+            consistent with the full orientations of interim PAGs. The recursive blocking algorithm is not completely
+            effective at finding all necessary sepsets, so the algorithm is optionally finished with the
+            adjacency sepset finding method from FCI, which renders the algorithm correct under the Markov and
+            Faithfulness assumption (i.e., using an Oracle method to calculate m-separation facts). This final
+            use of the adjacency sepset method, while allowing the algorithm to be correct in Oracle mode, can
+            reduce accuracy of the algorithm, which is optimized using the recursive blocking edge removal step, so
+            a parameter is included to allower the to turn the final adjacency sepset section of the algorithm off.</p>
+<p> After each edge removal after the initial LV-Dumb PAG estimate, the edge-reduced PAG is re-oriented
+            so that it is a legal PAG. The implication is that the final graph returned by the algorithm is always
+            a legal PAG, so a final legal PAG pipeline need not be applied and is not made available for this
+            algorithm.</p>
+</div></body></html>
