@@ -29,7 +29,7 @@ Start with one of these:
 Use one of:
 - **FCI** — canonical method for latent confounding / selection bias
 - **BOSS-FCI** — score-assisted hybrid improving precision
-- **FCIT** — targeted-testing hybrid; reduces spurious independences
+- **FCIT** — experimental targeted-testing method; guarantees legal PAGs
 
 RFCI is a speed-optimized alternative when FCI is too slow.
 
@@ -140,14 +140,23 @@ Uses the BOSS score engine to propose a structure, followed by FCI-style testing
 ### **FCIT — FCI with Targeted Testing**
 
 **Type:** Hybrid  
-**Output:** PAG
+**Output:** PAG (guaranteed legal)
 
-FCIT uses score information (typically from BOSS) to **prioritize CI tests**, avoiding many unnecessary or uninformative tests.
+*FCIT is an experimental, not-yet-published enhancement of FCI.*  
+It uses score information (typically from BOSS) to **prioritize CI tests**, steering the search away from low-value or misleading independence tests.
+
+Compared to FCI or GFCI:
+
+- **Produces a guaranteed legal PAG**
+- Reduces spurious independences
+- Often runs faster on medium–large datasets
+- Provides cleaner, more stable latent-variable structure
 
 **When to use:**
 - Medium–large datasets
-- FCI/GFCI are slow or unstable
-- You want a cleaner PAG with fewer spurious independences
+- FCI or GFCI appear unstable or noisy
+- You want a certified-legal PAG
+- You are comfortable using an experimental method
 
 ---
 

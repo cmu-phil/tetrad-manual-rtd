@@ -2,20 +2,6 @@
 
 Welcome to the official documentation for **Tetrad**, the open-source platform for causal discovery, causal inference, simulation, and graph-based statistical reasoning developed at Carnegie Mellon University.
 
----
-
-### 📘 RTD Documentation In Progress
-
-This **Read the Docs** version of the Tetrad manual is currently **under active development**.  
-Many sections are newly rewritten, while others temporarily link to the classic HTML manual.  
-Content will continue to be migrated, expanded, and reorganized.
-
-If you encounter issues or would like to request a section, please file an issue:
-
-👉 https://github.com/cmu-phil/tetrad/issues
-
----
-
 Tetrad provides:
 
 - A **graphical user interface (GUI)** for interactive causal modeling
@@ -122,14 +108,40 @@ A history of changes across Tetrad versions and UI updates.
 
 ---
 
-## 🔧 Using Tetrad from Python or R
+## 🔧 Using Tetrad Programmatically
 
-Tetrad can be used outside the GUI via:
+Tetrad can also be used outside the GUI through its programmatic interfaces  
+(Java, Python, and R). Rather than duplicating links here, we refer you to the  
+**official Tetrad website**, which always contains up-to-date links to:
 
-- **Py-Tetrad** (Python): `pip install py-tetrad`
-- **RPy-Tetrad** (R): R interface via `reticulate`
+- Java Javadocs
+- Py-Tetrad (Python interface)
+- RPy-Tetrad (R interface)
+- Tutorials and example scripts
+- Download pages
 
-Links to language-specific docs will be added in future revisions.
+See:  
+👉 https://www.cmu.edu/dietrich/philosophy/tetrad/index.html
+
+### Related Python Ecosystem Tools
+
+The Python ecosystem also includes **causal-learn**, a well-supported project that  
+implements several Tetrad-style algorithms natively in Python, together with  
+additional methods and utilities tailored to the Python community:
+
+👉 https://causal-learn.readthedocs.io/en/latest/
+
+Tetrad and causal-learn share common theoretical foundations and can be used  
+side-by-side depending on your workflow, programming environment, and performance needs.
+
+---
+
+## 🌐 Project Resources
+
+For downloads, Javadocs, tutorials, and general project information, visit the  
+**official Tetrad website**:
+
+👉 https://www.cmu.edu/dietrich/philosophy/tetrad/index.html
 
 ---
 

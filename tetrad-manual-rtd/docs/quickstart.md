@@ -2,10 +2,10 @@
 
 A **five-minute tour** of Tetrad: from loading data to seeing your first causal graph.
 
-This guide assumes you have already **launched the Tetrad GUI**.  
-If you haven’t, see the official setup page:
+This guide assumes you have already **launched the Tetrad GUI**.
 
-👉 https://www.cmu.edu/dietrich/philosophy/tetrad/use-tetrad/tetrad-application.html
+For installation instructions, see the  
+**[official Tetrad GUI setup page](https://www.cmu.edu/dietrich/philosophy/tetrad/use-tetrad/tetrad-application.html)**.
 
 ---
 
@@ -62,14 +62,13 @@ Open the **Search box** and choose:
 
 ### **If you assume *no hidden confounders* (target: DAG/CPDAG):**
 - **PC** (classic constraint-based)
-- **PC-Max** (typically higher precision)
 - **FGES** (fast, score-based)
 - **BOSS** (order-based; often sharp orientations)
 
 ### **If hidden confounders may be present (target: PAG):**
 - **FCI** (canonical method)
 - **BOSS-FCI** (score-assisted hybrid)
-- **FCIT** (targeted-testing hybrid; fewer spurious independences)
+- **FCIT** (targeted-testing hybrid; fewer spurious independences; experimental)
 
 These are the **recommended first-try algorithms**.  
 More algorithms are available in the full list.
