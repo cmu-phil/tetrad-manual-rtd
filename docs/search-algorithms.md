@@ -3,12 +3,6 @@
 Tetrad provides a wide range of causal discovery algorithms.  
 This page gives a **curated, expert-guided overview** of the algorithms most users should try first.
 
-For the full catalog—including specialized, legacy, and experimental methods—see:
-
-👉 **[Full Algorithm List](search.algorithms.full)**
-
----
-
 ## 🔍 Choosing an Algorithm
 
 Tetrad’s algorithms fall into two broad categories depending on whether you assume  
@@ -21,7 +15,7 @@ Start with one of these:
 - **BOSS** — order-based; often finds sharper orientations
 - **PC / PC-Max** — constraint-based; explicitly tuned by α
 
-> GRaSP can provide complementary insight, but is not a first-line method.
+> GRaSP can provide complementary insight to BOSS, though it is not as scalable.
 
 ---
 
@@ -175,17 +169,30 @@ A quick rule-of-thumb:
 
 - **Too many edges:** Lower α (constraint-based) or increase penalty (score-based)
 - **Too few edges:** Raise α or decrease score penalty
-- **Odd orientations:** Try PC-Max or add minimal prior knowledge
+- **Odd orientations:** Try BOSS or PC-Max or add minimal prior knowledge
 - **Slow runtime:** Limit depth; try RFCI or FCIT; increase threads
 
 ---
 
-## 📄 Algorithm Parameters
+## 🧩Full Algorithm List
 
-All algorithm parameters are documented here:
+For the full catalog—including specialized, legacy, and experimental methods—see:
 
-👉 [`parameter.definitions.md`](./parameter.definitions.md)
+👉 **[Full Algorithm List](search.algorithms.full)**
 
-Machine-readable source:
+[//]: # (---)
 
-👉 [`parameter.definitions.txt`](./_static/manual/parameter.definitions.txt)
+[//]: # ()
+[//]: # (## 📄 Algorithm Parameters)
+
+[//]: # ()
+[//]: # (All algorithm parameters are documented here:)
+
+[//]: # ()
+[//]: # (👉 [`parameter.definitions.md`]&#40;./parameter.definitions.md&#41;)
+
+[//]: # ()
+[//]: # (Machine-readable source:)
+
+[//]: # ()
+[//]: # (👉 [`parameter.definitions.txt`]&#40;./_static/manual/parameter.definitions.txt&#41;)

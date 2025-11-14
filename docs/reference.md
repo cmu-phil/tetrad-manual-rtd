@@ -1,12 +1,11 @@
 # Reference
 
-The **Reference** section collects all of Tetrad’s low-level, technical specifications  
-used throughout the software: parameter definitions, core naming conventions, and
-machine-readable configuration assets.
+The **Reference** section collects Tetrad’s low-level, technical specifications:
+parameter definitions, data formats, core naming conventions, and other machine-
+readable assets used throughout the software.
 
-At present, the primary reference resource is the **Parameter Definitions**.
-
----
+This section is meant for **power users, developers, and anyone needing exact file
+formats or algorithm parameters**.
 
 ## 🔧 Parameter Definitions
 
@@ -17,33 +16,16 @@ Tetrad exposes a large number of configurable parameters used by:
 - conditional independence tests
 - simulation tools
 
-These parameters control every part of Tetrad’s behavior — from maximum depth in PC/FCI,  
-to BIC penalties in FGES, to threading, to nonlinear tolerance thresholds.
-
-To support both **machines** and **humans**, the definitions exist in two synchronized forms:
+These parameters control nearly every part of Tetrad’s behavior — from maximum depth
+in PC/FCI, to BIC penalties in FGES, to threading, to nonlinear tolerance thresholds.
 
 ---
 
-### 📄 Machine-Readable Specification (used by the GUI)
-
-👉 [`parameter.definitions.txt`](./_static/manual/parameter.definitions.txt)
-
-This file is parsed directly by:
-
-- the Tetrad GUI
-- the Java backend
-- Py-Tetrad and RPy-Tetrad wrappers
-- algorithm comparison and scripting tools
-
-It contains the authoritative definitions exactly as consumed by the interface.
-
----
-
-### 📘 Human-Readable Markdown
+This link gives a listing of all parameters:
 
 👉 [`parameter.definitions.md`](./parameter.definitions.md)
 
-This Markdown version provides a clean, readable table of all parameters, including:
+For each parameter, the following information is provided:
 
 - **parameter name**
 - **short description**
@@ -52,29 +34,36 @@ This Markdown version provides a clean, readable table of all parameters, includ
 - **default value**
 - **minimum and maximum values** (for numeric types)
 
-This file is **auto-generated** from the machine-readable source to ensure consistency.
-
 ---
 
-## 🔄 Keeping Definitions in Sync
+## 📂 Data Formats
 
-The Markdown file is regenerated whenever the machine-readable file changes, ensuring:
+Tetrad supports data formats for tabular data (continuous, discrete, mixed) and corrleation/covariance matrices.
 
-- no drift between documentation and code
-- predictable parameter behavior across UI, Java API, Py-Tetrad, and RPy-Tetrad
-- reproducible algorithm settings
+See this dedicated page for all details, edge cases, and examples:
+
+👉 [`data.formats`](./data.formats)
+
+## 🕸️ Graph Formats
+
+Tetrad supports a variety of graph types for representing causal relationships and latent variables.
+
+Mostly the supported theory resolves around DAGs (Directed Acyclic Graphs), CPDAGs (Completed Partially Directed Acyclic Graphs), MAGs (Mixed Ancestral Graphs), and PAGs (Partial Ancestral Graphs).
+
+See this dedicated page for all details, with examples:
+
+👉 [`graph.formats`](./graph.formats)
 
 ---
 
 ## 📌 Coming Soon
 
-As the documentation evolves, the **Reference** section will eventually include:
+Future expansions to this section will cover:
 
-- Naming conventions for graphs, edges, and orientations
-- CI test and score references
+- Graph and orientation naming conventions
+- CI test and score catalogs
 - Simulation model specifications
-- Tetrad file formats (`.tetrad`, `.ses`, `.json`, etc.)
+- All Tetrad file formats (`.tetrad`, `.ses`, `.json`, `.dot`, covariance/correlation formats)
+- Legacy and interoperability formats
 
-For now, the parameter definitions form the core of the structured reference.
-
-If there’s a reference table or glossary you’d like to add, just ask!
+If there’s a reference table or glossary you’d like to add next, just let me know!

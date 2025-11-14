@@ -1,6 +1,6 @@
 # Tetrad Parameter Definitions
 
-This file is auto-generated from `parameter.definitions.txt`. Do not edit by hand.
+This file is auto-generated to keep it in sync with the machine-readable definitions that Tetrad imports. Do not edit by hand.
 
 ## acceptanceProportion
 - **Short description:** Acceptance Proportion
@@ -12,7 +12,7 @@ This file is auto-generated from `parameter.definitions.txt`. Do not edit by han
 
 ## addOriginalDataset
 - **Short description:** Yes, if adding the original dataset as another bootstrapping
-- **Long description:** Select “Yes” here to include an extra run using the original dataset for improved accuracy.
+- **Long description:** Select “Yes” here to include asn extra run using the original dataset for improved accuracy.
 - **Value type:** Boolean
 - **Default value:** false
 
