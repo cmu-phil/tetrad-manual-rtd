@@ -1,16 +1,20 @@
 # User Guide
 
-Tetrad’s graphical interface has a long, detailed manual written in HTML.  
+## 🏛️ The Classic Manual
+
+Tetrad’s graphical interface has a detailed manual written in HTML, with pictures 
 Until the content is fully migrated into Read the Docs, the **existing manual** remains the authoritative reference for the GUI layout, workflow, and tools.
 
 You can open it here:
 
 👉 **[Classic Tetrad Manual (HTML Preview)](https://htmlpreview.github.io/?https:///github.com/cmu-phil/tetrad/blob/development/tetrad-lib/src/main/resources/docs/manual/index.html)**
 
-Or view the bundled local copy:
+[//]: # (Or view the bundled local copy:)
 
-👉 **[`index.cleaned2.html`](./_static/manual/index.cleaned2.html)**  
-*(Parameter definitions removed; clean version for GUI-oriented help.)*
+[//]: # ()
+[//]: # (👉 **[`index.cleaned2.html`]&#40;./_static/manual/index.cleaned2.html&#41;**  )
+
+[//]: # (*&#40;Parameter definitions removed; clean version for GUI-oriented help.&#41;*)
 
 ---
 

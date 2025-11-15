@@ -1,4 +1,4 @@
-# Tetrad Parameter Definitions
+# Parameter Definitions
 
 This file is auto-generated to keep it in sync with the machine-readable definitions that Tetrad imports. Do not edit by hand.
 

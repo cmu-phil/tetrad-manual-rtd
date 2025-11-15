@@ -29,7 +29,7 @@ RFCI is a speed-optimized alternative when FCI is too slow.
 
 ---
 
-## 🏆 Recommended Algorithms (with descriptions)
+## 🏆Some Recommended Algorithms (With Descriptions)
 
 These are the algorithms most users should consider first.
 

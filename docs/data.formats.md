@@ -1,4 +1,4 @@
-# Tetrad Data Formats
+# Data Formats
 
 Tetrad accepts several file formats for loading **datasets**, **covariance matrices**,  
 and **correlation matrices**. This page documents all currently supported formats.
@@ -7,7 +7,7 @@ The goal is to eliminate common parsing errors and clarify exactly what Tetrad e
 
 ---
 
-# 1. Overview of Supported Formats
+## 1. Overview of Supported Formats
 
 Tetrad supports:
 
@@ -21,7 +21,7 @@ This page covers the **dataset** and **matrix** formats.
 
 ---
 
-# 2. Dataset Format (Tabular Data)
+## 2. Dataset Format (Tabular Data)
 
 Tabular datasets must follow this structure:
 
@@ -46,7 +46,7 @@ X Y Z
 
 ---
 
-# 3. Discrete Data
+## 3. Discrete Data
 
 Discrete data follows the same structure but the values must be **integers or strings**  
 representing categories.
@@ -62,7 +62,7 @@ A B C
 
 ---
 
-# 4. Continuous Data
+## 4. Continuous Data
 
 Continuous data uses the same tabular format, but all values should be numeric:
 
@@ -74,7 +74,7 @@ HEIGHT WEIGHT AGE
 
 ---
 
-# 5. Covariance and Correlation Matrices
+## 5. Covariance and Correlation Matrices
 (Current Tetrad Format)
 
 Tetrad currently supports **only one** matrix format:
@@ -87,7 +87,7 @@ Any deviation from this structure will cause Tetrad to reject the file.
 
 ---
 
-## 5.1 Required Structure
+### 5.1 Required Structure
 
 A valid covariance/correlation file must contain:
 
@@ -106,7 +106,7 @@ The **upper triangle must not appear**.
 
 ---
 
-## 5.2 Full Example (Exactly as Tetrad Expects)
+### 5.2 Full Example (Exactly as Tetrad Expects)
 
 Below is a complete, valid covariance file.  
 This is the example that users often find confusing, so it is given *in full*.
@@ -123,7 +123,7 @@ ABILITY GPQ PREPROD QFJ SEX CITES PUBS
  .18 .15 .19 .41 .43 .55 1.0
 ```
 
-### Important Characteristics of This Format
+#### Important Characteristics of This Format
 
 - **Line 1:** sample size (`164`)
 - **Line 2:** variable names
@@ -136,7 +136,7 @@ ABILITY GPQ PREPROD QFJ SEX CITES PUBS
 
 ---
 
-## 5.3 Correlation Matrices
+### 5.3 Correlation Matrices
 
 Correlation matrices use **the same format**.
 
@@ -152,7 +152,7 @@ X Y Z
 
 ---
 
-## 5.4 Common Parsing Errors for Covariance/Correlation Files
+### 5.4 Common Parsing Errors for Covariance/Correlation Files
 
 Users often encounter:
 
@@ -168,7 +168,7 @@ Each of these produces a **“Could not parse covariance matrix”** error.
 
 ---
 
-# 6. Planned Future Support (Not Yet Available)
+## 6. Planned Future Support (Not Yet Available)
 
 Tetrad will soon support **full square covariance/correlation matrices**.  
 The planned behavior:
@@ -182,7 +182,7 @@ This feature is not yet available, but is under active development.
 
 ---
 
-# 7. Exporting Data from Tetrad
+## 7. Exporting Data from Tetrad
 
 Tetrad can export:
 
@@ -196,7 +196,7 @@ the square-matrix feature is implemented.
 
 ---
 
-# 8. Summary
+## 8. Summary
 
 | Format Type | Supported? | Notes                                   |
 |-------------|------------|-----------------------------------------|
