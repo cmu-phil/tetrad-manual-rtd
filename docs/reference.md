@@ -7,6 +7,28 @@ readable assets used throughout the software.
 This section is meant for **power users, developers, and anyone needing exact file
 formats or algorithm parameters**.
 
+---
+
+## 📂 Data Formats
+
+Tetrad supports data formats for tabular data (continuous, discrete, mixed) and corrleation/covariance matrices.
+
+See this dedicated page for all details, edge cases, and examples:
+
+👉 [`data.formats`](./data.formats)
+
+## 🕸️ Graph Formats
+
+Tetrad supports a variety of graph types for representing causal relationships and latent variables.
+
+Mostly the supported theory resolves around DAGs (Directed Acyclic Graphs), CPDAGs (Completed Partially Directed Acyclic Graphs), MAGs (Mixed Ancestral Graphs), and PAGs (Partial Ancestral Graphs).
+
+See this dedicated page for all details, with examples:
+
+👉 [`graph.formats`](./graph.formats)
+
+---
+
 ## 🔧 Parameter Definitions
 
 Tetrad exposes a large number of configurable parameters used by:
@@ -34,33 +56,11 @@ For each parameter, the following information is provided:
 - **default value**
 - **minimum and maximum values** (for numeric types)
 
----
-
-## 📂 Data Formats
-
-Tetrad supports data formats for tabular data (continuous, discrete, mixed) and corrleation/covariance matrices.
-
-See this dedicated page for all details, edge cases, and examples:
-
-👉 [`data.formats`](./data.formats)
-
-## 🕸️ Graph Formats
-
-Tetrad supports a variety of graph types for representing causal relationships and latent variables.
-
-Mostly the supported theory resolves around DAGs (Directed Acyclic Graphs), CPDAGs (Completed Partially Directed Acyclic Graphs), MAGs (Mixed Ancestral Graphs), and PAGs (Partial Ancestral Graphs).
-
-See this dedicated page for all details, with examples:
-
-👉 [`graph.formats`](./graph.formats)
-
----
 
 ## 📌 Coming Soon
 
 Future expansions to this section will cover:
 
-- Graph and orientation naming conventions
 - CI test and score catalogs
 - Simulation model specifications
 - All Tetrad file formats (`.tetrad`, `.ses`, `.json`, `.dot`, covariance/correlation formats)
