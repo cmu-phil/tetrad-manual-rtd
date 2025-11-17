@@ -6,6 +6,10 @@ This page lists all algorithms whose wrappers implement
 Where possible, descriptions are based on the corresponding classes in  
 `edu.cmu.tetrad.search`.
 
+Goal: We will make a separate page for each of these, filling in this template:
+
+- [Algorithm Template](algorithm.template.md)
+
 ---
 
 ## Boss
@@ -103,29 +107,11 @@ Wrapper for a **“Detect-Mimic + FCIT”** variant: applies a DM-style pre-proc
 
 ---
 
-## DmFciT2
-
-Another **Detect-Mimic + FCI** style variant, typically a “Type 2” or alternative tuning of DM with FCI/FCIT. Experimental / specialized usage; consult the Javadocs and GUI help text for the intended setting.
-
----
-
 ## DmPc
 
 **Search class:** `edu.cmu.tetrad.search.DmPc`  [oai_citation:11‡Carnegie Mellon University Philanthropy](https://www.phil.cmu.edu/tetrad-javadocs/7.6.9/edu/cmu/tetrad/search/package-summary.html)
 
 Implements **Detect-Mimic PC (DM-PC)**, a PC-style algorithm preceded by a detect–mimic step, intended to improve orientation or robustness in particular latent or measurement scenarios.
-
----
-
-## Eb
-
-Bootstrap-style **Edge-Bagging** or “ensemble/bootstrap” meta-algorithm. Applies an underlying base search many times on bootstrap resamples and aggregates edge frequencies. Mainly useful for stability assessment.
-
----
-
-## ExternalAlgorithm
-
-Wrapper that allows **external programs** (e.g., R or Python scripts) to appear as algorithms in the Tetrad comparison framework. Parameters define how to call the external code and import/export graphs.
 
 ---
 
@@ -165,14 +151,6 @@ Variant that combines **FASK** with **LOFS**-style non-Gaussian orientation on c
 
 ---
 
-## FaskOrig
-
-**Search class:** `edu.cmu.tetrad.search.FaskOrig`  [oai_citation:15‡Carnegie Mellon University Philanthropy](https://www.phil.cmu.edu/tetrad-javadocs/7.6.9/edu/cmu/tetrad/search/package-summary.html)
-
-Implements an earlier/original version of FASK. It uses conditional independence tests plus non-Gaussian orientation and nonlinear adjacency judgments to orient edges in a CPDAG or related graph.
-
----
-
 ## FaskPw
 
 Pairwise-oriented **FASK** variant, emphasizing pairwise non-Gaussian orientation rules across edges while retaining a FAS-like skeleton.
@@ -199,24 +177,9 @@ Implements **Fast Causal Inference (FCI)**, a constraint-based algorithm that le
 
 ---
 
-## FciCyclicPw
-
-FCI variant tailored to situations with potential **cycles** and using **pairwise** orientation rules. Useful for exploratory work with feedback structures; see Javadocs for exact semantics.
-
----
-
 ## FciIod
 
 FCI variant that integrates an **IOD (Independence-Of-Distribution)**-style test or diagnostic into the FCI framework. Specialized and mainly of research interest.
-
----
-
-## FciMax
-
-**Search class:** `edu.cmu.tetrad.search.FciMax`  [oai_citation:17‡Carnegie Mellon University Philanthropy](https://www.phil.cmu.edu/tetrad-javadocs/7.6.9/edu/cmu/tetrad/search/package-summary.html)
-
-**Status:** Deprecated.  
-A “maximizing” variant of FCI that experimented with alternative orientation or selection strategies. Kept for compatibility but superseded by newer methods such as FCIT and modern GFCI-style variants.
 
 ---
 
@@ -318,15 +281,12 @@ Implements **ICA-LiNG-D** (Lacerda et al., 2012), a stabilized LiNGAM variant; u
 
 ---
 
-## Images
+## Images, IMaGESBoss
 
 Wrapper for an **image-based causal discovery** pipeline; used when variables are derived from image data or when the algorithm operates over images as inputs. See Tetrad Javadocs for detailed usage.
 
----
-
-## ImagesBoss
-
-Variant that combines **image-based processing** with **BOSS** search, allowing BOSS-style order search on features derived from images.
+See the full description here:  
+[IMaGES — Independent Multiple-sample Greedy Equivalence Search](algorithms/images.md)
 
 ---
 
@@ -381,12 +341,6 @@ Implements unified “**Classic PC**”: a constraint-based algorithm that learn
 **Search class:** `edu.cmu.tetrad.search.Pcd`  [oai_citation:33‡Carnegie Mellon University Philanthropy](https://www.phil.cmu.edu/tetrad-javadocs/7.6.9/edu/cmu/tetrad/search/package-summary.html)
 
 Variant of PC adapted for **deterministic** relationships. It refuses to remove edges based on CI tests that appear to be deterministic, preserving adjacencies that would otherwise be dropped.
-
----
-
-## PcMax
-
-Wrapper around a PC variant (PC-Max) designed to enhance **orientation precision**, often by preferring separating sets that maximize some criterion (e.g., p-value).
 
 ---
 
