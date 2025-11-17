@@ -1,4 +1,4 @@
-# Data Formats
+# Data Types and Formats
 
 Tetrad accepts several file formats for loading **datasets**, **covariance matrices**,  
 and **correlation matrices**. This page documents all currently supported formats.

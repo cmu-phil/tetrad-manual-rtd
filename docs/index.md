@@ -19,7 +19,8 @@ quickstart
 user-guide
 graph.formats
 data.formats
-search-algorithms
+search-algorithms-short-list
+search-algorithms-full-list
 parameter.definitions
 about
 changelog
@@ -100,7 +101,7 @@ Detailed descriptions of every algorithm shipped with Tetrad, including:
 - When to use it
 - What assumptions it makes
 - What types of graphs it returns  
-  ➡️ [Open algorithms page](search-algorithms)
+  ➡️ [Open algorithms page](search-algorithms-short-list)
 
 ### **Parameter Reference**
 Parameter definitions for all search, score, test, and simulation components.  

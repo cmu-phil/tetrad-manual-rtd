@@ -1,4 +1,4 @@
-# Search Algorithms
+# Search Algorithms Short List
 
 Tetrad provides a wide range of causal discovery algorithms. This page gives a **curated, expert-guided overview** of the algorithms most users should try first.
 
@@ -251,4 +251,4 @@ A quick rule-of-thumb:
 
 For the full catalog—including specialized, legacy, and experimental methods—see:
 
-👉 **[Full Algorithm List](search.algorithms.full)**
+👉 **[Full Algorithm List](search-algorithms-full-list)**
