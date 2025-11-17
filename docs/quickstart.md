@@ -2,8 +2,7 @@
 
 A **five-minute walkthrough**: load data → run a search → view your first causal graph.
 
-This guide assumes the **Tetrad GUI is already running**.  
-(If not, see the installation page.)
+This guide assumes the **Tetrad GUI is already running**. (If not see the [**Tetrad GUI setup page**](https://www.cmu.edu/dietrich/philosophy/tetrad/use-tetrad/tetrad-application.html).)
 
 ---
 

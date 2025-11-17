@@ -14,10 +14,8 @@ Tetrad supports:
 - **Tabular data files** (continuous, discrete, or mixed)
 - **Covariance matrices** (current format: lower-triangular)
 - **Correlation matrices** (same lower-triangular format)
-- **Graph formats** (listed on a separate page)
-- **Simulation input formats** (model specifications, DAG text formats)
 
-This page covers the **dataset** and **matrix** formats.
+This page covers the se **data formats**.
 
 ---
 
@@ -27,7 +25,7 @@ Tabular datasets must follow this structure:
 
 1. **Header row:** variable names
 2. **One data row per case**
-3. **Values separated by tabs or spaces**
+3. **Values separated by tabs, commas, or spaces**
 
 Example:
 
@@ -40,9 +38,9 @@ X Y Z
 
 ### Notes
 
-- Missing values may be written as: `*`, `?`, or blank.
+- Missing values are written by default as: `*`, though other options are also supported.
 - Mixed data (continuous + discrete) is allowed.
-- Variable order in the header determines column order throughout the system.
+- Variable order in the header determines column order throughout the file.
 
 ---
 
@@ -106,7 +104,7 @@ The **upper triangle must not appear**.
 
 ---
 
-### 5.2 Full Example (Exactly as Tetrad Expects)
+### 5.2 Covariance Matrix Example (Exactly as Tetrad Expects)
 
 Below is a complete, valid covariance file.  
 This is the example that users often find confusing, so it is given *in full*.
@@ -178,7 +176,7 @@ The planned behavior:
   (the lower triangle will be used).
 - Backward compatibility with the current format will be preserved.
 
-This feature is not yet available, but is under active development.
+This feature is not yet available but is in development.
 
 ---
 
@@ -189,9 +187,8 @@ Tetrad can export:
 - Tabular datasets
 - Covariance matrices (in the same lower-triangle format)
 - Correlation matrices
-- Graphs (separate formats)
 
-Exported matrices will **always** be in the lower-triangular format until  
+Exported covariance and correlation will **always** be in the lower-triangular format until  
 the square-matrix feature is implemented.
 
 ---
