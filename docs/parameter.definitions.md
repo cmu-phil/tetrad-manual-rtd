@@ -568,6 +568,12 @@ This file is auto-generated to keep it in sync with the machine-readable definit
 - **Value type:** Boolean
 - **Default value:** false
 
+## excludeSelectionBias
+- **Short description:** Yes if the possibility of selection bias should be excluded
+- **Long description:** If set to “true,” the algorithm assumes that no selection bias is present and disables selection-related orientation rules (including the final rules of Zhang 2008) and disallows tail–tail (`---`) edges. If set to “false” (the default), selection bias is permitted, and the full FCI orientation rule set is applied.
+- **Value type:** Boolean
+- **Default value:** false
+
 ## extraEdgeRemovalStep
 - **Short description:** The extra edge removal step to use: 1 = LV_LITE, 2 = Greedy, 3 = Max P, 4 = Min P
 - **Long description:** The extra edge removal step to use: 1 = LV_LITE, 2 = Greedy, 3 = Max P, 4 = Min P
