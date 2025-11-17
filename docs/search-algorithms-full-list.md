@@ -8,14 +8,6 @@ Where possible, descriptions are based on the corresponding classes in
 
 ---
 
-## AbstractBootstrapAlgorithm
-
-**Type:** Meta / abstract  
-Abstract base class for bootstrap-based algorithms in the `algcomparison` framework.  
-Not intended to be run directly, but used as a superclass for algorithms that resample data and aggregate results.
-
----
-
 ## Boss
 
 **Search class:** `edu.cmu.tetrad.search.Boss`  [oai_citation:1‡Carnegie Mellon University Philanthropy](https://www.phil.cmu.edu/tetrad-javadocs/7.6.9/edu/cmu/tetrad/search/package-summary.html)
