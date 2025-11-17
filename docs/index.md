@@ -17,9 +17,9 @@ This site is the **Read the Docs** version of the Tetrad manual, reorganized int
 
 quickstart
 user-guide
-search-algorithms
-data.formats
 graph.formats
+data.formats
+search-algorithms
 parameter.definitions
 about
 changelog

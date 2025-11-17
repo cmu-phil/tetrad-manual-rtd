@@ -28,7 +28,7 @@ suggestions from the community.
 
 For a broader historical overview, see the external project page:
 
-👉 **https://www.cmu.edu/dietrich/philosophy/tetrad/about/**
+👉 **[https://www.cmu.edu/dietrich/philosophy/tetrad/about/](https://www.cmu.edu/dietrich/philosophy/tetrad/about/)**
 
 ---
 
@@ -60,4 +60,4 @@ most directly tied to Tetrad's design and use.
 If you have suggestions for improving the manual or adding new content, feel
 free to open an issue or discussion on the GitHub repository:
 
-👉 **https://github.com/cmu-phil/tetrad-manual-rtd**
+👉 **[https://github.com/cmu-phil/tetrad-manual-rtd](https://github.com/cmu-phil/tetrad-manual-rtd)**
