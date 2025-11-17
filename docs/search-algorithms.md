@@ -1,7 +1,6 @@
 # Search Algorithms
 
-Tetrad provides a wide range of causal discovery algorithms.  
-This page gives a **curated, expert-guided overview** of the algorithms most users should try first.
+Tetrad provides a wide range of causal discovery algorithms. This page gives a **curated, expert-guided overview** of the algorithms most users should try first.
 
 ## 🔍 Choosing an Algorithm
 

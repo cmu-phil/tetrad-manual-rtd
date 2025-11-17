@@ -2,10 +2,7 @@
 
 A **five-minute tour** of Tetrad: from loading data to seeing your first causal graph.
 
-This guide assumes you have already **launched the Tetrad GUI**.
-
-For installation instructions, see the  
-**[official Tetrad GUI setup page](https://www.cmu.edu/dietrich/philosophy/tetrad/use-tetrad/tetrad-application.html)**.
+This guide assumes you have already **launched the Tetrad GUI**. For installation instructions, see the **[Tetrad GUI setup page](https://www.cmu.edu/dietrich/philosophy/tetrad/use-tetrad/tetrad-application.html)**.
 
 ---
 

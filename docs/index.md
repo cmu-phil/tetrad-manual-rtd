@@ -47,32 +47,33 @@ Most users interact with Tetrad through a simple pipeline:
 
 ### 1. **Load or simulate data**
 - Continuous, discrete, or mixed datasets
-- SEM-based generators
+- Multinomial, SEM, and general function-based generators
 - Nonlinear and non-Gaussian options
 - Resampling and bootstrapping tools
 
 ### 2. **Specify prior knowledge (optional)**
 - Required or forbidden edges
-- Tier/background knowledge
+- Tiered/temporal background knowledge
 - Selection variables
 
 ### 3. **Run a causal search algorithm**
 Choose among:
-- **Constraint-based** (PC, FCI, PC-Max, RFCI…)
+- **Constraint-based** (PC (with Map-P option), FCI, RFCI…)
 - **Score-based** (FGES, BOSS, GRaSP…)
 - **Hybrid** (GFCI, BOSS-FCI, FCIT…)
-- **Specialized** (LiNGAM, CAM, NOTEARS, LASSO variants, ANM models)
+- **Specialized** (LiNGAM, CAM, NOTEARS, ANM models…)
+- **Latent Structure Search** (Causal clustering, PC over clusters, Gin…)
 
 ### 4. **Inspect and modify the resulting graph**
 - Orient edges
 - Add/remove adjacencies
 - Run legality checks
-- Compare graphs side-by-side
+- Get graph comparisons statistics
 
 ### 5. **Estimate causal effects**
 - Adjustment sets
-- IDA-style estimation (including PAG IDA)
-- Efficiency-oriented and path-specific tools
+- IDA-style estimation, Optimal IDA
+- Path calculations and comparison tools
 
 Each of these steps is documented in the sections linked below.
 
@@ -102,7 +103,7 @@ Detailed descriptions of every algorithm shipped with Tetrad, including:
   ➡️ [Open algorithms page](search-algorithms)
 
 ### **Parameter Reference**
-Machine-readable and human-readable parameter definitions for all search, score, test, and simulation components.  
+Parameter definitions for all search, score, test, and simulation components.  
 ➡️ [Open reference](reference)
 
 ### **Changelog**
@@ -113,9 +114,7 @@ A history of changes across Tetrad versions and UI updates.
 
 ## 🔧 Using Tetrad Programmatically
 
-Tetrad can also be used outside the GUI through its programmatic interfaces  
-(Java, Python, and R). Rather than duplicating links here, we refer you to the  
-**official Tetrad website**, which always contains up-to-date links to:
+Tetrad can also be used outside the GUI through its programmatic interfaces (Java, Python, and R). Rather than duplicating links here, we refer you to the **official Tetrad website**, which always contains up-to-date links to:
 
 - Java Javadocs
 - Py-Tetrad (Python interface)
@@ -124,27 +123,15 @@ Tetrad can also be used outside the GUI through its programmatic interfaces
 - Download pages
 
 See:  
-👉 https://www.cmu.edu/dietrich/philosophy/tetrad/index.html
+👉 [https://www.cmu.edu/dietrich/philosophy/tetrad/index.html](https://www.cmu.edu/dietrich/philosophy/tetrad/index.html)
 
 ### Related Python Ecosystem Tools
 
-The Python ecosystem also includes **causal-learn**, a well-supported project that  
-implements several Tetrad-style algorithms natively in Python, together with  
-additional methods and utilities tailored to the Python community:
+The Python ecosystem also includes **causal-learn**, a well-supported project that implements several Tetrad-style algorithms natively in Python, together with additional methods and utilities tailored to the Python community:
 
-👉 https://causal-learn.readthedocs.io/en/latest/
+👉 [https://causal-learn.readthedocs.io/en/latest/](https://causal-learn.readthedocs.io/en/latest/)
 
-Tetrad and causal-learn share common theoretical foundations and can be used  
-side-by-side depending on your workflow, programming environment, and performance needs.
-
----
-
-## 🌐 Project Resources
-
-For downloads, Javadocs, tutorials, and general project information, visit the  
-**official Tetrad website**:
-
-👉 https://www.cmu.edu/dietrich/philosophy/tetrad/index.html
+Tetrad and causal-learn share common theoretical foundations and can be used side-by-side depending on your workflow, programming environment, and performance needs.
 
 ---
 
@@ -152,4 +139,4 @@ For downloads, Javadocs, tutorials, and general project information, visit the
 
 The Tetrad GitHub repository hosts issue tracking, discussions, and development notes:
 
-👉 https://github.com/cmu-phil/tetrad
+👉 [https://github.com/cmu-phil/tetrad](https://github.com/cmu-phil/tetrad)
