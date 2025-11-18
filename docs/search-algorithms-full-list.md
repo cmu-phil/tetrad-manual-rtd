@@ -69,11 +69,14 @@ Earlier FCI-related variant; retained mainly for backward compatibility and expe
 
 ---
 
-## Cpc
+## CPC
 
-**Search class:** `edu.cmu.tetrad.search.Cpc` (Conservative PC; see Javadocs under search package index)
+**Search class:** `edu.cmu.tetrad.search.Pc`  [oai_citation:32‡Carnegie Mellon University Philanthropy](https://www.phil.cmu.edu/tetrad-javadocs/7.6.9/edu/cmu/tetrad/search/package-summary.html) This uses the same search class as PC but uses a collider orientation style of **Conservative**.
 
-Implements **Conservative PC**, a variant of PC that more cautiously orients colliders, aiming to avoid false-positive v-structures at the cost of potentially leaving some triples unoriented.
+Implements the **Conservative** optimization of PC, which improves orientation accuracy, as an option inside the PC algorithm.
+
+See the full description here:  
+[CPC — Peter/CPC](algorithms/cpc.md)
 
 ---
 
