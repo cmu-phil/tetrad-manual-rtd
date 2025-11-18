@@ -93,16 +93,14 @@ If you are new to Tetrad or want a curated subset of recommended methods, start 
 
 *Use ICA, skewness, or higher-order moments to orient edges or to supplement a skeleton.*
 
-| Algorithm | Description |
-|----------|-------------|
-| **DirectLingam** 🎨 | Direct LiNGAM for linear non-Gaussian models. |
-| **IcaLingam** 🎨 | ICA-based LiNGAM (classic). |
-| **IcaLingD** 🎨 | Stabilized LiNGAM (Lacerda et al.). |
-| **Fask** 🎨 | FAS skeleton + skewness-based orientation. |
-| **FaskVote** 🎨📦 | Voting ensemble of FASK. |
-| **FaskPw** 🎨 | Pairwise-skewness orientation. |
-| **Rskew** 🎨🧪 | Robust skew-based orientation. |
-| **Gin** 🎨🌀 | Generalized Independent Noise clustering/orientation. |
+| Algorithm                                                          | Description                                           |
+|--------------------------------------------------------------------|-------------------------------------------------------|
+| **DirectLingam** — [Direct LiNGAM](algorithms/direct-lingam.md) 🎨 | Direct LiNGAM for linear non-Gaussian models.         |
+| **IcaLingam** — [ICA LiNGAM](algorithms/ica-lingam.md) 🎨          | ICA-based LiNGAM (classic).                           |
+| **IcaLingD** — [ICA LiNG-D](algorithms/ica-lingd.md) 🎨            | Cyclic LiNGAM (Lacerda et al.).                       |
+| **Fask** — [FASK](algorithms/fask.md) 🎨                           | FAS skeleton + skewness-based orientation.            |
+| **FaskVote** — [FASK-Vote](algorithms/fask-vote.md) 🎨📦           | Voting ensemble of FASK.                              |
+| **Pairwise** — [Pairwise](algorithms/pairwise.md) 🎨               | Pairwise-skewness orientation.                        |
 
 ---
 
@@ -115,6 +113,7 @@ If you are new to Tetrad or want a curated subset of recommended methods, start 
 | **FactorAnalysis** 🧩 | Classical factor analysis (measurement models). |
 | **MimbuildBollen** 🧩 | Bollen-style MIM builder via BlockSpec. |
 | **MimbuildPca** 🧩 | PCA-based MIM construction for pure clusters. |
+| **Gin** 🎨🌀 | Generalized Independent Noise clustering/orientation. |
 
 ---
 
@@ -144,7 +143,7 @@ If you are new to Tetrad or want a curated subset of recommended methods, start 
 
 ---
 
-## 🧪 Specialized / Research / Utility Algorithms
+## 🧪 Specialized / Utility Algorithms
 
 *Special-purpose, experimental, or workflow-specific methods.*
 
