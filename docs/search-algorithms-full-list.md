@@ -54,7 +54,7 @@ If you are new to Tetrad or want a curated subset of recommended methods, start 
 | **Rfci** — [RFCI](algorithms/rfci.md) 🔍🧩           | Fast approximation to FCI (reduced complexity). |
 | **FciIod** — [FCI-IOD](algorithms/fci-iod.md) 🔍🧩🧠 | FCI variant for multi-dataset / partially overlapping variable sets. |
 | **Pcmci** — [PCMCI](algorithms/pcmci.md) 🔍🔁        | CI-based causal discovery for time-series data. |
-
+| **Ccd** — [CCD](algorithms/ccd.md) 🔍                | Cyclic Causal Discovery (allows feedback loops). |
 ---
 
 ## 📏 Score-Based Algorithms (CPDAG)
@@ -104,29 +104,15 @@ If you are new to Tetrad or want a curated subset of recommended methods, start 
 
 ---
 
-## 🧩 Latent Variable & Measurement Model Algorithms
-
-*Recover measurement structure, latent factors, or multi-sample latent connectivity.*
-
-| Algorithm | Description |
-|----------|-------------|
-| **FactorAnalysis** 🧩 | Classical factor analysis (measurement models). |
-| **MimbuildBollen** 🧩 | Bollen-style MIM builder via BlockSpec. |
-| **MimbuildPca** 🧩 | PCA-based MIM construction for pure clusters. |
-| **Gin** 🎨🌀 | Generalized Independent Noise clustering/orientation. |
-
----
-
 ## Nonlinear & Distribution-Shift Algorithms
 
 *Handle nonlinear functions, distribution shifts, or cyclic behavior.*
 
-| Algorithm | Description |
-|----------|-------------|
-| **Cam** | Causal Additive Model (nonlinear additive noise SEMs). |
-| **Dagma** 📏 | Continuous DAG optimization with smooth acyclicity constraint. |
-| **Cdnod** | Causal discovery under distributional changes. |
-| **Ccd** | Cyclic Causal Discovery (allows feedback loops). |
+| Algorithm                                   | Description |
+|---------------------------------------------|-------------|
+| **Cam** — [CAM](algorithms/cam.md)          | Causal Additive Model (nonlinear additive noise SEMs). |
+| **Dagma** — [DAGMA](algorithms/dagma.md) 📏 | Continuous DAG optimization with smooth acyclicity constraint. |
+| **Cdnod** — [CD-NOD](algorithms/cdnod.md)   | Causal discovery under distributional changes. |
 
 ---
 
@@ -152,3 +138,16 @@ If you are new to Tetrad or want a curated subset of recommended methods, start 
 | **DM** 🧪 | Detect–Mimic (intermediate-latent preprocessing). |
 | **Cstar** 🧪 | Bounds on causal effects via edge-orientation patterns. |
 | **SingleGraphAlg** 🧪 | Wrapper for running Tetrad on a fixed imported graph. |
+
+---
+
+## 🧩 Latent Structure Algorithms
+
+*Recover measurement structure, latent factors, or multi-sample latent connectivity.*
+
+| Algorithm | Description |
+|----------|-------------|
+| **FactorAnalysis** 🧩 | Classical factor analysis (measurement models). |
+| **MimbuildBollen** 🧩 | Bollen-style MIM builder via BlockSpec. |
+| **MimbuildPca** 🧩 | PCA-based MIM construction for pure clusters. |
+| **Gin** 🎨🌀 | Generalized Independent Noise clustering/orientation. |
