@@ -334,6 +334,9 @@ Wrapper that uses **RFCI** over **resampled or simulated PAGs**, e.g., for sampl
 
 Implements unified “**Classic PC**”: a constraint-based algorithm that learns a CPDAG using conditional independence tests, with options for collider orientation style and bidirected edge handling.
 
+See the full description here:  
+[PC — Peter/Clark](algorithms/pc.md)
+
 ---
 
 ## Pcd

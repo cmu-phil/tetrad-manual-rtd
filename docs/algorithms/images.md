@@ -52,6 +52,23 @@ Often more scalable and robust than FGES-based IMaGES, especially for mixed data
 
 ---
 
+## Prior Knowledge Support
+
+**IMaGES fully supports background knowledge.**
+
+You may connect a **Knowledge** box to the IMaGES Search box in the GUI, or supply a `Knowledge` object programmatically (Java, py-tetrad, or rpy-tetrad). IMaGES will enforce:
+
+- **Forbidden edges**
+- **Required edges**
+- **Tier/temporal ordering constraints**
+- Any other structural constraints supported by FGES/BOSS
+
+Because IMaGES performs a **score-based CPDAG search** (via FGES or BOSS) but aggregates scores across multiple datasets, **all knowledge constraints are applied uniformly to each scoring step**, ensuring that the pooled/averaged score respects the user’s assumptions across all datasets.
+
+If a constraint is incompatible with any dataset in the collection, IMaGES will still enforce it globally, just as standard FGES/BOSS would.
+
+---
+
 ## Strengths
 
 - Highly stable compared to single-dataset GES/FGES
@@ -106,6 +123,8 @@ These parameters allow IMaGES to:
 Ramsey, J. D., Hanson, S. J., & Glymour, C. (2011).  
 **Multi-subject search correctly identifies causal connections and most causal directions in the DCM models of the Smith et al. simulation study.**  
 *NeuroImage*, 58(3), 838–848.
+
+---
 
 ## Summary
 
