@@ -1,111 +1,113 @@
 # Search Algorithms — Full Catalog
 
 This page lists all algorithms whose wrappers implement  
-`edu.cmu.tetrad.algcomparison.algorithm.Algorithm` in Tetrad 7.6.9.
+`edu.cmu.tetrad.algcomparison.algorithm.Algorithm` in **Tetrad 7.6.9**.
 
-Where possible, descriptions are based on the corresponding classes in  
+Descriptions are based on the corresponding classes in  
 `edu.cmu.tetrad.search`.
 
-This catalog provides a concise overview of all structure-learning algorithms available in Tetrad, with links to full per-algorithm documentation.
+This catalog provides a comprehensive overview of all structure-learning
+algorithms available in Tetrad, with links to full per-algorithm documentation.
 
-If you are new to Tetrad or just want a curated subset of recommended methods, start with the [Search Algorithms — Short List](search-algorithms-short-list.md).
+If you are new to Tetrad or want a curated subset of recommended methods, start with  
+👉 **[Search Algorithms — Short List](search-algorithms-short-list.md)**
 
-Note: Many algorithm pages are still being worked on as part of an ongoing documentation update. Pages will populate over time.
+*Note:* Many per-algorithm pages are still being added as part of an ongoing documentation update.
+
+---
 
 ## Legend — Algorithm Categories
 
-| Badge | Meaning | Description |
-|-------|----------|-------------|
-| 🔍 **Constraint-based** | Uses conditional independence (CI) tests | PC, CPC, PC-Max, FCI, RFCI, etc. |
-| 📏 **Score-based** | Optimizes a score such as BIC, BDeu, or GIC | FGES, BOSS, GRaSP, SP, etc. |
-| 🌀 **Hybrid** | Combines score-based and CI-test phases | GFCI, BOSS-FCI, GRaSP-FCI, FCIT, etc. |
+| Badge | Category | Description |
+|-------|-----------|-------------|
+| 🔍 | Constraint-based | Uses conditional independence (CI) tests |
+| 📏 | Score-based | Optimizes a score such as BIC, BDeu, GIC |
+| 🌀 | Hybrid | Combines score-based and CI-test stages |
 
 ### Extra Structural Badges
 
 | Badge | Meaning | Description |
 |-------|----------|-------------|
-| 🧩 **Latent-capable** | Can output PAGs and handle latent confounding | FCI, RFCI, GFCI, FCIT, BOSS-FCI, etc. |
-| 🔁 **Time-series / lagged** | Supports lagged variables / PCMCI-style searches | PCMCI, time-lag settings in PC/FGES |
-| 🧪 **Experimental** | Research/unstable algorithms | R1/R2/R3, RSkew, SkewE, etc. |
-| 🎨 **Non-Gaussian / ICA** | Uses ICA, skewness, LOFS, or higher-order moments | LiNGAM, FASK, LOFS variants |
-| 🧠 **Multi-dataset / subject-level** | Designed for multiple datasets | IMaGES, concatenated FGES/FASK variants |
-| 🔧 **Orientation-only** | Works with a fixed skeleton | LOFS, skew-based methods |
+| 🧩 | *Latent-capable* | Can output PAGs; handles latent confounding and selection bias |
+| 🔁 | *Time-series / lagged* | Supports lagged variables (PCMCI, time-lag FGES/PC) |
+| 🎨 | *Non-Gaussian / ICA* | Uses ICA, skewness, or higher-order moments |
+| 🧠 | *Multi-dataset* | For multi-sample or cross-subject analyses |
+| 📦 | *Resampling / stability* | Ensemble, bootstrap, or stability methods |
+| 🧪 | *Experimental* | Research / nonstandard algorithms |
+| 🔧 | *Orientation-only* | Orient edges from a fixed skeleton |
 
 ---
 
 ## 🔍 Constraint-Based Algorithms (CPDAG / PAG)
+
 *Use conditional independence tests to prune adjacencies and orient edges.*
 
-| Algorithm                                         | Description |
-|---------------------------------------------------|-------------|
-| **Pc** — [PC](algorithms/pc.md) 🔍                | Classic constraint-based CPDAG search using CI tests. |
-| **Pc-Max** — [PC-Max](algorithms/pc.md) 🔍        | PC variant maximizing p-value for collider orientation. |
-| **CPC** — [Conservative PC](algorithms/cpc.md) 🔍 | Conservative collider rule reducing false orientations. |
-| **Pcd** ♻️                                        | PC variant robust to deterministic relations. |
-| **PcMb** 🔍                                       | PC-style local Markov blanket discovery. |
-| **Fas** — [FAS](algorithms/fas.md) 🔍             | Fast Adjacency Search (adjacency phase of PC). |
-| **Fci** — [FCI](algorithms/fci.md) 🔍🧩           | Full PAG learning allowing latent confounding & selection. |
-| **Rfci** 🔍🧩                                     | Fast approximation to FCI for large graphs. |
-| **RfciBsc** 🔍🧩📦                                | RFCI with bootstrap/stability selection. |
-| **FciIod** 🔍🧩🧠                                 | FCI variant for multi-dataset learning with partially overlapping variable sets. |
-| **Pcmci** 🔍🔁                                    | CI-based time-series causal discovery. |
+| Algorithm                                            | Description |
+|------------------------------------------------------|-------------|
+| **Pc** — [PC](algorithms/pc.md) 🔍                   | Classic constraint-based CPDAG search (CI-test–driven). |
+| **Pc-Max** — [PC-Max](algorithms/pc.md) 🔍           | PC variant maximizing p-value for collider orientation. |
+| **CPC** — [CPC](algorithms/cpc.md) 🔍                | Conservative collider rule reducing false orientations. |
+| **Pcd** — [PCD](algorithms/pcd.md) ♻️                | PC variant robust to deterministic relations. |
+| **PcMb** [PC-MB](algorithms/pcmb.md) 🔍              | Local Markov blanket discovery via PC-style logic. |
+| **Fas** — [FAS](algorithms/fas.md) 🔍                | Fast Adjacency Search (the adjacency phase of PC). |
+| **Fci** — [FCI](algorithms/fci.md) 🔍🧩              | Full PAG search with latent confounding & selection bias. |
+| **Rfci** — [RFCI](algorithms/rfci.md) 🔍🧩           | Fast approximation to FCI (reduced complexity). |
+| **FciIod** — [FCI-IOD](algorithms/fci-iod.md) 🔍🧩🧠 | FCI variant for multi-dataset / partially overlapping variable sets. |
+| **Pcmci** — [PCMCI](algorithms/pcmci.md) 🔍🔁        | CI-based causal discovery for time-series data. |
 
 ---
 
 ## 📏 Score-Based Algorithms (CPDAG)
-*Optimize a score (BIC, IS-BIC, etc.) over equivalence classes or variable orderings.*
 
-| Algorithm                                            | Description                                                              |
-|------------------------------------------------------|--------------------------------------------------------------------------|
-| **Fges** — [FGES](algorithms/fges.md) 📏             | Fast Greedy Equivalence Search (scalable CPDAG search).                  |
-| **FgesMb** 📏                                        | FGES specialized for Markov blankets.                                    |
-| **FgesConcatenated** 📏📦                            | FGES ensemble applied to concatenated datasets.                          |
-| **Boss** — [BOSS](algorithms/boss.md) 📏             | Best Order Score Search over variable orderings.                         |
-| **LV-Dumb** — [LV-Dumb](algorithms/lv-dumb.md) 🪶    | Heuristic PAG from the BOSS DAG; a lightweight alternative to BFCI/FCIT. |
-| **RestrictedBoss** 📏                                | BOSS with parent/tier restrictions.                                      |
-| **Grasp** — [GRaSP](algorithms/grasp.md) 📏          | Greedy Relaxations of Sparsest Permutation.                              |
-| **Sp** — [SP](algorithms/sp.md) 📏                   | Sparsest Permutation DAG selection.                                      |
-| **Images** 🧩📏 — [IMaGES](algorithms/images.md)     | Multi-sample FGES with cross-sample consistency.                         |
-| **IMaGESBoss** 🧩📏 — [IMaGES](algorithms/images.md) | Multi-sample BOSS with cross-sample consistency.                         |
+*Optimize a score (BIC, GIC, BDeu, IS-BIC, etc.) over DAGs or equivalence classes.*
 
----
-
-## 🔀 Hybrid Algorithms (Score + FCI)
-*Begin with a CPDAG from a score-based method and apply FCI-style corrections.*
-
-| Algorithm                                             | Description |
-|-------------------------------------------------------|-------------|
-| **Gfci** — [GFCI](algorithms/gfci.md) 🔀🌀            | FGES + FCI hybrid, returns a PAG. |
-| **GraspFci** — [GRaSP-FCI](algorithms/grasp-fci.md) 🔀🌀 | GRaSP → FCI refinement. |
-| **BossFci** — [BOSS-FCI](algorithms/boss-fci.md) 🔀🌀 | BOSS → FCI refinement. |
-| **SpFci** — [SP-FCI](algorithms/sp-fci.md) 🔀🌀       | Sparsest Permutation → FCI refinement. |
-| **Fcit** — [FCIT](algorithms/fcit.md) 🔀🌀            | Score-guided selective testing for efficient PAG discovery. |
+| Algorithm                                                                | Description                                                       |
+|--------------------------------------------------------------------------|-------------------------------------------------------------------|
+| **Fges** — [FGES](algorithms/fges.md) 📏                                 | Fast greedy equivalence search; highly scalable.                  |
+| **FgesMb** — [FGES-MB](algorithms/fges-mb.md) 📏                         | FGES variant specialized for Markov blankets.                     |
+| **Boss** — [BOSS](algorithms/boss.md) 📏                                 | Best Order Score Search over variable orderings.                  |
+| **RestrictedBoss** — [Restricted BOSS](algorithms/restricted-boss.md) 📏 | BOSS with parent/tier restrictions for speed.                     |
+| **Grasp** — [GRaSP](algorithms/grasp.md) 📏                              | Greedy Relaxations of Sparsest Permutation.                       |
+| **LV-Dumb** — [LV-Dumb](algorithms/lv-dumb.md) 🪶                        | Heuristic PAG from BOSS DAG; lightweight alternative to FCI/FCIT. |
+| **Sp** — [SP](algorithms/sp.md) 📏                                       | Sparsest Permutation; exact but only for very small models.       |
+| **Images** 🧩🧠📏 — [IMaGES](algorithms/images.md)                       | Multi-sample FGES with cross-sample consistency.                  |
+| **IMaGESBoss** 🧩🧠📏 — [IMaGES](algorithms/images.md)                   | Multi-sample BOSS with cross-sample consistency.                  |
 
 ---
 
-## 🎨 Non-Gaussian / Moment-Based / Orientation Algorithms
-*Use ICA, skewness, or higher-order moments to orient edges.*
+## 🌀 Hybrid Algorithms (Score + FCI)
+
+*Start with a CPDAG from a score-based method, then apply FCI-style pruning/orientation to obtain a PAG.*
 
 | Algorithm | Description |
 |----------|-------------|
-| **DirectLingam** 🎨 | Direct LiNGAM; linear non-Gaussian unique-order recovery. |
-| **IcaLingam** 🎨 | ICA-based LiNGAM (classic variant). |
-| **IcaLingD** 🎨 | Stabilized ICA LiNGAM (Lacerda et al.). |
+| **Gfci** — [GFCI](algorithms/gfci.md) 🌀🧩 | FGES → FCI refinement yielding a PAG. |
+| **GraspFci** — [GRaSP-FCI](algorithms/grasp-fci.md) 🌀🧩 | GRaSP → FCI refinement. |
+| **BossFci** — [BOSS-FCI](algorithms/boss-fci.md) 🌀🧩 | BOSS → FCI refinement. |
+| **SpFci** — [SP-FCI](algorithms/sp-fci.md) 🌀🧩 | Sparsest Permutation → FCI refinement. |
+| **Fcit** — [FCIT](algorithms/fcit.md) 🌀🧩 | Score-guided selective testing; efficient, legal-PAG output. |
+
+---
+
+## 🎨 Non-Gaussian, Moment-Based, and Orientation Algorithms
+
+*Use ICA, skewness, or higher-order moments to orient edges or to supplement a skeleton.*
+
+| Algorithm | Description |
+|----------|-------------|
+| **DirectLingam** 🎨 | Direct LiNGAM for linear non-Gaussian models. |
+| **IcaLingam** 🎨 | ICA-based LiNGAM (classic). |
+| **IcaLingD** 🎨 | Stabilized LiNGAM (Lacerda et al.). |
 | **Fask** 🎨 | FAS skeleton + skewness-based orientation. |
-| **FaskPw** 🎨 | Pairwise skewness-based orientation. |
 | **FaskVote** 🎨📦 | Voting ensemble of FASK. |
-| **FaskConcatenated** 🎨📦 | FASK across concatenated datasets. |
-| **FaskLofsConcatenated** 🎨📦 | FASK + LOFS on concatenated data. |
-| **FasLofs** 🎨 | FAS → LOFS pipeline. |
-| **Skew** 🎨 | Base skewness orientation algorithm. |
-| **SkewE** 🎨🧪 | Experimental extension of Skew. |
-| **Rskew**, **RskewE** 🎨🧪 | Robust skew variants (research). |
-| **Tanh** 🎨🧪 | Tanh-transformed nonlinear orientation rules. |
-| **Gin** 🎨 | Generalized Independent Noise clustering/orientation. |
+| **FaskPw** 🎨 | Pairwise-skewness orientation. |
+| **Rskew** 🎨🧪 | Robust skew-based orientation. |
+| **Gin** 🎨🌀 | Generalized Independent Noise clustering/orientation. |
 
 ---
 
 ## 🧩 Latent Variable & Measurement Model Algorithms
+
 *Recover measurement structure, latent factors, or multi-sample latent connectivity.*
 
 | Algorithm | Description |
@@ -117,37 +119,37 @@ Note: Many algorithm pages are still being worked on as part of an ongoing docum
 ---
 
 ## Nonlinear & Distribution-Shift Algorithms
-*Handle nonlinear functions, distribution changes, cyclic behavior.*
+
+*Handle nonlinear functions, distribution shifts, or cyclic behavior.*
 
 | Algorithm | Description |
 |----------|-------------|
 | **Cam** | Causal Additive Model (nonlinear additive noise SEMs). |
-| **Dagma** 📏 | Continuous DAG optimization with smooth acyclicity. |
+| **Dagma** 📏 | Continuous DAG optimization with smooth acyclicity constraint. |
 | **Cdnod** | Causal discovery under distributional changes. |
 | **Ccd** | Cyclic Causal Discovery (allows feedback loops). |
 
 ---
 
 ## 📦 Stability / Resampling / Ensemble Wrappers
+
 *Run algorithms repeatedly under resampling or varying penalties.*
 
 | Algorithm | Description |
 |----------|-------------|
 | **StabilitySelection** 📦 | Stability selection for edges across resampling. |
 | **StARS** 📦 | Stability Approach to Regularization Selection. |
-| **PagSampleRfci** 🔍🧩📦 | RFCI applied across sampled/generated PAGs. |
+| **PagSampleRfci** 🔍🧩📦 | RFCI on resampled/generated PAGs. |
+| **RfciBsc** 🔍🧩📦 | RFCI with bootstrap/stability selection. |
 
 ---
 
 ## 🧪 Specialized / Research / Utility Algorithms
-*Experimental, specialized, or workflow-specific algorithms.*
+
+*Special-purpose, experimental, or workflow-specific methods.*
 
 | Algorithm | Description |
 |----------|-------------|
-| **DmPc** 🧪 | Detect–Mimic preprocessing before PC. |
-| **DmFcit** 🧪 | Detect–Mimic preprocessing before FCIT. |
-| **FirstInflection** 🧪 | Heuristic for selecting penalty/regularization. |
-| **Cstar** 🧪 | Bounds on causal effects via edge orientation patterns. |
-| **SingleGraphAlg** 🧪 | Wrapper for a fixed imported graph. |
-| **R1**, **R2**, **R3** 🧪 | Research/experimental variants. |
-| **Cfci** 🧪 | Deprecated early FCI variant. |
+| **DM** 🧪 | Detect–Mimic (intermediate-latent preprocessing). |
+| **Cstar** 🧪 | Bounds on causal effects via edge-orientation patterns. |
+| **SingleGraphAlg** 🧪 | Wrapper for running Tetrad on a fixed imported graph. |

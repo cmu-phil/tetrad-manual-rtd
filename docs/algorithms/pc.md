@@ -87,22 +87,21 @@ These allow fine control over complexity, reproducibility, and collider logic.
 
 ## Historical Notes
 
-The **PC algorithm** is one of the foundational achievements in modern causal discovery.  
-Its development unfolded across three major milestones:
+The **PC algorithm** was one of the original “Tetrad” algorithms and has been implemented and studied widely. Its development unfolded across three major milestones:
 
 1. **Spirtes & Glymour (1991)**  
-   *"An Algorithm for Fast Recovery of Sparse Causal Graphs"*  
-   This technical report introduced the first version of the algorithm. It established the key insight that conditional independence information can prune a fully connected graph efficiently under sparsity assumptions.
+   *“An Algorithm for Fast Recovery of Sparse Causal Graphs”*  
+   Introduced the first version of the algorithm and established the key insight that conditional independence information can efficiently prune a fully connected graph under sparsity assumptions.
 
 2. **Spirtes, Glymour & Scheines (1993)**  
-   *"Causation, Prediction, and Search" (1st edition)*  
-   The algorithm was refined and extended, including clearer statements of assumptions, correctness proofs, and the introduction of what later became known as the **FAS** (Fast Adjacency Search) phase.
+   *Causation, Prediction, and Search (1st edition)*  
+   Refined and extended the algorithm, with clearer statements of assumptions, correctness proofs, and the introduction of what later became known as the **FAS** (Fast Adjacency Search) phase.
 
 3. **Spirtes, Glymour & Scheines (2000)**  
-   *"Causation, Prediction, and Search" (2nd edition)*  
-   This edition formalized PC in its modern form. Meek’s 1995 orientation rules were incorporated, establishing the now-standard procedure of:
-    - adjacency pruning via conditional independence, followed by
-    - propagation of orientations via sound and complete rules.
+   *Causation, Prediction, and Search (2nd edition)*  
+   Formalized PC in its modern form. Meek’s 1995 orientation rules were incorporated, establishing the now-standard procedure of  
+   (i) adjacency pruning via conditional independence, followed by  
+   (ii) propagation of orientations via sound and complete rules.
 
 ### Why PC is historically important
 
@@ -116,8 +115,6 @@ Today PC remains:
 - a practical choice in many real-world settings.
 
 The Tetrad implementation continues this lineage, with additional improvements (parallelization, stable FAS, PC-Max, skewness extensions, etc.) that preserve the spirit of the original algorithm while adapting it to modern data sizes.
-
-(Note: I feel I can speak glowingly, as I am not Spirtes or Glymour. -JDR)
 
 ---
 

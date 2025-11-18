@@ -117,7 +117,7 @@ LV-Dumb often functions as a “first draft PAG.”
 
 ### vs. **FCIT**
 - FCIT uses score-guided **targeted CI testing**.
-- LV-Dumb uses little or none of the CI information.
+- LV-Dumb uses none of the CI information (purely score-based).
 - LV-Dumb is faster but less expressive.
 
 ### vs. **GFCI/FCI**
