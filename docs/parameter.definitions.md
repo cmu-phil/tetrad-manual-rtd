@@ -1,7 +1,5 @@
 # Parameter Definitions
 
-This file is auto-generated to keep it in sync with the machine-readable definitions that Tetrad imports. Do not edit by hand.
-
 ## acceptanceProportion
 - **Short description:** Acceptance Proportion
 - **Long description:** An edge occurring in this proportion of individual FASK graphs will appear in the final graph.
