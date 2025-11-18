@@ -28,7 +28,7 @@ FGES performs two greedy phases:
 
 The output is a **CPDAG** representing the Markov equivalence class of all DAGs with highest score.
 
-FGES **is GES** — same algorithm, but with engineering optimizations (memoization, covariance caching, parallel scoring) that make it feasible for thousands to millions of variables; large machines obviously help.
+FGES **is GES** — the same greedy equivalence‐search algorithm, but engineered with optimizations (memoization, cached covariance operations, and parallel scoring) that make it feasible in very high dimensions, from thousands up to millions of variables on large machines.
 
 ---
 
@@ -38,9 +38,9 @@ FGES can scale to extremely large models — even **hundreds of thousands to ove
 
 ### 1. High-dimensional ≠ dense
 In causal discovery, *density* is:
-\[
-\frac{\text{avg degree}}{\text{#vars} - 1}.
-\]
+$$
+\frac{\text{avg degree}}{\text{#vars} - 1}
+$$
 For large graphs, even average degree in the teens yields extremely low density.  
 Thus, “dense” high-dimensional settings are typically **structurally sparse**.
 
