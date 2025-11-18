@@ -1,254 +1,113 @@
-# Search Algorithms Short List
+# Search Algorithms — Short List
+*A curated guide to the algorithms most Tetrad users should start with.*
 
-Tetrad provides a wide range of causal discovery algorithms. This page gives a **curated, expert-guided overview** of the algorithms most users should try first.
+Tetrad provides many structure-learning algorithms. This short list highlights the **most recommended** ones, with crisp summaries and links to full per-algorithm pages.
+
+If you're new to Tetrad, start here.
+
+---
 
 ## 🔍 Choosing an Algorithm
 
-Tetrad’s algorithms for generating DAGs, CPDAGs, or PAGs fall into two broad categories depending on whether you assume  
-**no hidden confounders (DAG/CPDAG target)** or  
-**possible hidden confounders (PAG target)**.
+Most users choose between:
 
-### **If you assume *no hidden confounders* (DAG target):**
-Start with one of these:
-- **FGES** — fast, scalable, score-based default
-- **BOSS** — order-based; often finds sharper orientations
-- **PC / PC-Max** — constraint-based; explicitly tuned by α
+- **DAG/CPDAG algorithms** (assume *no hidden confounders*)
+- **PAG algorithms** (allow *hidden confounders* and *selection bias*)
 
----
+A quick rule of thumb:
 
-### **If hidden confounders are possible (PAG target):**
-Use one of:
-- **FCI** — canonical method for latent confounding / selection bias
-- **BOSS-FCI** — score-assisted hybrid improving precision
-- **FCIT** — experimental targeted-testing method; guarantees legal PAGs
+- **No hidden confounders** → Use **DAG/CPDAG** methods  
+  (FGES, BOSS, PC, PC-Max)
+
+- **Hidden confounders possible** → Use **PAG** methods  
+  (FCI, GFCI, BOSS-FCI, FCIT)
 
 ---
 
-## 🏆Some Recommended Algorithms (With Descriptions)
+## 🧭 Recommended Algorithms (At a Glance)
 
-These are the algorithms most users should consider first.
-
----
-
-### **PC — Peter–Clark Algorithm**
-
-**Type:** Constraint-based  
-**Output:** CPDAG
-
-PC begins with a **complete undirected graph** over all variables. It then systematically removes edges by testing for **conditional independence** over increasing conditioning-set sizes. When two variables become independent given some set S, the edge is removed and S is recorded as a separating set.
-
-After the adjacency phase, PC orients edges by:
-
-1. **Identifying unshielded colliders**  
-   If X and Z are nonadjacent but both adjacent to Y, and Y is *not* in the separating set of X and Z, then the triple is oriented:  
-   `X → Y ← Z`.
-
-2. **Applying propagation rules**  
-   Additional orientations are added (R1–R3) as long as they do not create new unshielded colliders or directed cycles.
-
-The final result is a **CPDAG** representing the Markov equivalence class of DAGs consistent with the detected independence relations.
-
-**When to use PC:**
-- You want explicit statistical control through **α**, the significance level for CI tests
-- CI test assumptions (e.g., Gaussianity for Fisher Z) fit your data
-- You prefer a method grounded directly in conditional independence theory
-
-**Variant:** **PC-Max**, which improves orientation precision by choosing separating sets with **maximum p-value** when multiple valid sets exist.
+This section lists the top algorithms most users should consider first.
 
 ---
 
-### **FGES — Fast Greedy Equivalence Search**
+## 🔍 DAG / CPDAG Methods (No Latent Confounders)
 
-**Type:** Score-based  
-**Output:** CPDAG (assumes no hidden confounders)
+**PC — Peter–Clark Algorithm**  
+🔍 Constraint-based • 🎛️ α-controlled • Output: CPDAG  
+Removes edges using CI tests and orients them using collider and propagation rules. A classic method offering explicit statistical control via α.  
+→ Full page: [PC](algorithms/pc.md)
 
-FGES starts from an empty graph and greedily **adds edges** that improve the BIC score until no further improvement is possible. It then performs a second, greedy **edge-removal** phase, again optimizing BIC, to produce a final CPDAG.
-
-**When to use FGES:**
-- Continuous, discrete, or mixed data
-- Hidden confounding is unlikely
-- You want speed, scalability, and a clear score-based objective
-
-**Strengths:** Extremely fast and parallelizable; uses an interpretable score (BIC).  
-**Limitations:** Assumes **causal sufficiency**—no unmeasured confounders of any variable pair.
+**PC-Max**  
+🔍 Constraint-based • 🎛️ α-controlled • Output: CPDAG  
+Variant of PC that selects separating sets with **maximum p-value**, improving orientation accuracy.  
+→ Full page: [PC-Max](algorithms/pc.md)
 
 ---
 
-### **BOSS — Best Order Score Search**
+**FGES — Fast Greedy Equivalence Search**  
+📏 Score-based • ⚡ Highly scalable • Output: CPDAG  
+Greedy forward–backward search optimizing BIC. Very fast and scalable; a strong general-purpose default.  
+→ Full page: [FGES](algorithms/fges.md)
 
-**Type:** Score-based  
-**Output:** CPDAG
-
-BOSS searches over **variable orders**, scoring parent sets consistent with each order. It usually yields more accurate graphs (improved precision/recall for both adjacencies and orientations) than FGES or PC.
-
-**When to use:**
-- Same settings as FGES
-- As a strong alternative CPDAG search or as the score engine for hybrids (e.g., FCIT, BOSS-FCI)
-
----
-
-### **FCI — Fast Causal Inference**
-
-**Type:** Constraint-based  
-**Output:** PAG (allows latent confounders and selection bias)
-
-FCI begins with the **same adjacency search as PC**, producing an undirected skeleton and separating sets.  
-It then performs two additional phases:
-
-1. **Extra-edge removal**  
-   Uses “possible-d-separation” sets to remove edges that PC cannot detect due to latent confounding.
-
-2. **Orientation phase**  
-   Applies an extended set of orientation rules (R0–R10, including collider orientation, discriminating paths, and visible/invisible-edge rules) to produce a **provably correct PAG** under an independence oracle.
-
-The resulting PAG:
-- Correctly reflects which adjacencies *must* or *may* be present across all MAGs compatible with the CI oracle
-- Correctly marks endpoints (tail, arrowhead, circle) indicating ancestral and non-ancestral constraints
-- Gives the **most informative graph possible** assuming only conditional-independence information
-
-**When to use FCI:**
-- Hidden confounders **may** exist
-- Selection bias **may** exist
-- You want a **PAG**, the correct representational target for such settings
-
-**Strengths:**
-- **Provably sound and complete** for PAG identification with an oracle
-- Handles both latent confounding **and** selection bias
-- Modern Tetrad implementation is **fast and optimized** (early “slow FCI” concerns no longer apply)
-
-**Notes:**
-- FCI does *not* “miss” orientations; PAGs purposely avoid over-committing to a single MAG.
-- For large problems, variants such as RFCI, GFCI, and FCIT can provide speed/precision trade-offs.
+**BOSS — Best Order Score Search**  
+📏 Score-based • 🎯 Order-based • Output: CPDAG  
+Searches over variable orders and uses Grow–Shrink Trees to score efficiently; often produces sharper orientations than FGES.  
+→ Full page: [BOSS](algorithms/boss.md)
 
 ---
 
-### **GFCI — Greedy Fast Causal Inference**
+## 🌀 PAG Methods (Hidden Confounders Allowed)
 
-**Type:** Hybrid (score + CI tests)  
-**Output:** PAG
+**FCI — Fast Causal Inference**  
+🔍 Constraint-based • 🧩 Latent-capable • Output: PAG  
+Extends PC with additional pruning and orientation rules (R0–R10) to represent latent confounding and selection bias correctly. The canonical PAG discovery algorithm.  
+→ Full page: [FCI](algorithms/fci.md)
 
-GFCI is a **hybrid extension of FCI** that starts by learning a **Markov CPDAG** with a score-based search (FGES), then upgrades that result to a **PAG** using FCI-style reasoning. Concretely:
+**GFCI — Greedy Fast Causal Inference**  
+🌀 Hybrid • 🧩 Latent-capable • Output: PAG  
+Uses FGES to obtain a CPDAG, then upgrades it to a PAG via FCI-style pruning/orientation. Parent design for newer hybrids.  
+→ Full page: [GFCI](algorithms/gfci.md)
 
-1. **Score phase:**  
-   Run FGES to obtain a CPDAG that (approximately) maximizes a score such as BIC.
+**BOSS-FCI**  
+🌀 Hybrid • 🧩 Latent-capable • Output: PAG  
+Replaces FGES with BOSS, producing a sharper starting point and improved pruning/orientation accuracy. Excellent general-purpose PAG learner.  
+→ Full page: [BOSS-FCI](algorithms/boss-fci.md)
 
-2. **Latent-variable/PAG phase:**  
-   Treat the CPDAG as the starting graph and:
-    - remove extra edges using conditional-independence tests (including possible-d-separation sets), then
-    - apply FCI orientation rules (R0–R10) to obtain a PAG that accounts for possible latent confounders and selection bias.
-
-The result is a PAG that reflects **both** the score structure (from FGES) and the CI structure (from the independence test).
-
-**When to use GFCI:**
-- Latent confounding and/or selection bias may be present
-- You want a **PAG** but prefer a **hybrid baseline** that combines score and test information
-- You are interested in the classical hybrid that underlies newer methods (BOSS-FCI, GRaSP-FCI, FCIT)
-
-**Strengths:**
-- Combines FGES scalability with FCI’s latent-variable semantics
-- Often more stable than pure-FCI in finite samples
-- Introduces the hybrid design pattern that later algorithms (BOSS-FCI, GRaSP-FCI, FCIT) refine and extend
-
-**Notes:**  
-In modern Tetrad, GFCI is best thought of as the **foundational hybrid**; empirically, newer hybrids like **BOSS-FCI**, **GRaSP-FCI**, and especially **FCIT** often outperform it.
+**FCIT — FCI with Targeted Testing**  
+🌀 Hybrid • 🧩 Latent-capable • 🎯 Targeted CI tests • Output: PAG  
+Uses score-guided selective testing to avoid low-value CI tests, improving stability and accuracy while guaranteeing a **legal PAG**. Often outperforms both FCI and GFCI.  
+→ Full page: [FCIT](algorithms/fcit.md)
 
 ---
 
-### **BOSS-FCI — BOSS-Guided Fast Causal Inference**
+## 🔧 Other Useful Algorithm Classes
 
-**Type:** Hybrid (score + CI tests)  
-**Output:** PAG
+Several other methods specialize in:
 
-BOSS-FCI follows the **same overall template as GFCI**, but substitutes **BOSS** for FGES in the score phase.  
-This gives a sharper initial CPDAG, often with more accurate orientations, which then feeds into the FCI upgrade.
+- **Orientation only** (FASK, LOFS, skew-based methods)
+- **Non-Gaussian structure** (LiNGAM, ICA-based models)
+- **Time-series** (PCMCI)
+- **Markov blankets**
+- **Deterministic relations**
 
-Pipeline:
+These are powerful in the right contexts but are not typical starting points.
 
-1. **Score phase (BOSS):**  
-   Run BOSS to obtain a CPDAG that typically has:
-    - fewer false-positive adjacencies,
-    - stronger orientation accuracy,
-    - high stability even in nonlinear or non-Gaussian settings.
-
-2. **Latent-variable/PAG phase:**  
-   Apply the standard FCI-style steps:
-    - remove extra edges using CI tests (including possible-d-separation),
-    - apply FCI orientation rules to produce a PAG.
-
-The result is a **PAG** that integrates:
-- BOSS’s high-quality score-based structure, and
-- FCI’s correctness guarantees for latent confounding and selection.
-
-**When to use BOSS-FCI:**
-- You want a PAG
-- Latent confounding is plausible
-- You prefer a more accurate or sharper starting point than FGES (i.e., sharper than GFCI)
-
-**Strengths:**
-- Typically improves adjacencies and orientations compared to GFCI
-- Reduces false positives from the score stage
-- High precision, especially in moderate-to-large sample sizes
-
-### **FCIT — FCI with Targeted Testing**
-
-**Type:** Hybrid (score-guided CI testing)  
-**Output:** PAG (guaranteed legal)
-
-FCIT follows the same broad architecture as **GFCI**, but replaces GFCI’s exhaustive CI-testing steps with a **targeted, score-informed testing strategy**.  
-A score engine (typically **BOSS**) identifies which adjacencies are most plausible, and FCIT then performs **only the CI tests that matter**, avoiding low-value or misleading tests that often cause false independences.
-
-Algorithmically, FCIT:
-
-1. **Uses BOSS (or another score) to guide adjacency priorities**  
-   → identifies promising edges early  
-   → deprioritizes noisy or low-information CI tests
-
-2. **Runs a targeted version of the FCI pruning/orientation steps**  
-   → dramatically reduces spurious independences  
-   → avoids pathological test sequences
-
-3. **Guarantees a legal PAG**  
-   → incorporates an explicit PAG-repair step when needed
-
-Compared to FCI and GFCI, FCIT typically yields:
-
-- **Fewer false-positive independences**
-- **Sharper and more stable PAGs**
-- **Better orientations**, especially in moderate–large sample sizes
-- **Better scalability**, since many CI tests are skipped entirely
-
-**When to use FCIT:**
-- You want a PAG
-- Hidden confounders are expected
-- FCI or GFCI seem unstable or overly noisy
-- You have medium–large datasets
-- You prefer a **legal-by-construction** PAG
-- You’re comfortable using a *new, pre-publication* method
+→ See full catalog: **[Full Algorithm List](search-algorithms-full-list.md)**
 
 ---
 
-## 🎛 Choosing CI Tests & Scores
+## 🎛 Choosing CI Tests & Scores (Quick Guide)
 
-A quick rule-of-thumb:
-
-- **Continuous Gaussian-ish:** Fisher Z test; SEM-BIC score
-- **Discrete:** G-test or Chi-square; BDeu/BIC scores
-- **Mixed / nonlinear:** KCI or RCIT (slower); basis-function methods are also available and are more scalable.
-- **Covariance-only:** Use algorithms supporting covariance + N (e.g., BOSS with SEM-BIC)
+- **Continuous (Gaussian-ish):** Fisher Z, SEM-BIC
+- **Discrete:** G-test or Chi-square; BDeu/BIC
+- **Mixed or nonlinear:** KCI / RCIT (slower), basis-function methods (scalable)
+- **Covariance-only datasets:** Use methods accepting covariance matrices (e.g., BOSS, FGES)
 
 ---
 
-## ⚠️ Common Pitfalls
+## ⚠️ Common Pitfalls and Fixes
 
-- **Too many edges:** Lower α (constraint-based) or increase penalty (score-based)
-- **Too few edges:** Raise α or decrease score penalty
-- **Odd orientations:** Try BOSS or PC-Max or add minimal prior knowledge
-- **Slow runtime:** Limit depth; try RFCI or FCIT; increase threads
-
----
-
-## 🧩Full Algorithm List
-
-For the full catalog—including specialized, legacy, and experimental methods—see:
-
-👉 **[Full Algorithm List](search-algorithms-full-list)**
+- **Graph too dense:** lower α (PC/FCI) or increase penalty (FGES/BOSS)
+- **Graph too sparse:** raise α or decrease penalty
+- **Odd orientations:** try PC-Max, BOSS, or minimal prior knowledge
+- **Slow runtime:** limit depth; use RFCI or FCIT; increase threads

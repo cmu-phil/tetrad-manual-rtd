@@ -25,7 +25,7 @@ Note: Many algorithm pages are still being worked on as part of an ongoing docum
 | Badge | Meaning | Description |
 |-------|----------|-------------|
 | 🧩 **Latent-capable** | Can output PAGs and handle latent confounding | FCI, RFCI, GFCI, FCIT, BOSS-FCI, etc. |
-| 🔁 **Time-series / lagged** | Supports lagged variables / PCMCI-style searches | PCMCI, time-lag settings in PC/FGES |
+| 🎛️ **Time-series** | Supports lagged variables / PCMCI-style searches | PCMCI, time-lag settings in PC/FGES |
 | 🧪 **Experimental** | Research/unstable algorithms | R1/R2/R3, RSkew, SkewE, etc. |
 | 🎨 **Non-Gaussian / ICA** | Uses ICA, skewness, LOFS, or higher-order moments | LiNGAM, FASK, LOFS variants |
 | 🧠 **Multi-dataset / subject-level** | Designed for multiple datasets | IMaGES, concatenated FGES/FASK variants |
@@ -44,10 +44,10 @@ Note: Many algorithm pages are still being worked on as part of an ongoing docum
 | **Pcd** ♻️                                    | PC variant robust to deterministic relations. |
 | **PcMb** 🔍                                   | PC-style local Markov blanket discovery. |
 | **Fas** — [FAS](algorithms/fas.md) 🔍         | Fast Adjacency Search (adjacency phase of PC). |
-| **Fci** 🔍🧩                                   | Full PAG learning allowing latent confounding & selection. |
-| **Rfci** 🔍🧩                                  | Fast approximation to FCI for large graphs. |
-| **RfciBsc** 🔍🧩📦                              | RFCI with bootstrap/stability selection. |
-| **FciIod** 🔍🧩🧠                               | FCI variant for multi-dataset learning with partially overlapping variable sets. |
+| **Fci** 🌀                                    | Full PAG learning allowing latent confounding & selection. |
+| **Rfci** 🌀                                   | Fast approximation to FCI for large graphs. |
+| **RfciBsc** 🌀📦                              | RFCI with bootstrap/stability selection. |
+| **FciIod** 🧩                                 | FCI variant for multi-dataset learning with partially overlapping variable sets. |
 | **Pcmci** 🔍🔁                                | CI-based time-series causal discovery. |
 
 ---
@@ -60,7 +60,7 @@ Note: Many algorithm pages are still being worked on as part of an ongoing docum
 | **Fges** — [FGES](algorithms/fges.md) 📏             | Fast Greedy Equivalence Search (scalable CPDAG search).                  |
 | **FgesMb** 📏                                        | FGES specialized for Markov blankets.                                    |
 | **FgesConcatenated** 📏📦                            | FGES ensemble applied to concatenated datasets.                          |
-| **Boss** — [BOSS](algorithms/boss.md) 📏             | Best Order Score Search over variable orderings.                         |
+| **Boss**— [BOSS](algorithms/boss.md) 📏              | Best Order Score Search over variable orderings.                         |
 | **LV-Dumb** — [LV-Dumb](algorithms/lv-dumb.md) 🪶    | Heuristic PAG from the BOSS DAG; a lightweight alternative to BFCI/FCIT. |
 | **RestrictedBoss** 📏                                | BOSS with parent/tier restrictions.                                      |
 | **Grasp** — [GRaSP](algorithms/grasp.md) 📏          | Greedy Relaxations of Sparsest Permutation.                              |
@@ -83,25 +83,25 @@ Note: Many algorithm pages are still being worked on as part of an ongoing docum
 
 ---
 
-## 🎨 Non-Gaussian / Moment-Based / Orientation Algorithms
+## 🎛️ Non-Gaussian / Moment-Based / Orientation Algorithms
 *Use ICA, skewness, or higher-order moments to orient edges.*
 
 | Algorithm | Description |
 |----------|-------------|
-| **DirectLingam** 🎨 | Direct LiNGAM; linear non-Gaussian unique-order recovery. |
-| **IcaLingam** 🎨 | ICA-based LiNGAM (classic variant). |
-| **IcaLingD** 🎨 | Stabilized ICA LiNGAM (Lacerda et al.). |
-| **Fask** 🎨 | FAS skeleton + skewness-based orientation. |
-| **FaskPw** 🎨 | Pairwise skewness-based orientation. |
-| **FaskVote** 🎨📦 | Voting ensemble of FASK. |
-| **FaskConcatenated** 🎨📦 | FASK across concatenated datasets. |
-| **FaskLofsConcatenated** 🎨📦 | FASK + LOFS on concatenated data. |
-| **FasLofs** 🎨 | FAS → LOFS pipeline. |
-| **Skew** 🎨 | Base skewness orientation algorithm. |
-| **SkewE** 🎨🧪 | Experimental extension of Skew. |
-| **Rskew**, **RskewE** 🎨🧪 | Robust skew variants (research). |
-| **Tanh** 🎨🧪 | Tanh-transformed nonlinear orientation rules. |
-| **Gin** 🎨 | Generalized Independent Noise clustering/orientation. |
+| **DirectLingam** 🎛️ | Direct LiNGAM; linear non-Gaussian unique-order recovery. |
+| **IcaLingam** 🎛️ | ICA-based LiNGAM (classic variant). |
+| **IcaLingD** 🎛️ | Stabilized ICA LiNGAM (Lacerda et al.). |
+| **Fask** 🎛️ | FAS skeleton + skewness-based orientation. |
+| **FaskPw** 🎛️ | Pairwise skewness-based orientation. |
+| **FaskVote** 🎛️📦 | Voting ensemble of FASK. |
+| **FaskConcatenated** 🎛️📦 | FASK across concatenated datasets. |
+| **FaskLofsConcatenated** 🎛️📦 | FASK + LOFS on concatenated data. |
+| **FasLofs** 🎛️ | FAS → LOFS pipeline. |
+| **Skew** 🎛️ | Base skewness orientation algorithm. |
+| **SkewE** 🎛️🧪 | Experimental extension of Skew. |
+| **Rskew**, **RskewE** 🎛️🧪 | Robust skew variants (research). |
+| **Tanh** 🎛️🧪 | Tanh-transformed nonlinear orientation rules. |
+| **Gin** 🎛️🌀 | Generalized Independent Noise clustering/orientation. |
 
 ---
 
@@ -116,15 +116,15 @@ Note: Many algorithm pages are still being worked on as part of an ongoing docum
 
 ---
 
-## Nonlinear & Distribution-Shift Algorithms
+## 🎛️ Nonlinear & Distribution-Shift Algorithms
 *Handle nonlinear functions, distribution changes, cyclic behavior.*
 
 | Algorithm | Description |
 |----------|-------------|
-| **Cam** | Causal Additive Model (nonlinear additive noise SEMs). |
-| **Dagma** 📏 | Continuous DAG optimization with smooth acyclicity. |
-| **Cdnod** | Causal discovery under distributional changes. |
-| **Ccd** | Cyclic Causal Discovery (allows feedback loops). |
+| **Cam** 🎛️ | Causal Additive Model (nonlinear additive noise SEMs). |
+| **Dagma** 🎛️📏 | Continuous DAG optimization with smooth acyclicity. |
+| **Cdnod** 🎛️ | Causal discovery under distributional changes. |
+| **Ccd** 🎛️ | Cyclic Causal Discovery (allows feedback loops). |
 
 ---
 
@@ -135,7 +135,7 @@ Note: Many algorithm pages are still being worked on as part of an ongoing docum
 |----------|-------------|
 | **StabilitySelection** 📦 | Stability selection for edges across resampling. |
 | **StARS** 📦 | Stability Approach to Regularization Selection. |
-| **PagSampleRfci** 🔍🧩📦 | RFCI applied across sampled/generated PAGs. |
+| **PagSampleRfci** 🌀📦 | RFCI applied across sampled/generated PAGs. |
 
 ---
 
