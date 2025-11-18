@@ -337,6 +337,19 @@ Implements unified “**Classic PC**”: a constraint-based algorithm that learn
 See the full description here:  
 [PC — Peter/Clark](algorithms/pc.md)
 
+See also PC-Max.
+
+--
+
+## Pc-Max
+
+**Search class:** `edu.cmu.tetrad.search.Pc`  [oai_citation:32‡Carnegie Mellon University Philanthropy](https://www.phil.cmu.edu/tetrad-javadocs/7.6.9/edu/cmu/tetrad/search/package-summary.html) This uses the same search class as PC but uses a collider orientation style of **Max P**.
+
+Implements the **PC-Max** optimization of PC, which improves orientation accuracy, as an option inside the PC algorithm.
+
+See the full description here:  
+[PC-Max — Peter/Clark Max](algorithms/pc-max.md)
+
 ---
 
 ## Pcd

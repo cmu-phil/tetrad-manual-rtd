@@ -61,10 +61,10 @@ These constraints are respected during both adjacency removal and orientation pr
 
 ## Limitations
 
-- Assumes **causal sufficiency** (no latent confounders)
-- Sensitive to CI test errors when conditioning sets become large
-- Faithfulness assumption required for correctness
-- May leave many directions unoriented in dense or noisy settings
+- The **theoretical guarantee** of correctness requires the data to be i.i.d. and faithful to a causally sufficient DAG.
+- Sensitive to CI test errors when conditioning sets become large.
+- May leave many edges unoriented, especially in dense graphs or with weak dependencies.
+- Cannot by itself distinguish latent confounding from direct causation (FCI and its variants address this).
 
 ---
 
