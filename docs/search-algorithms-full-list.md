@@ -36,19 +36,19 @@ Note: Many algorithm pages are still being worked on as part of an ongoing docum
 ## 🔍 Constraint-Based Algorithms (CPDAG / PAG)
 *Use conditional independence tests to prune adjacencies and orient edges.*
 
-| Algorithm                                     | Description |
-|-----------------------------------------------|-------------|
-| **Pc** — [PC](algorithms/pc.md) 🔍            | Classic constraint-based CPDAG search using CI tests. |
-| **Pc-Max** — [PC-Max](algorithms/pc.md) 🔍    | PC variant maximizing p-value for collider orientation. |
+| Algorithm                                         | Description |
+|---------------------------------------------------|-------------|
+| **Pc** — [PC](algorithms/pc.md) 🔍                | Classic constraint-based CPDAG search using CI tests. |
+| **Pc-Max** — [PC-Max](algorithms/pc.md) 🔍        | PC variant maximizing p-value for collider orientation. |
 | **CPC** — [Conservative PC](algorithms/cpc.md) 🔍 | Conservative collider rule reducing false orientations. |
-| **Pcd** ♻️                                    | PC variant robust to deterministic relations. |
-| **PcMb** 🔍                                   | PC-style local Markov blanket discovery. |
-| **Fas** — [FAS](algorithms/fas.md) 🔍         | Fast Adjacency Search (adjacency phase of PC). |
-| **Fci** 🔍🧩                                   | Full PAG learning allowing latent confounding & selection. |
-| **Rfci** 🔍🧩                                  | Fast approximation to FCI for large graphs. |
-| **RfciBsc** 🔍🧩📦                              | RFCI with bootstrap/stability selection. |
-| **FciIod** 🔍🧩🧠                               | FCI variant for multi-dataset learning with partially overlapping variable sets. |
-| **Pcmci** 🔍🔁                                | CI-based time-series causal discovery. |
+| **Pcd** ♻️                                        | PC variant robust to deterministic relations. |
+| **PcMb** 🔍                                       | PC-style local Markov blanket discovery. |
+| **Fas** — [FAS](algorithms/fas.md) 🔍             | Fast Adjacency Search (adjacency phase of PC). |
+| **Fci** — [FCI](algorithms/fci.md) 🔍🧩           | Full PAG learning allowing latent confounding & selection. |
+| **Rfci** 🔍🧩                                     | Fast approximation to FCI for large graphs. |
+| **RfciBsc** 🔍🧩📦                                | RFCI with bootstrap/stability selection. |
+| **FciIod** 🔍🧩🧠                                 | FCI variant for multi-dataset learning with partially overlapping variable sets. |
+| **Pcmci** 🔍🔁                                    | CI-based time-series causal discovery. |
 
 ---
 
