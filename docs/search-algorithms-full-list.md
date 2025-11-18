@@ -33,50 +33,50 @@ We will eventually have a dedicated page for each algorithm, using:
 ## 🔍 Constraint-Based Algorithms (CPDAG / PAG)
 *Use conditional independence tests to prune adjacencies and orient edges.*
 
-| Algorithm                                         | Description |
-|---------------------------------------------------|-------------|
-| **Pc** — [PC](algorithms/pc.md) 🔍                | Classic constraint-based CPDAG search using CI tests. |
-| **Pc-Max** — [PC-Max](algorithms/pc-max.md) 🔍    | PC variant maximizing p-value for collider orientation. |
+| Algorithm                                     | Description |
+|-----------------------------------------------|-------------|
+| **Pc** — [PC](algorithms/pc.md) 🔍            | Classic constraint-based CPDAG search using CI tests. |
+| **Pc-Max** — [PC-Max](algorithms/pc.md) 🔍    | PC variant maximizing p-value for collider orientation. |
 | **CPC** — [Conservative PC](algorithms/cpc.md) 🔍 | Conservative collider rule reducing false orientations. |
-| **Pcd** ♻️                                        | PC variant robust to deterministic relations. |
-| **PcMb** 🔍                                       | PC-style local Markov blanket discovery. |
-| **Fas** — [FAS](algorithms/fas.md) 🔍             | Fast Adjacency Search (adjacency phase of PC). |
-| **Fci** 🌀                                        | Full PAG learning allowing latent confounding & selection. |
-| **Rfci** 🌀                                       | Fast approximation to FCI for large graphs. |
-| **RfciBsc** 🌀📦                                  | RFCI with bootstrap/stability selection. |
-| **FciIod** 🌀                                     | FCI variant with independence-of-distribution diagnostics. |
-| **Pcmci** 🔍🔁                                    | CI-based time-series causal discovery. |
+| **Pcd** ♻️                                    | PC variant robust to deterministic relations. |
+| **PcMb** 🔍                                   | PC-style local Markov blanket discovery. |
+| **Fas** — [FAS](algorithms/fas.md) 🔍         | Fast Adjacency Search (adjacency phase of PC). |
+| **Fci** 🌀                                    | Full PAG learning allowing latent confounding & selection. |
+| **Rfci** 🌀                                   | Fast approximation to FCI for large graphs. |
+| **RfciBsc** 🌀📦                              | RFCI with bootstrap/stability selection. |
+| **FciIod** 🧩                                 | FCI variant for multi-dataset learning with partially overlapping variable sets. |
+| **Pcmci** 🔍🔁                                | CI-based time-series causal discovery. |
 
 ---
 
 ## 📏 Score-Based Algorithms (CPDAG)
 *Optimize a score (BIC, IS-BIC, etc.) over equivalence classes or variable orderings.*
 
-| Algorithm                                | Description |
-|------------------------------------------|-------------|
-| **Fges** — [FGES](algorithms/fges.md) 📏 | Fast Greedy Equivalence Search (scalable CPDAG search). |
-| **FgesMb** 📏                            | FGES specialized for Markov blankets. |
-| **IsFges** 📏                            | Instance-specific scoring version of FGES. |
-| **FgesConcatenated** 📏📦                | FGES ensemble applied to concatenated datasets. |
-| **Boss** 📏                              | Best Order Score Search over variable orderings. |
-| **BossPod** 📏                           | BOSS with downstream POD refinements. |
-| **RestrictedBoss** 📏                    | BOSS with parent/tier restrictions. |
-| **Grasp** 📏                             | Greedy Relaxations of Sparsest Permutation. |
-| **Sp** 📏                                | Sparsest Permutation DAG selection. |
-| **IsGfci** 📏🌀                          | Instance-specific hybrid score algorithm. |
+| Algorithm                                         | Description                                                          |
+|---------------------------------------------------|----------------------------------------------------------------------|
+| **Fges** — [FGES](algorithms/fges.md) 📏          | Fast Greedy Equivalence Search (scalable CPDAG search).              |
+| **FgesMb** 📏                                     | FGES specialized for Markov blankets.                                |
+| **IsFges** 📏                                     | Instance-specific scoring version of FGES.                           |
+| **FgesConcatenated** 📏📦                         | FGES ensemble applied to concatenated datasets.                      |
+| **Boss** 📏                                       | Best Order Score Search over variable orderings.                     |
+| **LV-Dumb** — [LV-Dumb](algorithms/lv-dumb.md) 🪶 | Heuristic PAG from the BOSS DAG; a lightweight alternative to BFCI/FCIT. |
+| **RestrictedBoss** 📏                             | BOSS with parent/tier restrictions.                                  |
+| **Grasp** 📏                                      | Greedy Relaxations of Sparsest Permutation.                          |
+| **Sp** 📏                                         | Sparsest Permutation DAG selection.                                  |
+| **IsGfci** 📏🌀                                   | Instance-specific hybrid score algorithm.                            |
 
 ---
 
 ## 🔀 Hybrid Algorithms (Score + FCI)
 *Begin with a CPDAG from a score-based method and apply FCI-style corrections.*
 
-| Algorithm | Description |
-|----------|-------------|
-| **Gfci** 🔀🌀 | FGES + FCI hybrid, returns a PAG. |
-| **FgesFci** 🔀🌀 | FGES → FCI refinement pipeline. |
-| **GraspFci** 🔀🌀 | GRaSP → FCI refinement. |
-| **BossFci** 🔀🌀 | BOSS → FCI refinement. |
-| **SpFci** 🔀🌀 | Sparsest Permutation → FCI refinement. |
+| Algorithm                                                | Description |
+|----------------------------------------------------------|-------------|
+| **Gfci** — [GFCI](algorithms/gfci.md) 🔀🌀               | FGES + FCI hybrid, returns a PAG. |
+| **GraspFci** — [GRaSP-FCI](algorithms/grasp-fci.md) 🔀🌀 | GRaSP → FCI refinement. |
+| **BossFci** — [BOSS-FCI](algorithms/boss-fci.md) 🔀🌀    | BOSS → FCI refinement. |
+| **SpFci** — [SP-FCI](algorithms/sp-fci.md) 🔀🌀          | Sparsest Permutation → FCI refinement. |
+| **Fcit** — [FCIT](algorithms/sp-fcit.md) 🔀🌀            | Score-guided selective testing for efficient PAG discovery. |
 
 ---
 
