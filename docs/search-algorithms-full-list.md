@@ -120,12 +120,12 @@ If you are new to Tetrad or want a curated subset of recommended methods, start 
 
 *Run algorithms repeatedly under resampling or varying penalties.*
 
-| Algorithm | Description |
-|----------|-------------|
-| **StabilitySelection** 📦 | Stability selection for edges across resampling. |
-| **StARS** 📦 | Stability Approach to Regularization Selection. |
-| **PagSampleRfci** 🔍🧩📦 | RFCI on resampled/generated PAGs. |
-| **RfciBsc** 🔍🧩📦 | RFCI with bootstrap/stability selection. |
+| Algorithm                                                                            | Description |
+|--------------------------------------------------------------------------------------|-------------|
+| **StabilitySelection** — [Stability Selection](algorithms/stability-selection.md) 📦 | Stability selection for edges across resampling. |
+| **StARS** — [StARS](algorithms/stars.md) 📦                                          | Stability Approach to Regularization Selection. |
+| **PagSamplingRfci** — [PAG Sampling RFCI](algorithms/pag-sampling-rfci.md) 🔍🧩📦    | RFCI on resampled/generated PAGs. |
+| **RfciBsc** — [RFCI-BSC](algorithms/rfci-bsc.md) 🔍🧩📦                              | RFCI with bootstrap/stability selection. |
 
 ---
 
