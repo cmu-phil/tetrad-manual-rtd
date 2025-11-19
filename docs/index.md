@@ -20,6 +20,7 @@ user-guide
 graph.formats
 data.formats
 search-algorithms
+tests-and-scores
 parameter.definitions
 about
 changelog

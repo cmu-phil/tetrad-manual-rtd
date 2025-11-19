@@ -1,15 +1,13 @@
 :orphan:
 
-# Algorithms — Alphabetical
+# Search Algorithms — Alphabetical
 
 Below is the complete set of per-algorithm documentation pages for
 Tetrad’s structure-learning methods.
 
-These pages are included in the PDF build using a hidden toctree.
-
 ```{toctree}
-:hidden:
 :maxdepth: 1
+:numbered:
 
 boss
 boss-fci
