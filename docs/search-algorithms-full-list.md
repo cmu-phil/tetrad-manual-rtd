@@ -141,13 +141,34 @@ If you are new to Tetrad or want a curated subset of recommended methods, start 
 
 ---
 
-## 🧩 Latent Structure Algorithms
+## Latent Clustering (Measurement Block Discovery)
 
-*Recover measurement structure, latent factors, or multi-sample latent connectivity.*
+These algorithms discover measurement clusters—groups of indicators that are treated as candidate latent-variable blocks.  
+See **[Latent Clusters](algorithms/latent-cluster.md)** for details.
 
 | Algorithm | Description |
 |----------|-------------|
-| **FactorAnalysis** 🧩 | Classical factor analysis (measurement models). |
-| **MimbuildBollen** 🧩 | Bollen-style MIM builder via BlockSpec. |
-| **MimbuildPca** 🧩 | PCA-based MIM construction for pure clusters. |
-| **Gin** 🎨🌀 | Generalized Independent Noise clustering/orientation. |
+| **TSC** | Trek Separation Clusters using rank constraints. |
+| **FOFC** | First-Order Factor Clustering via pure tetrads. |
+| **FTFC** | Fast Tetrad-Factor Clustering using sextads. |
+| **GFFC** | Generalized Factor Finding Clustering (2×2 → 3×3 → …). |
+| **BPC** | Build Pure Clusters (global purification & merging). |
+
+Once clusters are available, they can be treated as **blocks** and passed to algorithms that support:
+
+- **Blocks-Test-TS** — a trek-separation–based CI test on measurement blocks; and
+- **Blocks-BIC** — a block-aware score.
+
+In this mode, *any* algorithm that takes a test and/or score (e.g., **PC** as the default, or FGES, BOSS, GFCI, etc.) can be run on the **latent layer** rather than the raw indicators: clusters become latent nodes, and Blocks-Test-TS / Blocks-BIC handle the measurement structure.
+
+---
+
+## Latent Structure / Measurement-Model Construction
+
+On top of clustering + block-based search, the following algorithms explicitly construct latent variables or measurement models before running structural search on the latent layer.
+
+| Algorithm                                               | Description                                              |
+|---------------------------------------------------------|----------------------------------------------------------|
+| **[Factor Analysis](algorithms/factor-analysis.md)** 🧩 | Classical SEM-style factor analysis (measurement model). |
+| **[Mimbuild Bollen](algorithms/mimbuild-bollen.md)** 🧩 | MIM builder using Bollen-style BlockSpec constraints.    |
+| **[Mimbuild PCA](algorithms/mimbuild-pca.md)** 🧩       | PCA-based measurement model from pure clusters.          |
