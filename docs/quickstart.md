@@ -74,7 +74,7 @@ Here you can:
 ## 5. Save and Export
 
 - **Save** the project (File → Save Project)
-- **Export** graphs (PNG, SVG, PDF, or structural formats)
+- **Export** graphs (Text, JSON, other formats)
 
 ---
 
