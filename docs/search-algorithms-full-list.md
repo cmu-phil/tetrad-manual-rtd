@@ -143,7 +143,7 @@ If you are new to Tetrad or want a curated subset of recommended methods, start 
 
 ## Latent Clustering (Measurement Block Discovery)
 
-These algorithms discover measurement clusters—groups of indicators that are treated as candidate latent-variable blocks.  
+These algorithms discover measurement clusters—groups of indicators that behave as if they share a single latent parent.  
 See **[Latent Clusters](algorithms/latent-cluster.md)** for details.
 
 | Algorithm | Description |
@@ -154,18 +154,18 @@ See **[Latent Clusters](algorithms/latent-cluster.md)** for details.
 | **GFFC** | Generalized Factor Finding Clustering (2×2 → 3×3 → …). |
 | **BPC** | Build Pure Clusters (global purification & merging). |
 
-Once clusters are available, they can be treated as **blocks** and passed to algorithms that support:
+Once clusters are obtained, they can be treated as **measurement blocks**. These blocks may be supplied to algorithms that support:
 
-- **Blocks-Test-TS** — a trek-separation–based CI test on measurement blocks; and
+- **Blocks-Test-TS** — a trek-separation conditional independence test over blocks;
 - **Blocks-BIC** — a block-aware score.
 
-In this mode, *any* algorithm that takes a test and/or score (e.g., **PC** as the default, or FGES, BOSS, GFCI, etc.) can be run on the **latent layer** rather than the raw indicators: clusters become latent nodes, and Blocks-Test-TS / Blocks-BIC handle the measurement structure.
+In this mode, *any* algorithm that accepts a test and/or a score (PC, FGES, BOSS, GFCI, etc.) can be run on the **latent layer**: each cluster becomes a latent node, and Blocks-Test-TS / Blocks-BIC handle independence and scoring among the latent variables.
 
 ---
 
 ## Latent Structure / Measurement-Model Construction
 
-On top of clustering + block-based search, the following algorithms explicitly construct latent variables or measurement models before running structural search on the latent layer.
+Building on cluster discovery and block-based search, these algorithms explicitly construct latent variables or full measurement models before running structural search on the latent layer.
 
 | Algorithm                                               | Description                                              |
 |---------------------------------------------------------|----------------------------------------------------------|
