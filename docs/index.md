@@ -16,7 +16,7 @@ This site is the **Read the Docs** version of the Tetrad manual, reorganized int
 :hidden:
 
 quickstart
-user-guide
+manual/index
 graph.formats
 data.formats
 search-algorithms
