@@ -2,7 +2,7 @@ Descriptions of search algorithms, tests, and scores have been moved to the new 
 
 (tetrad-manual)=
 
-# Tetrad Manual
+# Tetrad Interface
 
 Last updated: 2/6/2024
 
@@ -10,6 +10,7 @@ Last updated: 2/6/2024
 :maxdepth: 2
 
 introduction
+quickstart
 graph-box
 compare-box
 parametric-model-box

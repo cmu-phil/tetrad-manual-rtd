@@ -15,7 +15,6 @@ This site is the **Read the Docs** version of the Tetrad manual, reorganized int
 :maxdepth: 2
 :hidden:
 
-quickstart
 manual/index
 graph.formats
 data.formats
@@ -84,7 +83,7 @@ Each of these steps is documented in the sections linked below.
 
 ### **Quickstart**
 A short “get going in 5 minutes” guide showing how to load data, run your first search, and interpret results.  
-➡️ [Open quickstart](quickstart)
+➡️ [Open quickstart](manual/quickstart.md)
 
 ### **User Guide**
 A structured walkthrough of the Tetrad interface:

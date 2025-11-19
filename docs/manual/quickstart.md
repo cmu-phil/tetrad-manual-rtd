@@ -80,6 +80,3 @@ Here you can:
 
 You now have a full causal workflow:  
 **data → search → editable graph**.
-
-Explore the **User Guide** for more features,  
-or the **Algorithms** page for details on each search method.
