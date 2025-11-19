@@ -37,12 +37,7 @@ FGES **is GES** — the same greedy equivalence‐search algorithm, but engineer
 FGES can scale to extremely large models — even **hundreds of thousands to over a million variables** — but this depends crucially on the **effective sparsity** of the underlying graph.
 
 ### 1. High-dimensional ≠ dense
-In causal discovery, *density* is:
-$$
-\frac{\text{avg degree}}{\text{#vars} - 1}
-$$
-For large graphs, even average degree in the teens yields extremely low density.  
-Thus, “dense” high-dimensional settings are typically **structurally sparse**.
+In causal discovery, *density* is avg degree / (#vars - 1). For large graphs, even average degree in the teens yields extremely low density.Thus, “dense” high-dimensional settings are typically **structurally sparse**.
 
 ### 2. Million-variable demonstration
 The 2017 paper’s million-variable run:
