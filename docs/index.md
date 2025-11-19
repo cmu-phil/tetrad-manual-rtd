@@ -19,8 +19,7 @@ quickstart
 user-guide
 graph.formats
 data.formats
-search-algorithms-short-list
-search-algorithms-full-list
+search-algorithms
 parameter.definitions
 about
 changelog

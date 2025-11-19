@@ -1,4 +1,4 @@
-# MimbuildPca
+# Mimbuild PCA
 
 **Category:** Latent Structure / MIM Construction  
 **Type:** PCA-based latent-variable construction

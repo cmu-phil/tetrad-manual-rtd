@@ -1,4 +1,4 @@
-# FactorAnalysis
+# Factor Analysis
 
 **Category:** Latent Structure / Measurement Models  
 **Type:** Classical factor analysis (linear-Gaussian)

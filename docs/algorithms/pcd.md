@@ -1,4 +1,4 @@
-# Pcd — PC for Deterministic Relations
+# PCD — PC for Deterministic Relations
 
 **Type:** Constraint-based  
 **Output:** CPDAG  

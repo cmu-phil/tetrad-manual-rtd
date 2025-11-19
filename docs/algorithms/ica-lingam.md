@@ -1,4 +1,4 @@
-# IcaLingam — ICA-Based LiNGAM
+# ICA Lingam — ICA-Based LiNGAM
 
 **Type:** Non-Gaussian / Moment-based / ICA-based  
 **Output:** DAG  

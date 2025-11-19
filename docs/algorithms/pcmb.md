@@ -1,4 +1,4 @@
-# PcMb — PC Markov Blanket Search
+# PC-MB — PC Markov Blanket Search
 
 **Type:** Constraint-based (local)  
 **Output:** CPDAG (local to a target variable)

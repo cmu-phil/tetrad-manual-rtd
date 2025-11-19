@@ -1,4 +1,4 @@
-# Ccd — Cyclic Causal Discovery
+# CCD — Cyclic Causal Discovery
 
 **Type:** Constraint-based (DCG / cyclic)  
 **Output:** Cyclic PAG (partial ancestral graph for directed cyclic graphs)

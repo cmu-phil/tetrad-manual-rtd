@@ -1,4 +1,4 @@
-# FaskVote — Multi-Dataset FASK Voting over IMaGES
+# FASK-Vote — Multi-Dataset FASK Voting over IMaGES
 
 **Type:** Non-Gaussian / skewness-based orientation, multi-dataset ensemble wrapper  
 **Output:** Directed graph (with possible undirected edges when votes tie)  

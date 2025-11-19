@@ -1,4 +1,4 @@
-# Rfci — Really Fast Causal Inference
+# RFCI — Really Fast Causal Inference
 
 **Type:** Constraint-based (latent-capable)  
 **Output:** RFCI-PAG (a slightly weaker form of a PAG)

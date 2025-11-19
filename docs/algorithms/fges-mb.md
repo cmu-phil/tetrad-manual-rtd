@@ -1,4 +1,4 @@
-# FgesMb — FGES Markov Blanket Search
+# FGES-MB — FGES Markov Blanket Search
 
 **Type:** Score-based, local / Markov blanket  
 **Output:** CPDAG (around a target)

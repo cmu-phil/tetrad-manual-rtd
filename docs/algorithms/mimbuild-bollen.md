@@ -1,4 +1,4 @@
-# MimbuildBollen
+# Mimbuild Bollen
 
 **Category:** Latent Structure / MIM Construction  
 **Type:** BlockSpec-based MIM builder (Bollen-style)

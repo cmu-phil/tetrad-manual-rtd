@@ -1,4 +1,4 @@
-# RfciBsc
+# RFCI-BSC
 
 **Type:** Hybrid (constraint-based + Bayesian scoring over constraints)  
 **Output:** PAG (Partial Ancestral Graph) with edge-type probabilities

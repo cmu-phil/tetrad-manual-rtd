@@ -1,4 +1,4 @@
-# IcaLingD — Cyclic LiNGAM (Lacerda et al.)
+# ICA LingD — Cyclic LiNGAM (Lacerda et al.)
 
 **Type:** Non-Gaussian / Moment-based / ICA-based  
 **Output:** Directed cyclic graph (DCG)  
