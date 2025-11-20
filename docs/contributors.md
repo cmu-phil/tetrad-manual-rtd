@@ -29,7 +29,7 @@ The long-standing **lead architect and principal developer** of Tetrad is:
 - **Joseph Ramsey** — Carnegie Mellon University
 
 Joe has overseen the evolution of Tetrad from its early Java prototype to the
-modern multi-language ecosystem (Java, Python, R), and is the primary author of
+modern multi-language ecosystem (Java, Python, R), and is a contributing author of
 many recent algorithms, scores, tests, and infrastructure components.
 
 Scientific direction and collaborative leadership have also come from:
