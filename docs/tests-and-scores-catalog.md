@@ -1,4 +1,4 @@
-# Tests and Scores: A Catalog
+# Tests and Scores: By Type
 
 Many Tetrad structure-learning algorithms rely on:
 
@@ -22,21 +22,21 @@ These are the available CI tests, grouped by data type and modeling assumptions.
 
 ### Independence Tests Overview
 
-| Name | Appropriate Data Type | Corrected Description |
-|------|-----------------------|------------------------|
-| **FisherZ** | Continuous (linear-Gaussian) | Fisher Z partial correlation test. Assumes linear relationships and Gaussian (or approximately Gaussian) residuals. Default for continuous data. |
-| **GSquare** | Discrete (categorical) | Likelihood-ratio G test for discrete conditional independence. Default choice for purely discrete data. |
-| **ChiSquare** | Discrete (categorical) | Pearson chi-square test for discrete CI; similar to GSquare but uses chi-square statistic. |
-| **BasisFunctionLrt** | Mixed continuous/discrete; nonlinear continuous effects | LRT using truncated basis expansions (Legendre, Chebyshev, Hermite, etc.) for the continuous parts of a conditional Gaussian model. Supports nonlinear additive effects through basis expansions while allowing discrete parents. |
-| **ConditionalGaussianLrt** | Mixed continuous/discrete | Classical CG CI test: continuous variables are linear-Gaussian conditional on configurations of discrete parents. Discrete variables are modeled with multinomial logistic regression. |
-| **DegenerateGaussianLrt** | Mixed continuous/discrete, possibly rank-deficient | CG CI test that tolerates singular or nearly singular covariance blocks. Used when mixed CG assumptions hold but covariance matrices are degenerate because of collinearity or small sample size. |
-| **CciTest** | Continuous (additive noise models) | Conditional Correlation Independence (CCI). Detects conditional independence under additive noise models where Y = f(X) + e. Often useful in nonlinear, non-Gaussian settings without full kernel methods. |
-| **Kci** | Continuous (general nonlinear) | Kernel Conditional Independence test. Fully nonparametric; no linearity or Gaussian assumptions. More computationally expensive. |
+| Name | Appropriate Data Type                                      | Corrected Description |
+|------|------------------------------------------------------------|------------------------|
+| **FisherZ** | Continuous (linear-Gaussian)                               | Fisher Z partial correlation test. Assumes linear relationships and Gaussian (or approximately Gaussian) residuals. Default for continuous data. |
+| **GSquare** | Discrete (categorical)                                     | Likelihood-ratio G test for discrete conditional independence. Default choice for purely discrete data. |
+| **ChiSquare** | Discrete (categorical)                                     | Pearson chi-square test for discrete CI; similar to GSquare but uses chi-square statistic. |
+| **BasisFunctionLrt** | Mixed continuous/discrete; nonlinear continuous effects    | LRT using truncated basis expansions (Legendre, Chebyshev, Hermite, etc.) for the continuous parts of a conditional Gaussian model. Supports nonlinear additive effects through basis expansions while allowing discrete parents. |
+| **ConditionalGaussianLrt** | Mixed continuous/discrete                                  | Classical CG CI test: continuous variables are linear-Gaussian conditional on configurations of discrete parents. Discrete variables are modeled with multinomial logistic regression. |
+| **DegenerateGaussianLrt** | Mixed continuous/discrete, possibly rank-deficient         | CG CI test that tolerates singular or nearly singular covariance blocks. Used when mixed CG assumptions hold but covariance matrices are degenerate because of collinearity or small sample size. |
+| **CciTest** | Continuous (additive noise models)                         | Conditional Correlation Independence (CCI). Detects conditional independence under additive noise models where Y = f(X) + e. Often useful in nonlinear, non-Gaussian settings without full kernel methods. |
+| **Kci** | Continuous (general nonlinear)                             | Kernel Conditional Independence test. Fully nonparametric; no linearity or Gaussian assumptions. More computationally expensive. |
 | **PoissonBicTest** | Continuous with linear non-Gaussian (Poisson-like) residuals | Test for CI using Poisson regression with BIC. Useful for continuous variables modeled with Poisson log-link (linear non-Gaussian models, count-ish behavior). |
-| **MultinomialLogisticRegressionWald** | Discrete multinomial response | Wald-type test using multinomial logistic models. Suitable for CI when the dependent variable is discrete with more than two categories. |
-| **Mvplrt** | Mixed or continuous | Likelihood-ratio CI test from multivariate projection regressions. Compares full vs. restricted projection models. |
-| **MSeparationTest** | Graph-based (no data) | “Test” that answers CI queries using m-separation in a given graph. Used when treating a known DAG/MAG/PAG as the oracle (simulation studies). |
-| **ProbabilisticTest** | Any; Bayesian | Uses Bayesian sampling over conditional distributions to infer CI probabilistically. Useful for probabilistic or likelihood-based independence assessment. |
+| **MultinomialLogisticRegressionWald** | Discrete multinomial response                              | Wald-type test using multinomial logistic models. Suitable for CI when the dependent variable is discrete with more than two categories. |
+| **Mvplrt** | Mixed or continuous                                        | Likelihood-ratio CI test from multivariate projection regressions. Compares full vs. restricted projection models. |
+| **MSeparationTest** | Graph-based (no data)                                      | “Test” that answers CI queries using m-separation in a given graph. Used when treating a known DAG/MAG/PAG as the oracle (simulation studies). |
+| **ProbabilisticTest** | Discrete, Bayesian                                         | Uses Bayesian sampling over conditional distributions to infer CI probabilistically. Useful for probabilistic or likelihood-based independence assessment. |
 
 **Interfaces not included:**  
 `IndependenceWrapper` and `TakesGraph` are interfaces and do not appear as user-selectable tests.

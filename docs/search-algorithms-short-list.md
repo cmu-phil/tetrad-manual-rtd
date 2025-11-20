@@ -1,4 +1,4 @@
-# Search Algorithms — Short List
+# Choosing an Algorithm
 *A curated guide to the algorithms most Tetrad users should start with.*
 
 Tetrad provides many structure-learning algorithms. This short list highlights the **most recommended** ones, with crisp summaries and links to full per-algorithm pages.

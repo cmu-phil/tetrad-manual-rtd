@@ -16,8 +16,7 @@ This site is the **Read the Docs** version of the Tetrad manual, reorganized int
 :hidden:
 
 manual/index
-graph.formats
-data.formats
+graph-and-datasets
 search-algorithms
 tests-and-scores
 parameter.definitions

@@ -1,4 +1,4 @@
-# Parameter Definitions
+# Parameters
 
 ## acceptanceProportion
 - **Short description:** Acceptance Proportion

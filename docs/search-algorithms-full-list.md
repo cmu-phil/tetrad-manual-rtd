@@ -1,4 +1,4 @@
-# Search Algorithms — Full Catalog
+# Search Algorithms — By Type
 
 This page lists all algorithms whose wrappers implement  
 `edu.cmu.tetrad.algcomparison.algorithm.Algorithm` in **Tetrad 7.6.9**.

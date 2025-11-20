@@ -1,10 +1,8 @@
-Descriptions of search algorithms, tests, and scores have been moved to the new manual. Please consult the ReadTheDocs manual: https://tetrad-manual.readthedocs.io/en/latest/index.html
-
 (tetrad-manual)=
 
 # Tetrad Interface
 
-Last updated: 2/6/2024
+Last updated: 11/19/2025
 
 ```{toctree}
 :maxdepth: 2
