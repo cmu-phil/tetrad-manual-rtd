@@ -76,7 +76,7 @@ Knowledge is honored during both FGES and the FCI-style refinement.
 
 ## ⚠️ Limitations
 
-- Inherits FGES’s weaknesses on **dense** or **nonlinear/non-Gaussian** models.  
+- Inherits FGES’s weaknesses on **dense** models.  
 - Final PAG depends partly on score heuristics from stage 1.  
 - Not as aggressive or accurate as FCIT when data are noisy or small-sample.
 

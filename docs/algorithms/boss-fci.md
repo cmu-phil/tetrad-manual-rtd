@@ -20,24 +20,24 @@ BOSS-FCI follows the general ***X-FCI template***:
 
 1. **Score phase**
     - Run **BOSS** to produce a CPDAG (causal sufficiency assumed for this step).
-    - BOSS evaluates local SEM-BIC scores under different orderings, using memoization and efficient updates.
+    - BOSS evaluates local SEM-BIC–type scores under different orderings, using memoization and efficient updates.
 
 2. **Latent-variable correction**
-    - Treat the BOSS CPDAG exactly as an “oracle skeleton” and apply:
+    - Treat the BOSS CPDAG as an “oracle skeleton” and apply:
         - Orientation from separating sets
         - Possible-D-SEP pruning
-        - Meek-style propagation
-        - PAG legality checks
-    - This yields a **PAG** that accounts for latent confounders and selection bias.
+        - Zhang-style orientation propagation (Zhang, 2008)
+        - PAG legality checks (maximality, acyclicity, almost-cycles, endpoint corrections)
 
-BOSS-FCI is therefore a **hybrid** algorithm: it uses score-based reasoning for adjacency decisions and constraint-based logic for PAG completion.
+    - This yields a **PAG** that accounts for latent confounders and (optionally) selection bias.
 
+BOSS-FCI is therefore a **hybrid** algorithm: it uses score-based reasoning for adjacency decisions and Zhang-style constraint-based logic for completing a PAG.
 ---
 
 ## When to Use
 
 - You want a **PAG** but pure FCI is too noisy or too slow.
-- BOSS performs well on your data (medium-to-large $begin:math:text$ p $end:math:text$, moderate sparsity).
+- BOSS performs well on your data (medium-to-large `p`, moderate sparsity).
 - You want a *drop-in alternative* to **GFCI** with better scalability.
 - You have mixed continuous/discrete data (BOSS supports mixed BIC scoring).
 - You want a method that scales to dozens–hundreds of variables with latent confounding.

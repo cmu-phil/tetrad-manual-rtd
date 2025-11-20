@@ -102,7 +102,6 @@ These constraints are enforced consistently across IMaGES and all FASK runs.
 
 ## Limitations
 
-- **Experimental / work-in-progress**: currently implemented as a Java utility class (`FaskVote`), not a full top-level algorithm wrapper.
 - Requires at least **two datasets**; otherwise voting is pointless.
 - Inherits assumptions and limitations from both:
     - **IMaGES** (score-based, acyclic, multi-dataset assumptions), and
@@ -150,10 +149,10 @@ FaskVote builds directly on:
   Proceedings of the Conference on Causal Learning and Reasoning (CLeaR).  
   (FASK is described in detail in the supplementary materials.)
 
-There is no separate paper devoted solely to FaskVote; it is an experimental extension that combines these two ideas.
+There is no separate paper devoted solely to FaskVote; it is an extension that combines these two ideas.
 
 ---
 
 ## Summary
 
-FaskVote is an **experimental multi-dataset voting wrapper**: it uses **IMaGES** to learn a consensus adjacency graph and then applies **FASK** to each dataset to determine edge direction, combining these via a simple **majority vote**. It is useful when you have many related datasets and want a non-Gaussian, skewness-based group-level orientation mechanism without resorting to bootstrapping a single dataset.
+FaskVote is an **multi-dataset voting wrapper**: it uses **IMaGES** to learn a consensus adjacency graph and then applies **FASK** to each dataset to determine edge direction, combining these via a simple **majority vote**. It is useful when you have many related datasets and want a non-Gaussian, skewness-based group-level orientation mechanism without resorting to bootstrapping a single dataset.

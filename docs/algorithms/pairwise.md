@@ -31,7 +31,7 @@ Because these methods are **pairwise**, they scale extremely well and require no
 
 ---
 
-# FaskPw — FASK Pairwise Left–Right Orientation
+## FaskPw — FASK Pairwise Left–Right Orientation
 
 **Type:** Pairwise skewness  
 **Origin:** Supplementary material of Sánchez-Romero et al. (2019)  
@@ -39,7 +39,7 @@ Because these methods are **pairwise**, they scale extremely well and require no
 
 FaskPw starts with a **given skeleton** (usually obtained via FAS, PC-like pruning, or IMaGES) and orients each edge X—Y using the **left–right skewness heuristic**:
 
-### Key Idea
+## Key Idea
 
 For an edge X—Y:
 
@@ -58,7 +58,7 @@ Formally (but heuristically):
 
 This rule is the *pairwise* version of the full FASK method used inside the FASK algorithm.
 
-### When to Use
+## When to Use
 
 - You want **FASK-like orientation** but:
     - You already have a skeleton
@@ -66,20 +66,20 @@ This rule is the *pairwise* version of the full FASK method used inside the FASK
 - Non-Gaussianity (especially skewness) is expected
 - Large graphs where full FASK may be expensive
 
-### Strengths
+## Strengths
 
 - Extremely fast (purely pairwise)
 - Captures the main orientation behavior of FASK
 - Works well on large high-dimensional datasets
 - Respects prior knowledge (forbidden/required edges)
 
-### Limitations
+## Limitations
 
 - Uses only **pairwise** information—no collider/propagation rules
 - Requires non-Gaussianity (especially skewness)
 - Can be unstable when skewness is weak or sample size is small
 
-### Parameters in Tetrad
+## Parameters in Tetrad
 
 Mainly inherited from LOFS:
 
@@ -91,7 +91,7 @@ Mainly inherited from LOFS:
 
 ---
 
-# RSkew — Robust Skewness Orientation (Hyvärinen & Smith, 2013)
+## RSkew — Robust Skewness Orientation (Hyvärinen & Smith, 2013)
 
 **Type:** Pairwise likelihood / skewness method  
 **Origin:** Hyvärinen & Smith (2013), JMLR  
@@ -109,7 +109,7 @@ The resulting rule often performs better than naive skewness comparison when dat
 - Outliers
 - Nonlinear distortions that affect skewness estimation
 
-### Key Idea (informal)
+## Key Idea (informal)
 
 For a pair X—Y,
 
@@ -120,27 +120,27 @@ For a pair X—Y,
 
 This score is implemented in LOFS as `Score.RSkew`.
 
-### When to Use
+## When to Use
 
 - Skeleton is known and fixed
 - Strong non-Gaussian signals are present
 - Data contain **outliers** or are **heavy-tailed**
 - You want Hyvärinen-style *likelihood ratio orientation*
 
-### Strengths
+## Strengths
 
 - More robust than plain skewness heuristics
 - Based on a well-studied likelihood approximation
 - Often gives better orientations with noisy/non-ideal data
 - Works edge-by-edge, so scales extremely well
 
-### Limitations
+## Limitations
 
 - Requires non-Gaussianity to be effective
 - Purely pairwise—cannot detect colliders or propagate orientations
 - Sensitive to regression model mis-specification if nonlinearities are strong
 
-### Parameters in Tetrad
+## Parameters in Tetrad
 
 | Parameter | Description |
 |----------|-------------|
@@ -150,7 +150,7 @@ This score is implemented in LOFS as `Score.RSkew`.
 
 ---
 
-# Prior Knowledge Support
+## Prior Knowledge Support
 
 Both **FaskPw** and **RSkew** respect Tetrad’s standard Knowledge constraints:
 
@@ -163,7 +163,7 @@ Since orientations are performed pairwise after the skeleton is fixed, knowledge
 
 ---
 
-# Summary
+## Summary
 
 Pairwise orientation methods offer **extremely fast, purely non-Gaussian direction estimation** on a fixed skeleton:
 

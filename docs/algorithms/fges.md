@@ -57,15 +57,13 @@ As true average degree rises:
 - But accuracy often **improves**, especially in *high-dimensional* regimes.
 
 FGES has what practitioners sometimes call the **“blossoming effect”**:
-> In thousands of variables, accuracy can *increase* dramatically,  
-> even as the model becomes more complex,  
-> provided true density remains low relative to the dimension.
+> In thousands of variables, accuracy can *increase* dramatically, even as the model becomes more complex, provided true density remains low relative to the dimension.
 
 Theoretical results (Nandy, Hauser & Maathuis, 2018) support this high-dimensional consistency.
 
 ### 4. Summary
-FGES is not a universal silver bullet for all densities.  
-But in genuinely high-dimensional problems with structural sparsity, FGES becomes one of the most accurate and scalable causal discovery algorithms available.
+
+FGES is not a universal silver bullet for all densities. But in genuinely high-dimensional problems with structural sparsity, FGES becomes one of the most accurate and scalable causal discovery algorithms available.
 
 ---
 

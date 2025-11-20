@@ -107,7 +107,7 @@ Roughly:
 
 - **Versus BOSS**
     - Both are **order-based** methods using decomposable scores and GSTs.
-    - BOSS emphasizes fast exploration with strong GST-based pruning; GRaSP is more directly anchored to the SP-style sparsity objective and local permutation moves.
+    - BOSS emphasizes fast exploration with strong GST-based pruning; GRaSP is more directly anchored to local permutation moves.
 
 - **As a precursor to PAG methods**
     - [GRaSP-FCI](grasp-fci.md) uses GRaSP’s CPDAG as a starting point for FCI-style corrections.
@@ -126,23 +126,21 @@ GRaSP is **knowledge-aware**:
 
 ## Key parameters in Tetrad
 
-Typical GRaSP-related parameters include:
-
-- **Score / penalty settings**
-    - Score family (Gaussian, discrete, mixed).
-    - Penalty/discount controlling sparsity.
-
-- **Search controls**
-    - Neighborhood size / move types (implicitly via implementation).
-    - Maximum parents / degree.
-    - Number of restarts or initial permutations.
-    - Number of threads (parallel scoring).
-
-- **Output / logging**
-    - CPDAG output (default).
-    - Verbose logging.
-
-See the **Parameter Definitions** page for exact names and GUI labels.
+| Parameter (camelCase) | Description |
+|------------------------|-------------|
+| `graspDepth` | Maximum conditioning-set size for the GRaSP conditional-independence checks used during local greedy updates. `-1` means no limit. |
+| `graspSingularDepth` | Depth used only for **singular** moves (insert/delete operations that change Meek-essential structures). |
+| `graspNonsingularDepth` | Depth used for **nonsingular** moves (local score-improving steps not requiring full CI evaluation). |
+| `graspOrderedAlg` | If `true`, use the *ordered* variant of GRaSP (deterministic variable ordering); if `false`, use the standard version. |
+| `graspUseRaskuttiUhler` | If `true`, use the **Raskutti–Uhler** (RU) approximation for local score search; if `false`, use the standard GRaSP scoring. |
+| `useDataOrder` | If `true`, initialize the search using the order of variables as they appear in the dataset; otherwise use the default heuristic initialization. |
+| `allowInternalRandomness` | If `true`, allows randomized tie-breaking and randomized multi-start behavior inside the algorithm. |
+| `outputCpdag` | If `true`, return the CPDAG of the final DAG; if `false`, return the DAG found by the greedy search. |
+| `timeLag` | Time-series lag parameter. If greater than 0, apply the time-lag transform to the dataset before GRaSP search. |
+| `timeLagReplicatingGraph` | If `true`, replicate the discovered structure across lags rather than shifting edges; interacts with `timeLag`. |
+| `seed` | Random seed used when internal randomness is enabled. |
+| `verbose` | If `true`, print detailed logs of greedy steps, local scores, and convergence. |
+| `numStarts` | Number of **multi-start initializations** used by GRaSP. Each start runs an independent greedy search; the best-scoring structure is returned. |
 
 ---
 

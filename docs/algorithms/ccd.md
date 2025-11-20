@@ -73,8 +73,6 @@ Yes, but **only forbidden edges** are honored.
     - If you supply required edges, CCD will throw an error.
     - This is intentional: forcing orientations not justified by CCD can break correctness for DCGs.
 
-Tiers are not explicitly used; the key point is that **you can forbid orientations**, but you cannot force them.
-
 ---
 
 ## Strengths
@@ -111,11 +109,10 @@ All important controls:
 
 | Parameter (camelCase) | Description |
 |------------------------|-------------|
-| `test` | The `IndependenceTest` instance, possibly wrapped in a `CachingIndependenceTest`. Must share the same variable set as the current test. |
-| `applyR1` | Boolean. If `true`, applies the R1 **push-away** orientation rule for propagating directions away from arrowheads along underlined structures. |
-| `verbose` | If `true`, logs detailed information about steps A–F, colliders, underlines, and orientation decisions. Also sets `test.setVerbose(true)`. |
-| `depth` | Maximum conditioning-set size for separation checks in CCD-specific steps (for example, sublists in Step D/F). `-1` means no depth limit. |
-| `knowledge` | `Knowledge` object. Only **forbidden edges** are honored. Required edges must be empty and will cause an error otherwise. |
+| `depth` | Maximum conditioning-set size used for CCD-specific separation checks (e.g., Steps D and F). A value of `-1` means no depth limit. |
+| `applyR1` | Boolean. If `true`, applies the **R1 push-away rule**, which orients arrowheads away from tails in certain underline structures, matching the CCD-specific adaptation of Zhang’s propagation rules. |
+| `fdrQ` | The **false discovery rate threshold q** for FDR-controlled independence testing. If set, CCD uses FDR-adjusted p-values to decide conditional independence. |
+| `verbose` | Boolean. If `true`, prints detailed diagnostic output about Steps A–F, collider detection, underline detection, orientation rules, and FDR-adjusted decisions. |
 
 You indirectly control:
 

@@ -25,17 +25,21 @@ Compared to classical score-based methods like [FGES](fges.md), BOSS trades equi
 BOSS is a good default when:
 
 - You want **high structural accuracy** in moderate to large models.
-- You are comfortable assuming something like **sparsity + a good score** (e.g., BIC-type) will pick out a reasonable DAG.
-- You want a **DAG/CPDAG** (no explicit latent-variable modeling).
+- You want a **score-based DAG/CPDAG search** with strong empirical performance.
+- You are comfortable assuming that a **good score** (e.g., BIC/BDeu/BF-BIC/BF-LRT) will identify high-quality structures.
+- You want a method that **scales well even for moderately or very dense graphs** (e.g., average degree up to 20, as demonstrated in the paper).
 - You may later feed the DAG into downstream algorithms such as:
     - [BOSS-FCI](boss-fci.md) for latent-variable PAGs.
-    - [LV-Dumb](lv-dumb.md) for a very fast heuristic PAG.
+    - [LV-Dumb](lv-dumb.md) for a fast preliminary PAG.
 
 Less suitable when:
 
-- The graph is extremely dense or the sample size is tiny (scores become noisy).
-- You explicitly need a latent-variable–capable PAG; in that case use [FCI](../search-algorithms-full-list.md#-constraint-based-algorithms-cpdag--pag), [GFCI](gfci.md), or [FCIT](fcit.md).
-
+- The graph is **extremely** dense **and** the sample size is **very small** (scores become unstable, and many DAGs tie).
+- You explicitly need a **latent-variable–capable PAG** search; in that case consider  
+  [FCI](../search-algorithms-full-list.md#-constraint-based-algorithms-cpdag--pag),  
+  [GFCI](gfci.md), or  
+  [FCIT](fcit.md).
+- 
 ---
 
 ## How it works (at a glance)

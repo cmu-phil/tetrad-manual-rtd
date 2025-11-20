@@ -4,7 +4,7 @@
 **Output:** DAG  
 **Reference:** Bühlmann, P., Peters, J., & Ernest, J. (2014). *CAM: Causal additive models, high-dimensional order search and penalized regression*. Annals of Statistics.
 
-CAM is a **nonlinear causal discovery algorithm** for **additive noise models (ANMs)**.  
+CAM is a **nonlinear causal discovery algorithm** for **additive nonlinear models (ANMs)**.  
 It assumes each variable is generated from a sum of nonlinear functions of its parents plus independent noise.  
 Tetrad includes a standalone implementation because the original R package (`CAM`) is no longer maintained on CRAN.
 

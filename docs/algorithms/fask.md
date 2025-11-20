@@ -5,6 +5,7 @@
 **Assumptions:** Linear or nonlinear relationships with **non-Gaussian**, **skewed** disturbances
 
 FASK (“Fast Adjacency Skewness”) is a hybrid causal discovery algorithm that begins with a **FAS (Fast Adjacency Search)** skeleton and then applies **skewness-based directional tests** to orient each undirected adjacency.  
+
 It is designed to be **fast, lightweight, and sensitive to non-Gaussian direction-of-causation signals** that are invisible to correlation or conditional independence alone.
 
 FASK performs exceptionally well in settings where variables exhibit **skewness**, even mild, and provides a fast alternative to full ICA-based LiNGAM methods.
@@ -67,14 +68,12 @@ Knowledge is enforced during skeleton discovery and orientation.
 - **Robust** to mild nonlinearity.
 - **Orientations even when correlations are small** if skewness is present.
 - **No ICA** required; avoids permutation instability and high-dimensional ICA issues.
-- Works naturally with continuous or mixed data (given an appropriate independence test for FAS).
 
 ---
 
 ## Limitations
 
-- Requires **non-Gaussian** and preferably **skewed** disturbances.
-- Orientation can fail when both directions exhibit similar skew profiles.
+- Requires **non-Gaussian**, **skewed** disturbances.
 - Does not explicitly account for latent confounding (unlike FCI or GFCI).
 - Reliability decreases when sample sizes are very small.
 

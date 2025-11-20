@@ -95,10 +95,6 @@ All search operations (adds/removals) are restricted to be consistent with this 
     - or a specified mixed-data model.
   - Misspecification (for example, strong nonlinearities) can degrade performance.
 
-- **Local only**
-  - FgesMb is designed for **one target at a time**.
-  - If you need Markov blankets for many variables, you must run it multiple times or learn a global CPDAG.
-
 - **Heuristic nature**
   - Greedy search may get stuck in local optima.
   - Heuristic speedups (for example, correlation pre-screening) can trade off exactness for speed.

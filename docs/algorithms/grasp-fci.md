@@ -53,7 +53,7 @@ GRaSP-FCI thus combines **permutation scoring** (which behaves well for some dat
 
 ## Limitations
 
-- Permutation scoring can be slower than order-based BOSS for large $begin:math:text$ p $end:math:text$.
+- Permutation scoring can be slower than order-based BOSS for large `p`.
 - Still requires CI tests in the refinement stage.
 - Accuracy depends strongly on **permutation quality** in the GRaSP step.
 - Does not guarantee legality during scoring — legality is restored only in the FCI stage.

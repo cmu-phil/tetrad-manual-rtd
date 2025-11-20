@@ -64,7 +64,7 @@ Only when the DAG structure **cannot** be explained without a hidden common caus
 This keeps false positive bidirected edges extremely low.
 
 ### 4. Enforce legality
-Just like in FCIT and BOSS-FCI, LV-Dumb ensures intermediate states are:
+Just like in FCIT and BOSS-FCI, LV-Dumb ensures the output is:
 
 - ancestral
 - acyclic

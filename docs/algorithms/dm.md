@@ -230,6 +230,23 @@ Plus all parameters of the **independence test** and **score** you choose via th
 
 ---
 
+### Reference
+
+The DM (Detect–Mimic) procedure was introduced and analyzed by:
+
+**Murray-Watters, A., & Glymour, C. (2015).**  
+*What is going on inside the arrows? Discovering the hidden springs in causal models.*  
+**Philosophy of Science, 82(4), 556–586.**
+
+In this work, Murray-Watters and Glymour develop a method for detecting **intermediate latent variables** by analyzing how observed variables “mimic” one another under different causal configurations. The DM algorithm implemented in Tetrad follows the core ideas of this paper:
+
+- **Detect**: Identify structural signatures in observed covariances that imply the presence of an unobserved variable mediating between two measured variables.
+- **Mimic**: Evaluate whether one observed variable statistically mimics the behavior that a latent mediator would induce, enabling partial reconstruction of the latent structure.
+
+The Tetrad implementation specializes DM to the case of **intermediate latent detection** between measured inputs and measured outputs, in line with the theoretical framework developed in the 2015 paper.
+
+---
+
 ### Summary: DM-PC vs DM-FCIT
 
 - **DM-PC**  

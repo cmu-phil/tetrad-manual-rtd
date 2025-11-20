@@ -34,10 +34,10 @@ In Tetrad, SP is primarily a **small-scale, high-accuracy** algorithm:
     - Didactic purposes (illustrating the sparsest-permutation principle).
 
 - Not suitable for:
-    - Medium or large graphs (permutation space grows as \( p! \)).
+    - Medium or large graphs (permutation space grows as `p!`).
     - Routine large-scale structure learning.
 
-For anything beyond very small \( p \), consider [GRaSP](grasp.md) or [BOSS](boss.md), both of which are SP-inspired but scalable.
+For anything beyond very small `p`, consider [GRaSP](grasp.md) or [BOSS](boss.md), both of which are SP-inspired but scalable.
 
 ---
 
@@ -58,7 +58,7 @@ For anything beyond very small \( p \), consider [GRaSP](grasp.md) or [BOSS](bos
     - Choose the permutation/DAG with the sparsest structure (or best global score).
     - Convert the resulting DAG to its CPDAG equivalence class for reporting.
 
-The algorithm is simple but factorial in \( p \), which is why it is mostly used for small problems and theory.
+The algorithm is simple but factorial in `p`, which is why it is mostly used for small problems and theory.
 
 ---
 
@@ -77,7 +77,7 @@ The algorithm is simple but factorial in \( p \), which is why it is mostly used
 
 ## Limitations
 
-- **Factorial complexity in \( p \)**  
+- **Factorial complexity in `p`**  
   Evaluating all permutations makes SP quickly infeasible beyond roughly ~10 variables.
 
 - **No explicit latent-variable modeling**  
@@ -125,7 +125,7 @@ Typical SP-related controls:
     - Optional pruning settings where available.
 
 - **Threads / performance**
-    - Parallelization across permutations (for very small \( p \) but many datasets or restarts).
+    - Parallelization across permutations (for very small `p`) but many datasets or restarts).
 
 As always, see the **Parameter Definitions** page for exact names and defaults.
 

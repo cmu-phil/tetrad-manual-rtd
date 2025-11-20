@@ -111,20 +111,13 @@ You can therefore enforce:
 `Cdnod` is typically constructed via its `Builder` in code, or wrapped by a higher-level Tetrad algorithm.  
 The main knobs are:
 
-| Parameter (camelCase / builder method) | Description |
-|----------------------------------------|-------------|
-| `test(...)` | Independence test over all variables including C (for example Fisher Z, G-test, etc.). |
-| `data(...)` / `dataAndIndex(...)` | Provide either a dataset that already includes C as the last column, or X plus a numeric change index `cIndex` and name `cName`. |
-| `alpha(double a)` | Significance level used by the underlying CI tests (if the chosen `IndependenceTest` exposes alpha). |
-| `stable(boolean s)` | Use the *stable* version of FAS for skeleton discovery when `true`. |
-| `colliderStyle(ColliderOrientationStyle c)` | Collider decision style: `SEPSETS`, `CONSERVATIVE` (CPC-style), or `MAX_P`. |
-| `knowledge(Knowledge k)` | Background knowledge: required / forbidden edges and tiers. |
-| `verbose(boolean v)` | If `true`, logs details of skeleton, collider, and Meek steps. |
-| `maxPMargin(double m)` | Tie-breaking margin for `MAX_P` collider style; if the best p-value difference is less than this margin, the triple is treated as ambiguous. |
-| `depth(int d)` | Maximum conditioning-set size for both FAS and collider search; use `-1` for unlimited depth. |
-| `setTimeoutMs(long timeoutMs)` | Optional runtime cap in milliseconds; throws `InterruptedException` if exceeded. |
-
-Exact parameter names in the GUI may differ (if wrapped), but these are the conceptual controls.
+| Parameter (camelCase) | Description |
+|------------------------|-------------|
+| `stableFas` | Boolean. If `true`, uses the **stable** version of FAS for skeleton discovery (order-independent). |
+| `colliderOrientationStyle` | Strategy for orienting colliders. Options include `SEPSETS`, `CONSERVATIVE`, or `MAX_P` depending on how aggressively to orient ambiguous triples. |
+| `depth` | Maximum conditioning-set size for both FAS and collider detection. Use `-1` for unlimited depth. |
+| `fdrQ` | False discovery rate threshold `q` for FDR-controlled independence testing. Used only when FDR is enabled. |
+| `verbose` | If `true`, prints detailed diagnostic output for FAS, collider discovery, and orientation propagation. |
 
 ---
 
