@@ -16,6 +16,4 @@ In order to use a box, click on it in the sidebar, then click inside the workspa
 
 In order to use one box as input to another, draw an arrow between them by clicking on the arrow tool in the sidebar, and clicking and dragging from the first box to the second in the workspace.
 
-Starting 1/14/2024, we will compile Tetrad under JDK 17 and use language level 17.
-
 Tetrad may be cited using the following reference: Ramsey, J. D., Zhang, K., Glymour, M., Romero, R. S., Huang, B., Ebert-Uphoff, I., ... & Glymour, C. (2018). TETRAD—A toolbox for causal discovery. In 8th International Workshop on Climate Informatics.
