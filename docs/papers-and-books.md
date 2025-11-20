@@ -1,167 +1,162 @@
-# References
+# Papers and Books
 
 This page collects key references for the theory and algorithms implemented in **Tetrad**.  
 It is not exhaustive, but covers some foundational papers, major algorithmic developments,
 and software-related publications most relevant to users and developers.
 
-The historical narrative of Tetrad is available on the project website:  
-https://www.cmu.edu/dietrich/philosophy/tetrad/about/
-
 This is a first draft; we'll expand this list as time permits. Please submit missing papers if you note them.
 
 ---
 
-## 1. Foundational Book
+Andrews, B., Ramsey, J., Sanchez-Romero, R., Camchong, J., & Kummerfeld, E. (2023).
+Fast scalable and accurate discovery of DAGs using the best order score search and grow shrink trees.
+In *Advances in Neural Information Processing Systems (NeurIPS 36)*, 63945–63956.
 
-- **Spirtes, P., Glymour, C., & Scheines, R.** (2000).  
-  *Causation, Prediction, and Search.* MIT Press.  
-  *(The canonical reference for the Tetrad project, covering the unified theory behind PC, FCI, DAGs, MAGs, PAGs, independence tests, and causal inference with latent variables.)*
+Bai, X., Padman, R., Ramsey, J., & Spirtes, P. (2008).
+Tabu search-enhanced graphical models for classification in high dimensions.
+*INFORMS Journal on Computing*, 20(3), 423–437.
 
----
+Bello, K., Aragam, B., & Ravikumar, P. (2022).
+DAGMA: Learning DAGs via M-matrices and a log-determinant acyclicity characterization.
+In *Advances in Neural Information Processing Systems (NeurIPS 35)*, 8226–8239.
 
-## 2. Constraint-Based Algorithms (PC, FCI, RFCI, variations)
+Bollen, K. A. (1989).
+*Structural Equations with Latent Variables*.
+Wiley.
 
-### PC / PC-Stable / Variants
-- **Spirtes, P., & Glymour, C.** (1991).  
-  “An Algorithm for Fast Recovery of Sparse Causal Graphs.” *Social Science Computer Review*.
+Bühlmann, P., Peters, J., & Ernest, J. (2014).
+CAM: Causal additive models, high-dimensional order search and penalized regression.
+*Annals of Statistics*, 42(6), 2526–2556.
 
-- **Colombo, D., & Maathuis, M.** (2014).  
-  “Order-Independent Constraint-Based Causal Structure Learning.” *Journal of Machine Learning Research*.
+Colombo, D., Maathuis, M. H., Kalisch, M., & Richardson, T. S. (2012).
+Learning high-dimensional directed acyclic graphs with latent and selection variables.
+*Annals of Statistics*, 40(1), 294–321.
 
-### FCI / RFCI / GFCI
-- **Spirtes, P., Richardson, T., Meek, C.** (1995; 2000).  
-  FCI algorithm; see CPS (2000).
+Glymour, C. (2007).
+Learning the structure of deterministic systems.
+In *Causal Learning: Psychology, Philosophy, and Computation* (pp. 231–240).
 
-- **Zhang, J.** (2008).  
-  “On the completeness of orientation rules for PAGs.” *UAI.*
+Glymour, C., & Cooper, G. (Eds.). (1999).
+*Computation, Causation, and Discovery*.
+AAAI/MIT Press.
 
-- **Colombo, D., Maathuis, M., Kalisch, M., & Richardson, T.** (2012).  
-  “Learning high-dimensional DAGs with latent and selection variables.” *Annals of Statistics.* (RFCI)
+Hyvärinen, A., & Smith, S. (2013).
+Pairwise likelihood ratios for estimation of non-Gaussian structural equation models.
+*Journal of Machine Learning Research*, 14(1), 111–152.
 
-- **Ogarrio, J. M., Spirtes, P., & Ramsey, J.** (2016).  
-  “A Hybrid Causal Search Algorithm for Latent Variable Models.” *JMLR: Workshop & Conf. Proc.* (GFCI)
+Jolliffe, I. T. (2002).
+*Principal Component Analysis* (2nd ed.).
+Springer.
 
----
+Kummerfeld, E., & Ramsey, J. (2016).
+Causal clustering for 1-factor measurement models.
+In *Proceedings of KDD*.
 
-## 3. Score-Based Algorithms (GES, FGES, BOSS, GRaSP, hybrids)
+Lacerda, G., Spirtes, P., Ramsey, J., & Hoyer, P. (2008).
+Discovering cyclic causal models by independent component analysis.
+In *UAI 2008*.
 
-### GES / FGES
-- **Chickering, D. M.** (2002).  
-  “Optimal Structure Identification with Greedy Search.” *JMLR.*
+Lam, W. Y., Andrews, B., & Ramsey, J. (2022).
+Greedy relaxations of the sparsest permutation algorithm.
+In *Uncertainty in Artificial Intelligence (UAI)*, 1052–1062.
 
-- **Ramsey, J., Glymour, C., Sanchez-Romero, R., & Glymour, M.** (2017).  
-  “A Million Variables and More.” *arXiv:1507.07004.* (FGES)
+Liu, H., Roeder, K., & Wasserman, L. (2010).
+Stability approach to regularization selection (StARS) for high-dimensional graphical models.
+*Annals of Applied Statistics*.
 
-### BOSS
-- **Ramsey, J., & Sanchez-Romero, R.** (2022–2024).  
-  “BOSS: Best-Order Score Search.” (Tech reports / in-prep papers; implementation in Tetrad.)
+Meek, C. (1995).
+Causal inference and the construction of graphical models with background knowledge.
+In *Proceedings of the 11th Conference on Uncertainty in Artificial Intelligence (UAI-95)*, 403–411.
 
-### GRaSP
-- **Huang, B., Zhang, K., & Schölkopf, B.** (2018).  
-  “Generalized Score Functions for Causal Discovery.” (GRaSP-inspired; current implementation by Ramsey.)
+Meinshausen, N., & Bühlmann, P. (2010).
+Stability selection.
+*Journal of the Royal Statistical Society: Series B*, 72(4), 417–473.
 
----
+Murray-Watters, A., & Glymour, C. (2015).
+What is going on inside the arrows? Discovering the hidden springs in causal models.
+*Philosophy of Science*, 82(4), 556–586.
 
-## 4. Hybrid Algorithms (GFCI family, BOSS-FCI, FCIT)
+Nandy, P., Hauser, A., & Maathuis, M. H. (2018).
+High-dimensional consistency in score-based and hybrid structure learning.
+*Annals of Statistics*, 46(6A), 3151–3183.
 
-- **Ogarrio, J. M., Spirtes, P., & Ramsey, J.** (2016). (GFCI)
-- **Ramsey, J., et al.** (2023–2025).  
-  “BOSS-FCI & GRaSP-FCI: Hybrid Score-Guided FCI Algorithms.” (Tetrad technical documentation)
-- **Ramsey, J.** (2024–2025).  
-  “FCIT: Fast Causal Inference with Targeted Testing.” (Working paper)
+Ogarrio, J. M., Spirtes, P., & Ramsey, J. (2016).
+A hybrid causal search algorithm for latent variable models.
+In *PGM 2016*, 368–379.
 
----
+Raghu, V. K., Ramsey, J. D., Morris, A., Manatakis, D. V., Sprites, P., Chrysanthis, P. K., ... & Benos, P. V. (2018).
+Comparison of strategies for scalable causal discovery of latent variable models from mixed data.
+*International Journal of Data Science and Analytics*, 6(1), 33–45.
 
-## 5. Adjustment Sets & Causal Effect Estimation
+Ramsey, J. (2016).
+Improving accuracy and scalability of the PC algorithm by maximizing p-value.
+arXiv:1610.00378.
 
-### Adjustment Theory (Backdoor, Frontdoor, GAC)
-- **Pearl, J.** (1995, 2009).  
-  Identifiability conditions.
+Ramsey, J. D., Hanson, S. J., & Glymour, C. (2011).
+Multi-subject search correctly identifies causal connections and most causal directions in DCM models:
+the Smith et al. simulation study.
+*NeuroImage*, 58(3), 838–848.
 
-- **Perković, E., Kalisch, M., Maathuis, M., & Bühlmann, P.** (2018).  
-  “A Complete Characterization of Adjustment in Graphical Models.” *AOS.* (GAC)
+Ramsey, J., Andrews, B., & Spirtes, P. (2025).
+Efficient latent variable causal discovery: Combining score search and targeted testing.
+arXiv:2510.04263.
 
-### IDA & Extensions
-- **Maathuis, M. H., Colombo, D., Kalisch, M., & Bühlmann, P.** (2009).  
-  “Estimating High-Dimensional Intervention Effects from Observational Data.” *Annals of Statistics.* (IDA)
+Ramsey, J., Glymour, M., Sanchez-Romero, R., & Glymour, C. (2017).
+A million variables and more: The fast greedy equivalence search algorithm for learning high-dimensional graphical causal models.
+*International Journal of Data Science and Analytics*, 3(2), 121–129.
 
-- **Malinsky, D., & Spirtes, P.** (2019).  
-  “Estimating total effects in the presence of latent confounding in linear models.” (PAG-IDA foundations)
+Ramsey, J., Zhang, J., & Spirtes, P. (2006).
+Adjacency-faithfulness and conservative causal inference.
+In *UAI-06*, 401–408.
 
-- **Witte, J., et al.** (2020–2024).  
-  Optimal IDA and refinements for partial graph structures.
+Ramsey, J., Zhang, J., & Spirtes, P. (2012).
+Adjacency-faithfulness and conservative causal inference.
+arXiv:1206.6843.
 
-### Recursive Adjustment / Conditional Adjustment
-- **LaPlante, L., & Perković, E.** (2024).  
-  “Conditional Adjustment Sets.” (theory underlying RA-extensions)
+Raskutti, G., & Uhler, C. (2018).
+Learning directed acyclic graph models based on sparsest permutations.
+*Stat*, 7(1), e183.
 
-[//]: # (- **Ramsey, J.** &#40;2023–2025&#41;.  )
+Richardson, T. S. (2013).
+A discovery algorithm for directed cyclic graphs.
+arXiv:1302.3599.
 
-[//]: # (  “Recursive Adjustment for Effect Estimation.” &#40;Tetrad implementation & upcoming paper&#41;)
+Runge, J., Nowack, P., Kretschmer, M., Flaxman, S., & Sejdinovic, D. (2019).
+Detecting causal associations in large nonlinear time series datasets.
+*Science Advances*, 5(11).
 
----
+Sanchez-Romero, R., Ramsey, J., Zhang, K., Glymour, C., Huang, B., & Spirtes, P. (2019).
+Causal discovery of feedback networks with functional interventions.
+In *Causal Learning and Reasoning (CLeaR)*.
 
-## 6. Ancestral Graphs, MAGs, PAGs
+Shimizu, S., Hoyer, P. O., Hyvärinen, A., & Kerminen, A. (2011).
+DirectLiNGAM: A direct method for learning a linear non-Gaussian structural equation model.
+*Journal of Machine Learning Research*, 12, 1225–1248.
 
-- **Richardson, T., & Spirtes, P.** (2002).  
-  “Ancestral Graph Markov Models.” *Annals of Statistics.*
+Shimizu, S., Hoyer, P. O., Hyvärinen, A., & Kerminen, A. (2006).
+A Linear Non-Gaussian Acyclic Model for causal discovery.
+*Journal of Machine Learning Research*, 7, 2003–2030.
 
-- **Zhang, J.** (2006–2008).  
-  Soundness and completeness of PAG orientation rules.
+Silva, R. (2006).
+Learning the structure of linear latent variable models.
+*Journal of Machine Learning Research*.
 
-[//]: # (- **Mooij, J., & Janzing, D.** &#40;2009&#41;.  )
+Spirtes, P., Glymour, C. N., & Scheines, R. (2000).
+*Causation, Prediction, and Search* (2nd ed.).
+MIT Press.
 
-[//]: # (  Related MAG semantics.)
+Stekhoven, D. J., Moraes, I., Sveinbjörnsson, G., Hennig, L., Maathuis, M. H., & Bühlmann, P. (2012).
+Causal stability ranking.
+*Bioinformatics*, 28(21), 2819–2823.
 
----
+Tillman, R., & Spirtes, P. (2011).
+Learning equivalence classes of acyclic models with latent and selection variables from multiple datasets with overlapping variables.
+In *AISTATS*, 3–15.
 
-## 7. Nonlinear & Non-Gaussian Methods
+Zhang, J. (2008).
+On the completeness of orientation rules for causal discovery in the presence of latent confounders and selection bias.
+*Artificial Intelligence*, 172(16–17), 1873–1896.
 
-- **Hoyer, P., Shimizu, S., et al.** (2008).  
-  “LiNGAM.” (Non-Gaussian linear additive methods.)
-
-- **Peters, J., Mooij, J., Janzing, D., & Schölkopf, B.** (2014).  
-  “ANM: Causal inference with additive noise models.”
-
-- **Ramsey, J., et al.** (2023–2025).  
-  Basis-function scoring (BF-BIC), BF-LRT, nonlinear CI approximations.  
-  (Ongoing Tetrad papers.)
-
----
-
-## 8. Independence Tests & Scores
-
-- **Fisher’s Z Test** (classical)
-- **Kernel Conditional Independence (KCI)** — Zhang, Peters, et al. (2011–2014)
-- **RCIT / RCoT** — Strobl, Zhang, et al. (2019)
-- **G^2, χ², BIC, BDeu** — classical discrete/continuous tests
-- **BF-BIC / BF-LRT** — Ramsey (2023–2025)
-
----
-
-## 9. Software Papers
-
-- **Ramsey, J., & Andrews, B.** (2023).  
-  *Py-Tetrad and RPy-Tetrad: A New Python Interface with R Support for Tetrad Causal Search.*  
-  In Proceedings of the **Causal Analysis Workshop Series** (CAWS), PMLR.
-
-[//]: # (- **Ramsey et al.** &#40;various&#41;.  )
-
-[//]: # (  Tetrad GUI and library updates &#40;FGES, GFCI, BOSS, RA modules&#41;.)
-
----
-
-## 10. Additional Topics & Related Literature
-
-### Selection Bias
-- **Spirtes, P.** (1995–2000). Selection in FCI framework.
-- **Bareinboim, E., Tian, J., & Pearl, J.** (2014–2020). Transport and selection diagrams.
-
-### Latent Variables
-- **Silva, R., & Scheines, R.** (2005).
-- **Hoyer, P., et al.** (latent nonlinear models)
-
-### Graph Theory and Orientation Rules
-- **Meek, C.** (1995).  
-  “Causal inference and causal explanation with background knowledge.”  
-  Core orientation rules used in CPDAG construction.
+Zhang, K., Huang, B., Zhang, J., Glymour, C., & Schölkopf, B. (2017).
+Causal discovery from nonstationary and heterogeneous data: Causal invariance and CD-NOD.
+In *NeurIPS 31*.

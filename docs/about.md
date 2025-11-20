@@ -1,43 +1,53 @@
 # About
 
-Tetrad is an open-source platform for causal discovery, simulation, and model
-analysis developed over several decades at **Carnegie Mellon University** and
-the **University of Pittsburgh**. It supports a wide ecosystem of algorithms,
-theoretical tools, graphical models, and data-processing methods used in both
-research and applied settings.
+Tetrad is an open-source platform for causal discovery, simulation, and causal
+model analysis developed at **Carnegie Mellon University** and the **University
+of Pittsburgh**. Originating in the philosophy of science and machine learning
+communities, the project has grown over several decades into a comprehensive
+environment for learning, evaluating, and reasoning with graphical causal
+models.
 
-This page provides an overview of the project and links to deeper background
-materials.
+This manual provides consolidated, up-to-date documentation for Tetrad’s
+algorithms, graphical model representations, data formats, effect-estimation
+tools, and user interfaces. It replaces and expands the older “classic” HTML
+manual, incorporating modern algorithms, updated descriptions, and extensive
+cross-referencing.
 
 ---
 
 ## 📚 Project Background
 
-Tetrad began as a research effort in causal inference, graphical models, and
-philosophy of science. Over time, it has evolved into a large and widely used
-software system supporting:
+Tetrad supports a full ecosystem of causal modeling tools, including:
 
-- DAG, CPDAG, MAG, and PAG causal models
-- score-based, constraint-based, and hybrid search algorithms
-- tools for effect estimation, adjustment sets, and path analysis
-- simulation and benchmarking frameworks
-- Python and R interfaces (Py-Tetrad and RPy-Tetrad)
+- DAG, CPDAG, MAG, and PAG causal graphs
+- constraint-based, score-based, and hybrid search algorithms
+- methods for learning with latent variables and selection bias
+- effect-size estimation, adjustment sets, and path blocking
+- nonlinear and non-Gaussian independence tests and scores
+- simulation frameworks for linear, nonlinear, and neural-network–based SEMs
+- extensive GUI tools and programmatic interfaces
 
-We add new algorithms and ideas whenever time and resources allow, and we welcome 
-suggestions from the community.
+In addition to the Java/GUI version, Tetrad includes modern APIs:
 
-For a broader historical overview, see the external project page:
+- **Py-Tetrad** — Python interface (with its own 2023 software paper)
+- **RPy-Tetrad** — R interface via rpy2
+- The core **Java library**, used both in the GUI and headless workflows.
 
-👉 **[https://www.cmu.edu/dietrich/philosophy/tetrad/about/](https://www.cmu.edu/dietrich/philosophy/tetrad/about/)**
+Development is ongoing, with new algorithms and methods added as time and
+resources allow. Community suggestions and contributions are welcome.
+
+For a broader historical overview of the project, see:
+
+👉 **https://www.cmu.edu/dietrich/philosophy/tetrad/about/**
 
 ---
 
 ## 👥 Contributors
 
-Tetrad has benefited from the contributions of many developers, researchers,
-and collaborators across multiple institutions.
+Tetrad has benefited from the work of many collaborators, including developers,
+research scientists, graduate students, and external contributors.
 
-A full list is maintained here:
+A maintained list appears here:
 
 👉 **[Contributors](contributors.md)**
 
@@ -45,19 +55,19 @@ A full list is maintained here:
 
 ## 📄 Papers and Books
 
-A curated bibliography of books, journal articles, conference papers, and
-software papers relevant to Tetrad and the algorithms it implements:
+A curated bibliography of foundational publications, software papers,
+theoretical works, and algorithm references relevant to Tetrad and its tools:
 
 👉 **[Papers and Books](papers-and-books.md)**
 
-This collection emphasizes peer-reviewed publications and foundational works
-most directly tied to Tetrad's design and use.
+This list includes classic references alongside modern work on hybrid,
+nonlinear, and high-dimensional causal discovery.
 
 ---
 
 ## 📬 Questions or Suggestions?
 
-If you have suggestions for improving the manual or adding new content, feel
-free to open an issue or discussion on the GitHub repository:
+Suggestions for improving the manual are welcome.  
+Please open an issue or discussion on our GitHub repository:
 
-👉 **[https://github.com/cmu-phil/tetrad-manual-rtd](https://github.com/cmu-phil/tetrad-manual-rtd)**
+👉 **https://github.com/cmu-phil/tetrad-manual-rtd**
