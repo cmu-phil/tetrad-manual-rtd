@@ -15,7 +15,7 @@ This site is the **Read the Docs** version of the Tetrad manual, reorganized int
 :maxdepth: 2
 
 about
-manual/index
+classic-manual/index
 python-r-bindings
 graph-and-datasets
 search-algorithms

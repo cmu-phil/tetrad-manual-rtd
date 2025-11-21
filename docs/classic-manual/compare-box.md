@@ -26,7 +26,7 @@ An edgewise comparison compares two graphs, and gives a textual list of the edge
 
 Take, for example, the following two graphs. The first is the reference graph, the second is the graph to be compared to it. When the Edgewise Comparison box is opened, a comparison like this appears:
 
-![](/_static/images/compare_box_12.png)
+![](/_static/images/classic-manual/compare_box_12.png)
 
 You may choose (by a menu in the upper left part of the box) whether the graph being compared is the original DAG, or the CPDAG of the original DAG, of the PAG of the original DAG
 
@@ -37,7 +37,7 @@ When the listed changes have been made to the second graph, it will be identical
 
 A stats list graph comparison tallies up and presents statistics for the differences and similarities between a true graph and a reference graph. Consider the example used in the above section; once again, we’ll let graph one be the true graph. Just as above, when the graphs are input to the tabular graph compare box, we must specify which of the graphs is the reference graph, and whether it contains latent variables. When the comparison is complete, the following window results:
 
-![](/_static/images/compare_box_1.png)
+![](/_static/images/classic-manual/compare_box_1.png)
 
 You may choose (by a menu in the upper left part of the box) whether the graph being compared is the original DAG, or the CPDAG of the original DAG, of the PAG of the original DAG
 
@@ -48,7 +48,7 @@ The first columns gives an abbreviation for the statistic; the second columns gi
 
 A misclassification procedure organizes a graph comparison by edge type. The edge types (undirected, directed, uncertain, partially uncertain, bidirected, and null) are listed as the rows and columns of a matrix, with the true graph edges as the row headers and the target graph edges as the column headers. If, for example, there are three pairs of variables that are connected by undirected edges in the reference graph, but are connected by directed edges in the estimated graph, then there will be a 3 in the (undirected, directed) cell of the matrix. An analogous method is used to represent endpoint errors. For example:
 
-![](/_static/images/compare_box_13.png)
+![](/_static/images/classic-manual/compare_box_13.png)
 
 
 ## Graph Intersections
@@ -64,11 +64,11 @@ Finally, any contradicted orientations (orientations that the graphs disagree on
 
 Rather than comparing edges or orientation, this option directly compares the implied dependencies in two graphs. When you initially open the box, you will see the following window:
 
-![](/_static/images/compare_box_6.png)
+![](/_static/images/classic-manual/compare_box_6.png)
 
 The drop-down menu allows you to choose which variables you want to check the dependence of. If you select more than two variables, any subsequent variables will be considered members of the conditioning set. So, if you select variables X1, X2, and X3, in that order, the box will determine whether X1 is independent of X2, conditional on X3, in each of the graphs being compared. When you click “List,” in the bottom right of the window, the results will be displayed in the center of the window:
 
-![](/_static/images/compare_box_7.png)
+![](/_static/images/classic-manual/compare_box_7.png)
 
 
 ## Edge Weight Similarity Comparisons
@@ -77,13 +77,13 @@ Edge weight (linear coefficient) similarity comparisons compare two linear SEM i
 
 Consider, for example, an edge weight similarity comparison between the following two SEM IMs:
 
-![](/_static/images/compare_box_8.png)
+![](/_static/images/classic-manual/compare_box_8.png)
 
-![](/_static/images/compare_box_9.png)
+![](/_static/images/classic-manual/compare_box_9.png)
 
 When they are input into an edge weight similarity comparison, the following window results:
 
-![](/_static/images/compare_box_10.png)
+![](/_static/images/classic-manual/compare_box_10.png)
 
 This is, unsurprisingly, a high score; the input models have few adjacencies in common, let alone similar parameters.
 

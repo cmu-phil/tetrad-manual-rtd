@@ -1,6 +1,6 @@
 (tetrad-manual)=
 
-# Tetrad Interface
+# Classic Manual
 
 Last updated: 11/19/2025
 

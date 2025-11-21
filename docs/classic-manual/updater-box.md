@@ -26,15 +26,15 @@ The approximated updater is a fast but inexact algorithm. It randomly draws a sa
 
 Take, for example, the following instantiated model:
 
-![](/_static/images/updater_box_1.png)
+![](/_static/images/classic-manual/updater_box_1.png)
 
 When it is input into the approximate updater, the following window results:
 
-![](/_static/images/updater_box_2.png)
+![](/_static/images/classic-manual/updater_box_2.png)
 
 If we click “Do Update Now” now, without giving the updater any evidence, the right side of the screen changes to show us the marginal probabilities of the variables.
 
-![](/_static/images/updater_box_3.png)
+![](/_static/images/classic-manual/updater_box_3.png)
 
 The blue lines, and the values listed across from them, indicate the probability that the variable takes on the given value in the input instantiated model. The red lines indicate the probability that the variable takes on the given value, given the evidence we’ve added to the updater.
 
@@ -42,15 +42,15 @@ Since we have added no evidence to the updater, the red and blue lines are very 
 
 Now, we’ll return to the original window. We can do so by clicking “Edit Evidence” under the Evidence tab. Suppose we know that X1 takes on the value 1 in our model, or suppose we merely want to see how X1 taking that value affects the values of the other variables. We can click on the box that says “1” next to X1. When we click “Do Update Now,” we again get a list of the marginal probabilities for X1.
 
-![](/_static/images/updater_box_4.png)
+![](/_static/images/classic-manual/updater_box_4.png)
 
 Now that we have added evidence, the “red line” marginal probabilities have changed; for X1, the probability that X1=1 is 1, because we’ve told Tetrad that that is the case. Likewise, the probabilities that X1=0 and X1=2 are both 0.
 
 Now, let’s look at the updated marginal probabilities for X2, a parent of X1.
 
-![](/_static/images/updater_box_5.png)
+![](/_static/images/classic-manual/updater_box_5.png)
 
-![](/_static/images/updater_box_6.png)
+![](/_static/images/classic-manual/updater_box_6.png)
 
 The first image is the marginal probabilities before we added the evidence that X1=1. The second image is the updated marginal probabilities. They have changed; in particular, it has become much more likely that X2=0.
 
@@ -58,11 +58,11 @@ Under the Mode tab, we can change the type of information that the updater box g
 
 If the variable can take one of several values, or if we know the values of more than one variable, we can select multiple values by pressing and holding the Shift key and then making our selections. For instance, in the model above, suppose that we know that X1 can be 1 or 2, but not 0. We can hold the Shift key and select the boxes for 1 and 2, and when we click “Do Update Now,” the marginal probabilities for X2 look like this:
 
-![](/_static/images/updater_box_7.png)
+![](/_static/images/classic-manual/updater_box_7.png)
 
 Since X1 must be 1 or 2, the updated probability that it is 0 is now 0. The marginal probabilities of X2 also change:
 
-![](/_static/images/updater_box_8.png)
+![](/_static/images/classic-manual/updater_box_8.png)
 
 The updated marginal probabilities are much closer to their original values than they were when we knew that X1 was 1.
 
@@ -85,11 +85,11 @@ The Junction Tree exact updater is another exact learning algorithm. Its window 
 
 The SEM updater does not deal with marginal probabilities; instead, it estimates means.
 
-![](/_static/images/updater_box_9.png)
+![](/_static/images/classic-manual/updater_box_9.png)
 
 When it is input to the SEM updater, the following window results:
 
-![](/_static/images/updater_box_10.png)
+![](/_static/images/classic-manual/updater_box_10.png)
 
 Suppose we know that the mean of X1 is .5. When we enter that value into the text box on the left and click “Do Update Now,” the model on the right updates to reflect that mean, changing the means of both X1 and several other variables. In the new model, the means of X2, X4, and X5 will all have changed. If we click the “Manipulated” check box as well, it means that we have arbitrarily set the mean of X1 to .5, and that the value of its parent variable, X4, has no effect on it. The graph, as well as the updated means, changes to reflect this.
 

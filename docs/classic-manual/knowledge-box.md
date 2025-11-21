@@ -31,7 +31,7 @@ The tiers and edges option allows you to sort variables into groupings that can 
 
 The tiers tab for a graph with ten variables looks like this:
 
-![](/_static/images/knowledge_box_1.png)
+![](/_static/images/classic-manual/knowledge_box_1.png)
 
 Tiers separate your variables into a timeline. Variables in higher-numbered tiers occur later than variables in lower-numbered tiers, which gives Tetrad information about causation. For example, a variable in Tier 3 could not possibly be a cause of a variable in Tier 1.
 
@@ -51,7 +51,7 @@ If you have annotated your variables with interventional status and intervention
 
 The groups tab for a graph with four variables looks like this:
 
-![](/_static/images/knowledge_box_2.png)
+![](/_static/images/classic-manual/knowledge_box_2.png)
 
 In the groups tab, you can specify certain groups of variables which are forbidden or required to cause other groups of variables. To add a variable to the “cause” section of a group, click on the variable in the box at the top, and then click on the box to the left of the group’s arrow. To add a variable to the “effect” section of a group, click on the variable in the box at the top, and then click on the box to the right of the group’s arrow. You can add a group by clicking on one of the buttons at the top of the window, and remove one by clicking the “remove” button above the group’s boxes.
 
@@ -60,7 +60,7 @@ In the groups tab, you can specify certain groups of variables which are forbidd
 
 The edges tab for a graph with four variables looks like this:
 
-![](/_static/images/knowledge_box_3.png)
+![](/_static/images/classic-manual/knowledge_box_3.png)
 
 In the edges tab, you can require or forbid individual causal edges between variables. To add an edge, click the type of edge you’d like to create, and then click and drag from the “cause” variable to the “effect” variable.
 
@@ -81,6 +81,6 @@ If you use a graph as input to a knowledge box with the “Required Graph” ope
 
 This option allows you to build clusters for a measurement model. When first opened, the window looks like this:
 
-![](/_static/images/knowledge_box_4.png)
+![](/_static/images/classic-manual/knowledge_box_4.png)
 
 You can change the number of clusters using the text box in the upper right hand corner. To place a variable in a cluster, click and drag the box with its name into the cluster pane. To move multiple variables at once, shift- or command-click on the variables, and (without releasing the shift/command button or the mouse after the final click) drag. In the search boxes, these variables will be assumed to be children of a common latent cause.

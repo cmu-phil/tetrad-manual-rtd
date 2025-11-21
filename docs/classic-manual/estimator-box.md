@@ -56,7 +56,7 @@ Main properties:
 
 A sample ML Bayes estimate looks like this:
 
-![](/_static/images/estimator_box_1.png)
+![](/_static/images/classic-manual/estimator_box_1.png)
 
 In the resulting instantiated model:
 
@@ -137,7 +137,7 @@ A SEM estimator:
 
 A sample SEM estimation output looks like this:
 
-![](/_static/images/estimator_box_2.png)
+![](/_static/images/classic-manual/estimator_box_2.png)
 
 Features of the SEM estimator:
 

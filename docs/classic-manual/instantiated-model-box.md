@@ -36,9 +36,9 @@ You can manually set the probability values for each variable, or have Tetrad as
 
 Here is an example of a Bayes PM and its randomly created instantiated model:
 
-![](/_static/images/instantiated_model_box_1.png)
+![](/_static/images/classic-manual/instantiated_model_box_1.png)
 
-![](/_static/images/instantiated_model_box_2.png)
+![](/_static/images/classic-manual/instantiated_model_box_2.png)
 
 In the model above, when X4 and X5 are both 0, the probability that X5 is 0 is 0.0346, that X5 is 1 is 0.4425, and that X5 is 2 is 0.5229. Since X5 must be 0, 1, or 2, those three values must add up to one, as must the values in every row.
 
@@ -53,9 +53,9 @@ A Dirichlet instantiated model is a specialized form of a Bayes instantiated mod
 
 Here is an example of a Bayes PM and the Dirichlet IM which Tetrad creates from it when all pseudocounts are set to one:
 
-![](/_static/images/instantiated_model_box_3.png)
+![](/_static/images/classic-manual/instantiated_model_box_3.png)
 
-![](/_static/images/instantiated_model_box_4.png)
+![](/_static/images/classic-manual/instantiated_model_box_4.png)
 
 In the above model, when X2=0 and X6=0, there is one (pseudo) data point at which X4=0, one at which X4=1, and one at which X4=2. There are three total (pseudo) data points in which X2=0 and X6=0. You can view the pseudocounts of any variable by clicking on it in the graph or choosing it from the drop-down menu at the top of the window. To edit the value of a pseudocount, double-click on it and overwrite it. The total count of a row cannot be directly edited.
 
@@ -63,32 +63,32 @@ From the pseudocounts, Tetrad determines the conditional probability of a catego
 
 To view the table of conditional probabilities for a variable, click the Probabilities tab. In the above model, the Probabilities tab looks like this:
 
-![](/_static/images/instantiated_model_box_5.png)
+![](/_static/images/classic-manual/instantiated_model_box_5.png)
 
 
 ## SEM Instantiated Models
 
 A SEM instantiated model is a SEM parametric model in which the parameters and error terms have defined values. It assumes that relationships between variables are linear, and that error terms have Gaussian distributions. If you choose to create a SEM IM, the following window will open:
 
-![](/_static/images/instantiated_model_box_6.png)
+![](/_static/images/classic-manual/instantiated_model_box_6.png)
 
 Using this box, you can specify the ranges of values from which you want coefficients, covariances, and variances to be drawn for the parameters in the model. In the above box, for example, all linear coefficients will be between -1.0 and 1.0. If you uncheck “symmetric about zero,” they will only be between 0.0 and 1.0.
 
 Here is an example of a SEM PM and a SEM IM generated from it using the default settings:
 
-![](/_static/images/instantiated_model_box_7.png)
+![](/_static/images/classic-manual/instantiated_model_box_7.png)
 
-![](/_static/images/instantiated_model_box_8.png)
+![](/_static/images/classic-manual/instantiated_model_box_8.png)
 
 You can now manually edit the values of parameters in one of two ways. Double-clicking on the parameter in the graph will open up a small text box for you to overwrite. Or you can click on the Tabular Editor tab, which will show all the parameters in a table which you can edit. The Tabular Editor tab of our SEM IM looks like this:
 
-![](/_static/images/instantiated_model_box_9.png)
+![](/_static/images/classic-manual/instantiated_model_box_9.png)
 
 In the Tabular Editor tab of a SEM estimator box (which functions similarly to the SEM IM box), the SE, T, and P columns provide statistics showing how robust the estimation of each parameter is. Our SEM IM, however, is in an instantiated model box, so these columns are empty.
 
 The Implied Matrices tab shows matrices of relationships between variables in the model. In the Implied Matrices tab, you can view the covariance or correlation matrix for all variables (including latents) or just measured variables. In our SEM IM, the Implied Matrices tab looks like this:
 
-![](/_static/images/instantiated_model_box_10.png)
+![](/_static/images/classic-manual/instantiated_model_box_10.png)
 
 You can choose the matrix you wish to view from the drop-down menu at the top of the window. Only half of any matrix is shown, because in a well-formed acyclic model, the matrices should be symmetric. The cells in the Implied Matrices tab cannot be edited.
 
@@ -101,9 +101,9 @@ A standardized SEM instantiated model consists of a SEM parametric model with de
 
 Here is an example of an acyclic SEM PM and the standardized SEM IM which Tetrad creates from it
 
-![](/_static/images/instantiated_model_box_11.png)
+![](/_static/images/classic-manual/instantiated_model_box_11.png)
 
-![](/_static/images/instantiated_model_box_12.png)
+![](/_static/images/classic-manual/instantiated_model_box_12.png)
 
 To edit a parameter, double-click on it. A slider will open at the bottom of the window (shown above for the edge parameter between X1 and X2). Click and drag the slider to change the value of the parameter, or enter the specific value you wish into the box. The value must stay within a certain range in order for the variables in the model to remain standard Normal (N(0, 1)), so if you attempt to overwrite the text box on the bottom right with a value outside the listed range, Tetrad will not allow it. That is, given that the variables are all distributed as N(0, 1), there is a limited range in which each parameter may be adjusted; these ranges vary parameter by parameter, given the values of the other parameters. In a standardized SEM IM, error terms are not considered parameters and cannot be edited, but you can view them by clicking Parameters: Show Error Terms.
 
@@ -118,9 +118,9 @@ A generalized SEM instantiated model consists of a generalized SEM parametric mo
 
 Here is an example of a generalized SEM PM and its generalized SEM IM:
 
-![](/_static/images/instantiated_model_box_13.png)
+![](/_static/images/classic-manual/instantiated_model_box_13.png)
 
-![](/_static/images/instantiated_model_box_14.png)
+![](/_static/images/classic-manual/instantiated_model_box_14.png)
 
 Note that the expressions for X6 and X2 are not shown, having been replaced with the words “long formula.” Formulae over a certain length—the default setting is 25 characters—are hidden to improve visibility. Long formulae can be viewed in the Variables tab, which lists all variables and their formulae. You can change the cutoff point for long formulae by clicking Tools: Formula Cutoff.
 

@@ -19,13 +19,13 @@ Table A1 is sufficient to understand the basic meaning of edge types in PAGs. No
 
 The PAG in Figure 2 shows examples of each type of edge, and the CBNs. Figure 1. show some examples of what kinds of CBNs can be represented by that PAG.
 
-![](/_static/images/appendix_figure_1a.png)
+![](/_static/images/classic-manual/appendix_figure_1a.png)
 
-![](/_static/images/appendix_figure_1b.png)
+![](/_static/images/classic-manual/appendix_figure_1b.png)
 
 Figure 1. Two CBNs that FCI (as well as FCI+, GFCI, and RFCI) cannot distinguish.
 
-![](/_static/images/appendix_figure_2.png)
+![](/_static/images/classic-manual/appendix_figure_2.png)
 
 Figure 2. The PAG that represents the CBN s in both Figures 1a and 1b.
 
@@ -42,15 +42,15 @@ In the following examples, the DAG representing a causal process is on the left,
 
 Example of an edge C ➔ D that is definitely visible (green) and definitely direct (bold):
 
-![](/_static/images/arc_specialization_1.png)
+![](/_static/images/classic-manual/arc_specialization_1.png)
 
 Example of an edge (C ➔ E) that is definitely visible (green) and not definitely direct (not bold):
 
-![](/_static/images/arc_specialization_2.png)
+![](/_static/images/classic-manual/arc_specialization_2.png)
 
 Example of an edge (F ➔ E) that is not definitely visible (black) and not definitely direct (not bold):
 
-![](/_static/images/arc_specialization_3.png)
+![](/_static/images/classic-manual/arc_specialization_3.png)
 
 It is conjectured that it is not possible for an edge to be definitely direct (bold) and not definitely visible (black).
 

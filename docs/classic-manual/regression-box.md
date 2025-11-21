@@ -27,11 +27,11 @@ Linear regression is performed upon continuous data sets. If you have a categori
 
 Take, for example, a data set with the following underlying causal structure:
 
-![](/_static/images/regression_box_1.png)
+![](/_static/images/classic-manual/regression_box_1.png)
 
 When used as input to the linear regression box, the following window results:
 
-![](/_static/images/regression_box_2.png)
+![](/_static/images/classic-manual/regression_box_2.png)
 
 To select a variable as the response variable, click on it in the leftmost box, and then click on the top right-pointing arrow. If you change your mind about which variable should be the response variable, simply click on another variable and click on the arrow again.
 
@@ -43,7 +43,7 @@ When we click “Execute,” the results of the regression appear in the box to 
 
 The Output Graph tab contains a graphical model of the information contained in the Model tab. For the case in which X4 is the response variable and X1, X2, and X3 are the predictors, Tetrad finds that only X1 is significant, and the output graph looks like this:
 
-![](/_static/images/regression_box_3.png)
+![](/_static/images/classic-manual/regression_box_3.png)
 
 Comparison to the true causal model shows that this correlation does exist, but that it runs in the opposite direction.
 

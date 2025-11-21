@@ -41,11 +41,11 @@ Data sets loaded into Tetrad may be categorical, continuous, mixed, or covarianc
 
 To load data, create a data box with no parent. When you double-click it, an empty data window will appear:
 
-![](/_static/images/data_box_1.png)
+![](/_static/images/classic-manual/data_box_1.png)
 
 Click "File -> Load Data" and select the text file or files that contain your data. The following window will appear:
 
-![](/_static/images/data_box_2.png)
+![](/_static/images/classic-manual/data_box_2.png)
 
 The text of the source file appears in the Data Preview window. Above, there are options to describe your file, so that Tetrad can load it correctly. If you are loading categorical, continuous, or mixed data values, select the “Tabular Data” button. If you are loading a covariance matrix, select “Covariance Data.” Note that if you are loading a covariance matrix, your text file should contain only the lower half of the matrix, as Tetrad will not accept an entire matrix.
 
@@ -62,9 +62,9 @@ You can specify the name and data type for each variable. Variables that are not
 
 When you are satisfied with your description of your data, click “Validate” at the bottom of the window. Tetrad will check that your file is correctly formatted. If it is, you will receive a screen telling you that validation has passed with no error. At this point, you can revisit the settings page, or click “Load” to load the data.
 
-![](/_static/images/data_box_3.png)
+![](/_static/images/classic-manual/data_box_3.png)
 
-![](/_static/images/data_box_4.png)
+![](/_static/images/classic-manual/data_box_4.png)
 
 You can now save this data set to a text file by clicking File: Save Data.
 
@@ -96,7 +96,7 @@ The data box can also be used to manipulate data sets that have already been loa
 
 This operation allows you to make some or all variables in a data set discrete. If you choose it, a window will open.
 
-![](/_static/images/data_box_5.png)
+![](/_static/images/classic-manual/data_box_5.png)
 
 When the window first opens, no variables are selected, and the right side of the window appears blank; in this case, we have already selected X1 ourselves. In order to discretize a variable, Tetrad assigns all data points within a certain range to a category. You can tell Tetrad to break the range of the dataset into approximately even sections (Evenly Distributed Intervals) or to break the data points themselves into approximately even chunks (Evenly Distributed Values). Use the scrolling menu to increase or decrease the number of categories to create. You can also rename categories by overwriting the text boxes on the left, or change the ranges of the categories by overwriting the text boxes on the right. To discretize another variable, simply select it from the left. If you want your new data set to include the variables you did not discretize, check the box at the bottom of the window.
 
@@ -112,7 +112,7 @@ If you choose this option, any discrete variables with numerical category values
 
 The Calculator option allows you to add and edit relationships between variables in your data set, and to add new variables to the data set.
 
-![](/_static/images/data_box_6.png)
+![](/_static/images/classic-manual/data_box_6.png)
 
 In many ways, this tool works like the Edit Expression window in a generalized SEM parametric model. To edit the formula that defines a variable (which will change that variable’s values in the table) type that variable name into the text box to the left of the equals sign. To create a new variable, type a name for that variable into the text box to the left of the equals sign. Then, in the box on the right, write the formula by which you wish to define a new variable in place of, or in addition to, the old variable. You can select functions from the scrolling menu below. (For an explanation of the meaning of some the functions, see the section on generalized SEM models in the Parametric Model Box chapter.) To edit or create several formulae at once, click the “Add Expression” button, and another blank formula will appear. To delete a formula, check the box next to it and click the “Remove Selected Expressions” button.
 
@@ -238,7 +238,7 @@ This operation draws a random subset of the input data set (you specify the size
 
 This operation allows you to split a data set into several smaller data sets. When you choose it, a window opens.
 
-![](/_static/images/data_box_7.png)
+![](/_static/images/classic-manual/data_box_7.png)
 
 If you would like the subsets to retain the ordering they had in the original set, click “Original Order.” Otherwise, the ordering of the subsets will be assigned at random. You can also increase and decrease the number of subsets created, and specify the range of each subset.
 
@@ -309,13 +309,13 @@ The “Settings” menu contains some tools to control the output. One may add r
 
 Finally, one may condition on ranges of variables or particular discrete values by selecting “Edit Conditioning Variables and Ranges.” This brings up a dialog that lets one add conditioning variables with particular ranges for continuous variables or values for discrete values. For continuous ranges, one may pick “Above Average,” “Below Average,” or “In n-tile” (where n is specified) or give a particular range manually. One may add as many conditions as one prefers; when one clicks “OK,” all plots will be updated to reflect these conditioning choices.
 
-![](/_static/images/data_box_8b.png)
+![](/_static/images/classic-manual/data_box_8b.png)
 
-![](/_static/images/data_box_8a.png)
+![](/_static/images/classic-manual/data_box_8a.png)
 
 The Q-Q Plot tool is a test for normality of distribution.
 
-![](/_static/images/data_box_10.png)
+![](/_static/images/classic-manual/data_box_10.png)
 
 If a variable has a distribution which is approximately Normal, its Q-Q plot should appear as a straight line with a positive slope. You can select the variable whose Q-Q plot you wish to view from the drop-down menu on the right.
 

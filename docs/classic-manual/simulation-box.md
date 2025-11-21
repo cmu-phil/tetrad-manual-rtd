@@ -37,7 +37,7 @@ The simulation box takes a graph, parametric model, or instantiated model and us
 
 When you first open the simulation box, you will see some variation on this window:
 
-![](/_static/images/simulation_box_1.png)
+![](/_static/images/classic-manual/simulation_box_1.png)
 
 The “True Graph” tab contains the graph from which data is simulated.
 

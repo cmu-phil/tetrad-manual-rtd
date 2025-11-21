@@ -34,7 +34,7 @@ For more information that in included about the search algorithms than is includ
 
 Using the search box requires you to select an algorithm (optionally select a test/score), confirm/change search parameters and finally run the search.
 
-![](/_static/images/search_box_1.png)
+![](/_static/images/classic-manual/search_box_1.png)
 
 The search box first asks what algorithm, statistical tests and/or scoring functions you would like to use in the search. The upper left panel allows you to filter for different types of search algorithms with the results of filtering appearing in the middle panel. Selecting a particular algorithm will update the algorithm description on the right panel.
 
