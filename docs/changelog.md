@@ -1,126 +1,69 @@
-# Change Log
+## 2025-03 — Additional Updates and Refinements
 
-This page summarizes **documentation-only changes** to the  
-**Tetrad ReadTheDocs Manual**.  
-Software-level release notes remain on GitHub:
+### 🔄 1. Renamed LV-Dumb → LV-Heuristic
+- Updated the algorithm name throughout:
+    - RTD manual
+    - Code documentation
+    - Algorithm catalog
+    - Internal references (e.g., BOSS-FCI, searches involving LV methods)
+- Chosen to reflect a clearer, more professional name (following discussion with Peter and Bryan).
 
-👉 **Tetrad Releases (official version history)**  
-https://github.com/cmu-phil/tetrad/releases
+### 🧪 2. Comprehensive Documentation for Tests and Scores
+- Added **full individual pages** for every test and score in Tetrad:
+    - FisherZ, CCI, KCI, G², χ²
+    - All BIC and likelihood-ratio scores (SEM BIC, Degenerate Gaussian BIC/LRT, Conditional Gaussian, MVP, EBIC, GIC, etc.)
+    - New Basis-Function Tests & Scores (BF-BIC, BF-LRT)
+    - Poisson Prior Score & Poisson BIC Test
+    - Zhang–Shen Bound Score
+    - Probabilistic Test
+- Each page now includes:
+    - Accurate **parameter tables** generated from `getParameters()`
+    - Clean references (JMLR, arXiv, classic literature)
+    - Updated descriptions consistent with modern Tetrad usage
+    - Notes on when the test/score should or should not be used
 
----
+### 📘 3. Updated "Choosing Tests and Scores" Page
+- Added correct hyperlinks to detailed pages.
+- Corrected earlier misleading text (e.g., regarding Poisson and non-Gaussian use cases).
+- Integrated BOSS paper results (SemBIC vs. DirectLiNGAM performance comparison).
 
-## 📘 Manual Revision History (RTD Manual)
+### 🧩 4. New Summary Sections for Algorithms
+- Added uniform **“## Summary”** sections to:
+    - CStaR
+    - Factor Analysis
+    - Mimbuild-Bollen
+    - Mimbuild-PCA
+    - TSC
+- Ensures consistency with other algorithm pages like DAGMA, BOSS, etc.
 
-## 2025-02 to 2025-03 — Major Manual Rebuild
+### 🔗 5. Expanded Interfacing Tools Page
+- Added new documentation page linking:
+    - **Py-Tetrad**
+    - **RPy-Tetrad**
+    - **causal-learn** (as a related tool)
+- Clarified intended usage:
+    - Py/RTetrad for **direct access to Java algorithms**
+    - causal-learn as Python-native implementations
 
-A complete modernization and restructuring of the Tetrad manual:
+### 📄 6. References Updated Across Many Pages
+- Added missing citations for:
+    - BDeu (Heckerman, Geiger & Chickering 1995)
+    - Degenerate Gaussian scores/tests (Ramsey, Andrews & Spirtes 2024)
+    - Conditional Gaussian scores/tests (Andrews, Ramsey & Cooper 2018)
+    - EBIC (Chen & Chen 2008)
+    - GIC (Kim, Kwon & Choi 2012)
+    - Zhang–Shen Bound Score (Zhang & Shen 2010)
+    - Basis Function methods (Ramsey, Andrews & Spirtes 2025)
+- Cleaned formatting and ensured consistent bibliographic style.
 
-### 🔧 1. Migration from “Classic Manual” to RTD (MyST Markdown)
-- Converted the entire older single-HTML “classic manual” into:
-    - Modular **MyST Markdown** pages
-    - Clean folder structure
-    - ReST-compatible images and cross-references
-- Removed outdated or redundant content, with pointers to the classic manual when historically relevant.
-
-### 🧭 2. New Sidebar & Navigation Layout
-- Created a reorganized, multi-section navigation tree:
-    - *Search Algorithms*
-    - *Scores & Tests*
-    - *Graph Types*
-    - *Data Formats*
-    - *Interface Documentation*
-- Added **Graphs and DataSets** top-level page to connect related topics.
-
-### 🧮 3. Full Rewrite of Algorithm Pages
-Completely rewritten, modern, consistent algorithm pages for:
-
-- **BOSS**, **BOSS-FCI**
-- **GRaSP**, **GFCI**, **RFCI**
-- **FCI**, **CCD**, **CD-NOD**
-- **CStaR**, **DM**, **DirectLiNGAM**, **LINGAM**
-- **CAM**, **FGES**, **PC**, **PC-Max**
-- **Stability Selection**, **FASK**, **LiNGAM variants**
-- Others as applicable
-
-Each algorithm page now includes:
-
-- Clear “When to Use / When Not to Use”
-- Internal structure & theory summaries
-- Correct rule-set descriptions (e.g., **Zhang 2008** orientations for PAGs)
-- Fully accurate parameter tables based on code introspection
-- Updated references in consistent format
-
-### 📄 4. Standardized Parameter Tables
-Every algorithm page now uses a unified table format with **camelCase** parameter names drawn directly from:
-
-```
-getParameters() { … }
-```
-
-in Java classes.  
-Descriptions rewritten for consistency and technical accuracy.
-
-### 🖼️ 5. Image Extraction and Embedding
-- Extracted all images from the classic HTML manual.
-- Added conversion utilities to embed them into the RTD build.
-- Normalized filenames and redirected all references.
-- Created `_static/images/` asset directory for long-term stability.
-
-### 🔗 6. Cross-References Throughout the Manual
-- Added cross-links between related algorithms (e.g., BOSS → BOSS-FCI → FCIT).
-- Connected graph formats, data formats, interface pages, and parameter listings.
-- Ensured that all internal links resolve correctly in Sphinx.
-
-### 📚 7. Expanded Papers & Books Page
-- Added full bibliography covering:
-    - BOSS & GST
-    - GRaSP
-    - FCI, RFCI, GFCI, and Zhang’s orientation rules
-    - DM (latent-spring interpretation)
-    - DirectLiNGAM
-    - CD-NOD
-    - Stability selection
-    - High-dimensional consistency
-    - Classic works (CPS, Meek 1995, etc.)
-- Organized alphabetically by first author.
-
-### 🧑‍🤝‍🧑 8. Updated About & Contributors Pages
-- Revised **About** to describe the modern Tetrad platform.
-- Updated **Contributors** to reflect both the historical team and contemporary maintainers.
-- Added explicit mention of the Py-Tetrad / RPy-Tetrad ecosystem and cross-language integration.
-
-### 🧪 9. Added Missing GUI Documentation
-Several parts of the GUI (added over the last few years) lacked documentation.  
-Pages now include:
-
-- Updated screenshots
-- Clear descriptions of new features
-- Corrected or replaced outdated claims
-
-### 🧹 10. Cleanup & Modernization
-- Removed obsolete algorithm descriptions superseded by modern methods.
-- Removed multi-page outdated guidance now superseded by RTD pages.
-- Removed deprecated stats guidance, legacy implementation details, and unmaintained scripts.
-- Added prominent, emphasized links to the RTD manual in places where the classic manual formerly held technical content.
+### 🧼 7. Numerous Minor Fixes and Cleanups
+- Corrected terminology in algorithm pages (e.g., BPC, CCI).
+- Added missing parameter explanations (e.g., timeLag for SP).
+- Fixed misinterpreted biological notes in algorithm “When to Use” sections.
+- Refined PCA/MIM documentation for clarity.
 
 ---
 
-## 2025-03 — Spot Patches and Fixes
-
-- Corrected BOSS “When to Use” section (dense-graph handling).
-- Corrected BOSS-FCI orientation description (now explicitly **Zhang-style**, not Meek).
-- Rewrote CD-NOD and CCD parameter tables using actual `Params.*` definitions.
-- Fixed math markup on the FCI page so that Sphinx can render it correctly (no LaTeX blocks).
-- Fixed several pages with unbroken text blocks by splitting into smaller sections.
-- Restored missing images for several “box” pages.
-- Created boxed-out content pages (Option D) for long conceptual sections such as estimator boxes and parametric model summaries.
-- Ensured all algorithm pages pass link-checking in Sphinx.
-
----
-
-## Earlier Documentation Notes
-Any documentation changes prior to 2025 were partially reflected in scattered internal files and are not reproduced here. The RTD manual supersedes all earlier documentation.
-
----
-
-If you notice pages that still reflect outdated implementations or missing GUI features, please open an issue or send a request — the manual is under active revision.
+### Notes
+This concludes the major documentation rewrite cycle for tests, scores, and latent-variable tools.  
+Further refinements will follow after peer review of the updated manual.
