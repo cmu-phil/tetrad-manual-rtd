@@ -13,117 +13,16 @@ This site is the **Read the Docs** version of the Tetrad manual, reorganized int
 
 ```{toctree}
 :maxdepth: 2
-:hidden:
 
+about
 manual/index
 python-r-bindings
 graph-and-datasets
 search-algorithms
 tests-and-scores
 parameter.definitions
-about
 changelog
 ```
-
----
-
-## 🚀 What is Tetrad?
-
-Tetrad is a suite of tools for:
-
-- Discovering causal structure from observational or experimental data
-- Estimating causal effects
-- Simulating data from DAGs, MAGs, and SEMs
-- Working with DAGs, CPDAGs, MAGs, PAGs, and other causal graph types
-- Performing score-based, constraint-based, and hybrid causal search
-
-The system has been under active development for nearly 30 years and includes many of the most widely used and theoretically grounded causal discovery methods.
-
----
-
-## 🧭 Start Here — Core User Workflows
-
-Most users interact with Tetrad through a simple pipeline:
-
-### 1. **Load or simulate data**
-- Continuous, discrete, or mixed datasets
-- Multinomial, SEM, and general function-based generators
-- Nonlinear and non-Gaussian options
-- Resampling and bootstrapping tools
-
-### 2. **Specify prior knowledge (optional)**
-- Required or forbidden edges
-- Tiered/temporal background knowledge
-- Selection variables
-
-### 3. **Run a causal search algorithm**
-Choose among:
-- **Constraint-based** (PC (with Map-P option), FCI, RFCI…)
-- **Score-based** (FGES, BOSS, GRaSP…)
-- **Hybrid** (GFCI, BOSS-FCI, FCIT…)
-- **Specialized** (LiNGAM, CAM, NOTEARS, ANM models…)
-- **Latent Structure Search** (Causal clustering, PC over clusters, Gin…)
-
-### 4. **Inspect and modify the resulting graph**
-- Orient edges
-- Add/remove adjacencies
-- Run legality checks
-- Get graph comparisons statistics
-
-### 5. **Estimate causal effects**
-- Adjustment sets
-- IDA-style estimation, Optimal IDA
-- Path calculations and comparison tools
-
-Each of these steps is documented in the sections linked below.
-
----
-
-## 📚 Manual Sections
-
-### **Quickstart**
-A short “get going in 5 minutes” guide showing how to load data, run your first search, and interpret results.  
-➡️ [Open quickstart](manual/quickstart.md)
-
-### **User Guide**
-A structured walkthrough of the Tetrad interface:
-- Data box
-- Knowledge box
-- Search box
-- Graph box
-- Simulation tools
-- Effect estimation  
-  ➡️ [Open user guide](user-guide.md)
-
-### **Algorithms**
-Detailed descriptions of every algorithm shipped with Tetrad, including:
-- When to use it
-- What assumptions it makes
-- What types of graphs it returns  
-  ➡️ [Open algorithms page](search-algorithms-short-list.md)
-
-### **Parameter Reference**
-Parameter definitions for all search, score, test, and simulation components.  
-➡️ [Open reference](reference.md)
-
-### **Changelog**
-A history of changes across Tetrad versions and UI updates.  
-➡️ [Open changelog](changelog.md)
-
----
-
-## 🔧 Using Tetrad Programmatically
-
-Tetrad can also be used outside the GUI through its programmatic interfaces (Java, Python, and R). Rather than duplicating links here, we refer you to the **official Tetrad website**, which always contains up-to-date links to:
-
-- Java Javadocs
-- Py-Tetrad (Python interface)
-- RPy-Tetrad (R interface)
-- Tutorials and example scripts
-- Download pages
-
-See:  
-👉 [https://www.cmu.edu/dietrich/philosophy/tetrad/index.html](https://www.cmu.edu/dietrich/philosophy/tetrad/index.html)
 
 ## 🙋 Need help?
 
