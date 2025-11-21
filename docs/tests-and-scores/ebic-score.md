@@ -28,13 +28,14 @@ A common EBIC form is:
 where γ is a parameter in [0, 1], `p` is the number of variables, and
 `k_edges` is the number of edges.
 
-## Parameters in Tetrad
+## Parameters
 
-Typical parameters include:
-
-- `gamma` — Strength of the extra EBIC penalty term.
-- `penaltyDiscount` — May co-exist with γ in some implementations.
-- `verbose` — Whether to log EBIC contributions.
+| Parameter (camelCase)     | Description |
+|---------------------------|-------------|
+| `ebicGamma`               | Double in [0, 1]. The gamma parameter for Extended BIC (EBIC). Values closer to 0 reduce EBIC to ordinary BIC; values closer to 1 add a strong extra penalty for models with many predictors (useful in high-dimensional settings). Default is 0.8. |
+| `precomputeCovariances`   | Boolean. If `true`, precomputes and caches covariance (and possibly cross-covariance) matrices used by the score. This speeds up repeated scoring at the cost of additional memory. If `false`, these quantities are recomputed on the fly, which saves memory but can be slower for large graphs or many score evaluations. |
+| `singularityLambda`       | Double. Handles singular or nearly singular covariance matrices. If `singularityLambda > 0`, that value is added to the diagonal (a ridge term) to stabilize matrix inverses. If `singularityLambda < 0`, a pseudoinverse is used instead. Default is 0.0. Use a small positive value if you encounter numerical-singularity warnings. |
+| `effectiveSampleSize`     | Double > 0, or `-1`. If `-1` (default), the actual sample size N is used in the log(N) penalty term. If set to a positive value, the score behaves as if that were the sample size (for example, when treating weighted or subsampled data as having a different effective N). |
 
 ## Strengths
 

@@ -30,15 +30,13 @@ As with other BIC scores:
 where `logL` is the log-likelihood under the fitted basis-function model and
 `k` is the number of basis coefficients.
 
-## Parameters in Tetrad
+## Parameters
 
-Typical parameters include:
-
-- `penaltyDiscount` — Scales the complexity penalty.
-- Basis-related settings:
-  - truncation order (maximum basis degree),
-  - basis family (Legendre, Chebyshev, etc.).
-- `standardize` — Whether to rescale variables before expansion.
+| Parameter (camelCase)   | Description |
+|-------------------------|-------------|
+| `truncationLimit`       | Integer ≥ 1. Truncation level for the basis expansion. Basis functions with indices from 1 up to this value are included for each continuous variable (for example, the first 3 Legendre polynomials). Larger values allow more flexible nonlinear fits but increase the number of parameters and the risk of overfitting. Default is 3. |
+| `penaltyDiscount`       | Double ≥ 0. The penalty multiplier “c” in the modified BIC-type criterion (for example, a score of the form 2·log-likelihood − c·k·log(N), where k is the number of free parameters and N is the sample size). Larger values impose a stronger complexity penalty and yield sparser graphs; smaller values allow denser graphs. Typical defaults are around 1–2. |
+| `regularizationLambda`  | Double ≥ 0. Small nonnegative ridge term added to the diagonal of covariance or Gram matrices used in the regression / basis-function fitting. Default is 1e−8. Increasing this can improve numerical stability when matrices are nearly singular, at the cost of slightly biasing coefficients toward zero. |
 
 ## Strengths
 

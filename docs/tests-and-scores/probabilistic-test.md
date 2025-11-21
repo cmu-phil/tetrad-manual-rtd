@@ -34,11 +34,13 @@ For each X ⟂ Y | S query, the test:
    tolerance), and dependence otherwise.
 3. Does not rely on raw data; the model itself is the oracle.
 
-## Parameters in Tetrad
+## Parameters
 
-- The primary “parameter” is the **instantiated probabilistic model**.
-- Tolerance thresholds for numeric comparisons may be configurable.
-- `verbose` — Whether to report underlying probability queries.
+| Parameter (camelCase)                 | Description |
+|--------------------------------------|-------------|
+| `noRandomlyDeterminedIndependence`   | Boolean. If `true`, independence decisions are made **deterministically** using the `cutoffIndTest` threshold: if the estimated probability of independence is above the cutoff, the variables are treated as independent; otherwise they are treated as dependent. If `false` (default), the test is allowed to use randomized decisions rather than a strict hard cutoff. Default is `false`. |
+| `cutoffIndTest`                      | Double in [0.0, 1.0]. Independence cutoff threshold. When `noRandomlyDeterminedIndependence = true`, independence is declared whenever the estimated probability (or score) of independence exceeds this value. Default is `0.5`. |
+| `priorEquivalentSampleSize`          | Double ≥ 1.0. Prior equivalent sample size for the underlying Bayesian model used to estimate independence probabilities. This acts like a pseudo-count total that is distributed across cells in the relevant contingency or parameter tables. Larger values make the prior stronger relative to the data (smoother probabilities); smaller values let the data dominate more. Default is `10.0`. |
 
 ## Strengths
 

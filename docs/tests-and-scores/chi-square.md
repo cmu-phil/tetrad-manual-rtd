@@ -32,13 +32,14 @@ For each candidate independence X ⟂ Y | S:
 4. Use a chi-square distribution with appropriate degrees of freedom to obtain
    a p-value.
 
-## Parameters in Tetrad
+## Parameters
 
-Typical parameters include:
-
-- `alpha` — Significance level for declaring dependence.
-- `depth` — Maximum conditioning set size used by the search algorithm.
-- `verbose` — Whether to log details of test calls.
+| Parameter (camelCase)   | Description |
+|-------------------------|-------------|
+| `alpha`                 | Significance level (p-value cutoff) for the chi-square test of (conditional) independence. The null hypothesis is that the variables are independent given the conditioning set. P-values below `alpha` lead to rejection. Smaller values make the test more conservative (fewer edges); larger values make the graph denser. Typical range: 0.0–1.0. |
+| `minCountPerCell`       | Minimum allowed count in each cell of the contingency table. If some cells fall below this threshold, the chi-square approximation becomes less reliable. Increasing this value can improve accuracy but may reduce power when sample size is small. Default is 1; minimum is 1; maximum is 1,000,000. |
+| `cellTableType`         | Optimization choice for how to build contingency tables: `1 = AD Tree`, `2 = Count Sample`. This affects how counts are computed internally (data structure / performance), but should not change the numerical results. Default is 1 (AD Tree). |
+| `effectiveSampleSize`   | The effective sample size to use in computing p-values. If set to `-1` (the default), the actual data sample size is used. If set to a positive integer, the test behaves as if that were the sample size, which can be useful for reweighted or subsampled data. |
 
 ## Strengths
 

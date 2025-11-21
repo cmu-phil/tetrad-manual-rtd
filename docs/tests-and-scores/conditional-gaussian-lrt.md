@@ -37,14 +37,14 @@ For each candidate independence X ⟂ Y | S, the CG LRT:
 4. Uses an asymptotic chi-square distribution for the difference in log-
    likelihoods to obtain a p-value.
 
-## Parameters in Tetrad
+## Parameters
 
-Typical parameters include:
-
-- `alpha` — Significance threshold for rejecting independence.
-- Options controlling how CG models are regularized or how small cells are
-  handled (if implemented).
-- `verbose` — Whether to show test counts and warnings about sparse cells.
+| Parameter (camelCase)           | Description |
+|---------------------------------|-------------|
+| `alpha`                         | Significance level (p-value cutoff) for the likelihood-ratio test of conditional independence. The null hypothesis is that the variables are conditionally independent given the conditioning set. P-values below `alpha` lead to rejection. Smaller values make the test more conservative (fewer edges); larger values make the graph denser. Typical range: 0.0–1.0. |
+| `discretize`                    | Boolean. If `true`, continuous variables are discretized in cases where the exact conditional Gaussian test would require unstable or poorly supported estimates (for example, when some discrete parent configurations have very small sample size). If `false`, the test attempts to use the exact conditional Gaussian likelihood in all cases and may be less robust when cells are sparse. Default is `true`. |
+| `numCategoriesToDiscretize`     | Integer ≥ 2. Number of categories used when discretizing continuous variables in the backup discretization step. Default is 3. Larger values give a finer discretization but increase the number of cells and reduce counts per cell. |
+| `minSampleSizePerCell`         | Integer ≥ 2. Minimum required sample size per configuration (cell) in the conditional Gaussian model. If some cells fall below this threshold, the test may fall back to discretization (if `discretize = true`) or produce unstable results. Default is 4. |
 
 ## Strengths
 

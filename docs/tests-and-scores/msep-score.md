@@ -28,9 +28,7 @@ dependencies).
 
 ## Parameters in Tetrad
 
-- Definitions of which independences are treated as **oracle truth**.
-- Weights for different types of mismatches (if configurable).
-- `verbose` — Reporting of mismatch counts.
+No parameters.
 
 ## Strengths
 

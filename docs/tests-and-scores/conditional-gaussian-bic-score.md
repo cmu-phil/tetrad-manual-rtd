@@ -29,14 +29,15 @@ As with other BIC scores:
 where `logL` is the CG log-likelihood and `k` is the number of free parameters
 (conditional means, covariances, and discrete probabilities).
 
-## Parameters in Tetrad
+## Parameters
 
-Typical parameters include:
-
-- `penaltyDiscount` — Adjusts the strength of the complexity penalty.
-- Options related to handling sparse discrete configurations or regularizing
-  covariance estimates.
-- `verbose` — Whether to log local scores.
+| Parameter (camelCase)           | Description |
+|---------------------------------|-------------|
+| `penaltyDiscount`               | Double ≥ 0.0. The penalty multiplier “c” in the modified BIC-type criterion (for example, a score of the form 2·log-likelihood − c·k·log(N), where k is the number of free parameters and N is the sample size). Larger values impose a stronger complexity penalty and yield sparser graphs; smaller values allow denser graphs. Default is 2.0. |
+| `structurePrior`                | Double ≥ 0.0. Structure prior coefficient controlling a binomial-style prior on the number of parents per node. When 0.0 (default), the score uses essentially a flat structure prior. Larger values encode a stronger preference for a particular expected parent count and can bias the search toward graphs with that typical in-degree. |
+| `discretize`                    | Boolean. If `true`, continuous variables are discretized when a conditional Gaussian likelihood would require integrating over a continuous parent with a discrete child (a backup “discretize X” strategy). If `false`, the score uses the exact conditional Gaussian integration whenever possible. Default is `true`. |
+| `numCategoriesToDiscretize`     | Integer ≥ 2. Number of categories used when discretizing continuous variables in the backup discretization step. Default is 3. Larger values give a finer discretization but increase the size of the conditional tables and the number of parameters. |
+| `minSampleSizePerCell`         | Integer ≥ 2. Minimum required sample size per configuration (cell) in the conditional Gaussian model. If the per-cell sample size is too small, the exact CG calculations become unstable, and the score may fall back to the discretization strategy. Default is 4. |
 
 ## Strengths
 

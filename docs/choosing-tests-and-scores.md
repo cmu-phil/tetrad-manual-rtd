@@ -114,30 +114,40 @@ This approach expands continuous variables using orthogonal polynomials (Legendr
 
 ## 4. Non-Gaussian Linear Models
 
-If relationships are linear but noise terms are non-Gaussian (LiNGAM-type models):
+If relationships are linear but noise terms are non-Gaussian (LiNGAM-type settings or visibly skewed residuals):
 
 ### Recommended Tests
 
-- **[Poisson BIC Test](tests-and-scores/poisson-bic-test.md)**  
-  Good when non-Gaussianity manifests as asymmetric or skewed distributions.
+For **LiNGAM-style algorithms** (DirectLiNGAM, ICA-LiNGAM, etc.), independence is handled internally via ICA or related objective functions; there is **no separate CI test** to choose in the GUI.
 
-- **ICA-based independence tests**  
-  Used internally by LiNGAM-style methods (not exposed as separate test pages in this manual).
+If you still run “ordinary” DAG search (PC, FGES, BOSS, GRaSP) on linear non-Gaussian data:
+
+- It is usually fine to keep using **[Fisher Z](tests-and-scores/fisher-z.md)** as the CI test.  
+  The structure is still identifiable from second-order moments under many conditions, even if the noise is non-Gaussian.
 
 ### Recommended Scores
 
-- **“Poisson BIC”–type scores** → **[PoissonPriorScore](tests-and-scores/poisson-prior-score.md)**  
-  (Score for linear non-Gaussian models with Poisson-like or skewed noise.)
+- **[Sem BIC Score](tests-and-scores/sem-bic-score.md)** (heuristic but empirically strong)  
+  Although derived under a Gaussian assumption, Sem BIC often works very well in linear non-Gaussian settings. In particular, the BOSS paper
+
+  > Andrews, B., Ramsey, J., Sanchez-Romero, R., Camchong, J., & Kummerfeld, E. (2023).  
+  > *Fast scalable and accurate discovery of DAGs using the best order score search and grow shrink trees.*  
+  > NeurIPS 36, 63945–63956.
+
+  shows that **BOSS + Sem BIC** performs comparably to DirectLiNGAM in linear non-Gaussian simulations (see Figure 4a).
+
+- **[PoissonPriorScore](tests-and-scores/poisson-prior-score.md)** (optional structural prior)  
+  This is a **structural sparsity prior** (Poisson on edges/parents), not a noise model. You can combine it with Sem BIC if you want an explicit probabilistic prior over graph complexity, but it is not specific to linear non-Gaussian noise.
 
 ### Best-Fit Algorithms
 
-- DirectLiNGAM
-- ICA-LiNGAM, ICA-LiNG-D
+- DirectLiNGAM, ICA-LiNGAM, ICA-LiNG-D (internal ICA-type objective)
 - FASK / FASK-Vote
-- Pairwise Skewness
+- BOSS or FGES with **Sem BIC** (heuristic but well supported by experiments)
+- Pairwise-skewness-based orientation methods
 
 **Rule of thumb:**  
-If your data has visible skew or heavy tails, consider Poisson or ICA-based methods.
+If residuals are visibly skewed or heavy-tailed, it is still quite reasonable to use **Sem BIC** with BOSS/FGES for structure learning, and to compare against dedicated LiNGAM-style methods when possible.
 
 ---
 
@@ -223,7 +233,7 @@ This is the recommended approach for **latent causal structure without specifyin
 | Continuous linear | [Fisher Z](tests-and-scores/fisher-z.md) | [Sem BIC](tests-and-scores/sem-bic-score.md) | PC, FGES, BOSS, GFCI |
 | Discrete | [G²](tests-and-scores/g-square.md) or BDeu-style tests | [BDeu](tests-and-scores/bdeu-score.md) | BOSS\*, FGES, PC |
 | Mixed | [Basis Function Test](tests-and-scores/basis-function-lrt.md) | [Basis Function BIC](tests-and-scores/basis-function-bic-score.md) | PC, FGES, BOSS, GFCI |
-| Linear non-Gaussian | [Poisson BIC Test](tests-and-scores/poisson-bic-test.md) or ICA-based | [PoissonPriorScore](tests-and-scores/poisson-prior-score.md) | LiNGAM, FASK |
+| Linear non-Gaussian | Internal ICA criteria or [Fisher Z](tests-and-scores/fisher-z.md) when using PC/BOSS | [Sem BIC](tests-and-scores/sem-bic-score.md) | DirectLiNGAM, FASK, BOSS (heuristic), FGES |
 | Nonlinear | [KCI](tests-and-scores/kci-test.md) | (none / kernel-based) | PC+KCI, CAM |
 | Nonlinear scalable | [Basis Function Test](tests-and-scores/basis-function-lrt.md) | [Basis Function BIC](tests-and-scores/basis-function-bic-score.md) | PC+BF, GFCI+BF |
 | Latent blocks | Blocks-Test-TS | Blocks-BIC | PC, GFCI, FGES, BOSS |

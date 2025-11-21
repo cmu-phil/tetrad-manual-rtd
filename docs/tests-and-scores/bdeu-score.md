@@ -27,13 +27,12 @@ The score depends on:
 - the prior hyperparameters determined by ESS and uniformity,
 - the DAG structure.
 
-## Parameters in Tetrad
+## Parameters
 
-Typical parameters include:
-
-- `ess` — Equivalent sample size controlling prior strength.
-- `structurePrior` — Optional priors over structures (e.g., edge penalties).
-- `verbose` — Whether to log local BDeu contributions.
+| Parameter (camelCase)           | Description |
+|---------------------------------|-------------|
+| `priorEquivalentSampleSize`     | Double ≥ 1.0. The **prior equivalent sample size** for the BDeu Dirichlet prior. This total prior count is spread uniformly across all parent–child configurations in the conditional probability tables. Larger values make the prior stronger relative to the data (smoother estimates and stronger regularization); smaller values let the data dominate more. Default is 10.0. |
+| `structurePrior`                | Double ≥ 0.0. **Structure prior coefficient** controlling a binomial-style prior on graph structure (for example, expected number of parents per node). When set to 0.0 (the default), BDeu uses essentially a uniform structure prior. Increasing this value biases the score toward graphs whose parent counts match the implied binomial prior; larger values therefore encourage particular sparsity levels. |
 
 ## Strengths
 

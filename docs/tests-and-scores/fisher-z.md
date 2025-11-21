@@ -35,15 +35,14 @@ If the p-value is below a user-specified alpha level, the test rejects
 independence and the edge is kept; otherwise, the edge may be removed in
 constraint-based algorithms.
 
-## Parameters in Tetrad
+## Parameters
 
-Typical parameters include:
-
-- `alpha` — Significance level for rejecting independence.
-- `depth` — Maximum size of conditioning sets considered by the search
-  algorithm (not a parameter of the test itself, but of the algorithm using
-  it).
-- `verbose` — Whether to log detailed information about test calls.
+| Parameter (camelCase)    | Description |
+|--------------------------|-------------|
+| `alpha`                  | Significance level (p-value cutoff) for rejecting the null hypothesis of (conditional) independence. Default is 0.01. Smaller values make the test more conservative (fewer edges); larger values make the graph denser. Typically chosen between 0 and 1. |
+| `shrinkageMode`          | Shrinkage mode for the covariance or correlation matrix: `1 = None`, `2 = Ridge`, `3 = Ledoit–Wolf`. Use `None` for clean, well-conditioned data; `Ridge` or `Ledoit–Wolf` can help when the covariance matrix is ill-conditioned, high-dimensional, or nearly singular. Default is `1` (None). |
+| `regularizationLambda`   | Nonnegative regularization constant added to the diagonal of the covariance/correlation matrix (a small “ridge” term). Default is `1e-8`. Increasing this can improve numerical stability when matrices are nearly singular, at the cost of slightly biasing correlations toward zero. |
+| `effectiveSampleSize`    | The effective sample size to use in computing p-values. If set to `-1`, the actual data sample size is used (default). If set to a positive integer, the test behaves as if that were the sample size, which can be useful for reweighted or subsampled data. |
 
 ## Strengths
 

@@ -34,16 +34,13 @@ For each X ⟂ Y | S query, the test:
 4. Uses an approximate chi-square distribution or alternative calibration to
    obtain a p-value.
 
-## Parameters in Tetrad
+## Parameters
 
-Typical parameters include:
-
-- `alpha` — Significance level.
-- Regularization-related settings (if exposed), such as ridge parameters or
-  rank thresholds.
-- `depth` — Maximum conditioning-set size for the algorithms that use this
-  test.
-- `verbose` — Whether to log degeneracy warnings and rank information.
+| Parameter (camelCase)   | Description |
+|-------------------------|-------------|
+| `alpha`                 | Significance level (p-value cutoff) for the likelihood-ratio test of conditional independence. The null hypothesis is that the variables are conditionally independent given the conditioning set. P-values below `alpha` lead to rejection. Smaller values make the test more conservative (fewer edges); larger values make the graph denser. Typical range: 0.0–1.0. |
+| `singularityLambda`     | Double used to handle singular or nearly singular covariance matrices. If `singularityLambda > 0`, this value is added to the diagonal (ridge regularization) to stabilize matrix inverses. If `singularityLambda < 0`, a pseudoinverse is used instead. Default is 0.0; use a small positive value if you encounter numerical-singularity warnings. |
+| `effectiveSampleSize`   | Double > 0, or `-1`. If `-1` (default), the actual sample size is used in computing the test statistic and p-values. If set to a positive value, the test behaves as if that were the sample size (for example, when treating weighted or subsampled data as having a different effective N). |
 
 ## Strengths
 

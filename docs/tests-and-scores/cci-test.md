@@ -35,14 +35,15 @@ Conceptually, the CCI test:
 4. Calibrates a p-value using asymptotic or resampling-based approximations,
    depending on settings.
 
-## Parameters in Tetrad
+## Parameters
 
-Typical parameters include:
-
-- `alpha` — Significance level.
-- Regression-related hyperparameters (e.g., basis order, regularization) if
-  exposed by the implementation.
-- `verbose` — Whether to log internal regression fits and residual diagnostics.
+| Parameter (camelCase) | Description |
+|-----------------------|-------------|
+| `alpha`               | Significance level (p-value cutoff) for the conditional independence test. The null is conditional independence; p-values below `alpha` lead to rejection. Default is 0.01. Allowed range: 0.0–1.0. |
+| `scalingFactor`       | Scaling factor for the Gaussian kernel used inside the CCI test. Larger values broaden the kernel (smoother similarity), smaller values make it more localized. Default is 1.0. |
+| `basisType`           | Integer code for the type of basis functions used to approximate nonlinear relationships: `0 = Polynomial`, `1 = Legendre`, `2 = Hermite`, `3 = Chebyshev`. This controls which orthogonal (or polynomial) system is used in the expansion. |
+| `truncationLimit`     | Truncation limit for the basis expansion. Basis functions with indices from 1 up to this value are included for each variable. Default is 3; minimum is 1; maximum is 1000. Larger values allow more flexible nonlinear fits but increase the number of parameters and the risk of overfitting. |
+| `basisScale`          | Scaling parameter `b` used to rescale variables into the interval `[-b, b]` before applying the basis functions. If `basisScale = 0`, variables are standardized instead. Default is 1. Typical range is 0–500000, but values near 0–5 are most reasonable for real data. |
 
 ## Strengths
 

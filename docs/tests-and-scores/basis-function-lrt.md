@@ -36,16 +36,13 @@ For each X ⟂ Y | S query, the test:
 4. Uses an approximate chi-square distribution for the difference in model
    dimensions to obtain a p-value.
 
-## Parameters in Tetrad
+## Parameters
 
-Typical parameters include:
-
-- `alpha` — Significance level for rejecting independence.
-- Basis-related settings, such as:
-  - truncation order or maximum degree,
-  - choice of basis family (e.g., Legendre, Hermite, Chebyshev).
-- `robustRegression` or similar options for handling outliers (if enabled in
-  the implementation).
+| Parameter (camelCase)   | Description |
+|-------------------------|-------------|
+| `alpha`                 | Significance level (p-value cutoff) for the likelihood-ratio test of conditional independence. Default is 0.01. The null is conditional independence; smaller values make the test more conservative (fewer rejections), larger values make it more liberal. Allowed range: 0.0–1.0. |
+| `truncationLimit`       | Integer ≥ 1. Truncation limit for the basis expansion. Basis functions with indices from 1 up to this value are included for each continuous variable (for example, the first 3 Legendre polynomials). Larger values allow more flexible nonlinear fits but increase the number of parameters and the chance of overfitting. Default is 3; typical range is 1–1000. |
+| `singularityLambda`     | Double used to handle singular or nearly singular matrices in the regression steps. If `singularityLambda > 0`, this value is added to the diagonal (ridge regularization). If `singularityLambda < 0`, a pseudoinverse is used instead. Default is 0.0. Use a small positive value when you see numerical-singularity warnings. |
 
 ## Strengths
 

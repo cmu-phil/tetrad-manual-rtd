@@ -36,14 +36,13 @@ For each X ⟂ Y | S query, the test:
 4. Uses a threshold linked to the alpha level or a fixed BIC difference
    criterion.
 
-## Parameters in Tetrad
+## Parameters
 
-Typical parameters include:
-
-- `alpha` or an equivalent **BIC-difference threshold**.
-- Poisson regression options, such as regularization or offset terms (if
-  implemented).
-- `verbose` — Whether to log model fits and BIC values.
+| Parameter (camelCase)   | Description |
+|-------------------------|-------------|
+| `precomputeCovariances` | Boolean. If `true`, precomputes and caches covariance (and possibly cross-covariance) matrices or related sufficient statistics used by the Poisson BIC-based test. This speeds up repeated evaluations at the cost of additional memory. If `false`, these quantities are recomputed on the fly, which saves memory but may slow down large runs. |
+| `poissonLambda`         | Double > 0. Lambda parameter for the Poisson distribution used in the underlying likelihood. Controls the expected rate of counts under the Poisson model. Default is 1.0; minimum is about 1e-10. In most applications you can leave this at the default unless you have a specific reason to encode a different expected rate. |
+| `singularityLambda`     | Double. Handles singular or nearly singular covariance or information matrices in the Poisson modeling step. If `singularityLambda > 0`, that value is added to the diagonal (a ridge term) to stabilize matrix inverses. If `singularityLambda < 0`, a pseudoinverse is used instead. Default is 0.0. Use a small positive value if you encounter numerical-singularity warnings. |
 
 ## Strengths
 

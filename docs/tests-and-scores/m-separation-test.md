@@ -37,10 +37,7 @@ For each independence query X ⟂ Y | S, the test:
 
 ## Parameters in Tetrad
 
-- The primary “parameter” is the **graph** itself.
-- Some implementations may have options for:
-  - Graph type (DAG, MAG, PAG).
-  - Whether to treat selection variables in a particular way.
+No Parameters.
 
 ## Strengths
 

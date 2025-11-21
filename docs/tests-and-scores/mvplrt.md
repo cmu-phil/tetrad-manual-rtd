@@ -33,14 +33,13 @@ For each X ⟂ Y | S query:
 4. Use a chi-square approximation for the difference in degrees of freedom to
    obtain a p-value.
 
-## Parameters in Tetrad
+## Parameters
 
-Typical parameters include:
-
-- `alpha` — Significance level.
-- `maxDegree` — Maximum polynomial degree (truncation order).
-- Possibly options for including or excluding interaction terms.
-- `verbose` — Whether to report fitted polynomial terms and diagnostics.
+| Parameter (camelCase) | Description |
+|-----------------------|-------------|
+| `alpha`               | Significance level (p-value cutoff) for the likelihood-ratio test of conditional independence. The null hypothesis is that the variables are conditionally independent given the conditioning set. P-values below `alpha` lead to rejection. Smaller values make the test more conservative (fewer edges); larger values make the graph denser. Typical range: 0.0–1.0. |
+| `fDegree`             | Integer ≥ 1. Degree parameter for the MVP projection model (for example, the degree of the polynomial or other basis used in the projection step). Higher values allow more flexible functional forms in the projections but increase the number of parameters and the risk of overfitting. Typical values are small integers such as 1, 2, or 3. |
+| `discretize`          | Boolean. If `true`, continuous variables may be discretized in situations where the MVP likelihood-ratio test would otherwise be unstable or poorly supported (for example, very sparse configurations). If `false`, the test uses the continuous MVP projection model directly, which can be less robust when effective cell counts are small. Default is typically `true`. |
 
 ## Strengths
 

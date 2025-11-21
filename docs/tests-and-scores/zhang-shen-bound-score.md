@@ -30,13 +30,14 @@ The score encodes either:
 
 and is used as a scalar criterion for comparing candidate graphs.
 
-## Parameters in Tetrad
+## Parameters
 
-Typical parameters might include:
-
-- Hyperparameters appearing in the bound or its approximation.
-- `penaltyDiscount` – If combined with other terms.
-- `verbose` — Logging of bound components and derived scores.
+| Parameter (camelCase)   | Description |
+|-------------------------|-------------|
+| `zsRiskBound`           | Double in [0, 1]. Risk bound used in the Zhang–Shen criterion. This is the probability of getting a model whose score is worse than the score of the true model, conditional on the true model being among the candidates. Smaller values enforce a stricter bound (more protection against overfitting but more risk of underfitting); larger values relax the bound. Default is 0.1. |
+| `precomputeCovariances` | Boolean. If `true`, precomputes and caches covariance (and possibly cross-covariance) matrices used by the score. This speeds up repeated scoring at the cost of additional memory. If `false`, these quantities are recomputed on the fly, which saves memory but can be slower for large graphs or many score evaluations. |
+| `singularityLambda`     | Double. Handles singular or nearly singular covariance matrices. If `singularityLambda > 0`, that value is added to the diagonal (a ridge term) to stabilize matrix inverses. If `singularityLambda < 0`, a pseudoinverse is used instead. Default is 0.0. Use a small positive value if you encounter numerical-singularity warnings. |
+| `effectiveSampleSize`   | Double > 0, or `-1`. If `-1` (default), the actual sample size N is used in the log(N) penalty or tail-bound terms. If set to a positive value, the score behaves as if that were the sample size (for example, when treating weighted or subsampled data as having a different effective N). |
 
 ## Strengths
 

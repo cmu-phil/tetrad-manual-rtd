@@ -28,14 +28,12 @@ The score has the form:
 where `logL` is the log-likelihood under the multinomial parameter estimates,
 `k` is the number of free CPT parameters, and `N` is the sample size.
 
-## Parameters in Tetrad
+## Parameters
 
-Typical parameters include:
-
-- `penaltyDiscount` — Scales the complexity penalty term.
-- `ess` or equivalent sample size parameters may be used in related scores
-  but not in pure Discrete BIC.
-- `verbose` — Whether to log local scores and structure updates.
+| Parameter (camelCase)   | Description |
+|-------------------------|-------------|
+| `penaltyDiscount`       | Double ≥ 0.0. The penalty multiplier “c” in a BIC-type criterion (for example, a score of the form 2·log-likelihood minus c·k·log(N), where k is the number of free parameters and N is the sample size). Larger values impose a stronger complexity penalty and yield sparser graphs; smaller values allow denser graphs. Typical defaults are around 1–2. |
+| `structurePrior`        | Double ≥ 0.0. Structure prior coefficient controlling a binomial-style prior on the number of parents per node. When 0.0 (default), the score uses essentially a flat structure prior. Increasing this value encodes a stronger preference for a particular expected in-degree and can bias the search toward graphs whose parent counts match that prior. |
 
 ## Strengths
 
