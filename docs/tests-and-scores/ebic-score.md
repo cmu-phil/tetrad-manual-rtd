@@ -47,3 +47,7 @@ where γ is a parameter in [0, 1], `p` is the number of variables, and
 
 - Choice of γ is somewhat problem-dependent.
 - May penalize edges too strongly when N is not extremely small compared to p.
+
+## References
+
+- Chen, J., & Chen, Z. (2008). *Extended Bayesian information criteria for model selection with large model spaces.* Biometrika, 95(3), 759–771.

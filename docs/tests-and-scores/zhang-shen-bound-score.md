@@ -2,33 +2,70 @@
 
 ## Summary
 
-The Zhang–Shen Bound Score is a specialized criterion inspired by theoretical
-bounds on causal discovery or structure learning performance, associated with
-work by Zhang and Shen and collaborators. In Tetrad, it serves as an
-experimental or research-focused score to evaluate graphs under such bounds.
+The Zhang–Shen Bound Score is an experimental score for linear Gaussian
+models that uses a risk bound derived from Theorem 1 of Zhang and Shen (2010)
+to choose a penalty for the number of parents of each node.
+
+For each variable, and for each possible maximum number of parents (called
+m0), the score numerically solves for a penalty value lambda(m0) such that
+the probability of selecting a model whose score is worse than the true model
+is bounded above by a user-specified risk bound in the interval [0, 1].
+Intuitively, the risk-bound parameter controls an upper bound on the local
+false positive probability for parent edges.
+
+The score is designed to be conservative, especially for large, dense models,
+and to give a risk parameter that is directly interpretable.
 
 ## When to use
 
-- You are experimenting with **theoretical guarantees** or bounds-based
-  selection criteria.
-- You are working with algorithms or studies that directly reference the
-  Zhang–Shen framework.
-- You want to compare standard BIC-like selection with a more theory-driven
-  bound-based metric.
+Use the Zhang–Shen Bound Score when:
+
+- You want a theory-guided criterion based on an explicit risk bound for local
+  false positive decisions.
+- You are working with linear Gaussian SEMs and want an alternative to
+  standard BIC/EBIC-style penalties.
+- You are exploring large or moderately dense models where a conservative
+  score is preferable and you want a tunable risk parameter.
+- You are using FGES, GRaSP, or similar search algorithms and are willing to
+  let the score refine its internal estimates as nodes are revisited during
+  search.
 
 ## Model class
 
-- Depends on the specific bound and setting; often continuous or discrete DAGs
-  with certain regularity assumptions.
+- Linear Gaussian DAG / SEM over a set of continuous variables.
+- Implemented on top of a covariance matrix (or raw data converted to a
+  covariance matrix).
+- As with other SEM-based scores in Tetrad, higher scores indicate stronger
+  dependence or better fit; negative scores indicate independence.
 
 ## Score form (conceptual)
 
-The score encodes either:
+For a given target node i and candidate parent set Pa(i), the local score has
+the form:
 
-- An upper or lower bound on risk or error associated with a structure, or
-- A surrogate objective motivated by such a bound,
+> score(i | Pa(i)) = -0.5 * nEff * log(varRy) - lambda(m0) * numberOfParents
 
-and is used as a scalar criterion for comparing candidate graphs.
+where:
+
+- varRy is the residual variance of node i given its current parents,
+- nEff is the effective sample size (either the actual sample size or a
+  user-specified value),
+- numberOfParents is the size of the current parent set Pa(i),
+- lambda(m0) is the penalty derived from Zhang–Shen’s bound for the current
+  estimate of the maximum number of parents m0 for that node.
+
+The score maintains, for each node:
+
+- an estimate of the maximum number of parents in the (unknown) minimal true
+  model m0,
+- the best local score observed so far, and
+- the corresponding residual variance.
+
+Each time a better local score is observed for that node, these estimates are
+updated. As search algorithms such as FGES or GRaSP revisit the node, the
+bound becomes sharper and the resulting scores tend to improve over time.
+In practice, starting with m0 = 0 for all variables already gives reasonable
+behavior.
 
 ## Parameters
 
@@ -41,12 +78,27 @@ and is used as a scalar criterion for comparing candidate graphs.
 
 ## Strengths
 
-- Grounded in theoretical performance bounds.
-- Encourages exploration of criteria beyond classical likelihood penalties.
+- Provides a directly interpretable risk parameter (`zsRiskBound`), linking
+  model selection to a bound on the probability of choosing a model worse than
+  the true one.
+- Tends to be conservative for large, dense models, making it useful when
+  false positives are a major concern.
+- Can be computationally faster than some alternative scores in the same
+  package, while still being grounded in a theoretical risk bound.
+- Adapts as search proceeds: nodes revisited by FGES or GRaSP get progressively
+  refined estimates of m0 and lambda(m0).
 
 ## Limitations
 
-- More specialized and less standard than BIC/EBIC; interpretation may be less
-  familiar.
-- Theoretical assumptions behind the bound may not hold in all applied
-  settings.
+- Specialized to linear Gaussian SEMs; it is not intended for discrete or
+  highly non-Gaussian settings.
+- More complex and less standard than BIC or EBIC; the behavior and
+  interpretation may be less familiar to many users.
+- The performance depends on how often nodes are revisited during search, since
+  the estimates of m0 and lambda(m0) improve over time.
+- The theoretical assumptions of Zhang and Shen (2010) are asymptotic and may
+  not hold perfectly in small samples or strongly misspecified models.
+
+## References
+
+- Zhang, Y., & Shen, X. (2010). *Model selection procedure for high-dimensional data.* Statistical Analysis and Data Mining: The ASA Data Science Journal, 3(5), 350–358.

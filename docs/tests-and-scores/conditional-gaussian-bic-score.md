@@ -49,3 +49,7 @@ where `logL` is the CG log-likelihood and `k` is the number of free parameters
 
 - Requires enough data per discrete configuration.
 - Assumes linear-Gaussian behavior for continuous components.
+
+## References
+
+- Andrews, B., Ramsey, J., & Cooper, G. F. (2018). *Scoring Bayesian networks of mixed variables.* International Journal of Data Science and Analytics, 6(1), 3–18.

@@ -64,3 +64,7 @@ For each candidate independence X ⟂ Y | S, the CG LRT:
 ## References
 
 - Lauritzen, S. L. (1996). *Graphical Models*. Oxford University Press.
+
+## References
+
+- Andrews, B., Ramsey, J., & Cooper, G. F. (2018). *Scoring Bayesian networks of mixed variables.* International Journal of Data Science and Analytics, 6(1), 3–18.

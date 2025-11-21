@@ -48,3 +48,7 @@ where `logL_reg` is a regularized or pseudo-inverse-based log-likelihood, and
 
 - Approximate nature of the likelihood and degrees of freedom.
 - Behavior depends on the chosen regularization scheme.
+
+## References
+
+- Ramsey, J. D., Andrews, B., & Spirtes, P. (2024). *Choosing DAG models using Markov and minimal edge count in the absence of ground truth.* arXiv:2409.20187.

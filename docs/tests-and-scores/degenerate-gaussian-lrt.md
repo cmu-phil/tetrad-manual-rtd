@@ -54,3 +54,7 @@ For each X ⟂ Y | S query, the test:
 - Exact null distribution may be approximate; calibration can be more complex.
 - Behavior depends on the choice of regularization or pseudo-inverse.
 - Still relies on approximate Gaussian assumptions.
+
+## References
+
+- Ramsey, J. D., Andrews, B., & Spirtes, P. (2024). *Choosing DAG models using Markov and minimal edge count in the absence of ground truth.* arXiv:2409.20187.

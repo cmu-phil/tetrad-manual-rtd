@@ -48,3 +48,7 @@ depending on sample size N, dimension p, and parameter count k.
 
 - Theoretical guarantees depend on the specific penalty chosen.
 - Parameter tuning can be nontrivial.
+
+## References
+
+- Kim, Y., Kwon, S., & Choi, H. (2012). *Consistent model selection criteria on high dimensions.* Journal of Machine Learning Research, 13(1), 1037–1057.
