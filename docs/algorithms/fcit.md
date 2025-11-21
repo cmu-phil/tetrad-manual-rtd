@@ -90,7 +90,7 @@ Cross-references:
 👉 [GRaSP-FCI](grasp-fci.md) •  
 👉 [GFCI](gfci.md) •  
 👉 [FCI](fci.md) •  
-👉 [LV-Dumb](lv-dumb.md)
+👉 [LV-Dumb](lv-heuristic.md)
 
 ---
 

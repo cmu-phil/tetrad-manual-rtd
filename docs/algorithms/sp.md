@@ -112,22 +112,11 @@ These constraints significantly reduce the effective search space in small probl
 
 ---
 
-## Key parameters in Tetrad
+### Parameters
 
-Typical SP-related controls:
-
-- **Score / penalty**
-    - Score family (Gaussian, discrete, etc.).
-    - Penalization strength controlling sparsity.
-
-- **Search limits**
-    - Maximum number of permutations (if a cutoff or heuristic enumeration is used).
-    - Optional pruning settings where available.
-
-- **Threads / performance**
-    - Parallelization across permutations (for very small `p`) but many datasets or restarts).
-
-As always, see the **Parameter Definitions** page for exact names and defaults.
+| Parameter (camelCase) | Description |
+|------------------------|-------------|
+| `timeLag`             | Integer time-lag parameter used when SP is applied to time-series data. A value of 0 (default) treats the data as i.i.d.; positive values indicate the maximum lag to consider for temporal parent–child relationships. |
 
 ---
 

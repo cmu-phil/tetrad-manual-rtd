@@ -55,6 +55,12 @@ structure learning (e.g., PC using Blocks-Test-TS).
 - **FactorAnalysis:** Parametric model-based approach; not cluster-driven.
 - **Latent Clusters:** Required input (TSC/FOFC/FTFC/GFFC/BPC).
 
+### Parameters
+
+| Parameter (camelCase)   | Description |
+|-------------------------|-------------|
+| `penaltyDiscount`       | Multiplicative factor applied to the model’s complexity penalty. Lower values favor more complex latent-variable structures; higher values penalize additional parameters more strongly. Typical range: 0.1–2.0. |
+
 ---
 
 ## References

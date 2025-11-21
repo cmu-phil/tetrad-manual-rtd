@@ -110,27 +110,77 @@ These constraints are enforced consistently across IMaGES and all FASK runs.
 
 ---
 
-## Key Parameters (via `Parameters`)
+## ImagES Parameters
 
-FaskVote itself does not introduce many new parameters; it passes parameters through to IMaGES and FASK. Relevant parameters include:
+ImagES uses parameters from three sources:
 
-From IMaGES (via `Images`):
+1. **SemBicScore** (scoring)
+2. **FGES** (the search component)
+3. **ImagES-specific parameters**
 
-- `penaltyDiscount`
-- `structurePrior` (or equivalent, depending on score)
-- Any other score-related parameters used by the `ScoreWrapper`
+These are shown in grouped tables below.
 
-From FASK:
+---
 
-- `skewEdgeThreshold` (SKEW_EDGE_THRESHOLD): minimum skew-based score needed for orientation.
-- `depth` (DEPTH): maximum conditioning-set depth used during the FAS stage inside FASK.
-- `faskDelta` (FASK_DELTA): threshold used in FASK’s skew-based conditional moment comparisons.
-- `orientationAlpha` (ORIENTATION_ALPHA): significance level for certain orientation decisions (for example, additional tests supporting orientation).
+### SemBicScore Parameters (Inherited)
 
-Other controls:
+| Parameter (camelCase)     | Description |
+|---------------------------|-------------|
+| `penaltyDiscount`         | Scalar ≥ 0. Penalizes model complexity; smaller values reduce the penalty (denser models). |
+| `semBicStructurePrior`    | Strength of the structure prior (0 = none). |
+| `semBicRule`              | Choice of penalty-rule variant for SEM-BIC. |
+| `precomputeCovariances`   | Boolean. Precompute covariance matrix for speed. |
+| `singularityLambda`       | Ridge regularization added to covariance matrix diagonal. |
+| `effectiveSampleSize`     | Override for sample size (useful for weighted or subsampled data). |
 
-- **Knowledge**: handed in via `setKnowledge(Knowledge knowledge)`.
-- **ScoreWrapper** and **IndependenceWrapper**: provided at construction time and used respectively by IMaGES and FASK.
+---
+
+### FGES Parameters (Inherited)
+
+| Parameter (camelCase)     | Description |
+|---------------------------|-------------|
+| `faithfulnessAssumed`     | Boolean. If true, pruning uses stricter heuristics. |
+| `numRestarts`             | Number of restart attempts for escaping local optima. |
+| `useDataOrder`            | Boolean. If true, variable order influences heuristics. |
+| `maxDegree`               | Maximum degree limit for the output graph. |
+| `verbose`                 | Boolean. Print progress messages. |
+
+(Your FGES implementation may include additional parameters—these can be added here the same way.)
+
+---
+
+### ImagES-Specific Parameters
+
+| Parameter (camelCase)     | Description |
+|---------------------------|-------------|
+| `randomSelectionSize`     | Number of subsets drawn in each resampling/aggregation round. |
+| `timeLag`                 | Integer. Time-lag used for temporal modeling; 0 for untimed data. |
+| `imagesMetaAlg`           | Meta-algorithm choice (e.g., majority vote, weighted vote, etc.). |
+| `verbose`                 | Boolean. Controls ImagES-level verbosity. |
+
+---
+
+## FASK Parameters
+
+The FASK algorithm includes parameters inherited from its base algorithm (typically FGES or GES), plus FASK-specific parameters used for skew-based orientation.
+
+### Base Algorithm Parameters (Inherited)
+
+If a base algorithm is supplied, its parameters are included here. For example, if FASK wraps FGES, all FGES parameters apply.
+
+(You can insert the FGES table here if desired.)
+
+---
+
+### FASK-Specific Parameters
+
+| Parameter (camelCase)        | Description |
+|------------------------------|-------------|
+| `depth`                      | Depth of adjacency search (as in PC/FCI-style pruning). |
+| `skewEdgeThreshold`          | Minimum absolute skewness needed for considering a skew-based orientation. |
+| `alpha`                      | Significance level for independence tests used during pruning/refinement. |
+| `faskDelta`                  | Threshold for detecting left-right orientation via conditional expectations. |
+| `faskLeftRightRule`          | Boolean. Enables the left-right orientation rule based on skew differences. |
 
 ---
 

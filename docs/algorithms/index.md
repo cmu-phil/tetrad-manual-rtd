@@ -39,7 +39,7 @@ ica-lingam
 ica-lingd
 images
 latent-cluster
-lv-dumb
+lv-heuristic
 mimbuild-bollen
 mimbuild-pca
 pag-sampling-rfci

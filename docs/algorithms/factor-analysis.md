@@ -61,6 +61,16 @@ other Tetrad algorithm.
 - Sensitive to model misspecification.
 - Does not identify clusters automatically—you must choose the number of factors.
 
+### Parameters
+
+| Parameter (camelCase)       | Description |
+|-----------------------------|-------------|
+| `fa_threshold`              | Non-negative double. Threshold used when deciding which factor loadings are considered “large enough” to be substantive. Typical values are small (e.g., 0.1–0.4). |
+| `numFactors`                | Integer ≥ 1. The number of latent factors to extract. If set incorrectly, factors may be under- or over-extracted. |
+| `useVarimax`                | Boolean. If `true`, applies Varimax rotation to the loading matrix, producing a more interpretable factor structure. If `false`, uses the raw (unrotated) solution. |
+| `convergenceThreshold`      | Small positive double. Iterative fitting stops when the change in log-likelihood or parameter estimates falls below this threshold. Typical values: 1e-4 to 1e-8. |
+| `verbose`                   | Boolean. If `true`, prints detailed progress messages during factor extraction and rotation. |
+
 ---
 
 ## Relation to Other Latent Tools

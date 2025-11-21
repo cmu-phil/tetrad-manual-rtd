@@ -1,4 +1,4 @@
-## CStaR (Causal Stability Ranking)
+# CStaR (Causal Stability Ranking)
 
 **CStaR** (Stekhoven et al., 2012) is a *ranking* method rather than a pure structure-learning algorithm.  
 Given a set of **possible causes** and **possible effects**, it repeatedly:
@@ -19,7 +19,7 @@ It is especially useful when you care about *prioritizing* a small set of robust
 
 ---
 
-### High-level idea
+## High-level idea
 
 For each effect variable \(Y\) and each candidate cause \(X\):
 
@@ -55,7 +55,7 @@ The final output is a ranked **table of candidate causal edges**, with stability
 
 ---
 
-### Inputs
+## Inputs
 
 CStaR requires:
 
@@ -73,7 +73,7 @@ Background knowledge about forbidden/required edges is **not** currently used; C
 
 ---
 
-### Outputs
+## Outputs
 
 CStaR produces:
 
@@ -109,36 +109,20 @@ CStaR produces:
 
 ---
 
-### Key parameters
+## Parameters
 
-- **Number of subsamples** (`numSubsamples`, default ~30)  
-  How many half-samples to draw. Larger values give more stable estimates but require more computation.
-
-- **Top bracket** (`topBracket`)  
-  Controls how many strong edges per subsample are considered “selected.”  
-  For each subsample, CStaR sorts all cause–effect effects and takes the top  
-  `topBracket × #effects` entries as the selected set for that subsample.
-
-- **Selection alpha** (`selectionAlpha`)  
-  Minimum average effect size required for an edge to be reported.  
-  Useful for filtering out edges that are stable but very small in magnitude.
-
-- **CPDAG algorithm** (`cpdagAlgorithm`)  
-  Which method to use to learn the CPDAG on each subsample:
-    - **PC-Stable** – constraint-based, order-independent.
-    - **FGES** – greedy score-based search over DAG equivalence classes.
-    - **BOSS / Restricted BOSS** – permutation-based searches that can be more targeted or constrained.
-
-- **Sample style** (`sampleStyle`)
-    - **Bootstrap** – sample with replacement (half the rows).
-    - **Subsample** – sample without replacement (half the rows).  
-      Both are compatible with stability selection; subsampling is closer to the original CStaR formulation.
-
-- **Parallelization** (`parallelized`)  
-  Subsamples can be processed in parallel (one per thread) to speed up large runs.
-
-- **Verbose** (`verbose`)  
-  If enabled, logs the CPDAG algorithm, subsample index, and IDA runs to the Tetrad log.
+| Parameter (camelCase)        | Description |
+|------------------------------|-------------|
+| `selectionMinEffect`         | Non-negative double. Minimum absolute effect size required for a variable to be considered statistically relevant during stability selection. Smaller values make selection more permissive; larger values make it conservative. |
+| `numSubsamples`              | Integer ≥ 1. Number of subsamples (bootstrap or subsample splits) to use for stability scoring. Higher values give more stable results but increase computation. Typical range: 20–200. |
+| `targets`                    | List of variable names. Restricts CStaR to estimating the parent sets only for the specified target variables. If empty, CStaR analyzes all variables. |
+| `topBracket`                 | Integer ≥ 1. Number of top-ranked candidate graphs (or parent sets) retained per subsample before voting. Controls model diversity and stability. |
+| `parallelized`               | Boolean. If `true`, processes subsamples in parallel across multiple threads. Strongly recommended for large datasets. |
+| `cstarCpdagAlgorithm`        | String. The algorithm used to convert the aggregated results into a CPDAG (e.g., `"PC"`, `"GFCI"`, `"FGES"`). Determines how CStaR interprets the final graph structure. |
+| `fileOutPath`                | String path. If non-empty, results (e.g., subsample graphs, selection frequencies) are written to disk at the given location. Useful for large studies or reproducibility. |
+| `removeEffectNodes`          | Boolean. If `true`, nodes that never meet the minimum effect threshold across subsamples are excluded before final aggregation. |
+| `sampleStyle`                | String. Controls how subsamples are constructed (e.g., `"bootstrap"`, `"half-sample"`, `"cross-validation"`). Affects stability and runtime. |
+| `verbose`                    | Boolean. If `true`, prints detailed progress information during subsampling, scoring, and aggregation. |
 
 ---
 
@@ -163,7 +147,7 @@ A typical use is to pick a **PI threshold** (e.g. `π ≥ 0.8`) and an **effect 
 
 ---
 
-### When to use CStaR
+## When to use CStaR
 
 CStaR is most useful when:
 

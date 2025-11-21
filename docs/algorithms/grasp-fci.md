@@ -74,8 +74,8 @@ GRaSP-FCI thus combines **permutation scoring** (which behaves well for some dat
     - FCIT directs CI tests using score priorities; GRaSP-FCI still uses a classical FCI refinement.
     - FCIT guarantees PAG legality at all steps; GRaSP-FCI guarantees legality only at the end.
 
-- **vs. LV-Dumb**
-    - LV-Dumb is a heuristic PAG-from-DAG transformer.
+- **vs. LV-Heuristic**
+    - LV-Heuristic is a heuristic PAG-from-DAG transformer.
     - GRaSP-FCI is a principled hybrid algorithm with full correctness of FCI refinement.
 
 Cross-references:  
@@ -83,7 +83,7 @@ Cross-references:
 👉 [BOSS-FCI](boss-fci.md) •  
 👉 [GFCI](gfci.md) •  
 👉 [FCIT](fcit.md) •  
-👉 [LV-Dumb](lv-dumb.md)
+👉 [LV-Heuristic](lv-heuristic.md)
 
 ---
 

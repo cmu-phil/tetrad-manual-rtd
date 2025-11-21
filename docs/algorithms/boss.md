@@ -30,7 +30,7 @@ BOSS is a good default when:
 - You want a method that **scales well even for moderately or very dense graphs** (e.g., average degree up to 20, as demonstrated in the paper).
 - You may later feed the DAG into downstream algorithms such as:
     - [BOSS-FCI](boss-fci.md) for latent-variable PAGs.
-    - [LV-Dumb](lv-dumb.md) for a fast preliminary PAG.
+    - [LV-Heuristic](lv-heuristic.md) for a fast preliminary PAG.
 
 Less suitable when:
 
@@ -76,7 +76,7 @@ The BOSS paper shows that GSTs give **near-SP-level accuracy** with far better s
   GST-based pruning and caching make order-based search practical for substantially larger graphs than naive SP-style permutation search.
 
 - **Good foundation for latent-variable extensions**  
-  Serves as the backbone for [BOSS-FCI](boss-fci.md) and as the DAG input to [LV-Dumb](lv-dumb.md).
+  Serves as the backbone for [BOSS-FCI](boss-fci.md) and as the DAG input to [LV-Heuristic](lv-heuristic.md).
 
 - **Parallelizable**  
   Scoring of different candidate parents/orders can be parallelized across threads.
@@ -127,25 +127,19 @@ These constraints are enforced at the **ordering and parent-selection** levels, 
 
 ---
 
-## Key parameters in Tetrad
+## Parameters
 
-Exact names may vary by version, but typical BOSS-related parameters include:
-
-- **Score family & options**
-    - Choice of score (Gaussian BIC, discrete BIC, mixed scores, etc.).
-    - Penalty discount / sparsity weight.
-
-- **Search controls**
-    - Maximum parents or maximum degree (sparsity constraint).
-    - Number of permutations / restarts to explore.
-    - Maximum Grow–Shrink Tree depth or branching controls (where exposed).
-    - Number of threads.
-
-- **Output options**
-    - Return CPDAG only (default).
-    - Verbosity and logging.
-
-For precise parameter names and defaults, see the main **Parameter Definitions** page.
+| Parameter (camelCase)            | Description |
+|---------------------------------|-------------|
+| `useBes`                         | Boolean. If `true`, use the Bounded Equivalence Search (BES) phase after greedy search to refine the final graph. BES can improve accuracy by removing locally suboptimal edges. |
+| `numStarts`                      | Integer ≥ 1. Number of random restarts for the hill-climbing phase. More starts increase the chance of escaping local optima but increase runtime. Typical values: 1–20. |
+| `timeLag`                        | Boolean. If `true`, treat the data as time-lagged for score calculations (used in longitudinal or time-indexed models). |
+| `timeLagReplicatingGraph`        | Boolean. If `true`, replicate learned graph structures across time-lagged slices. Requires `timeLag = true`. |
+| `numThreads`                     | Integer ≥ 1. Number of threads for parallel evaluation of candidate moves. Larger values increase speed on multicore systems. |
+| `useDataOrder`                   | Boolean. If `true`, the initial variable order is taken from the dataset columns rather than randomized. |
+| `outputCpdag`                    | Boolean. If `true`, the result is returned as a completed partially directed acyclic graph (CPDAG). If `false`, produce the raw search graph. |
+| `seed`                           | Integer. Random seed for reproducible starts and randomized moves. |
+| `verbose`                        | Boolean. If `true`, print detailed diagnostic output during search. Useful for debugging or teaching, but slows execution. |
 
 ---
 

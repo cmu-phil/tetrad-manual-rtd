@@ -68,7 +68,7 @@ If you are new to Tetrad or want a curated subset of recommended methods, start 
 | **Boss** — [BOSS](algorithms/boss.md) 📏                                 | Best Order Score Search over variable orderings.                  |
 | **RestrictedBoss** — [Restricted BOSS](algorithms/restricted-boss.md) 📏 | BOSS with parent/tier restrictions for speed.                     |
 | **Grasp** — [GRaSP](algorithms/grasp.md) 📏                              | Greedy Relaxations of Sparsest Permutation.                       |
-| **LV-Dumb** — [LV-Dumb](algorithms/lv-dumb.md) 🪶                        | Heuristic PAG from BOSS DAG; lightweight alternative to FCI/FCIT. |
+| **LV-Heuristic** — [LV-Heuristic](algorithms/lv-heuristic.md) 🪶         | Heuristic PAG from BOSS DAG; lightweight alternative to FCI/FCIT. |
 | **Sp** — [SP](algorithms/sp.md) 📏                                       | Sparsest Permutation; exact but only for very small models.       |
 | **Images** 🧩🧠📏 — [IMaGES](algorithms/images.md)                       | Multi-sample FGES with cross-sample consistency.                  |
 | **IMaGESBoss** 🧩🧠📏 — [IMaGES](algorithms/images.md)                   | Multi-sample BOSS with cross-sample consistency.                  |

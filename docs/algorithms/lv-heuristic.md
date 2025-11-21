@@ -1,11 +1,11 @@
-# LV-Dumb — Heuristic Latent-Variable PAG from a Single DAG
+# LV-Heuristic — Heuristic Latent-Variable PAG from a Single DAG
 
 **Type:** Heuristic latent-variable method  
 **Output:** PAG  
 **Knowledge:** Fully supported  
 **Paper:** Ramsey, Andrews & Spirtes (2025)
 
-LV-Dumb (“Latent Variable *Dumb*”) is the simplest of the mixed-strategy latent-variable algorithms introduced in **Ramsey, Andrews & Spirtes (2025)**. It is deliberately *not* a complete or theoretically guaranteed method — instead, it provides a **very fast**, **very stable**, and surprisingly **effective** heuristic for producing a PAG when latent confounding is present.
+LV-Heuristic (“Latent Variable *Heuristic*”) is the simplest of the mixed-strategy latent-variable algorithms introduced in **Ramsey, Andrews & Spirtes (2025)**. It is deliberately *not* a complete or theoretically guaranteed method — instead, it provides a **very fast**, **very stable**, and surprisingly **effective** heuristic for producing a PAG when latent confounding is present.
 
 The idea is straightforward:
 
@@ -18,9 +18,9 @@ The result is a **“good-enough” latent-variable PAG**, extremely clean and r
 
 ---
 
-## What LV-Dumb Is (and Is Not)
+## What LV-Heuristic Is (and Is Not)
 
-LV-Dumb **is**:
+LV-Heuristic **is**:
 
 - a quick heuristic PAG generator
 - highly stable (almost no spurious orientations)
@@ -29,7 +29,7 @@ LV-Dumb **is**:
 - easy to interpret
 - robust to moderate CI-test noise
 
-LV-Dumb is **not**:
+LV-Heuristic is **not**:
 
 - a full replacement for FCI/GFCI/BOSS-FCI/FCIT
 - guaranteed to detect all latent confounders

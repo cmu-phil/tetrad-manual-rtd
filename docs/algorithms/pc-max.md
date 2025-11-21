@@ -83,15 +83,7 @@ Enabled with:
 colliderOrientationStyle = "maxP"
 ```
 
-All other parameters match PC:
-
-- stableFas  
-- depth  
-- allowBidirected  
-- fdrQ  
-- timeLag  
-- timeLagReplicatingGraph  
-- verbose  
+**All other parameters match PC.**
 
 ---
 

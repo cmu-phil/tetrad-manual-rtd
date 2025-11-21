@@ -85,7 +85,7 @@ Cross-references:
 👉 [GFCI](gfci.md) •  
 👉 [GRaSP-FCI](grasp-fci.md) •  
 👉 [FCIT](fcit.md) •  
-👉 [LV-Dumb](lv-dumb.md)
+👉 [LV-Dumb](lv-heuristic.md)
 
 ---
 
