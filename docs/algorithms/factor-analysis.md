@@ -84,3 +84,13 @@ other Tetrad algorithm.
 ## References
 
 - Classical SEM / factor-analysis literature (Harman 1976; Bollen 1989).
+
+## Summary
+
+Factor Analysis extracts a classical linear-Gaussian measurement model in
+which observed variables load on a small number of latent factors. It provides
+interpretable loadings, latent scores, and unique variances, and integrates
+smoothly with downstream causal discovery (e.g., FGES, PC, GFCI, MIM-building).
+It is best suited to continuous data with approximately linear structure and is
+limited when indicators exhibit strong nonlinearity, non-Gaussianity, or
+complex latent clustering patterns.

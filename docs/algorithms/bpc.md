@@ -144,6 +144,10 @@ Some internal “knobs” are fixed to practical defaults in the current impleme
 
 ---
 
+## Reference
+
+- Silva, R., Scheines, R., Glymour, C., & Spirtes, P. (2006). **Learning the structure of linear latent variable models.** *Journal of Machine Learning Research*, 7, 191–246.
+
 ## Summary
 
 BPC builds latent clusters by:

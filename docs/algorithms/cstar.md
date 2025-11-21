@@ -159,3 +159,22 @@ It pairs naturally with workflows where:
 
 - The **full causal graph** is complex or high-dimensional, but
 - You mainly need a **short, interpretable list** of predictors that are repeatedly supported by the data across resamples and CPDAG variations.
+
+## References
+
+Stekhoven, D. J., Moraes, I., Sveinbjörnsson, G., Hennig, L., Maathuis, M. H., & Bühlmann, P. (2012).  
+**Causal stability ranking.** *Bioinformatics*, 28(21), 2819–2823.
+
+Meinshausen, N., & Bühlmann, P. (2010).  
+**Stability selection.** *Journal of the Royal Statistical Society: Series B (Statistical Methodology)*, 72(4), 417–473.
+
+Colombo, D., & Maathuis, M. H. (2014).  
+**Order-independent constraint-based causal structure learning.** *Journal of Machine Learning Research*, 15(1), 3741–3782.
+
+## Summary
+
+- CStaR is a stability-based causal ranking method that repeatedly subsamples the data, fits a CPDAG, and applies IDA to estimate minimal total effects for each candidate cause–effect pair. It aggregates these results using stability selection, producing a ranked list of robust causal candidates with interpretable stability frequencies and effect sizes.
+
+- CStaR is ideal when the goal is prioritizing reliable causal predictors rather than recovering a full graph, especially in high-dimensional settings where model-selection variability is high. It supports multiple CPDAG learners (PC-Stable, FGES, BOSS, RBOSS), parallelization, and reproducible output, but does not currently incorporate background-knowledge constraints.
+
+⸻

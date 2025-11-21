@@ -67,4 +67,8 @@ relations among the latent variables themselves.
 
 ## References
 
-- Bollen, K. A. (1989). *Structural Equations with Latent Variables*.f
+- Bollen, K. A. (1989). *Structural Equations with Latent Variables*.
+
+## Summary
+
+- Mimbuild-Bollen converts latent clusters into a full measurement–intermediate–measurement (MIM) model using SEM-style BlockSpec rules. It produces interpretable latent variables with clean indicator structure and standard identifiability constraints, making it ideal when you need a principled measurement model consistent with Bollen’s SEM framework. It builds the latent blocks but does not estimate causal relations among the latent variables themselves.

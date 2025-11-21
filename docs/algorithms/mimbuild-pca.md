@@ -66,3 +66,9 @@ structure learning (e.g., PC using Blocks-Test-TS).
 ## References
 
 - Jolliffe, I. T. (2002). *Principal Component Analysis*.  
+
+## Summary
+
+Summary
+
+Mimbuild PCA constructs latent variables by applying principal component analysis within each pure indicator cluster. It extracts the first principal component of each cluster and treats it as the latent variable, producing a fast, assumption-light measurement model. Unlike SEM-based methods, Mimbuild PCA does not impose identifiability constraints or model loadings; instead, it provides a purely data-driven latent representation suitable for downstream causal search. It is best used when pure clusters are already identified and a quick, robust latent-variable construction is desired.
