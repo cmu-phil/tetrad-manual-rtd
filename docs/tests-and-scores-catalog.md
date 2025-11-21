@@ -22,21 +22,21 @@ These are the available CI tests, grouped by data type and modeling assumptions.
 
 ### Independence Tests Overview
 
-| Name | Appropriate Data Type                                      | Corrected Description |
+| Name | Appropriate Data Type                                      | Description |
 |------|------------------------------------------------------------|------------------------|
-| **FisherZ** | Continuous (linear-Gaussian)                               | Fisher Z partial correlation test. Assumes linear relationships and Gaussian (or approximately Gaussian) residuals. Default for continuous data. |
-| **GSquare** | Discrete (categorical)                                     | Likelihood-ratio G test for discrete conditional independence. Default choice for purely discrete data. |
-| **ChiSquare** | Discrete (categorical)                                     | Pearson chi-square test for discrete CI; similar to GSquare but uses chi-square statistic. |
-| **BasisFunctionLrt** | Mixed continuous/discrete; nonlinear continuous effects    | LRT using truncated basis expansions (Legendre, Chebyshev, Hermite, etc.) for the continuous parts of a conditional Gaussian model. Supports nonlinear additive effects through basis expansions while allowing discrete parents. |
-| **ConditionalGaussianLrt** | Mixed continuous/discrete                                  | Classical CG CI test: continuous variables are linear-Gaussian conditional on configurations of discrete parents. Discrete variables are modeled with multinomial logistic regression. |
-| **DegenerateGaussianLrt** | Mixed continuous/discrete, possibly rank-deficient         | CG CI test that tolerates singular or nearly singular covariance blocks. Used when mixed CG assumptions hold but covariance matrices are degenerate because of collinearity or small sample size. |
-| **CciTest** | Continuous (additive noise models)                         | Conditional Correlation Independence (CCI). Detects conditional independence under additive noise models where Y = f(X) + e. Often useful in nonlinear, non-Gaussian settings without full kernel methods. |
-| **Kci** | Continuous (general nonlinear)                             | Kernel Conditional Independence test. Fully nonparametric; no linearity or Gaussian assumptions. More computationally expensive. |
-| **PoissonBicTest** | Continuous with linear non-Gaussian (Poisson-like) residuals | Test for CI using Poisson regression with BIC. Useful for continuous variables modeled with Poisson log-link (linear non-Gaussian models, count-ish behavior). |
-| **MultinomialLogisticRegressionWald** | Discrete multinomial response                              | Wald-type test using multinomial logistic models. Suitable for CI when the dependent variable is discrete with more than two categories. |
-| **Mvplrt** | Mixed or continuous                                        | Likelihood-ratio CI test from multivariate projection regressions. Compares full vs. restricted projection models. |
-| **MSeparationTest** | Graph-based (no data)                                      | “Test” that answers CI queries using m-separation in a given graph. Used when treating a known DAG/MAG/PAG as the oracle (simulation studies). |
-| **ProbabilisticTest** | Discrete, Bayesian                                         | Uses Bayesian sampling over conditional distributions to infer CI probabilistically. Useful for probabilistic or likelihood-based independence assessment. |
+| **[FisherZ](tests-and-scores/fisher-z.md)** | Continuous (linear-Gaussian)                               | Fisher Z partial correlation test. Assumes linear relationships and Gaussian (or approximately Gaussian) residuals. Default for continuous data. |
+| **[GSquare](tests-and-scores/g-square.md)** | Discrete (categorical)                                     | Likelihood-ratio G test for discrete conditional independence. Default choice for purely discrete data. |
+| **[ChiSquare](tests-and-scores/chi-square.md)** | Discrete (categorical)                                     | Pearson chi-square test for discrete CI; similar to GSquare but uses chi-square statistic. |
+| **[BasisFunctionLrt](tests-and-scores/basis-function-lrt.md)** | Mixed continuous/discrete; nonlinear continuous effects    | LRT using truncated basis expansions (Legendre, Chebyshev, Hermite, etc.) for the continuous parts of a conditional Gaussian model. Supports nonlinear additive effects through basis expansions while allowing discrete parents. |
+| **[ConditionalGaussianLrt](tests-and-scores/conditional-gaussian-lrt.md)** | Mixed continuous/discrete                                  | Classical CG CI test: continuous variables are linear-Gaussian conditional on configurations of discrete parents. Discrete variables are modeled with multinomial logistic regression. |
+| **[DegenerateGaussianLrt](tests-and-scores/degenerate-gaussian-lrt.md)** | Mixed continuous/discrete, possibly rank-deficient         | CG CI test that tolerates singular or nearly singular covariance blocks. Used when mixed CG assumptions hold but covariance matrices are degenerate because of collinearity or small sample size. |
+| **[CciTest](tests-and-scores/cci-test.md)** | Continuous (additive noise models)                         | Conditional Correlation Independence (CCI). Detects conditional independence under additive noise models where Y = f(X) + e. Often useful in nonlinear, non-Gaussian settings without full kernel methods. |
+| **[Kci](tests-and-scores/kci-test.md)** | Continuous (general nonlinear)                             | Kernel Conditional Independence test. Fully nonparametric; no linearity or Gaussian assumptions. More computationally expensive. |
+| **[PoissonBicTest](tests-and-scores/poisson-bic-test.md)** | Continuous with linear non-Gaussian (Poisson-like) residuals | Test for CI using Poisson regression with BIC. Useful for continuous variables modeled with Poisson log-link (linear non-Gaussian models, count-ish behavior). |
+| **[MultinomialLogisticRegressionWald](tests-and-scores/multinomial-logistic-regression-wald.md)** | Discrete multinomial response                              | Wald-type test using multinomial logistic models. Suitable for CI when the dependent variable is discrete with more than two categories. |
+| **[Mvplrt](tests-and-scores/mvplrt.md)** | Mixed or continuous                                        | Likelihood-ratio CI test from multivariate projection regressions. Compares full vs. restricted projection models. |
+| **[MSeparationTest](tests-and-scores/m-separation-test.md)** | Graph-based (no data)                                      | “Test” that answers CI queries using m-separation in a given graph. Used when treating a known DAG/MAG/PAG as the oracle (simulation studies). |
+| **[ProbabilisticTest](tests-and-scores/probabilistic-test.md)** | Discrete, Bayesian                                         | Uses Bayesian sampling over conditional distributions to infer CI probabilistically. Useful for probabilistic or likelihood-based independence assessment. |
 
 **Interfaces not included:**  
 `IndependenceWrapper` and `TakesGraph` are interfaces and do not appear as user-selectable tests.
@@ -51,21 +51,21 @@ These are the scores used by score-based and hybrid search methods.
 
 ### Scores Overview
 
-| Name | Appropriate Data Type | Corrected Description |
+| Name | Appropriate Data Type | Description |
 |------|------------------------|------------------------|
-| **SemBicScore** | Continuous (linear-Gaussian) | Standard DAG BIC for linear SEMs. Default for FGES, BOSS, GRaSP, IMaGES, and hybrids. |
-| **DiscreteBicScore** | Discrete | BIC for discrete Bayesian networks with multinomial CPDs. |
-| **BdeuScore** | Discrete | Bayesian Dirichlet Equivalent Uniform (BDeu) score. Fully Bayesian alternative to discrete BIC. |
-| **ConditionalGaussianBicScore** | Mixed continuous/discrete | CG BIC score: continuous nodes are linear-Gaussian conditional on discrete parent configurations. |
-| **DegenerateGaussianBicScore** | Mixed continuous/discrete, possibly rank-deficient | CG BIC variant adapted for degenerate covariance blocks, allowing singular/near-singular Gaussian components. |
-| **MagDgBicScore** | Mixed-graph structures, mixed Gaussian | Degenerate Gaussian BIC adapted to MAGs (latent confounding encoded in mixed graphs). |
-| **BasisFunctionBicScore** | Mixed continuous/discrete; nonlinear continuous effects | BIC score for conditional Gaussian models where continuous variables are represented using basis expansions (polynomials or orthogonal bases). Nonlinear additive models become linear in the basis. |
-| **EbicScore** | Continuous | Extended BIC for linear Gaussian models. Adds sparsity penalty; useful in high-dimensional settings. |
-| **GicScores** | Continuous or mixed | Generalized Information Criterion (GIC) family for flexible penalty structures. |
-| **MSepScore** | Latent blocks / clustered indicators | Score defined on measurement blocks using trek-/m-separation structure. Used for latent-variable search after clustering. |
-| **MVPBicScore** | Mixed projections | BIC score for mixed-variable projection models. Useful for pipelines using projection-based covariance modeling. |
-| **PoissonPriorScore** | Continuous with Poisson-like noise | Prior score for linear non-Gaussian models where noise is approximated by Poisson or Poisson-like distributions. |
-| **ZhangShenBoundScore** | Continuous | Score with additional Zhang–Shen-type penalties for stronger complexity control than BIC. |
+| **[SemBicScore](tests-and-scores/sem-bic-score.md)** | Continuous (linear-Gaussian) | Standard DAG BIC for linear SEMs. Default for FGES, BOSS, GRaSP, IMaGES, and hybrids. |
+| **[DiscreteBicScore](tests-and-scores/discrete-bic-score.md)** | Discrete | BIC for discrete Bayesian networks with multinomial CPDs. |
+| **[BdeuScore](tests-and-scores/bdeu-score.md)** | Discrete | Bayesian Dirichlet Equivalent Uniform (BDeu) score. Fully Bayesian alternative to discrete BIC. |
+| **[ConditionalGaussianBicScore](tests-and-scores/conditional-gaussian-bic-score.md)** | Mixed continuous/discrete | CG BIC score: continuous nodes are linear-Gaussian conditional on discrete parent configurations. |
+| **[DegenerateGaussianBicScore](tests-and-scores/degenerate-gaussian-bic-score.md)** | Mixed continuous/discrete, possibly rank-deficient | CG BIC variant adapted for degenerate covariance blocks, allowing singular/near-singular Gaussian components. |
+| **[MagDgBicScore](tests-and-scores/mag-dg-bic-score.md)** | Mixed-graph structures, mixed Gaussian | Degenerate Gaussian BIC adapted to MAGs (latent confounding encoded in mixed graphs). |
+| **[BasisFunctionBicScore](tests-and-scores/basis-function-bic-score.md)** | Mixed continuous/discrete; nonlinear continuous effects | BIC score for conditional Gaussian models where continuous variables are represented using basis expansions (polynomials or orthogonal bases). Nonlinear additive models become linear in the basis. |
+| **[EbicScore](tests-and-scores/ebic-score.md)** | Continuous | Extended BIC for linear Gaussian models. Adds sparsity penalty; useful in high-dimensional settings. |
+| **[GicScores](tests-and-scores/gic-scores.md)** | Continuous or mixed | Generalized Information Criterion (GIC) family for flexible penalty structures. |
+| **[MSepScore](tests-and-scores/msep-score.md)** | Latent blocks / clustered indicators | Score defined on measurement blocks using trek-/m-separation structure. Used for latent-variable search after clustering. |
+| **[MVPBicScore](tests-and-scores/mvp-bic-score.md)** | Mixed projections | BIC score for mixed-variable projection models. Useful for pipelines using projection-based covariance modeling. |
+| **[PoissonPriorScore](tests-and-scores/poisson-prior-score.md)** | Continuous with Poisson-like noise | Prior score for linear non-Gaussian models where noise is approximated by Poisson or Poisson-like distributions. |
+| **[ZhangShenBoundScore](tests-and-scores/zhang-shen-bound-score.md)** | Continuous | Score with additional Zhang–Shen-type penalties for stronger complexity control than BIC. |
 
 ---
 
