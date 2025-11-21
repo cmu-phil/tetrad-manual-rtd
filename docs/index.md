@@ -16,6 +16,7 @@ This site is the **Read the Docs** version of the Tetrad manual, reorganized int
 
 about
 classic-manual/index
+tetrad-interface/index
 python-r-bindings
 graph-and-datasets
 search-algorithms

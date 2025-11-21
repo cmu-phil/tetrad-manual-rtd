@@ -62,8 +62,22 @@
 - Fixed misinterpreted biological notes in algorithm “When to Use” sections.
 - Refined PCA/MIM documentation for clarity.
 
+### 🖥️ 8. New “Tetrad Interface” Section (first draft)
+- Added a new **Tetrad Interface** section with task-oriented pages:
+    - Main Window Overview
+    - Working with Data
+    - Graph Editor
+    - Running Algorithms
+    - Viewing and Exporting Results
+    - Simulation and Utilities
+    - Grid Search
+    - Markov Checker
+- Each page focuses on **GUI workflows** (loading data, configuring searches, inspecting results, running simulations, checking Markov properties, etc.) rather than algorithmic theory.
+- Established screenshot conventions and paths under `/_static/images/tetrad-interface/` for future illustrative figures (main window, data table, graph editor, algorithm dialogs, etc.).
+- Left the legacy **Classic Manual** as a separate section for now; the new Tetrad Interface pages are intended to replace it once they have settled.
+
 ---
 
 ### Notes
-This concludes the major documentation rewrite cycle for tests, scores, and latent-variable tools.  
-Further refinements will follow after peer review of the updated manual.
+This concludes the major documentation rewrite cycle for tests, scores, latent-variable tools, and the first draft of the new Tetrad Interface section.  
+Further refinements will follow after peer review of the updated manual and feedback from users (including Peter and collaborators).
