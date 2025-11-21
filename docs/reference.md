@@ -15,7 +15,7 @@ Tetrad supports data formats for tabular data (continuous, discrete, mixed) and 
 
 See this dedicated page for all details, edge cases, and examples:
 
-👉 [`data.formats`](./data.formats)
+👉 [`data.formats`](data.formats.md)
 
 ## 🕸️ Graph Formats
 
@@ -25,7 +25,7 @@ Mostly the supported theory resolves around DAGs (Directed Acyclic Graphs), CPDA
 
 See this dedicated page for all details, with examples:
 
-👉 [`graph.formats`](./graph.formats)
+👉 [`graph.formats`](graph.formats.md)
 
 ---
 
@@ -45,7 +45,7 @@ in PC/FCI, to BIC penalties in FGES, to threading, to nonlinear tolerance thresh
 
 This link gives a listing of all parameters:
 
-👉 [`parameter.definitions.md`](./parameter.definitions.md)
+👉 [`parameter.definitions.md`](parameter.definitions.md)
 
 For each parameter, the following information is provided:
 

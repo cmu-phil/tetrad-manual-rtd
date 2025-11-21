@@ -92,22 +92,22 @@ A structured walkthrough of the Tetrad interface:
 - Graph box
 - Simulation tools
 - Effect estimation  
-  ➡️ [Open user guide](user-guide)
+  ➡️ [Open user guide](user-guide.md)
 
 ### **Algorithms**
 Detailed descriptions of every algorithm shipped with Tetrad, including:
 - When to use it
 - What assumptions it makes
 - What types of graphs it returns  
-  ➡️ [Open algorithms page](search-algorithms-short-list)
+  ➡️ [Open algorithms page](search-algorithms-short-list.md)
 
 ### **Parameter Reference**
 Parameter definitions for all search, score, test, and simulation components.  
-➡️ [Open reference](reference)
+➡️ [Open reference](reference.md)
 
 ### **Changelog**
 A history of changes across Tetrad versions and UI updates.  
-➡️ [Open changelog](changelog)
+➡️ [Open changelog](changelog.md)
 
 ---
 
