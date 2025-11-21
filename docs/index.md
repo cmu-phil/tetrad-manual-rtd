@@ -16,6 +16,7 @@ This site is the **Read the Docs** version of the Tetrad manual, reorganized int
 :hidden:
 
 manual/index
+python-r-bindings
 graph-and-datasets
 search-algorithms
 tests-and-scores
@@ -123,16 +124,6 @@ Tetrad can also be used outside the GUI through its programmatic interfaces (Jav
 
 See:  
 👉 [https://www.cmu.edu/dietrich/philosophy/tetrad/index.html](https://www.cmu.edu/dietrich/philosophy/tetrad/index.html)
-
-### Related Python Ecosystem Tools
-
-The Python ecosystem also includes **causal-learn**, a well-supported project that implements several Tetrad-style algorithms natively in Python, together with additional methods and utilities tailored to the Python community:
-
-👉 [https://causal-learn.readthedocs.io/en/latest/](https://causal-learn.readthedocs.io/en/latest/)
-
-Tetrad and causal-learn share common theoretical foundations and can be used side-by-side depending on your workflow, programming environment, and performance needs.
-
----
 
 ## 🙋 Need help?
 
