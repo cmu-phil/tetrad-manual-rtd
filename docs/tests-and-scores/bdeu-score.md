@@ -45,3 +45,7 @@ The score depends on:
 - Sensitive to the choice of ESS; too large or too small values can bias
   results.
 - Uniform Dirichlet priors may not reflect domain knowledge.
+
+## References
+
+- Heckerman, D., Geiger, D., & Chickering, D. M. (1995). *Learning Bayesian networks: The combination of knowledge and statistical data.* Machine Learning, 20(3), 197–243.
