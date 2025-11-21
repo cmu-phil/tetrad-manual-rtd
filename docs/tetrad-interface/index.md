@@ -1,6 +1,6 @@
 # Tetrad Interface
 
-## Overview
+[//]: # (## Overview)
 
 This section describes the **graphical user interface (GUI)** of Tetrad: how to load data, build and edit graphs,
 run search algorithms, inspect results, and use additional tools like simulation, grid search, and the Markov checker.
