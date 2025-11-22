@@ -4,75 +4,73 @@
 :name: tetrad-note-box-screenshot
 :alt: Note Box in the Tetrad interface.
 
-Note Box in the Tetrad interface sidebar and main panel.
+Note Box in the Tetrad interface sidebar and a note node on the workbench.
 ```
 
 ## Purpose
 
-The **Note** box is where you keep **free-form notes and annotations** inside a Tetrad project.
-Notes are lightweight text objects that live alongside your data, graphs, models, and searches, and
-are saved with the project file.
+The **Note** box lets you create **note nodes** that you can place on the workbench.  
+Each note has:
 
-You use this box to:
+- A **title**, which appears as the label of the node on the workbench.
+- A longer **text body**, which you can view and edit by **double-clicking** the node.
 
-- Record ideas, hypotheses, and decisions made during analysis.
-- Document which graphs or models correspond to which experimental conditions or assumptions.
-- Keep a simple log of what you tried and what you plan to try next.
+Notes are useful for visually annotating a workbench layout—for example, marking groups of nodes,
+recording a short reminder next to a graph, or labeling different regions of a workflow.
 
 ## Typical workflow
 
-1. **Create a new note**
-   - In the Note box, click **New** to create a note.
-   - Give the note a **descriptive title** (e.g., “Fire data: FCI runs with selection bias off”).
+1. **Create a note**
+   - In the Note box, click **New** to create a note object.
+   - Give the note a **descriptive title**; this title will appear on the note node in the workbench.
 
-2. **Write and edit content**
-   - Select the note in the list to open it in the main panel.
-   - Type or paste text describing:
-     - What you did (e.g., which algorithms and parameters).
-     - Why you made certain choices.
-     - Observations or interpretations of results.
-   - Edit the note as your analysis evolves.
+2. **Place the note on the workbench**
+   - Drag the note from the Note box list onto the workbench, or use the available controls
+     (depending on your version) to add it to the main view.
+   - Position the note node wherever you like by dragging it around the workbench.
 
-3. **Refer to objects in the project**
-   - Use variable names, graph names, dataset names, or model names in your notes so that it is easy to
-     cross-reference with other boxes.
-   - Optionally maintain simple sections such as “To do”, “Open questions”, and “Conclusions”.
+3. **Edit the note text**
+   - **Double-click** the note node on the workbench to open its text editor.
+   - Type or edit the contents of the note.
+   - Close the editor; the text is stored with the note, but only the **title** remains visible
+     on the workbench.
 
-4. **Save and reuse**
-   - Notes are stored inside the Tetrad project file.
-   - When you reopen a project, your notes are there to remind you where you left off and why certain
-     choices were made.
+4. **Reposition and organize**
+   - Move note nodes around the workbench to group them near relevant graphs, models, or other objects.
+   - Use multiple notes to mark different regions, phases of analysis, or TODO items.
+
+5. **Save with the project**
+   - Notes (and their positions on the workbench) are stored in the Tetrad project file.
+   - When you reopen the project, the notes reappear where you placed them.
 
 ## Key controls
 
 - **Toolbar**
   - **New** – create a new note.
-  - **Rename / Delete** – manage existing notes.
-  - (Depending on version) **Export** – write the contents of a note to a text or Markdown file.
+  - **Rename / Delete** – change the note’s title or remove the note from the project.
 
 - **Note list**
-  - Shows all notes in the project.
-  - Selecting a note loads its text in the editor in the main panel.
+  - Shows all note objects defined in the project.
+  - Selecting a note in the list highlights or focuses the corresponding note node on the workbench
+    (depending on your version).
 
-- **Main panel**
-  - A text editor where you can:
-    - Type or paste arbitrary text.
-    - Make quick edits while switching between other boxes.
+- **Workbench interaction**
+  - Drag a note from the list to the workbench to place its node.
+  - Drag the note node to reposition it.
+  - Double-click the node to edit its text.
 
 ## Common patterns & tips
 
-- Use notes as a **lab notebook**:
-  - Record parameter settings, dataset versions, and algorithm choices for each major run.
-  - Summarize results and interpretations, especially before closing a project.
-- Keep multiple notes:
-  - One note per dataset or project subtask.
-  - A “Summary” note that collects high-level conclusions.
-- When collaborating, share projects with well-maintained notes so others can follow your reasoning
-  without hunting through logs and configuration panels.
+- Use notes to **label regions** of the workbench:
+  - “Data preprocessing”
+  - “Search results for fire data”
+  - “Candidate adjustment sets”
+- Keep note titles short and descriptive; the **title** is what remains visible on the workbench.
+- Use the full text (visible on double-click) for a brief explanation, comment, or reminder.
 
 ## Related pages
 
 - `Tetrad Interface → Overview` – high-level tour of the GUI.
-- Other boxes that commonly interact with **Note**:
-  - All other boxes, indirectly, since notes are used to document work done with data, graphs, models,
-    searches, and simulations.
+- Other boxes that commonly appear alongside **Note** in the workbench:
+  - *Graph*, *Data*, *Parametric Model*, *Instantiated Model*, etc., which you may want to annotate
+    with nearby notes.

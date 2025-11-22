@@ -3,17 +3,6 @@
 The **Grid Search** tool automates running a search algorithm over a **grid of parameter settings**, so you can
 compare performance across many configurations without manually re-running the algorithm.
 
-[//]: # (```{note})
-
-[//]: # (Suggested screenshot:)
-
-[//]: # ()
-[//]: # (- The Grid Search configuration dialog, showing choice of algorithm, parameters, and value grid.)
-
-[//]: # (  Save as: ``../../_static/images/tetrad-interface/overview/grid-search-dialog.png``.)
-
-[//]: # (```)
-
 ![](../../_static/images/tetrad-interface/overview/grid-search-dialog.png)
 
 ## Purpose

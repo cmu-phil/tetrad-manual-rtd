@@ -18,6 +18,7 @@ The pages in this section give a **task-oriented** tour of the interface.
 
 overview/overview
 box-by-box/box-by-box
+detail-callouts/detail-callouts
 ```
 
 Each page focuses on how to accomplish a specific set of tasks in the GUI, rather than describing the underlying
