@@ -1,4 +1,4 @@
-# Markov Checker
+# Detail: Markov Checker
 
 The **Markov Checker** tool helps assess whether a given graph is **Markov to a data set** (or to another graph),
 i.e., whether the conditional independencies implied by the graph are consistent with what you see in the data.

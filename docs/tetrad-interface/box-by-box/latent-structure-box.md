@@ -20,6 +20,23 @@ You use this box to:
 - Run specialized search or modeling procedures for latent structures.
 - Prepare latent-variable models for estimation, simulation, or comparison.
 
+### Latent structure and simulation
+
+To run latent models in **Simulation**:
+
+1. Specify a **structure over the latent variables** in this box (latent nodes and edges among them),
+   together with their observed indicators.
+2. Convert or link this latent structure to a parametric model (e.g., SEM or Hybrid).
+3. Use that parametric model as a source in the *Simulation* box.
+
+Without a specified structure over the latents, Simulation cannot generate full joint data for
+observed + latent variables.
+
+See also:
+
+- `Tetrad Interface → Detail Callouts → Latent Models and Simulation`
+
+
 ## Typical workflow
 
 1. **Prepare inputs (graphs, clusters, or data)**

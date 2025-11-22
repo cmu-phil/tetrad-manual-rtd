@@ -1,4 +1,4 @@
-# Grid Search
+# Detail: Grid Search
 
 The **Grid Search** tool automates running a search algorithm over a **grid of parameter settings**, so you can
 compare performance across many configurations without manually re-running the algorithm.

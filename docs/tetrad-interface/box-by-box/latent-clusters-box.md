@@ -19,6 +19,21 @@ You use this box to:
 - Inspect which variables belong to which clusters.
 - Create graphs or models that treat clusters as latent variables.
 
+### Using latent clusters with Simulation
+
+Cluster results by themselves only group variables; they do **not** yet specify a full causal structure
+over the latent variables. To use latent clusters in **Simulation** mode, you typically:
+
+1. Derive a latent structure (in the *Latent Structure* box) that introduces latent nodes and
+   edges among them, using the clusters as indicators.
+2. Use that latent structure model (possibly converted to a parametric model) as the source in
+   the *Simulation* box.
+
+See also:
+
+- `Tetrad Interface → Detail Callouts → Latent Models and Simulation`
+
+
 ## Typical workflow
 
 1. **Prepare data**

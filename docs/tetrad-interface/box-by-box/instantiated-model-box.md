@@ -22,6 +22,23 @@ You use this box to:
 - Inspect fit statistics and parameter estimates.
 - Pass the fitted models on to other tools (e.g., simulation, comparison, or effect estimation).
 
+### Model types and fit results
+
+Instantiated models can belong to any of the same four families as parametric models:
+
+- Bayes (multinomial)
+- SEM (linear SEM)
+- Hybrid (conditional Gaussian)
+- Generalized
+
+The available fit statistics and parameter summaries depend on the model family and estimator used.
+For example, SEM models may report χ², RMSEA, CFI, and BIC, while other families may expose different
+summary measures.
+
+For a concise overview of these families and their typical estimators, see:
+
+- `Tetrad Interface → Detail Callouts → Parametric & Instantiated Model Types`
+
 ## Typical workflow
 
 1. **Build a parametric model**

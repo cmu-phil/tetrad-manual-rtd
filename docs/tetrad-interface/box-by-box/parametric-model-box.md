@@ -19,6 +19,23 @@ You use this box to:
 - Inspect and edit parameters.
 - Prepare models for estimation, simulation, or comparison.
 
+### Model types
+
+The Parametric Model box currently supports four main model families:
+
+- **Bayes (multinomial)** – discrete Bayesian networks with multinomial conditional probability tables.
+- **SEM (linear SEM)** – linear Gaussian structural equation models with path coefficients and error variances.
+- **Hybrid (conditional Gaussian)** – conditional Gaussian models (mixed discrete/continuous) using the Hybrid API
+  we introduced in the Tetrad library.
+- **Generalized** – a flexible family where you specify the functional form and error distributions for each
+  variable by hand.
+
+The main panel layout and editable fields depend on the selected model type. Some downstream tools
+(e.g., particular estimators or simulators) are only defined for certain model families.
+For more details, see:
+
+- `Tetrad Interface → Detail Callouts → Parametric & Instantiated Model Types`
+
 ## Typical workflow
 
 1. **Create a parametric model**
