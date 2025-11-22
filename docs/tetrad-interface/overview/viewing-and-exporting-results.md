@@ -10,17 +10,17 @@ diagnostic information. This page summarizes how to inspect and export those res
 [//]: # ()
 [//]: # (1. A results graph with some edges highlighted or labeled.)
 
-[//]: # (   Save as: ``../_static/images/tetrad-interface/results-graph.png``.)
+[//]: # (   Save as: ``../../_static/images/tetrad-interface/overview/results-graph.png``.)
 
 [//]: # (2. A result table &#40;e.g., a list of edges with scores or p-values&#41;.)
 
-[//]: # (   Save as: ``../_static/images/tetrad-interface/results-table.png``.)
+[//]: # (   Save as: ``../../_static/images/tetrad-interface/overview/results-table.png``.)
 
 [//]: # (```)
 
-![](../_static/images/tetrad-interface/results-graph.png)
+![](../../_static/images/tetrad-interface/overview/results-graph.png)
 
-![](../_static/images/tetrad-interface/results-table.png)
+![](../../_static/images/tetrad-interface/overview/results-table.png)
 
 ## Graph results
 

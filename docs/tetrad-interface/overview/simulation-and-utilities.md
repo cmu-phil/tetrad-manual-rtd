@@ -10,17 +10,17 @@ resampling, and model checking. Many of these are accessible from the **Tools** 
 [//]: # ()
 [//]: # (1. The dialog for simulating data from a graph.)
 
-[//]: # (   Save as: ``../_static/images/tetrad-interface/simulate-data-dialog.png``.)
+[//]: # (   Save as: ``../../_static/images/tetrad-interface/overview/simulate-data-dialog.png``.)
 
 [//]: # (2. Any additional utility dialog you frequently use &#40;e.g., resampling&#41;.)
 
-[//]: # (   Save as: ``../_static/images/tetrad-interface/utility-dialog.png``.)
+[//]: # (   Save as: ``../../_static/images/tetrad-interface/overview/utility-dialog.png``.)
 
 [//]: # (```)
 
-![](../_static/images/tetrad-interface/simulate-data-dialog.png)
+![](../../_static/images/tetrad-interface/overview/simulate-data-dialog.png)
 
-![](../_static/images/tetrad-interface/utility-dialog.png)
+![](../../_static/images/tetrad-interface/overview/utility-dialog.png)
 
 ## Simulating data from a graph
 

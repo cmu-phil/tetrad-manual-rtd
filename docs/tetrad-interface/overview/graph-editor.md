@@ -9,17 +9,17 @@ The graph editor is where you **create, inspect, and modify** causal graphs (DAG
 [//]: # ()
 [//]: # (1. A graph open in the editor with a few variables and directed/undirected edges.)
 
-[//]: # (   Save as: ``../_static/images/tetrad-interface/graph-editor.png``.)
+[//]: # (   Save as: ``../../_static/images/tetrad-interface/overview/graph-editor.png``.)
 
 [//]: # (2. The background knowledge / tiering dialog &#40;if available&#41;.)
 
-[//]: # (   Save as: ``../_static/images/tetrad-interface/graph-background-knowledge.png``.)
+[//]: # (   Save as: ``../../_static/images/tetrad-interface/overview/graph-background-knowledge.png``.)
 
 [//]: # (```)
 
-![](../_static/images/tetrad-interface/graph-editor.png)
+![](../../_static/images/tetrad-interface/overview/graph-editor.png)
 
-![](../_static/images/tetrad-interface/graph-background-knowledge.png)
+![](../../_static/images/tetrad-interface/overview/graph-background-knowledge.png)
 
 ## Opening and creating graphs
 

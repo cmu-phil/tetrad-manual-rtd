@@ -1,4 +1,4 @@
-# Main Window Overview
+# Main Window
 
 The Tetrad main window is the starting point for most workflows. It provides:
 
@@ -14,11 +14,11 @@ The Tetrad main window is the starting point for most workflows. It provides:
 [//]: # (and menus/toolbar visible.)
 
 [//]: # ()
-[//]: # (Save as: ``../_static/images/tetrad-interface/main-window-overview.png``.)
+[//]: # (Save as: ``../../_static/images/tetrad-interface/overview/overview/main-window-overview.png``.)
 
 [//]: # (```)
 
-![](../_static/images/tetrad-interface/main-window-overview.png)
+![](../../_static/images/tetrad-interface/overview/main-window-overview.png)
 
 ## Project tree
 

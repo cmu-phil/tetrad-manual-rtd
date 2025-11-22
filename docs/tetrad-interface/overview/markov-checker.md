@@ -10,11 +10,11 @@ i.e., whether the conditional independencies implied by the graph are consistent
 [//]: # ()
 [//]: # (- The Markov Checker dialog, showing selected graph and data, with a list of tested independencies.)
 
-[//]: # (  Save as: ``../_static/images/tetrad-interface/markov-checker-dialog.png``.)
+[//]: # (  Save as: ``../../_static/images/tetrad-interface/overview/markov-checker-dialog.png``.)
 
 [//]: # (```)
 
-![](../_static/images/tetrad-interface/markov-checker-dialog.png)
+![](../../_static/images/tetrad-interface/overview/markov-checker-dialog.png)
 
 ## Purpose
 

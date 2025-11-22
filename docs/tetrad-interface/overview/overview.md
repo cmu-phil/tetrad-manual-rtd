@@ -1,4 +1,4 @@
-# Tetrad Interface
+# Overview
 
 [//]: # (## Overview)
 
@@ -16,8 +16,14 @@ The pages in this section give a **task-oriented** tour of the interface.
 ```{toctree}
 :maxdepth: 2
 
-overview/overview
-box-by-box/box-by-box
+main-window
+working-with-data
+graph-editor
+running-algorithms
+viewing-and-exporting-results
+simulation-and-utilities
+grid-search
+markov-checker
 ```
 
 Each page focuses on how to accomplish a specific set of tasks in the GUI, rather than describing the underlying

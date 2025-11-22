@@ -10,17 +10,17 @@ procedures (e.g., adjustment, IDA, stability methods).
 [//]: # ()
 [//]: # (1. The dialog or panel for configuring a search algorithm &#40;e.g., FGES or PC&#41;.)
 
-[//]: # (   Save as: ``../_static/images/tetrad-interface/algorithm-config-dialog.png``.)
+[//]: # (   Save as: ``../../_static/images/tetrad-interface/overview/algorithm-config-dialog.png``.)
 
 [//]: # (2. A parameter table or panel showing the algorithm’s tunable settings.)
 
-[//]: # (   Save as: ``../_static/images/tetrad-interface/algorithm-parameters.png``.)
+[//]: # (   Save as: ``../../_static/images/tetrad-interface/overview/algorithm-parameters.png``.)
 
 [//]: # (```)
 
-![](../_static/images/tetrad-interface/algorithm-config-dialog.png)
+![](../../_static/images/tetrad-interface/overview/algorithm-config-dialog.png)
 
-![](../_static/images/tetrad-interface/algorithm-parameters.png)
+![](../../_static/images/tetrad-interface/overview/algorithm-parameters.png)
 
 ## Launching a search
 

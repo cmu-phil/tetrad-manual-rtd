@@ -9,17 +9,17 @@ Tetrad supports several ways of bringing data into the interface and organizing 
 [//]: # ()
 [//]: # (1. Data import dialog with a CSV file selected.)
 
-[//]: # (   Save as: ``../_static/images/tetrad-interface/data-import-dialog.png``.)
+[//]: # (   Save as: ``../../_static/images/tetrad-interface/overview/data-import-dialog.png``.)
 
 [//]: # (2. A data table open in the work area, with variable types visible.)
 
-[//]: # (   Save as: ``../_static/images/tetrad-interface/data-table.png``.)
+[//]: # (   Save as: ``../../_static/images/tetrad-interface/overview/data-table.png``.)
 
 [//]: # (```)
 
-![](../_static/images/tetrad-interface/data-import-dialog.png)
+![](../../_static/images/tetrad-interface/overview/data-import-dialog.png)
 
-![](../_static/images/tetrad-interface/data-table.png)
+![](../../_static/images/tetrad-interface/overview/data-table.png)
 
 ## Importing data
 
