@@ -9,7 +9,6 @@ in the interface.
 ```{toctree}
 :maxdepth: 2
 
-detail-grid-search
 detail-markov-checker
 detail-pm-im-model-types
 detail-bayes-parameteric-model

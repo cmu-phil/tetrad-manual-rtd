@@ -10,7 +10,7 @@ These bindings allow researchers to access the *full power of the Java Tetrad en
 ## py-tetrad (Python Binding)
 
 **Repository:**  
-👉 https://github.com/cmu-phil/py-tetrad
+👉 [https://github.com/cmu-phil/py-tetrad](https://github.com/cmu-phil/py-tetrad)
 
 `py-tetrad` is the **official Python interface** to the Tetrad Java codebase. It exposes:
 
@@ -33,7 +33,7 @@ These bindings allow researchers to access the *full power of the Java Tetrad en
 ## rpy-tetrad (R Binding)
 
 **Repository:**  
-👉 https://github.com/cmu-phil/py-tetrad/tree/main/pytetrad/R
+👉 [https://github.com/cmu-phil/py-tetrad/tree/main/pytetrad/R](https://github.com/cmu-phil/py-tetrad/tree/main/pytetrad/R)
 
 `rpy-tetrad` provides an R interface built on the py-tetrad infrastructure. It lets R users:
 
@@ -73,7 +73,7 @@ In short:
 
 The Python ecosystem also includes the **causal-learn** project, which implements several graph-based causal discovery algorithms natively in Python:
 
-👉 https://causal-learn.readthedocs.io/en/latest/
+👉 [https://causal-learn.readthedocs.io/en/latest/](https://causal-learn.readthedocs.io/en/latest/)
 
 ### Relationship to Tetrad
 
