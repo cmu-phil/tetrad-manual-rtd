@@ -2,10 +2,10 @@
 
 The Tetrad main window is the starting point for most workflows. It provides:
 
-- A **menu bar** and **toolbar** for global actions (open/save, simulate data, run algorithms, etc.).
+- A **menu bar** and **toolbar** for global actions (open/save, logging, pipelines, etc.).
 - A **project tree** listing data sets, graphs, models, and results.
 - A **work area** where editors and result views appear in tabs.
-- A **status bar** with basic progress and message reporting.
+- A **status bar** (and optional logging pane) with progress and message reporting.
 
 [//]: # (```{note})
 
@@ -48,19 +48,28 @@ Tabs can usually be closed independently; closing a tab does **not** delete the 
 
 ## Menus and toolbar
 
-The **menu bar** typically includes items such as:
+The **menu bar** in the version of Tetrad described in this manual includes:
 
-- **File** – open/save projects, import/export data and graphs, exit.
-- **Edit** – undo/redo (where supported), basic editing commands.
-- **Graph** – create new graphs, edit edges, run graph operations.
-- **Search / Algorithms** – launch search algorithms and related tools.
-- **Tools** – utilities such as simulation, resampling, grid search, and the Markov checker.
-- **Help** – version information, links to manuals and online resources.
+- **File** – open/save sessions, import/export data and graphs, save a workspace image, show the session version, and exit the application.  
+  - The **File → Settings** submenu controls:
+    - **Logging** – where log output is written (only to the logging pane, or also to a log file).
+    - **Number Format** – the numeric formatting used throughout the application.
+    - **Enable Experimental** – whether experimental algorithms and options are shown (for example, in the *Search* box).
+- **Edit** – undo/redo (where supported) and basic editing commands.
+- **Logging** – controls **runtime logging**:
+  - **Start Logging** opens a logging pane at the bottom of the main window and begins routing log messages from algorithms and tools to it.  
+    If logging to files has been configured in **File → Settings → Logging**, this also starts a new log file on disk.
+  - **Stop Logging** stops sending messages to the logging pane and, if a log file is open, closes the file.
+- **Pipelines** – offers templates for **pre-wired workbench pipelines**.  
+  Choosing an entry places a fully connected set of session boxes on the workbench (for example, Data → Search → Compare).  
+  Each box in the pipeline can then be **double-clicked and filled in** with your chosen data, algorithms, and models.
+- **Window** – standard window-management actions (show/hide panes, focus different parts of the interface, etc.).
+- **Help** – version information and links to this manual and other online resources.
 
 The **toolbar** (below the menu) exposes common shortcuts (open, save, run, layout graph, zoom in/out, etc.).
 Hovering over a button usually shows a tooltip explaining its function.
 
-## Status bar and messages
+## Status bar, logging pane, and messages
 
 At the bottom of the main window, a status area reports:
 
@@ -68,4 +77,7 @@ At the bottom of the main window, a status area reports:
 - Progress indicators where available
 - Warnings or errors
 
-Long-running algorithms often update this area, and some provide **cancellable** operations from here.
+When you choose **Logging → Start Logging**, a **logging pane** appears (typically docked above the status bar).  
+This pane shows streaming log output from algorithms and utilities while they run. Choosing **Logging → Stop Logging** hides the logging pane and, if file logging is enabled, closes the current log file.
+
+Long-running algorithms often update the status area and/or logging pane, and some provide **cancellable** operations from here.

@@ -1,9 +1,9 @@
-# Cdnod — Causal Discovery from Nonstationary / Distribution-Shifted Data
+# CD-NOD — Causal Discovery from Nonstationary / Distribution-Shifted Data
 
 **Type:** Constraint-based, distribution-shift aware  
 **Output:** CPDAG over observed variables plus a continuous change-index C
 
-`Cdnod` is a PC-style causal discovery algorithm for data with **nonstationarity or distribution shifts**.  
+`CD-NOD` is a PC-style causal discovery algorithm for data with **nonstationarity or distribution shifts**.  
 It assumes you have a **continuous change-index variable C** (for example time, domain index, or an ordering of environments) and uses this, together with conditional independence tests, to learn a **CPDAG** over the measured variables and C. This Tetrad implementation is a translation of the **CD-NOD** idea (Zhang et al.) and of the corresponding implementation in the `causal-learn` project, adapted to the PC/FAS + Meek rules framework.
 
 ---
@@ -14,7 +14,7 @@ The core idea is:
 
 > Treat a continuous **change index C** as an exogenous driver of distributional changes and look for **stable conditional independences** in the joint distribution over (X, C).
 
-Internally, `Cdnod`:
+Internally, `CD-NOD`:
 
 1. **Builds a skeleton with FAS (PC-style)**
     - Runs FAS on all variables including C, using a user-supplied `IndependenceTest`.
@@ -22,12 +22,12 @@ Internally, `Cdnod`:
     - Optionally uses the *stable* variant of FAS.
 
 2. **Forces C → X adjacencies**
-    - For any adjacency between C and a variable X, `Cdnod` orients it as C → X, unless:
+    - For any adjacency between C and a variable X, `CD-NOD` orients it as C → X, unless:
         - that direction is forbidden by knowledge, or
         - the opposite direction is required.
 
 3. **Orients unshielded colliders with a chosen style**
-    - For each unshielded triple X–Z–Y (with X and Y non-adjacent), `Cdnod` can use:
+    - For each unshielded triple X–Z–Y (with X and Y non-adjacent), `CD-NOD` can use:
         - **SEPSETS**: standard PC rule based on stored separating sets;
         - **CONSERVATIVE**: CPC-style logic (requires consistent evidence);
         - **MAX_P**: compares best p-values for sepsets including vs excluding the middle node Z and orients according to the stronger side.
@@ -35,8 +35,6 @@ Internally, `Cdnod`:
 4. **Applies Meek rules**
     - Runs Meek rules (with `Knowledge`) to propagate orientations and close under standard CPDAG implications.
     - The final output is a **CPDAG** over the X variables plus C.
-
-Unlike FCI-based variants (such as a hypothetical `CdNodPag`), this `Cdnod` implementation **does not do PAG/MAG reasoning** and **does not model latent variables explicitly**; it is a PC-like method with an extra change-index variable and CD-NOD-informed collider rules.
 
 ---
 
@@ -55,8 +53,6 @@ Use `Cdnod` when:
 Related algorithms:
 
 - **PC / CPC / PC-Max**: same overall flavor, but assume stationarity, no special C.
-- **CdNodPag** (if exposed): PAG-style CD-NOD variant with latent-variable semantics.
-- **Cdnod** is the stationarity-aware, CPDAG version that plugs neatly into standard PC-style workflows.
 
 ---
 
@@ -65,7 +61,7 @@ Related algorithms:
 **Does it accept background knowledge?**  
 Yes.
 
-`Cdnod` uses Tetrad’s `Knowledge` in several places:
+`CD-NOD` uses Tetrad’s `Knowledge` in several places:
 
 - **Skeleton phase:** passes `Knowledge` into FAS to constrain allowed adjacencies.
 - **C → X orientation:** respects forbidden/required edges and tiering when deciding whether to orient C → X.
@@ -108,7 +104,7 @@ You can therefore enforce:
 
 ## Key Parameters in Tetrad / Scripting
 
-`Cdnod` is typically constructed via its `Builder` in code, or wrapped by a higher-level Tetrad algorithm.  
+`CD-NOD` is typically constructed via its `Builder` in code, or wrapped by a higher-level Tetrad algorithm.  
 The main knobs are:
 
 | Parameter (camelCase) | Description |
@@ -135,4 +131,4 @@ This Tetrad implementation is an adaptation of the CD-NOD procedure, and closely
 
 ## Summary
 
-`Cdnod` is a **PC-style constraint-based algorithm** for **nonstationary or distribution-shifted data**, treating a continuous change index C as an exogenous driver of changes and returning a **CPDAG over X and C** using CD-NOD-inspired collider decisions, with full support for Tetrad’s background knowledge and tools.
+`CD-NOD` is a **PC-style constraint-based algorithm** for **nonstationary or distribution-shifted data**, treating a continuous change index C as an exogenous driver of changes and returning a **CPDAG over X and C** using CD-NOD-inspired collider decisions, with full support for Tetrad’s background knowledge and tools.

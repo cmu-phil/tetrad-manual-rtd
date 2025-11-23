@@ -15,3 +15,4 @@ Use these pages together when selecting modeling assumptions for PC, FGES, BOSS,
 
 choosing-tests-and-scores
 tests-and-scores-catalog
+tests-and-scores/index
