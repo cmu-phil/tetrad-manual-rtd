@@ -23,6 +23,13 @@ This page summarizes the main model families currently supported in the **Parame
   are specified by hand (e.g., nonlinear functions, non-Gaussian errors). This is intended for
   advanced users who need fine-grained control over the data-generating mechanism.
 
+For more details on each family, see:
+
+- `Tetrad Interface → Detail: Bayes (Multinomial) Parametric Models`
+- `Tetrad Interface → Detail: SEM (Linear) Parametric Models`
+- `Tetrad Interface → Detail: Hybrid (Conditional Gaussian) Parametric Models`
+- `Tetrad Interface → Detail: Generalized Parametric Models`
+
 ## Interaction with Estimator and Simulation
 
 - Not all estimators support all model families; SEM models, for example, have specialized

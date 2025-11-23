@@ -10,90 +10,105 @@ Instantiated Model Box in the Tetrad interface sidebar and main panel.
 ## Purpose
 
 The **Instantiated Model** box is where you work with **models that have been tied to data and (typically) estimated**.
-Conceptually, an instantiated model =
+Conceptually, an instantiated model is:
 
 - a **parametric model specification** (from the *Parametric Model* box),
 - plus a **dataset** (from the *Data* box),
-- plus a particular set of **parameter values** (often obtained via the *Estimator* box).
+- plus a particular set of **parameter values** (usually obtained via the *Estimator* box).
 
 You use this box to:
 
-- Store fitted models as concrete objects.
+- Store fitted models as concrete objects in the project.
 - Inspect fit statistics and parameter estimates.
-- Pass the fitted models on to other tools (e.g., simulation, comparison, or effect estimation).
+- Pass fitted models on to other tools (e.g., simulation, comparison, or effect estimation).
 
-### Model types and fit results
+### Model families
 
-Instantiated models can belong to any of the same four families as parametric models:
+Every instantiated model belongs to one of the same four model families as parametric models:
 
-- Bayes (multinomial)
-- SEM (linear SEM)
-- Hybrid (conditional Gaussian)
-- Generalized
+- **Bayes (multinomial)** – discrete Bayesian networks with multinomial CPTs.
+- **SEM (linear SEM)** – linear Gaussian structural equation models.
+- **Hybrid (conditional Gaussian)** – mixed discrete/continuous conditional Gaussian models.
+- **Generalized** – user-specified functional forms and error distributions.
 
-The available fit statistics and parameter summaries depend on the model family and estimator used.
-For example, SEM models may report χ², RMSEA, CFI, and BIC, while other families may expose different
-summary measures.
+Each instantiated model assumes that you have already created a **matching parametric model** of the
+same family and then **estimated** it on a dataset. The interface in the Instantiated Model box
+differs slightly for each family (for example, CPTs for Bayes models versus path coefficients and
+fit indices for SEMs). These differences are explained in the corresponding detail callouts:
 
-For a concise overview of these families and their typical estimators, see:
-
-- `Tetrad Interface → Detail Callouts → Parametric & Instantiated Model Types`
+- `Detail: Bayes (Multinomial) Parametric & Instantiated Models`
+- `Detail: SEM (Linear) Parametric & Instantiated Models`
+- `Detail: Hybrid (Conditional Gaussian) Parametric & Instantiated Models`
+- `Detail: Generalized Parametric & Instantiated Models`
 
 ## Typical workflow
 
 1. **Build a parametric model**
    - In the *Parametric Model* box, create a model whose structure matches your intended graph or SEM.
-   - Make sure variable names match those in your dataset.
+   - Choose one of the four families (Bayes, SEM, Hybrid, or Generalized).
+   - Make sure variable names and types match those in your dataset.
 
 2. **Estimate the model**
    - In the *Estimator* box, select:
-     - A parametric model, and
+     - The parametric model, and
      - A dataset.
-   - Run the estimator to obtain parameter estimates and fit statistics.
+   - Run the estimator to obtain parameter estimates and (when available) fit statistics.
+   - The estimator produces a **fitted result** of the same family as the parametric model.
 
 3. **Create an instantiated model**
    - The result of estimation can be stored as an **instantiated model**.
-   - In many workflows, this happens automatically when you choose to save or keep the fitted result;
-     otherwise, you may have an explicit “instantiate” step depending on the version.
+   - In many workflows, this happens automatically when you choose to keep or save the fitted result;
+     in others, you may explicitly send the estimator output to an Instantiated Model box.
+   - Each instantiated model remembers:
+     - Which parametric model it came from,
+     - Which dataset was used,
+     - Which estimator and settings were used.
 
 4. **Inspect and reuse**
    - In the Instantiated Model box:
      - Select a model to see parameter estimates, standard errors (if available), and fit indices.
-     - Use the model as input to:
-       - *Simulation* (to generate synthetic data),
-       - *Compare* (to compare fits across models),
-       - or other tools that require fully specified, data-tied models.
+     - The exact layout depends on the family (Bayes/SEM/Hybrid/Generalized).
+   - Use the instantiated model as input to:
+     - *Simulation* (to generate synthetic data from the fitted model),
+     - *Compare* (to compare fits across models),
+     - Or other tools that require fully specified, data-tied models.
 
 ## Key controls
 
 - **Toolbar**
   - **Rename / Duplicate / Delete** – manage instantiated models.
-  - **Export** – save a fitted model (and possibly its estimates) to a file, if supported.
+  - **Export** – save a fitted model (and possibly its estimates) to a file, when supported.
 
 - **Instantiated model list**
   - Shows all instantiated models currently stored in the project.
-  - Each entry typically corresponds to a particular combination of:
+  - Each entry corresponds to a particular combination of:
     - Parametric model,
     - Dataset,
-    - Estimation settings.
+    - Estimation method and settings,
+    - Model family (Bayes, SEM, Hybrid, or Generalized).
 
 - **Main panel**
   - Displays details of the selected instantiated model, such as:
     - Parameter estimates and (optionally) standard errors.
-    - Overall fit measures (e.g., χ², RMSEA, CFI, BIC), when provided by the estimator.
-    - Links or summaries pointing back to the underlying data and parametric specification.
+    - Overall fit measures (e.g., χ², RMSEA, CFI, BIC) for SEM-type models.
+    - Log-likelihood or other summary scores for Bayes/Hybrid/Generalized models, when available.
+  - The exact tables and diagnostics shown depend on the model family and estimator.
 
 ## Common patterns & tips
 
 - Use **descriptive names** that encode:
   - The parametric model name,
   - The dataset,
-  - And key estimation settings (e.g., estimator type).
+  - The estimator,
+  - And (optionally) the model family and key settings.
 - Keep both the **parametric model** and the **instantiated model** when doing model comparison:
   - The parametric model describes the form you want to test.
   - The instantiated model stores what happened for a particular dataset and estimator.
 - If you re-estimate the same parametric model on different datasets (e.g., cross-validation folds or
   different populations), keep separate instantiated models for each case.
+- Remember that each instantiated model type (Bayes, SEM, Hybrid, Generalized) inherits its
+  interpretation and limitations from the corresponding parametric model family; see the detail
+  callout pages for family-specific guidance.
 
 ## Related pages
 
