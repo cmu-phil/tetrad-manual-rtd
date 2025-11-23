@@ -1,4 +1,4 @@
-# Row Summing Updater
+# Detail: Row Summing Updater
 
 The **Row Summing Updater** is a specialized **discrete** updater that computes posterior quantities by
 **summing over rows** of the conditional probability tables (CPTs) consistent with the specified evidence and

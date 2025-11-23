@@ -1,4 +1,4 @@
-# Approximate Updater
+# Detail: Approximate Updater
 
 The **Approximate Updater** performs **approximate Bayesian updating** for **discrete** models. It uses
 sampling-based or approximate inference methods rather than an exact junction tree, which can be useful for

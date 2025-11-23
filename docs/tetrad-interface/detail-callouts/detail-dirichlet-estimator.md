@@ -26,24 +26,14 @@ Estimator box is a **Bayes PM**.
 
 ## How it works (conceptually)
 
-For each node \(X\) with parents \(\mathrm{Pa}(X)\), and each parent
-configuration \(\pi\):
+For each node X with parents Pa(X), and each parent configuration pi:
 
-1. Start with a Dirichlet prior
-   \[
-   \text{Dir}(\alpha_1, \dots, \alpha_k)
-   \]
-   over the \(k\) states of \(X\).
-2. Observe empirical counts \(n_1, \dots, n_k\) from the data.
-3. Compute the **posterior** Dirichlet:
-   \[
-   \text{Dir}(\alpha_1 + n_1, \dots, \alpha_k + n_k).
-   \]
-4. Use the **posterior mean** as the CPT entries:
-   \[
-   \hat{P}(X = x_i \mid \mathrm{Pa}(X)=\pi)
-   = \frac{\alpha_i + n_i}{\sum_j (\alpha_j + n_j)}.
-   \]
+1. Start with a Dirichlet prior written as Dir(alpha_1, ..., alpha_k) over the k states of X.
+2. Observe empirical counts n_1, ..., n_k from the data.
+3. Compute the posterior Dirichlet Dir(alpha_1 + n_1, ..., alpha_k + n_k).
+4. Use the posterior mean as the CPT entries:
+
+   P(X = x_i | Pa(X) = pi) = (alpha_i + n_i) / sum_j (alpha_j + n_j).
 
 ## Output
 

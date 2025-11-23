@@ -1,4 +1,4 @@
-# SEM Updater
+# Detail: SEM Updater
 
 The **SEM Updater** performs updating for **linear Gaussian Structural Equation Models (SEMs)**. Given an
 instantiated linear SEM and specified **evidence** and **manipulations**, it computes the implied

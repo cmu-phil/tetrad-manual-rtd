@@ -1,4 +1,4 @@
-# Junction Tree Updater
+# Detail: Junction Tree Updater
 
 The **Junction Tree Updater** is the default updater for **discrete** models. It performs **exact Bayesian
 updating** on an instantiated discrete model, given specified **evidence** (observed variable values) and
