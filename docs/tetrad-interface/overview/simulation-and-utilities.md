@@ -55,15 +55,13 @@ These tools typically:
 
 ## Other utilities
 
-Depending on your version of Tetrad, you may see additional tools such as:
+In the version of Tetrad described in this manual, the **Tools** menu also includes additional
+utilities such as:
 
 - Data preprocessing helpers.
 - Graph conversion or simplification tools.
 - Checks for correctness of graph types or graph properties.
 
-Two important tools with their own pages in this section are:
-
-- **Grid Search** – for systematic parameter sweeps over algorithms.
-- **Markov Checker** – for checking whether a graph is Markov to a data set (or another graph).
-
-See those pages for more detailed descriptions and usage patterns.
+Several utilities are documented in their own pages elsewhere in the manual
+(for example, **Detail: Grid Search** and **Detail: Markov Check**). Refer to
+the table of contents for links to those tools and their usage patterns.

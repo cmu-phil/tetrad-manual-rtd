@@ -29,9 +29,8 @@ BOSS-FCI follows the general ***X-FCI template***:
         - Zhang-style orientation propagation (Zhang, 2008)
         - PAG legality checks (maximality, acyclicity, almost-cycles, endpoint corrections)
 
-    - This yields a **PAG** that accounts for latent confounders and (optionally) selection bias.
-
-BOSS-FCI is therefore a **hybrid** algorithm: it uses score-based reasoning for adjacency decisions and Zhang-style constraint-based logic for completing a PAG.
+    - This yields a **PAG** that accounts for latent confounders and (optionally) selection bias. 
+    - BOSS-FCI is therefore a **hybrid** algorithm: it uses score-based reasoning for adjacency decisions and Zhang-style constraint-based logic for completing a PAG.
 ---
 
 ## When to Use
@@ -76,8 +75,8 @@ BOSS-FCI is therefore a **hybrid** algorithm: it uses score-based reasoning for 
     - FCIT uses targeted CI testing guided by BOSS and guarantees PAG legality,  
       whereas BOSS-FCI still uses a traditional FCI refinement phase.
 
-- **vs. LV-Dumb**
-    - LV-Dumb heuristically converts a BOSS DAG directly to a PAG.
+- **vs. LV-Heuristic **
+    - LV-Heuristic heuristically converts a BOSS DAG directly to a PAG.
     - BOSS-FCI is a *principled* algorithm with sound PAG-correction steps.
 
 Cross-references:  
@@ -85,7 +84,7 @@ Cross-references:
 👉 [GFCI](gfci.md) •  
 👉 [GRaSP-FCI](grasp-fci.md) •  
 👉 [FCIT](fcit.md) •  
-👉 [LV-Dumb](lv-heuristic.md)
+👉 [LV-Heuristic](lv-heuristic.md)
 
 ---
 

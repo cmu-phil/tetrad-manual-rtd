@@ -38,7 +38,7 @@ resources allow. Community suggestions and contributions are welcome.
 
 For a broader historical overview of the project, see:
 
-👉 **https://www.cmu.edu/dietrich/philosophy/tetrad/about/**
+👉 **[https://www.cmu.edu/dietrich/philosophy/tetrad/about/](https://www.cmu.edu/dietrich/philosophy/tetrad/about/)**
 
 ---
 

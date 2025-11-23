@@ -48,7 +48,7 @@ Cross-refs:
 
 ## Key Idea
 
-LV-Dumb follows a minimal pipeline:
+LV-Heuristic follows a minimal pipeline:
 
 ### 1. Build a high-quality DAG
 Usually with **BOSS**, but any good DAG search works.
@@ -64,7 +64,7 @@ Only when the DAG structure **cannot** be explained without a hidden common caus
 This keeps false positive bidirected edges extremely low.
 
 ### 4. Enforce legality
-Just like in FCIT and BOSS-FCI, LV-Dumb ensures the output is:
+Just like in FCIT and BOSS-FCI, LV-Heuristic ensures the output is:
 
 - ancestral
 - acyclic
@@ -75,7 +75,7 @@ The result is a lightweight but well-formed PAG.
 
 ---
 
-## When to Use LV-Dumb
+## When to Use LV-Heuristic
 
 - You want a **quick, conservative latent-variable PAG**
 - You don’t want to pay the cost of full FCI/GFCI/FCIT
@@ -83,7 +83,7 @@ The result is a lightweight but well-formed PAG.
 - You are working with **large number of variables** but want PAG-like output
 - As a **warm-up** or **sanity check** before running more complete methods
 
-LV-Dumb often functions as a “first draft PAG.”
+LV-Heuristic often functions as a “first draft PAG.”
 
 ---
 
@@ -108,27 +108,27 @@ LV-Dumb often functions as a “first draft PAG.”
 
 ---
 
-## How LV-Dumb Differs From Other Mixed-Strategy Algorithms
+## How LV-Heuristic Differs From Other Mixed-Strategy Algorithms
 
 ### vs. **BOSS-FCI** / **GRaSP-FCI**
-- LV-Dumb is **much simpler**.
+- LV-Heuristic is **much simpler**.
 - It does **not** perform the full refinement / collider-correction logic.
 - It produces cleaner but more **conservative** PAGs.
 
 ### vs. **FCIT**
 - FCIT uses score-guided **targeted CI testing**.
-- LV-Dumb uses none of the CI information (purely score-based).
-- LV-Dumb is faster but less expressive.
+- LV-Heuristic uses none of the CI information (purely score-based).
+- LV-Heuristic is faster but less expressive.
 
 ### vs. **GFCI/FCI**
-- LV-Dumb avoids the combinatorial CI-testing explosion entirely.
+- LV-Heuristic avoids the combinatorial CI-testing explosion entirely.
 - As a result: fewer false positives, but also fewer discovered latent structures.
 
 ---
 
 ## Prior Knowledge Support
 
-LV-Dumb **fully supports background knowledge**, including:
+LV-Heurstic **fully supports background knowledge**, including:
 
 - required edges
 - forbidden edges
@@ -146,7 +146,7 @@ Knowledge is respected during:
 
 ## Key Parameters in Tetrad
 
-LV-Dumb shares parameters with its underlying DAG search (often **BOSS**):
+LV-Heuristic shares parameters with its underlying DAG search (often **BOSS**):
 
 | Parameter | Meaning |
 |----------|---------|
@@ -156,7 +156,7 @@ LV-Dumb shares parameters with its underlying DAG search (often **BOSS**):
 | `faithfulnessAssumed` | Controls BOSS’s initial adjacency filtering. |
 | `verbose` | Print detailed decisions. |
 
-LV-Dumb itself has few additional parameters—its simplicity is part of the design.
+LV-Heuristic itself has few additional parameters—its simplicity is part of the design.
 
 ---
 
@@ -170,5 +170,5 @@ arXiv:2510.04263.
 
 ## Summary
 
-**LV-Dumb = DAG → conservative PAG.**  
+**LV-Heuristic = DAG → conservative PAG.**  
 A near-zero-cost heuristic PAG generator that produces clean, stable, easy-to-interpret graphs — ideal for exploratory or large-scale workflows.

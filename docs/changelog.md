@@ -81,3 +81,27 @@
 ### Notes
 This concludes the major documentation rewrite cycle for tests, scores, latent-variable tools, and the first draft of the new Tetrad Interface section.  
 Further refinements will follow after peer review of the updated manual and feedback from users (including Peter and collaborators).
+
+## 2025-11 — Tetrad Interface Manual Near Completion
+
+### 📚 1. Box-by-Box Interface Documentation Filled In
+- Completed detailed **Tetrad Interface** pages for core GUI boxes, including:
+    - Data, Simulation, Search, Latent Structure, Knowledge, Estimator, Updater, Graph, and Display Subgraphs.
+- Added corresponding **detail callouts** for:
+    - Parametric and Instantiated Model types,
+    - Estimators (ML Bayes, Dirichlet, EM Bayes, SEM, Hybrid CG, Generalized SEM),
+    - Updaters (Junction Tree, Approximate, Row Summing, SEM),
+    - Graph menu tools and Display Subgraphs.
+- Ensured consistent wording, parameter references, and cross-links to the global **Parameters** listing.
+
+### ✅ 2. Manual Build and UX Checks
+- Verified that the **HTML build** is clean and that the generated **PDF manual** renders correctly.
+- Confirmed that **search functionality** in the built docs works as expected.
+- Checked the appearance of the manual on a **mobile phone**; layout and navigation look good on small screens.
+
+### 🔜 3. Remaining TODOs
+- Plan to add a small number of additional **detail callouts** for:
+    - **Pipelines** functionality,
+    - **Logging** functionality.
+- After those callouts are in place, the new Tetrad Interface manual will be considered feature-complete pending minor polish and feedback from users (Peter, collaborators, and external readers).
+

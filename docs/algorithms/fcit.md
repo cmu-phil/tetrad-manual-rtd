@@ -81,8 +81,8 @@ Thus, FCIT produces a **legal PAG at every intermediate step**, not just at the 
 - BOSS-FCI and GRaSP-FCI replace the skeleton; FCIT replaces the **testing schedule**.
 - FCIT is often the most **stable** of the mixed-strategy algorithms.
 
-### vs. **LV-Dumb**
-- LV-Dumb is a heuristic PAG-from-DAG transformer.
+### vs. **LV-Heuristic**
+- LV-Heuristic is a heuristic PAG-from-DAG transformer.
 - FCIT is a principled hybrid consistent with FCI logic.
 
 Cross-references:
@@ -90,7 +90,7 @@ Cross-references:
 👉 [GRaSP-FCI](grasp-fci.md) •  
 👉 [GFCI](gfci.md) •  
 👉 [FCI](fci.md) •  
-👉 [LV-Dumb](lv-heuristic.md)
+👉 [LV-Heuristic](lv-heuristic.md)
 
 ---
 

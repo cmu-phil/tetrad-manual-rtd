@@ -11,10 +11,10 @@ produces a **linear SEM**.
 
 - Compute **conditional means and variances** in a linear Gaussian SEM given:
     - Observed values for some variables (evidence),
-    - Interventions on others (manipulations/do-operations).
+    - Interventions on others (manipulations / do-operations).
 - Support queries like:
-    - Expected value of \(Y\) given \(X = x\),
-    - Expected value of \(Y\) under \(\text{do}(X = x)\),
+    - Expected value of Y given X = x,
+    - Expected value of Y under an intervention that sets X = x (often written do(X = x)),
     - Conditional distributions of subsets of variables.
 
 ## Inputs and setup
@@ -23,41 +23,31 @@ produces a **linear SEM**.
     - Contains path coefficients, error variances, and possibly intercepts.
 - **User-specified information**:
     - **Evidence**: observed values on some variables.
-    - **Manipulations**: variables to be intervened upon (do\(X = x\)), typically removing their parents and
+    - **Manipulations**: variables to be intervened upon (do-operations), typically removing their parents and
       fixing them at specified values.
 
 These are set in the Updater box via fields for variable values and manipulation flags.
 
 ## How it works (conceptually)
 
-For a **linear Gaussian** SEM, the joint distribution over all variables is multivariate normal:
-
-\[
-\mathbf{V} \sim \mathcal{N}(\mu, \Sigma),
-\]
-
-where \(\mu\) and \(\Sigma\) are implied by the SEM structure and parameters.
+For a **linear Gaussian** SEM, the joint distribution over all variables is a **multivariate normal**
+distribution. The SEM implies a particular **mean vector** (often written mu) and **covariance matrix**
+(often written Sigma) for this multivariate normal.
 
 The SEM Updater:
 
-1. Constructs (or uses) the implied **mean vector** \(\mu\) and **covariance matrix** \(\Sigma\).
-2. Incorporates **manipulations** by:
+1. Constructs (or uses) the implied mean vector and covariance matrix from the SEM structure and parameters.
+2. Incorporates **manipulations** (interventions) by:
     - Modifying the structural graph (removing incoming edges into manipulated variables),
-    - Recomputing the implied \(\mu\) and \(\Sigma\) under the intervention.
+    - Recomputing the implied mean vector and covariance matrix under the intervention.
 3. Incorporates **evidence** by conditioning:
-    - For variables partitioned as \((X, Y)\), with observed \(X = x\), it uses the multivariate normal
-      conditioning formula:
-      \[
-      Y \mid X=x \sim \mathcal{N}(\mu_{Y\mid X}, \Sigma_{Y\mid X}),
-      \]
-      where
-      \[
-      \mu_{Y\mid X} = \mu_Y + \Sigma_{Y X} \Sigma_{X X}^{-1} (x - \mu_X),
-      \]
-      \[
-      \Sigma_{Y\mid X} = \Sigma_{Y Y} - \Sigma_{Y X} \Sigma_{X X}^{-1} \Sigma_{X Y}.
-      \]
+    - Conceptually, the variables are partitioned into observed variables X (with values x) and variables Y of
+      interest. The updater uses the standard multivariate normal conditioning formulas to obtain the
+      conditional mean and covariance of Y given X = x.
 4. Reports **conditional means and variances** (and sometimes covariances) for variables of interest.
+
+You do not need to know or enter the conditioning formulas yourself; they are handled internally by the
+SEM Updater.
 
 ## Output
 
@@ -65,8 +55,8 @@ The SEM Updater:
     - **Means** of variables given evidence and/or manipulations.
     - **Variances** (and possibly covariances) under the same conditions.
 - These can be interpreted as:
-    - Predictions,
-    - Effects of interventions in a linear Gaussian setting.
+    - Predictions under observation (what you expect to see given evidence),
+    - Effects of interventions in a linear Gaussian setting (what you expect to see when variables are set by do-operations).
 
 The underlying SEM parameters remain fixed; the Updater computes conditional distributions “on top” of them.
 

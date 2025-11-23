@@ -36,7 +36,7 @@ GRaSP is a good choice when:
 - You are working in **small-to-moderate dimension** (e.g., tens of variables), where a richer permutation neighborhood can be explored.
 - You want a **DAG/CPDAG** that you may later feed into:
     - [GRaSP-FCI](grasp-fci.md) for latent-variable PAGs.
-    - [LV-Dumb](lv-heuristic.md) for a fast heuristic PAG.
+    - [LV-Heuristic](lv-heuristic.md) for a fast heuristic PAG.
 
 Less ideal when:
 

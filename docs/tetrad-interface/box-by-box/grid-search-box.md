@@ -1,4 +1,4 @@
-d# Grid Search Box
+# Grid Search Box
 
 ```{figure} ../../_static/images/tetrad-interface/box-by-box/grid-search-box.png
 :name: tetrad-grid-search-box-screenshot
