@@ -9,88 +9,122 @@ Updater Box in the Tetrad interface sidebar and main panel.
 
 ## Purpose
 
-The **Updater** box is where you apply **updating procedures** to existing objects in a Tetrad project.
-Depending on your version and configuration, this may include:
+The **Updater** box is where you apply **updating procedures** to an existing model in a Tetrad project.
+It takes an **Instantiated Model (IM)** or an **Estimator** output as input and lets you perform
+**probabilistic learning** by specifying:
 
-- Updating graphs or models when **new data** becomes available.
-- Re-running certain analyses with **modified assumptions** or **changed parameters**.
-- Applying specialized update rules (for example, incremental adjustments to parameter estimates).
+- **Values for variables** (evidence/observations), and
+- **Manipulations** (interventions / do-operations).
 
-Conceptually, the Updater box lets you say: *“Given what I have already computed, update it in light of
-this new information, without starting completely from scratch.”*
+Given an instantiated model and those settings, the Updater computes updated (posterior) quantities for
+variables of interest.
+
+Currently there are two main families of updaters:
+
+- **Discrete updaters** for **discrete Bayesian models**:
+  - Junction Tree Updater (default)
+  - Approximate Updater
+  - Row Summing Updater
+- A **SEM Updater** for **linear Gaussian SEMs**.
 
 ## Typical workflow
 
-1. **Select an object to update**
-   - Identify the object you want to update, such as:
-     - A graph from the *Graph* box.
-     - A parametric or instantiated model.
-     - A dataset from the *Data* box (if supported).
-   - In the Updater box, choose this object as the **input** to be updated.
+1. **Connect an instantiated model or estimator**
+   - Place an **Instantiated Model** or **Estimator** box on the workbench.
+   - Configure it to produce either:
+     - A **discrete Bayes model**, or
+     - A **linear SEM**.
+   - Place an **Updater** box and draw an arrow from the IM/Estimator box to the Updater box.
 
-2. **Specify new information**
-   - Depending on the update method, you may supply:
-     - A new or extended dataset.
-     - Revised background knowledge (e.g., additional forbidden/required edges).
-     - Updated parameter constraints or priors.
-   - Configure these inputs using drop-downs and fields in the Updater setup panel.
+2. **Open the Updater box**
+   - Double-click the Updater box to open its interface.
+   - The interface shows:
+     - A list of variables from the input model,
+     - Fields to set **values** (evidence) for some variables,
+     - Controls to mark variables as **manipulated** (intervened on) and assign intervention values,
+     - A control for choosing the **updater type** (for discrete models).
 
-3. **Choose an update method**
-   - Select an available update procedure (for example):
-     - Incremental graph update.
-     - Re-estimation or shrinkage of parameters given new data.
-     - Hybrid update rules tailored to a particular algorithm family.
-   - Adjust method-specific options (e.g., learning rate or weighting of old vs. new information),
-     if your version exposes them.
+3. **Choose an updater type**
+   - For **discrete** models, select one of:
+     - **Junction Tree Updater** – exact inference using a junction tree (default).
+     - **Approximate Updater** – sampling- or approximation-based inference for larger models.
+     - **Row Summing Updater** – table-based inference by summing over CPT rows.
+   - For **linear SEM** models, the **SEM Updater** is used.
 
-4. **Run the update**
-   - Click **Run** (or **Update**) to apply the chosen method.
-   - Progress messages and any warnings are shown in the log or status area.
+4. **Specify evidence and manipulations**
+   - For each variable you want to condition on:
+     - Enter an observed value (evidence).
+   - For each variable you want to intervene on:
+     - Mark it as manipulated and specify the intervention value (e.g., do\(X = x\)).
 
-5. **Inspect updated results**
-   - The result is usually:
-     - A **new graph or model** (appearing in the *Graph* or *Instantiated Model* boxes), or
-     - A modified version of the original object (depending on how updates are configured).
-   - Inspect these updated objects as you would any other graph or model.
+5. **Run the update**
+   - Use the updater’s controls (e.g., an **Update** or **Compute** button, depending on your version)
+     to perform inference.
+   - The Updater computes:
+     - **Posterior distributions** for discrete variables, or
+     - **Conditional means and variances** for SEM variables,
+     given the specified evidence and manipulations.
 
-## Key controls
+6. **Inspect results**
+   - Updated probabilities or conditional summaries are shown in the Updater interface.
+   - You can adjust values and manipulations and recompute to explore “what-if” scenarios.
 
-- **Toolbar**
-  - **New / Configure** – create or edit an update specification.
-  - **Run / Update** – apply the current update method.
-  - **Stop** – interrupt a long-running update.
-  - **Duplicate / Rename / Delete** – manage saved update configurations.
-  - **Export** – save logs or update specifications to a file (when supported).
+## Updater types and detail pages
 
-- **Updater setup panel**
-  - Selectors for:
-    - Object to update (graph, model, dataset, etc.).
-    - New data or additional information (if required).
-    - Update method.
-  - Fields for method-specific parameters and options.
+The Updater box supports the following updater types, depending on the model type:
 
-- **Results / log panel**
-  - Shows:
-    - Which objects and data were used.
-    - Which update method was applied.
-    - Any warnings or diagnostic messages.
-  - References or links to the updated objects now available in other boxes.
+| Model type              | Updater option          | Detail page                                       |
+|-------------------------|-------------------------|---------------------------------------------------|
+| Discrete Bayes model    | Junction Tree Updater   | `Tetrad Interface → Junction Tree Updater`        |
+| Discrete Bayes model    | Approximate Updater     | `Tetrad Interface → Approximate Updater`          |
+| Discrete Bayes model    | Row Summing Updater     | `Tetrad Interface → Row Summing Updater`          |
+| Linear SEM              | SEM Updater             | `Tetrad Interface → SEM Updater`                  |
+
+See the individual detail pages for conceptual descriptions and implementation notes for each updater.
+
+## Connecting the Updater with other boxes
+
+The Updater box fits into the broader workflow as follows:
+
+- **Inputs**
+  - **Instantiated Model** or **Estimator**:
+    - Provides the model to be updated (discrete Bayes model or linear SEM).
+  - (Sometimes) **Data**:
+    - Data are typically used upstream to estimate the model; the Updater itself works with the instantiated model.
+
+- **Outputs**
+  - The Updater does **not** change the model structure or parameters; instead, it:
+    - Computes posterior distributions or conditional summaries,
+    - Displays them in its own interface.
+  - You can use these results to:
+    - Interpret effects of interventions,
+    - Compare outcomes across different evidence/manipulation scenarios,
+    - Inform further modeling decisions.
+
+You can also create **multiple Updater boxes** attached to the same instantiated model to explore different
+evidence and intervention scenarios in parallel.
 
 ## Common patterns & tips
 
-- Use the Updater box when:
-  - You regularly receive **new data batches** and want to update existing models rather than refit from scratch.
-  - You are iteratively refining assumptions and want to track how a model changes.
-- Keep **original versions** of graphs and models (for example, by duplicating before updating) so you can
-  compare updated results against earlier states.
-- Pay attention to how the update method **weights old vs. new information**; this can greatly affect the
-  stability or responsiveness of updated models.
+- Use a **discrete updater** (Junction Tree, Approximate, or Row Summing) when your instantiated model is a
+  **discrete Bayes network**.
+- Use the **Junction Tree Updater** when exact inference is feasible; switch to the **Approximate Updater**
+  when models become too large or dense.
+- Use the **Row Summing Updater** when you want a conceptually simple, table-based calculation (useful in
+  teaching or debugging).
+- Use the **SEM Updater** for **linear Gaussian SEMs** to compute:
+  - Conditional means and variances under evidence,
+  - The effect of interventions \(\text{do}(X = x)\) in the linear SEM setting.
+- When performing “what-if” analyses:
+  - Keep the instantiated model fixed,
+  - Duplicate an Updater configuration and vary only the evidence or manipulations,
+  - Compare the resulting updated quantities.
 
 ## Related pages
 
 - `Tetrad Interface → Overview` – high-level tour of the GUI.
 - Other boxes that commonly interact with **Updater**:
-  - *Graph* (graphs to be updated).
-  - *Data* (new or extended datasets used for updating).
-  - *Parametric Model* and *Instantiated Model* (models whose parameters may be updated).
-  - *Compare* (compare original and updated models).
+  - *Instantiated Model* (provides the model to be updated).
+  - *Estimator* (produces instantiated models from data).
+  - *Data* and *Parametric Model* (used upstream to build the instantiated models).
+  - *Simulation* (can generate data for models that are later updated).

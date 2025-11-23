@@ -9,101 +9,134 @@ Latent Structure Box in the Tetrad interface sidebar and main panel.
 
 ## Purpose
 
-The **Latent Structure** box is where you work with **explicit latent-variable models** in Tetrad.
-Whereas the *Latent Clusters* box focuses on clustering variables or cases, the Latent Structure box
-focuses on **structural relationships involving latent variables**—for example, multiple-indicator models,
-latent DAGs, or more complex latent structures.
+The **Latent Structure** box is where you run **latent-structure search algorithms** in Tetrad. Its interface
+is the same wizard used by the *Search* box, but specialized for **latent-variable structure**:
 
-You use this box to:
+- It only offers **latent-structure search methods** (e.g., multiple-indicator models, latent DAGs, and related
+  procedures).
+- In addition to data and (optionally) background knowledge, it can also take input from a **Latent Clusters**
+  box, using discovered clusters as candidate latent factors.
 
-- Build, edit, or inspect models that include latent variables.
-- Run specialized search or modeling procedures for latent structures.
-- Prepare latent-variable models for estimation, simulation, or comparison.
+The Latent Structure box connects:
 
-### Latent structure and simulation
+- one or more **datasets** (from the *Data* box),
+- optional **latent clusters** (from the *Latent Clusters* box),
+- optional **background knowledge** (from the *Knowledge* box),
+- and a choice of **latent-structure search algorithm**,
 
-To run latent models in **Simulation**:
+and produces one or more **latent-variable graphs** (with latent nodes and their indicators) that appear in the
+*Graph* box.
 
-1. Specify a **structure over the latent variables** in this box (latent nodes and edges among them),
-   together with their observed indicators.
-2. Convert or link this latent structure to a parametric model (e.g., SEM or Hybrid).
-3. Use that parametric model as a source in the *Simulation* box.
+Typical uses include:
 
-Without a specified structure over the latents, Simulation cannot generate full joint data for
-observed + latent variables.
+- Learning **multiple-indicator models (MIMs)** or other factor-analytic structures.
+- Searching for **latent DAGs** consistent with observed correlations and clusters.
+- Combining variable clustering with explicit latent-variable modeling.
 
-See also:
+## Wizard workflow
 
-- `Tetrad Interface → Detail Callouts → Latent Models and Simulation`
+Double-clicking a Latent Structure box opens the same **two-card wizard** used by the Search box.
 
+### Card 1: Choose latent-structure algorithm, test, and score
 
-## Typical workflow
+The first card focuses on selecting an algorithm (restricted to latent-structure search) and, where required,
+an independence test and/or score.
 
-1. **Prepare inputs (graphs, clusters, or data)**
-   - In the *Graph* box, define a graph that includes latent variables, or
-   - In the *Latent Clusters* box, derive clusters that you will treat as latent factors, or
-   - In the *Data* box, prepare the dataset whose covariance structure suggests latent structure.
+**Algorithm selection**
 
-2. **Create or import a latent structure model**
-   - In the Latent Structure box, use **New** to:
-     - Build a latent-variable model from:
-       - An existing graph with latent nodes, or
-       - Clusters produced by the Latent Clusters box, or
-       - A template for common structures (e.g., multiple-indicator models).
-   - Optionally import a latent structure model from a file if your version supports it.
+- At the top, you choose a **latent-structure search algorithm** from a combo box (a list selector).
+- **Algorithm filters** help narrow the list to methods appropriate for:
+  - Continuous vs. discrete vs. mixed data,
+  - Presence of latent clusters (from a *Latent Clusters* box),
+  - Desired output (e.g., MIMs vs. more general latent DAGs).
+- When you highlight an algorithm, a **description** appears on the right, explaining:
+  - What type of input it expects (data only, or data + latent clusters),
+  - What assumptions it makes about the latent structure,
+  - What kind of output it produces (e.g., latent variables with multiple indicators, latent DAGs over factors).
 
-3. **Inspect and edit the latent structure**
-   - Select a latent structure in the list to display it in the main panel.
-   - Use the editor to:
-     - Add or remove latent variables.
-     - Link latent variables to observed indicators.
-     - Specify relationships among latent variables (e.g., directional edges).
-     - Adjust measurement or structural assumptions.
+**Latent clusters, tests, and scores**
 
-4. **Use with estimation and simulation**
-   - Pass the latent structure to:
-     - The *Parametric Model* or *Estimator* boxes for parameter estimation.
-     - The *Simulation* box to generate data from the latent model.
-   - Combine with *Compare* or *Search* (where appropriate) to evaluate or refine the model.
+- If you have a **Latent Clusters** box feeding into the Latent Structure box, the wizard can use these clusters
+  as candidate latent factors:
+  - Each cluster may become a latent factor with observed indicators given by the clustered variables.
+- In the **lower-left** portion of the card, you choose:
+  - An **independence test** (for constraint-based latent-structure algorithms) and/or
+  - A **score** (for score-based latent-structure algorithms),
+  depending on what the selected algorithm requires.
+- A **filter** helps you find tests/scores compatible with your data type and the chosen algorithm.
+- When you select a test or score, its **description** is also shown on the right for reference.
 
-## Key controls
+Once you are satisfied with your algorithm, test, and score choices, click **Set Parameters** at the bottom of
+the wizard to move to the second card.
 
-- **Toolbar**
-  - **New** – create a new latent structure model (from graphs, clusters, data, or templates).
-  - **Duplicate / Rename / Delete** – manage existing latent structure models.
-  - **Export** – save a latent structure model to a file, when supported.
+### Card 2: Set parameters and run latent-structure search
 
-- **Latent structure list**
-  - Shows all latent structure models currently defined in the project.
-  - Each entry may correspond to:
-    - A specific dataset or covariance structure,
-    - A chosen set of indicators and latent factors,
-    - A particular structural hypothesis about relationships among latents.
+The second card shows **parameters for the chosen latent-structure algorithm, and (if applicable) its test
+and/or score**. Here you can:
 
-- **Main panel**
-  - Displays the selected latent structure in a graphical or tabular editor, with:
-    - Latent nodes and their indicator variables.
-    - Edges among latent variables.
-    - Any annotations or constraints relevant to the model.
+- Edit **algorithm parameters**, such as:
+  - Constraints on the number of latent variables or indicators per latent,
+  - Thresholds or penalties for adding/removing latent–indicator edges,
+  - Options for how latent clusters are converted into latent factors.
+- Edit **test parameters**, such as:
+  - Significance levels or robustness options for independence tests in the latent setting.
+- Edit **score parameters**, such as:
+  - Penalty weights or prior settings used to balance model fit against complexity.
+
+For **more detailed explanations** of what each parameter means and its allowable range, consult:
+
+- The documentation page for the specific latent-structure algorithm, test, or score, or
+- The global **Parameters** listing in the manual, which documents all Tetrad parameters.
+
+From this card you can:
+
+- Click **Choose Algorithm** to go back to the first card and pick a different latent-structure algorithm or
+  test/score combination.
+- Click **Run Algorithm** to execute the latent-structure search with the current settings.
+
+When you click **Run Algorithm**, the search is executed and a resulting **latent-variable graph** is produced
+and added to the *Graph* box. The Latent Structure box remembers your configuration so you can re-run or tweak
+it later.
+
+## Connecting data, clusters, knowledge, and outputs
+
+Although the wizard focuses on algorithm/test/score choices and parameters, the Latent Structure box sits in
+the larger project workflow:
+
+- **Inputs**
+  - Draw an arrow from a **Data** box into the **Latent Structure** box to provide the dataset.
+  - (Optional) Draw an arrow from a **Latent Clusters** box to provide variable clusters that may be turned into
+    latent factors.
+  - (Optional) Draw an arrow from a **Knowledge** box to impose background constraints on latent and observed
+    edges (for algorithms that support this).
+- **Outputs**
+  - When the algorithm finishes, the resulting **latent-variable graph** is sent to a **Graph** box.
+  - You may attach multiple Graph boxes if you want to keep different latent-structure runs separate.
+
+You can also duplicate a Latent Structure box on the workbench to explore different latent-structure algorithms,
+cluster inputs, or parameter settings.
 
 ## Common patterns & tips
 
-- Use latent structure models when you believe that **unmeasured constructs** explain
-  patterns of correlation among observed variables.
+- Use the Latent Structure box when you want **explicit latent variables** rather than treating all variables
+  as fully observed.
 - A common workflow:
-  - Discover variable groupings using *Latent Clusters*.
-  - Convert clusters into latent variables in the Latent Structure box.
-  - Refine the structure among latent variables using domain knowledge.
-  - Estimate and test the model using the *Estimator* box.
-- Be careful to distinguish between:
-  - **Measurement structure** (which variables indicate which latent factors).
-  - **Structural relations** among latent variables (causal or correlational).
+  - Use *Latent Clusters* to discover candidate groups of indicators.
+  - Feed those clusters into the **Latent Structure** box.
+  - Choose a latent-structure search algorithm and tune parameters on the second card.
+  - Inspect the resulting latent graph in the *Graph* box and refine as needed.
+- Consider using **background knowledge** to:
+  - Fix certain variables as indicators of particular latent factors,
+  - Prohibit certain edges between latent variables,
+  - Enforce tiers or ordering among latents.
 
 ## Related pages
 
 - `Tetrad Interface → Overview` – high-level tour of the GUI.
-- Other boxes that commonly interact with **Latent Structure**:
+- Boxes that commonly interact with **Latent Structure**:
   - *Latent Clusters* (provides clustered groupings that can be turned into latent variables).
-  - *Graph* (can represent latent structures directly).
-  - *Parametric Model* and *Estimator* (fit latent structure models to data).
+  - *Data* (provides datasets as input).
+  - *Knowledge* (supplies background constraints).
+  - *Graph* (receives learned latent structures).
+  - *Parametric Model* and *Estimator* (fit latent-structure models to data).
   - *Simulation* (generate data from specified latent structures).

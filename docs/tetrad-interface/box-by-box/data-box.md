@@ -9,9 +9,11 @@ Data Box in the Tetrad interface sidebar and main panel.
 
 ## Purpose
 
-The **Data** box is where you work with **datasets** in a Tetrad project. It shows
-the list of all datasets in the current session, lets you load new ones, transform existing ones,
-and inspect their contents.
+The **Data** box is where you work with **datasets** in a Tetrad project. Each Data box shows
+one or more **datasets** or **covariance matrices** (or lists of these) in the current session,
+lets you load new ones, and inspect their contents. By attaching new datasets to an existing dataset
+by drawing an arrow and double-clicking, various transformations of the data can be applied, from
+copying the data to randomly reordering a column.
 
 In a typical workflow you will load data here first, then use it in *Search*, *Regression*,
 *Estimator*, *Simulation*, and other boxes.
@@ -44,12 +46,13 @@ In a typical workflow you will load data here first, then use it in *Search*, *R
 4. **Save your project**
    - When you save a Tetrad project, the datasets defined in the Data box (including any transformed copies)
      are saved along with graphs, models, and other objects.
+   - These may also be saved out using the **File** menu or loaded as needed.
 
 ## Key controls
 
 - **Toolbar**
   - **Load / Import** – load data from a file.
-  - **Duplicate / Rename / Delete** – manage existing datasets.
+  - **Copy / Delete** – manage existing datasets.
   - **Export** – write a dataset to a file.
   - (When available) **Transform** – open dialogs for common data transformations.
 
@@ -71,7 +74,7 @@ In a typical workflow you will load data here first, then use it in *Search*, *R
 - When exploring model robustness:
   - Create **duplicated datasets** with different preprocessing (e.g., standardized vs. raw) and run searches
     on each version.
-- Be careful when editing variable types:
+- Be careful when editing variable types or running searches on datasets with mixed types:
   - Some algorithms assume continuous variables; others are designed for discrete or mixed data.
   - Mismatched types can lead to errors or misleading results.
 

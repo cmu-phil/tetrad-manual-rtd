@@ -25,3 +25,7 @@ detail-em-bayes-estimator
 detail-sem-estimator
 detail-hybrid-cg-estimator
 detail-generalized-sem-estimator
+detail-junction-tree-updater
+detail-approximate-updater
+detail-row-summing-updater
+detail-sem-updater

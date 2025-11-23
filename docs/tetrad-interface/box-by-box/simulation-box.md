@@ -9,93 +9,124 @@ Simulation Box in the Tetrad interface sidebar and main panel.
 
 ## Purpose
 
-The **Simulation** box is where you **generate synthetic data** from graphs or models in a Tetrad project.
-It connects:
+The **Simulation** box is where you **generate synthetic data and corresponding ground-truth graphs** in a
+Tetrad project. It provides a self-contained workflow to:
 
-- a **graph** or **parametric / instantiated model**,
-- a choice of **data-generating mechanism** (e.g., linear Gaussian SEM, discrete model, nonlinear SEM),
-- and **simulation settings** (sample size, number of datasets, random seed),
+- choose a **graph type**,
+- choose a **simulation type** (data-generating mechanism),
+- set **simulation parameters** (sample size, average degree, number of measures, number of latents, etc.), and
+- produce both a **true graph** and one or more **simulated datasets**.
 
-and produces one or more **datasets** that appear in the *Data* box.
+The resulting **true graph** is shown in the *True Graph* tab, and the simulated **data** is shown in the
+*Data* tab. These outputs can then be extracted to other boxes (Graph, Data, Search, Compare, etc.) for
+downstream analysis.
 
-Typical uses include:
+## Simulation setup
 
-- Testing and benchmarking search algorithms under controlled conditions.
-- Exploring the behavior of estimators or adjustment procedures.
-- Creating teaching or demonstration examples with known ground truth.
+When you place a Simulation box on the workbench and double‑click it, you start on the **Simulation Setup**
+tab. This tab offers two main choices:
 
-## Typical workflow
+1. **Graph type**  
+   You can choose how the underlying graph is generated. Typical options include:
 
-1. **Choose a source graph or model**
-   - In the *Graph* box, define or load a graph to use as the causal structure, **or**
-   - In the *Parametric Model* / *Instantiated Model* boxes, select a model with specified parameters.
-   - In the Simulation box, select this graph/model as the simulation source.
+   - **Random Forward DAG**
+   - **Erdos–Renyi DAG**
+   - **Scale‑Free DAG**
+   - **Cyclic**
+   - **Random MIM (Multiple Indicator Model)**
 
-2. **Configure the data-generating process**
-   - Choose a simulation type, such as:
-     - Linear Gaussian SEM.
-     - Discrete or mixed SEM (if supported).
-     - Nonlinear or custom simulators (depending on your Tetrad version).
-   - Set simulation parameters, for example:
-     - Sample size (number of cases).
-     - Number of datasets to generate.
-     - Error distributions and variances.
-     - Random seed for reproducibility.
+2. **Simulation type**  
+   You can then choose how data are generated from the graph. Options include:
 
-3. **Run the simulation**
-   - Click **Run** to generate data.
-   - The Simulation box creates one or more datasets, which are added to the *Data* box.
-   - Progress and any warnings are typically shown in a log or message area.
+   - **Linear SEM**
+   - **Linear Fisher**
+   - **Gaussian Process**
+   - **Nonlinear Additive (CAM = Causal Additive Model)**
+   - **Additive Noise SEM (Deep net)**
+   - **Mixed Lee & Hastie**
+   - **Mixed Conditional Gaussian**
+   - **Time Series**
 
-4. **Inspect simulated data**
-   - In the *Data* box, select the new datasets to:
-     - Inspect variable distributions and correlations.
-     - Confirm that variable names and types are as expected.
+Once a graph type and simulation type are selected, **parameters specific to that combination** are displayed
+in the panel below. These parameters can be edited directly. Examples include:
 
-5. **Use simulated data for analysis**
-   - Use the simulated datasets in:
-     - *Search* (to evaluate causal discovery algorithms).
-     - *Regression* or *Estimator* (to evaluate parameter estimation).
-     - *Compare* (to compare different methods against the known generating graph/model).
+- Average degree of the graph,
+- Number of measures,
+- Number of latent variables,
+- Error variances or noise scales,
+- Time‑series length and lag structure (for time-series simulators),
+- And many others.
 
-## Key controls
+For a complete list of parameters, their types, and allowable ranges, see the **Parameters** page in the
+manual (via the *Parameters* entry in the sidebar). That page documents **all simulation parameters** in one place.
 
-- **Toolbar**
-  - **New / Configure** – set up a new simulation specification.
-  - **Run** – generate data using the current simulation settings.
-  - **Stop** – interrupt a long-running simulation.
-  - **Export** – optionally export simulation specifications or logs (depending on version).
+## Running a simulation
 
-- **Simulation setup panel**
-  - Selectors for:
-    - Source graph or model.
-    - Simulation type.
-  - Fields for:
-    - Sample size.
-    - Number of datasets.
-    - Random seed.
-    - Distribution-specific settings (e.g., error variances, discrete categories).
+1. On the **Simulation Setup** tab:
+   - Choose a **graph type**.
+   - Choose a **simulation type**.
+   - Adjust any **parameters** you care about (average degree, number of measures, number of latents, sample size, etc.).
 
-- **Results / log panel**
-  - Summary of completed simulations, including:
-    - Names of generated datasets.
-    - Any warnings or errors.
-  - Links or references to the datasets now available in the *Data* box.
+2. Click **Simulate**.
+   - The simulator generates:
+     - A **true graph (typically a DAG)**, shown on the **True Graph** tab.
+     - A **simulated dataset**, shown on the **Data** tab.
+
+3. Inspect the results:
+   - On the **True Graph** tab, you can view the generating graph and verify characteristics such as density,
+     presence of cycles (for cyclic simulations), or the latent structure (for Random MIM).
+   - On the **Data** tab, you can quickly check that variable names and basic patterns look as expected.
+
+To run **another simulation**:
+
+- Return to the **Simulation Setup** tab,
+- Choose a new graph type and/or simulation type, or modify parameter values,
+- Click **Simulate** again. The *True Graph* and *Data* tabs update to reflect the new simulation.
+
+## Using simulated graphs and data in other boxes
+
+Simulated graphs and datasets created by the Simulation box can be fed into other parts of the Tetrad project:
+
+- **Extracting the dataset**
+  - Create a new **Data** box on the workbench.
+  - Draw an arrow from the **Simulation** box to the new Data box.
+  - Double‑click the Data box to inspect and use the simulated dataset (it will appear as one of the datasets in that box).
+
+- **Extracting the graph**
+  - Create a new **Graph** box on the workbench.
+  - Draw an arrow from the **Simulation** box to the new Graph box.
+  - Double‑click the Graph box to view and manipulate the simulated true graph.
+
+- **Searching on simulated data**
+  - Place a **Search** box on the workbench.
+  - Draw an arrow from the Simulation box (or, more commonly, from the Data box containing the simulated data) to the Search box.
+  - Double‑click the Search box and configure a search algorithm.
+  - Run the search to see how well it recovers the true graph.
+
+- **Other downstream uses**
+  - Use the simulated data in **Regression**, **Estimator**, or **Compare** boxes to:
+    - Evaluate parameter estimators,
+    - Compare different search algorithms or scoring rules,
+    - Build teaching or demonstration examples with known ground truth.
 
 ## Common patterns & tips
 
-- Use **fixed random seeds** when you want reproducible results across runs or when documenting examples.
-- When evaluating search algorithms:
-  - Simulate from a known graph and then run the algorithms on the simulated data.
-  - Use *Compare* to evaluate how well the learned graphs recover the generating structure.
-- For teaching or demonstrations:
-  - Keep a small library of graphs and corresponding simulation settings that you reuse across sessions.
+- Use **fixed seeds** (where available) when you want simulations to be reproducible across sessions.
+- When benchmarking:
+  - Fix a simulation setup (graph type, simulation type, parameters),
+  - Generate data,
+  - Run multiple algorithms or parameterizations on the same simulated data,
+  - Use the **Compare** and **Estimator** boxes to evaluate performance against the known true graph.
+
+- When exploring robustness:
+  - Vary simulation types (e.g., Linear SEM vs. Nonlinear Additive) while keeping the graph type similar,
+  - Then examine which algorithms are more sensitive to nonlinearity, mixed types, or time series structure.
 
 ## Related pages
 
 - `Tetrad Interface → Overview` – high-level tour of the GUI.
 - Other boxes that commonly interact with **Simulation**:
-  - *Graph* (provides causal structures for simulation).
-  - *Parametric Model* and *Instantiated Model* (provide parameterized models for data generation).
+  - *Graph* (can receive the simulated graph for further editing or visualization).
   - *Data* (receives the simulated datasets).
-  - *Search* and *Compare* (analyze and compare results on simulated data).
+  - *Search* and *Compare* (evaluate methods on simulated data and graphs).
+  - *Parametric Model* and *Instantiated Model* (in some workflows, may provide alternative data-generation mechanisms).
