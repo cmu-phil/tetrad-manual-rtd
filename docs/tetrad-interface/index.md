@@ -17,8 +17,8 @@ The pages in this section give a **task-oriented** tour of the interface.
 :maxdepth: 2
 
 overview/overview
-box-by-box/box-by-box
-detail-callouts/detail-callouts
+box-by-box/index
+detail-callouts/index
 ```
 
 Each page focuses on how to accomplish a specific set of tasks in the GUI, rather than describing the underlying

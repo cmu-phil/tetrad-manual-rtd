@@ -13,7 +13,7 @@ The **Estimator** box is where you **fit parametric models to data**. It connect
 
 - a **Parametric Model** (from the *Parametric Model* box),
 - a **dataset** (from the *Data* box),
-- and a choice of **estimation method** (e.g., ML, GLS, robust variants, etc.),
+– and a choice of estimation method (e.g., ML, Dirichlet, EM, GLS, or robust variants, depending on the model type),
 
 and produces **parameter estimates, standard errors (when available), and fit statistics**. The fitted result
 can then be stored as an **instantiated model**.
@@ -87,6 +87,20 @@ can then be stored as an **instantiated model**.
   - Try a different estimator or adjust convergence settings.
 - When comparing models, keep separate estimation runs (and instantiated models) with descriptive names
   indicating the estimator used and key options.
+
+## Estimator types and detail pages
+
+The exact options available in the **Estimator** box depend on the type of **Parametric Model** connected to it.
+Use the links below to see the detail pages for each estimator.
+
+| Parametric model type | Estimator option            | Detail page                                      |
+|-----------------------|-----------------------------|--------------------------------------------------|
+| Bayes PM              | ML Bayes Estimator          | `Tetrad Interface → ML Bayes Estimator`          |
+| Bayes PM              | Dirichlet Estimator         | `Tetrad Interface → Dirichlet Estimator`         |
+| Bayes PM              | EM Bayes Estimator          | `Tetrad Interface → EM Bayes Estimator`          |
+| SEM PM                | SEM Estimator               | `Tetrad Interface → SEM Estimator`               |
+| Hybrid CG PM          | Hybrid CG Estimator         | `Tetrad Interface → Hybrid CG Estimator`         |
+| Generalized SEM PM    | Generalized SEM Estimator   | `Tetrad Interface → Generalized SEM Estimator`   |
 
 ## Related pages
 
