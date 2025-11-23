@@ -9,6 +9,8 @@ in the interface.
 ```{toctree}
 :maxdepth: 2
 
+detail-graph-menu
+detail-display-subgraphs
 detail-markov-checker
 detail-pm-im-model-types
 detail-bayes-parameteric-model
