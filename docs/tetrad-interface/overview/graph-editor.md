@@ -1,21 +1,7 @@
 # Graph Editor
 
 The graph editor is where you **create, inspect, and modify** causal graphs (DAGs, CPDAGs, PAGs, etc.) within Tetrad.
-
-[//]: # (```{note})
-
-[//]: # (Suggested screenshots:)
-
-[//]: # ()
-[//]: # (1. A graph open in the editor with a few variables and directed/undirected edges.)
-
-[//]: # (   Save as: ``../../_static/images/tetrad-interface/overview/graph-editor.png``.)
-
-[//]: # (2. The background knowledge / tiering dialog &#40;if available&#41;.)
-
-[//]: # (   Save as: ``../../_static/images/tetrad-interface/overview/graph-background-knowledge.png``.)
-
-[//]: # (```)
+Most search results and many tools ultimately produce graph nodes that you can open here.
 
 ![](../../_static/images/tetrad-interface/overview/graph-editor.png)
 
@@ -25,62 +11,65 @@ The graph editor is where you **create, inspect, and modify** causal graphs (DAG
 
 You can obtain a graph in several ways:
 
-- **From a search algorithm** – most algorithms output one or more graphs that appear as nodes in the project tree.
-- **By importing** from a file (e.g., Tetrad `.txt` graph format).
-- **By creating a blank graph** using a menu item like **Graph → New Graph**.
+- **From a search algorithm** – most search boxes output one or more graphs that appear as nodes in the project tree.
+- **By importing** from a file (for example, a Tetrad graph `.txt` file).
+- **By creating a blank graph**, using a menu item such as **Graph → New Graph** or an equivalent toolbar button.
 
-Double-click a graph node in the project tree to open it in the editor.
+To edit a graph, **double-click** its node in the project tree. The graph opens in a new tab in the work area.
 
 ## Basic editing operations
 
-In the graph editor, you can typically:
+In the graph editor, you can:
 
-- **Add variables (nodes)** – via toolbar button or right-click in empty space.
-- **Rename variables** – double-click the node label or use a context menu.
-- **Add edges** – click a source node, then click a target node (or use drag-and-drop), depending on the edge mode.
-- **Delete edges or nodes** – select them and press Delete / Backspace, or use a context menu.
+- **Add variables (nodes)**  
+  Use the appropriate toolbar button or right-click on empty space in the editor and choose an “Add node” option.
+- **Rename variables**  
+  Double-click the node label or use the node’s context menu to change its name.
+- **Add edges**  
+  Depending on the current edge tool/mode, click on a source node and then on a target node, or drag from one node to another.
+- **Delete edges or nodes**  
+  Select the edge or node and press Delete/Backspace, or use the context menu.
 
-Edge types may include:
+You can select multiple nodes and edges (for example, by dragging a selection rectangle) to move or delete them together.
 
-- Directed: \( X 	o Y \)
-- Undirected: \( X - Y \)
-- Partially oriented: e.g., \( X \circ\!\!	o Y \) in PAGs
-- Bidirected endpoints (latent confounding) where applicable
+### Edge types
 
-Tetrad enforces that only **legal edge types** for the graph’s type (DAG, CPDAG, PAG, etc.) can be drawn.
+The exact **edge types** available depend on the graph type:
+
+- **Directed:** `X --> Y` (e.g., DAG or CPDAG edges).
+- **Undirected:** `X --- Y` (e.g., some adjacency graphs or selection-bias edges in PAGs).
+- **Partially oriented:** marks like `X o-> Y` in PAGs.
+- **Bidirected:** `X <-> Y` in PAGs, often indicating latent confounding.
+
+The editor shows these marks directly on the graph. Some edge types are not allowed for certain graph types; in those cases, the editor will restrict what you can draw or automatically adjust markings to keep the graph legal.
 
 ## Layout and visualization
 
-The editor typically supports:
+The editor supports automatic layout of graphs using the **Layout** menu (or equivalent toolbar buttons). Typical actions include:
 
-- **Automatic layout** to spread nodes evenly.
-- **Zoom in/out** and **fit to window**.
-- **Selection tools** (marquee select, multi-select).
-- Optional display features (e.g., showing edge strengths or labels from certain algorithms).
+- Applying an automatic layout to spread nodes out and reduce edge crossings.
+- Re-centering the graph in the view.
+- Zooming in, zooming out, and fitting the graph to the window.
 
-These are often accessible via toolbar buttons or the **Graph** menu.
+You can also drag nodes by hand to adjust their positions after an automatic layout, if you want a specific arrangement (for example, for a figure in a paper).
 
 ## Background knowledge and tiers
 
-Many algorithms allow **background knowledge**:
+Many algorithms allow **background knowledge** that constrains which graphs are considered during search. This is typically set up through a **Knowledge** box, but it uses a graph view very similar to the graph editor (as shown in the second screenshot).
 
-- **Forbidden edges** (edges that must not be present).
-- **Required edges** (edges that must be present).
-- **Tier constraints** (e.g., variables in Tier 1 cannot have parents in later tiers).
+In the background-knowledge view, you can:
 
-The graph editor usually provides a dialog to:
+- Mark **forbidden edges** (edges that must not appear in the search result).
+- Mark **required edges** (edges that must be present in the result).
+- Assign variables to **tiers**, so that variables in one tier cannot have parents from later tiers.
 
-- Assign nodes to **tiers**.
-- Mark forbidden and required edges.
-- Save/load knowledge constraints with the graph.
-
-Algorithms that support knowledge will read these constraints and respect them during search.
+These constraints are saved with the knowledge object and used by algorithms that support knowledge. The underlying graph editor behavior (adding/removing nodes and edges, moving nodes, etc.) is the same as for ordinary graphs, but the marks you make are interpreted as **constraints** rather than as a final learned graph.
 
 ## Saving and exporting graphs
 
 Graph nodes can be:
 
-- Stored within the current project file for later reopening.
-- Exported to simple text formats or images (e.g., PNG) for use in papers or external tools.
+- **Stored in the current Tetrad session**, so you can close and reopen the session with graphs intact.
+- **Exported** to simple text or image formats (for example, a Tetrad graph `.txt` file or a PNG image) for use in papers or external tools.
 
-Use the graph’s context menu or the **File/Graph** menus to find *Export Graph* or *Save As* options.
+Use the graph’s context menu or the relevant **File/Graph** menu items (such as *Export Graph* or *Save As*) to write out graphs or images. This is especially useful when you need a clean, final version of a graph for a publication or for use in another application.

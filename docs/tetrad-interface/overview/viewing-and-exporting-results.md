@@ -1,75 +1,99 @@
 # Viewing and Exporting Results
 
-After running algorithms or tools, Tetrad produces various **result nodes**: graphs, tables, summaries, and
-diagnostic information. This page summarizes how to inspect and export those results.
-
-[//]: # (```{note})
-
-[//]: # (Suggested screenshots:)
-
-[//]: # ()
-[//]: # (1. A results graph with some edges highlighted or labeled.)
-
-[//]: # (   Save as: ``../../_static/images/tetrad-interface/overview/results-graph.png``.)
-
-[//]: # (2. A result table &#40;e.g., a list of edges with scores or p-values&#41;.)
-
-[//]: # (   Save as: ``../../_static/images/tetrad-interface/overview/results-table.png``.)
-
-[//]: # (```)
+After you run algorithms or tools, Tetrad produces **result nodes** in the project tree: graphs, tables,
+summaries, and diagnostic information. This page summarizes how to inspect and export those results.
 
 ![](../../_static/images/tetrad-interface/overview/results-graph.png)
 
 ![](../../_static/images/tetrad-interface/overview/results-table.png)
 
+Typically, new result nodes appear under the corresponding box (for example, under a **Search** box or
+**Compare** box). You can then double-click them to open the associated view in a new tab.
+
 ## Graph results
 
 Many algorithms output one or more graphs:
 
-- **Search graph** (DAG, CPDAG, PAG, MAG, etc.).
-- **Adjacency graph** or auxiliary graphs (depending on algorithm).
-- Sometimes separate graphs for **latent structure**, **selection bias**, etc.
+- A **main search graph** (DAG, CPDAG, PAG, MAG, etc.).
+- Auxiliary graphs such as **adjacency graphs**, **skeletons**, or graphs highlighting latent structure
+  or selection bias (depending on the algorithm).
 
-Double-click any graph node to open it in the graph editor. You can:
+To inspect a graph:
 
-- Inspect **edge orientations** and types.
-- Compare graphs side-by-side (by opening multiple tabs).
-- Use layout and zoom tools to make structures clearer.
+1. **Double-click** the graph node in the project tree to open it in the graph editor.
+2. Use the editor to:
+    - Examine **edge orientations** and endpoint types.
+    - Toggle between different **layouts** and zoom levels.
+    - Compare multiple graphs by opening them in separate tabs and switching between them.
 
-## Tabular results
+For more information on editing and interpreting graphs, see the **Graph Editor** and **Graph Box** pages.
 
-Some tools (e.g., CStaR, adjustment set enumerators, IDA variants) produce **tables**:
+## Tabular and numeric results
 
-- Each row corresponds to an edge, adjustment set, or other object.
-- Columns contain metrics such as:
-    - p-values, scores, or stability frequencies.
-    - Effect size estimates and confidence/credible intervals.
-    - Information about adjustment sets or separating sets.
+Some tools (for example, CStaR, adjustment-set finders, IDA variants, grid search, and stability procedures)
+produce **tables** or numerical summaries:
 
-These tables can typically be:
+- Each row may correspond to:
+    - An edge or variable pair.
+    - An adjustment set or separating set.
+    - A parameter configuration in a grid search.
+- Columns may include:
+    - p-values, scores, stability frequencies, or bounds.
+    - Effect size estimates and confidence or credible intervals.
+    - Information about adjustment sets, separating sets, or path properties.
 
-- **Sorted** by clicking on column headers.
-- **Filtered** using simple controls or by exporting to external tools.
+When you double-click a table node:
+
+- The table opens in a new tab.
+- You can usually:
+    - **Sort** by clicking on column headers.
+    - **Resize** columns and scroll to view additional information.
+    - Copy small portions of the table for quick reference.
+
+For more complex filtering or plotting, export the table and work in R, Python, or a spreadsheet program.
 
 ## Exporting graphs and tables
 
-Common export actions include:
+Tetrad lets you export results for use in other tools or for inclusion in papers and reports.
 
-- **Graphs**
-    - Export to image (PNG, PDF, etc.) for papers or presentations.
-    - Export to a text format compatible with Tetrad and other tools.
-- **Tables**
-    - Export to CSV or TSV for further analysis in R, Python, or spreadsheets.
+### Exporting graphs
 
-Use right-click on the result node or the **File / Export** menu entries to find the appropriate options.
+From a graph node or an open graph tab, you can:
+
+- **Export to image** (for example, PNG) to include in slides, papers, or documentation.
+- **Export to a text-based graph format** (such as a Tetrad `.txt` graph file) to reload later or share
+  with collaborators.
+
+Look for options in:
+
+- The graph tab’s **File** or **Export** menus, or
+- The graph node’s **right-click** context menu in the project tree.
+
+### Exporting tables
+
+From a table node or an open table view, you can:
+
+- **Export to CSV or TSV** so you can:
+    - Analyze results further in R or Python.
+    - Make your own plots and summary tables.
+    - Keep a record of settings and outcomes for simulation studies.
+
+Export options are typically available via the table’s **File / Export** menu or the node’s context menu.
 
 ## Reusing results in pipelines
 
-Results from one step can often be reused as inputs to another:
+Results from one step are often intended as inputs to another:
 
-- Use a **learned graph** as input to an **adjustment-set finder** or **IDA** method.
-- Use simulated or resampled data as input to a different search algorithm.
-- Use graphs from grid search or stability procedures as starting points for more refined analysis.
+- Use a **learned graph** as input to:
+    - **Adjustment-set algorithms**,
+    - **IDA** and related effect estimation methods,
+    - **Latent structure** tools.
+- Use **simulated or resampled data** as input to additional search algorithms or model-fitting procedures.
+- Use **graphs from grid search or stability analyses** as starting points for more focused analyses.
 
-The project tree’s structure encourages this style of **incremental workflow**, where you build up a collection of
-data, graphs, and derived artifacts within a single session or project file.
+The project tree encourages an **incremental workflow**:
+
+1. Load data and run a search.
+2. Inspect and export the resulting graph or table if needed.
+3. Use those results as inputs to new boxes (Compare, Updater, Regression, etc.).
+4. Save the entire session to preserve data, graphs, configurations, and results together.

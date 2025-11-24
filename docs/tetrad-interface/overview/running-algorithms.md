@@ -1,22 +1,8 @@
 # Running Algorithms
 
 Tetrad’s interface provides a unified way to configure and run many different **search algorithms** and related
-procedures (e.g., adjustment, IDA, stability methods).
-
-[//]: # (```{note})
-
-[//]: # (Suggested screenshots:)
-
-[//]: # ()
-[//]: # (1. The dialog or panel for configuring a search algorithm &#40;e.g., FGES or PC&#41;.)
-
-[//]: # (   Save as: ``../../_static/images/tetrad-interface/overview/algorithm-config-dialog.png``.)
-
-[//]: # (2. A parameter table or panel showing the algorithm’s tunable settings.)
-
-[//]: # (   Save as: ``../../_static/images/tetrad-interface/overview/algorithm-parameters.png``.)
-
-[//]: # (```)
+procedures (e.g., adjustment, IDA, stability methods). Most of this happens through the **Search** box in the
+main workbench.
 
 ![](../../_static/images/tetrad-interface/overview/algorithm-config-dialog.png)
 
@@ -24,65 +10,92 @@ procedures (e.g., adjustment, IDA, stability methods).
 
 ## Launching a search
 
-Typical steps:
+A typical workflow is:
 
-1. Ensure you have a **data node** (and optionally an initial graph or background knowledge).
-2. Choose an algorithm from the **Search / Algorithms** menu or a dedicated toolbar button.
-3. A configuration dialog appears where you select:
-    - The **data set** to use.
-    - A **test and/or score** (depending on the algorithm).
-    - The **graph type** to produce (e.g., DAG, CPDAG, PAG) if configurable.
-    - Algorithm-specific **parameters**.
+1. Make sure you have at least one **data node** in the project tree  
+   (and optionally an initial graph or background knowledge).
+2. Place a **Search** box on the workbench and connect it to:
+    - A **Data** box (required), and
+    - Optionally a **Knowledge** box or other inputs, depending on the algorithm.
+3. **Double-click** the Search node on the workbench.  
+   This opens the **algorithm configuration dialog**, where you select:
+    - The **algorithm** to run (PC, FGES, GFCI, CStaR, BOSS, etc.).
+    - The **data set** to use (from the list of loaded data nodes).
+    - A **test** and/or **score** (depending on the algorithm).
+    - The **graph type** to produce (e.g., DAG, CPDAG, PAG), if configurable.
+    - Any algorithm-specific **parameters**.
 
-After clicking **Run** (or equivalent), Tetrad will:
+When you click **Run** (or the equivalent button):
 
-- Execute the algorithm.
-- Create one or more **result graphs** (and possibly tables) in the project tree.
-- Optionally open the main result graph immediately in the work area.
+- Tetrad executes the algorithm.
+- One or more **result graphs** (and sometimes tables) are created as new nodes in the project tree.
+- The primary result graph usually opens automatically in the graph editor.
 
 ## Choosing tests and scores
 
-The configuration dialog typically restricts the available tests and scores to those compatible with your data:
+The algorithm dialog typically restricts the available **tests** and **scores** to those compatible with your data:
 
-- For **continuous** data: SEM-BIC, Gaussian BIC, Fisher Z test, etc.
-- For **discrete** data: discrete BIC, G-square, chi-square-based tests.
-- For **mixed or nonlinear** cases: basis-function scores, kernel tests, and more.
+- For **continuous** data, choices might include:
+    - *FisherZ* (independence test),
+    - *SemBicScore* / Gaussian BIC (score-based methods),
+    - *EBIC*, basis-function tests/scores, etc.
+- For **discrete** data:
+    - *GSquare* and *ChiSquare* (independence tests),
+    - *DiscreteBicScore* or *BDeuScore* (scores).
+- For **mixed or nonlinear** cases:
+    - Conditional Gaussian tests/scores,
+    - Basis-function LRT/BIC,
+    - Kernel-based tests such as *Kci*, when appropriate.
 
-For details on individual tests/scores and their parameters, see the **Tests & Scores** section of the manual.
+The dialog lists only those tests and scores that match the **data type** of the selected data node.  
+For details on individual tests and scores, see the **Tests & Scores** section of the manual.
 
 ## Setting parameters
 
-Each algorithm has a set of named parameters (e.g., `alpha`, `penaltyDiscount`, `maxDegree`). In the GUI:
+Each algorithm exposes a set of named parameters (for example, `alpha`, `penaltyDiscount`, `maxDegree`,
+or flags for latent variables and selection bias). In the configuration dialog:
 
-- These are typically shown in a **table or form**.
-- Default values are provided.
-- Some parameters accept integer or real values; others are booleans, enums, or lists.
+- Parameters appear in a **table or form** with:
+    - The **parameter name**,
+    - Its **current value**, and
+    - Often a brief description or default.
+- Values may be:
+    - Integers or real numbers,
+    - Booleans (true/false),
+    - Options from a small set (drop-down menus).
 
-The **Parameters** section of the manual lists and explains these settings in detail. The GUI’s goal is to present
-them in a consistent way and remember your choices between runs (within the current session).
+Defaults are chosen to be reasonable for many problems, but you can adjust them for your specific application.
+The **Parameters** and **Tests & Scores** sections of the manual describe these settings in more depth.
 
 ## Running and monitoring
 
-When you click **Run**:
+When you start a run:
 
-- The status bar shows that the algorithm is executing.
-- For some algorithms, a **progress bar** or approximate progress indicator is shown.
-- Long-running algorithms may be cancellable from the status bar or dialog.
+- The **status bar** at the bottom of the main window reports that the algorithm is executing.
+- Some algorithms display a **progress indicator** or a rough notion of how far they have proceeded.
+- If **Logging → Start Logging** is enabled, you will see log messages in the logging pane as the algorithm runs.
 
-Upon completion:
+When the run completes:
 
-- New result nodes (graphs, tables, reports) appear under a dedicated branch in the project tree.
-- The primary result graph often opens automatically in the editor.
+- New result nodes (graphs, tables, or summary reports) appear under the corresponding **Search** branch in the
+  project tree.
+- The main result graph typically opens immediately in the graph editor so you can inspect it.
 
 ## Re-running with modified settings
 
-You can usually:
+To try different settings:
 
-- **Re-open** a previously configured algorithm node.
-- Adjust parameters, tests, or scores.
-- Run again to generate a new set of results.
+1. **Double-click** the same Search node again to reopen the configuration dialog.
+2. Change:
+    - The test or score,
+    - One or more parameter values (e.g., a different `alpha`),
+    - Or options such as allowing latent variables or selection bias.
+3. Click **Run** to produce a new set of results.
 
-This makes it easy to do small parameter sweeps manually, or to try different assumptions (e.g., with vs. without
-selection bias, different background knowledge, etc.).
+This makes it easy to:
 
-For larger parameter grids, see the **Grid Search** page in this section.
+- Do small **parameter sweeps** manually,
+- Compare runs with and without background knowledge,
+- Or evaluate the effect of changing test/score families for the same data.
+
+For larger grids of parameter combinations, see the **Grid Search** page in this section.
