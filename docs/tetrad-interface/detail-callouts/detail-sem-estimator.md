@@ -1,9 +1,9 @@
-# Detail: SEM Estimator
+# Detail: SEM (Linear) Estimator
 
-The **SEM Estimator** fits a **Structural Equation Model (SEM) Parametric Model**
-to continuous data, typically assuming **linear relations** with **Gaussian
-errors**. It produces parameter estimates (path coefficients, variances, and
-possibly means) and global fit statistics.
+The **SEM (Linear) Estimator** fits a **Structural Equation Model (SEM)
+Parametric Model** to continuous data, assuming **linear relations** with
+**Gaussian errors**. It produces parameter estimates (path coefficients,
+variances, and possibly means) and global fit statistics.
 
 This estimator is available when the **Parametric Model** connected to the
 Estimator box is a **SEM PM**.
@@ -35,7 +35,7 @@ Estimator box is a **SEM PM**.
 
 ## How it works (conceptually)
 
-The SEM Estimator typically:
+The SEM (Linear) Estimator typically:
 
 1. Constructs an implied covariance (and mean) model from the SEM PM.
 2. Finds parameters that **minimize a discrepancy function** between:
@@ -59,23 +59,47 @@ The SEM Estimator typically:
 
 The result can be stored as an **Instantiated Model (SEM)** for later use.
 
-## Tips and common issues
+## File menu options (SEM Estimator)
 
-- Check that the model is **identified**; non-identified models may fail to
-  converge or produce unstable estimates.
-- Watch for:
-    - Negative error variances (Heywood cases),
-    - Very large standard errors,
-    - Poor fit indices suggesting misspecification.
-- If problems occur:
-    - Simplify the model or add constraints.
-    - Check data for outliers or multicollinearity.
-    - Try alternative estimation options (e.g., robust variants, different
-      missing-data handling).
+The **File** menu of the SEM (Linear) Estimator provides several ways to export
+or reuse the fitted model and its matrices:
 
-## Related pages
+- **Save SEM as XML**  
+  Saves the fitted SEM in Tetrad’s **XML format**, including the graph
+  structure, estimated parameters, and error (co)variances. This XML can be
+  reloaded into Tetrad as an instantiated SEM or processed by external tools.
 
-- `Tetrad Interface → Estimator Box`
-- `Tetrad Interface → SEM Parametric Model`
-- `Tetrad Interface → Instantiated Model (SEM)`
-- `Tetrad Interface → Simulation (SEM)`
+- **Copy Implied Covariance Matrix**  
+  Copies the **model-implied covariance matrix** \(\hat\Sigma\) of the fitted
+  SEM to the system clipboard as tabular text. You can paste this into a
+  spreadsheet, R, Python, or another program.
+
+- **Copy Coefficient Matrix**  
+  Copies the matrix of **regression/path coefficients** (the structural
+  coefficient matrix) to the clipboard as tabular text.
+
+- **Copy Error Covariance Matrix**  
+  Copies the **residual/error covariance matrix** to the clipboard as tabular
+  text.
+
+- **Save Graph Image…**  
+  Saves an image of the SEM graph corresponding to the fitted parametric model.
+  This is useful for including the estimated model in papers, slides, or
+  reports.
+
+- **Save SEM as Lavaan**  
+  Saves the fitted SEM as **lavaan model syntax** in a `.lav` file.  
+  When you choose this option, a dialog lets you select:
+
+    - Whether to **include intercepts** (`Y ~ c*1`),
+    - Whether to **include residual variances** (`Y ~~ v*Y`),
+    - Whether to **include residual covariances** (`Y ~~ c*Z`),
+    - And whether to **fix parameters** to their current values or export them as
+      **lavaan `start()` values** for re-estimation.
+
+  The resulting `.lav` file can be read directly in R using the `lavaan`
+  package, for example:
+
+  ```r
+  model <- readLines("sem-im.lav")
+  fit   <- lavaan::sem(model, data = mydata)
