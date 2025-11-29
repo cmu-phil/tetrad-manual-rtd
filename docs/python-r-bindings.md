@@ -55,7 +55,7 @@ These bindings allow researchers to access the *full power of the Java Tetrad en
 Use **py-tetrad** or **rpy-tetrad** when:
 
 - You need **exact behavior** from Tetrad’s Java implementation  
-  (e.g., FGES, FCI variants, BOSS, GRaSP, LV-Lite, BF-BIC, BF-LRT, O-sets, RA, etc.)
+  (e.g., FGES, FCI variants, BOSS, GRaSP, FCIT, BF-BIC, BF-LRT, O-sets, RA, etc.)
 - You want algorithms or features **not implemented natively in Python or R**
 - You want to call Tetrad from another language but retain:
     - Same parameters

@@ -12,6 +12,7 @@ in the interface.
 detail-graph-menu
 detail-display-subgraphs
 detail-markov-checker
+detail-ntad-explorer
 detail-pm-im-model-types
 detail-bayes-parameteric-model
 detail-sem-parametric-model
