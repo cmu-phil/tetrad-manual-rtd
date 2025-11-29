@@ -19,7 +19,7 @@ Given a dataset and a subset of variables, it:
 This is useful for exploring **latent variable structure** (for example, Multiple Indicator Models) and for
 identifying interesting tetrads, sextads, and higher-order N-tads suggested by the data.
 
-## Basic workflow
+### Basic workflow
 
 1. **Create an N-tad Explorer box**
 
@@ -88,7 +88,7 @@ identifying interesting tetrads, sextads, and higher-order N-tads suggested by t
    - second click: sort descending,
    - third click: return to the original order.
 
-## Interpretation
+### Interpretation
 
 - A row with **Block size = m** and **Rank = r < m** indicates that the corresponding
   m by m cross-covariance block Sigma_AB is estimated to have rank r
@@ -105,7 +105,7 @@ identifying interesting tetrads, sextads, and higher-order N-tads suggested by t
 The N-tad Explorer does **not** modify the original dataset; it only summarizes which
 blocks of variables show evidence of rank deficiency according to the chosen test.
 
-## Tips and notes
+### Tips and notes
 
 - **Choice of variables.**  
   Restricting the Selected variables to plausible indicator sets can greatly reduce
@@ -126,3 +126,15 @@ blocks of variables show evidence of rank deficiency according to the chosen tes
   If desired, you can copy the rows from the table into an external tool (such as a
   spreadsheet or script) for further analysis, or cross-reference the listed blocks
   with latent variable models you are fitting elsewhere.
+
+### Using N-tad Explorer with SEMs
+
+To list tetrads, sextads, and octads implied by a fitted SEM:
+
+1. Fit a SEM from a covariance matrix using a **SEM Est** or **SEM IM** box.
+2. Create a **Data** box for the **implied covariance (measured variables)** from the SEM.
+3. Attach an **N-tad Explorer** box to that implied covariance Data box.
+4. Run N-tad Explorer with your chosen block size (m = 2, 3, 4, …).
+
+In this setup, the rank-deficient blocks reported by N-tad Explorer correspond to N-tads
+implied by the estimated SEM, rather than N-tads in the raw data.
