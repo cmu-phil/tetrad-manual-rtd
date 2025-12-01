@@ -20,6 +20,7 @@ main-window
 working-with-data
 graph-editor
 running-algorithms
+estimating-model-parameters
 viewing-and-exporting-results
 simulation-and-utilities
 ```

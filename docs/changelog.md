@@ -50,6 +50,8 @@ of the software.
 
 - Renamed **LV-Dumb** to **LV-Heuristic** throughout the manual and catalog
   to reflect a clearer, more professional name.
+- Updated references to **LV-Lite** to use the current name **FCIT** in the
+  interface and documentation.
 - Standardized **summary sections** and “When to use / When not to use”
   wording across several algorithms (e.g., CStaR, Factor Analysis,
   MIM-Build variants, TSC, BOSS-related methods).
@@ -67,6 +69,20 @@ of the software.
     - Consistency of notation and style across pages.
 - Verified that the **HTML build**, **PDF output**, and **search** all work
   cleanly, including rendering on smaller screens.
+
+### 5. Estimation Workflow and Simulation Pipelines
+
+- Added an **“Estimate model parameters”** overview page to the Tetrad Interface
+  section, describing how to:
+    - Go from a graph to a Parametric Model,
+    - Connect an Estimator to a model and either a Data or Simulation node,
+    - Produce and inspect Instantiated Models with fitted parameters and fit indices.
+- Refined the **Simulation and Utilities** overview to:
+    - Emphasize the **box-based, modular workflow** (Graph / Parametric Model /
+      Instantiated Model / Simulation / Data / Search / Grid Search / Compare),
+    - Remove references to legacy Tools menus,
+    - Show how simulation, resampling, and grid search fit naturally into
+      workbench pipelines.
 
 ---
 
