@@ -12,7 +12,6 @@ in the interface.
 detail-graph-menu
 detail-display-subgraphs
 detail-markov-checker
-detail-ntad-explorer
 detail-pm-im-model-types
 detail-bayes-parameteric-model
 detail-sem-parametric-model
@@ -32,3 +31,5 @@ detail-junction-tree-updater
 detail-approximate-updater
 detail-row-summing-updater
 detail-sem-updater
+detail-adjustment-total-effects
+detail-ntad-explorer
