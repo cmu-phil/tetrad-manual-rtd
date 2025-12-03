@@ -50,15 +50,10 @@ The algorithm dialog typically restricts the available **tests** and **scores** 
 The dialog lists only those tests and scores that match the **data type** of the selected data node.  
 For details on individual tests and scores, see the **Tests & Scores** section of the manual.
 
-When you run a search, use the state of the **Test** and **Score** dropdowns as a guide:
-
-- If the **Test** dropdown is *enabled* (not greyed out), you should select the test you want to use for the search.  
-  This includes constraint-based searches such as **PC** and **FCI**.
-- If the **Score** dropdown is *enabled*, you should select the score you want to use.  
-  This includes score-based searches such as **FGES** or **BOSS**.
-- If **both** dropdowns are enabled, you should select one test **and** one score.  
-  This includes hybrid algorithms such as **BOSS-FCI**.
-- If **both** dropdowns are greyed out, then the algorithm does not use a test or a score.
+If the dialog for choosing tests is not greyed out, you should select the test you want to use for
+the search. This includes searches like PC and FCI. if the dialog for choosing scores is not greyed
+out, you should select the score you want to use for the search. This includes searches like FGES
+or BOSS. If neither is greyed out, you should select one test and one score from the dropdowns.
 
 ## Setting parameters
 

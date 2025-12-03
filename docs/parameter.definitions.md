@@ -1786,6 +1786,14 @@
 - **Minimum:** 1
 - **Maximum:** 2147483647
 
+ sampleStyle
+- **Short description:** Sample style: 1 = Subsample 2 = Bootstrap
+- **Long description:** Sample style: 1 = Subsample 2 = Bootstrap
+- **Value type:** Integer
+- **Default value:** 1
+- **Minimum:** 1
+- **Maximum:** 2
+
  saveBootstrapGraphs
 - **Short description:** Yes if individual bootstrapping graphs should be saved
 - **Long description:** Bootstrapping provides a summary over individual search graphs; select Yes here if these individual graphs should be saved
