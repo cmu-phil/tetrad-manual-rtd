@@ -20,7 +20,7 @@ cstar
 dagma
 direct-lingam
 dm
-factor-analysis
+factor-analysisj
 fas
 fask
 fask-vote

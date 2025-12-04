@@ -9,6 +9,7 @@ in the interface.
 ```{toctree}
 :maxdepth: 2
 
+detail-data-subset-resample
 detail-graph-menu
 detail-display-subgraphs
 detail-markov-checker
