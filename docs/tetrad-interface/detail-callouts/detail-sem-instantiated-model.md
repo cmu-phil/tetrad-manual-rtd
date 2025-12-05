@@ -4,6 +4,13 @@ This page describes **SEM (linear)** instantiated models in the
 **Instantiated Model** box. These are **linear Gaussian structural equation
 models that have been fitted to data**, starting from a SEM parametric model.
 
+```{figure} ../../_static/images/tetrad-interface/box-by-box/sem-im.png
+:name: tetrad-sem-im-screenshot
+:alt: SEM Instantiated Model
+
+SEM Instantiated Model
+```
+
 An instantiated SEM model contains:
 
 - A **graph structure** (often a DAG or SEM-style graph).

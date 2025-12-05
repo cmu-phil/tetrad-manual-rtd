@@ -7,6 +7,13 @@ instantiated linear SEM and specified **evidence** and **manipulations**, it com
 It is available when the **Updater** box is connected to an **Instantiated Model** or **Estimator** that
 produces a **linear SEM**.
 
+```{figure} ../../_static/images/tetrad-interface/box-by-box/sem-updater.png
+:name: tetrad-sem-updater-screenshot
+:alt: SEM Updater
+
+SEM Updater
+```
+
 ## Purpose
 
 - Compute **conditional means and variances** in a linear Gaussian SEM given:

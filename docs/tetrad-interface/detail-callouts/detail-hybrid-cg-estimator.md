@@ -9,6 +9,13 @@ continuous nodes in a single graphical model.
 This estimator is available when the **Parametric Model** connected to the
 Estimator box is a **Hybrid CG PM**.
 
+```{figure} ../../_static/images/tetrad-interface/box-by-box/hybrid-cg-estimator.png
+:name: tetrad-hybrid-cg-estimator-screenshot
+:alt: Hybrid CG Estimator
+
+Hybrid CG Estimator
+```
+
 ## Purpose
 
 - Estimate parameters in **mixed discrete–continuous graphical models**, where:

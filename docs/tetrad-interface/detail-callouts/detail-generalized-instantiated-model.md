@@ -5,6 +5,13 @@ This page describes **Generalized instantiated models** in the
 functional forms and error distributions that have been fitted (or at least
 evaluated) on data**, starting from a Generalized parametric model.
 
+```{figure} ../../_static/images/tetrad-interface/box-by-box/generalized-im.png
+:name: tetrad-beneralized-im-screenshot
+:alt: Generalized Estimator
+
+Generalized Estimator
+```
+
 A Generalized instantiated model contains:
 
 - The underlying **graph structure**.

@@ -7,6 +7,13 @@ larger or more complex models.
 It is available when the **Updater** box is connected to a discrete **Instantiated Model** or **Estimator**
 output, and the updater type is set to *Approximate Updater*.
 
+```{figure} ../../_static/images/tetrad-interface/box-by-box/approximate-updater.png
+:name: tetrad-approximate-updater-screenshot
+:alt: Approximate Updater
+
+Approximate Updater
+```
+
 ## Purpose
 
 - Provide a **faster or more scalable** alternative to exact junction-tree updating.

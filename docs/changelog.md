@@ -84,6 +84,27 @@ of the software.
     - Show how simulation, resampling, and grid search fit naturally into
       workbench pipelines.
 
+### 6. Data subset / resample editor
+
+- Added a **Data subset / resample** detail page under the Tetrad Interface
+  “box-by-box” documentation.
+- Documented:
+    - The two-list variable selector (Available vs. Selected) and how column
+      order in *Selected variables* determines the column order in the
+      output dataset.
+    - The **Sort** option for alphabetizing available variables, and the
+      **Paste…** action for selecting variables by pasting comma-, tab-, space-,
+      or newline-separated names.
+    - Row selection via 1-based, comma-separated ranges (e.g.
+      `1–100, 150, 200–250`), including error handling for invalid specs.
+    - Sampling modes (**Use rows as-is**, **Shuffle rows**, **Subsample**,
+      **Bootstrap**), the **Sample size** control, and the **Seed** field
+      for reproducible resampling.
+- Clarified that the Data subset / resample node is a safe, reproducible
+  alternative to manual copy/paste and delete operations in the Data box,
+  and that the resulting node can be used anywhere a normal `Data` node
+  can be used.
+
 ---
 
 Further tweaks and small additions (for example, new detail callouts or

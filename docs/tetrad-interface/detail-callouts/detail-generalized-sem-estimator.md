@@ -8,6 +8,13 @@ the classical SEM framework to a broader family of response types.
 This estimator is available when the **Parametric Model** connected to the
 Estimator box is a **Generalized SEM PM**.
 
+```{figure} ../../_static/images/tetrad-interface/box-by-box/generalized-sem-estimator.png
+:name: tetrad-beneralized-sem-estimator-screenshot
+:alt: Generalized SEM Estimator
+
+Generalized SEM Estimator
+```
+
 ## Purpose
 
 - Estimate structural relations in models where:

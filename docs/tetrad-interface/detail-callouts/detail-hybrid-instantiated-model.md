@@ -5,6 +5,13 @@ the **Instantiated Model** box. These are **mixed discrete/continuous
 conditional Gaussian (CG) models fitted to data**, starting from a Hybrid
 parametric model.
 
+```{figure} ../../_static/images/tetrad-interface/box-by-box/hybrid-im.png
+:name: tetrad-hybrid-im-screenshot
+:alt: Hybrid Instantiated Model
+
+Hybrid Instantiated Model
+```
+
 A Hybrid instantiated model contains:
 
 - A graph over **discrete and continuous variables** with typed nodes.

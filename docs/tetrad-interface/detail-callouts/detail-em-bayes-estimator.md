@@ -8,6 +8,13 @@ than plain ML or Dirichlet estimation.
 This estimator is available when the **Parametric Model** is a **Bayes PM** and
 the Estimator box offers EM-based options.
 
+```{figure} ../../_static/images/tetrad-interface/box-by-box/bayes-estimator.png
+:name: tetrad-bayes-estimator-screenshot
+:alt: Bayes (Multinomial) Estimator
+
+Bayes (Multinomial) Estimator
+```
+
 ## Purpose
 
 - Estimate CPTs in the presence of **missing values**.

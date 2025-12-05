@@ -4,6 +4,13 @@ This page describes **Bayes (multinomial) instantiated models** in the
 **Instantiated Model** box. These are **discrete Bayesian networks that have been
 estimated on a dataset**, starting from a Bayes parametric model.
 
+```{figure} ../../_static/images/tetrad-interface/box-by-box/bayes-im.png
+:name: tetrad-bayes-instantiated-model-screenshot
+:alt: Bayes Instantiated Model
+
+Bayes (Multinomial) Instantiated Model
+```
+
 An instantiated Bayes model consists of:
 
 - A **graph structure** over discrete variables.

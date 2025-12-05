@@ -6,6 +6,13 @@ immediately obvious from the visual layout.
 
 From a Graph box, open the **Graph** menu in the menubar to access the commands below.
 
+```{figure} ../../_static/images/tetrad-interface/box-by-box/graph-menu.png
+:name: tetrad-graph-menu-screenshot
+:alt: Graph Menu
+
+Graph Menu
+```
+
 ## Random Graph
 
 **Graph → Random Graph**

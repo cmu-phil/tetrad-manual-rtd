@@ -1,4 +1,4 @@
-# Adjustment & Total Effects
+# Detail: Adjustment & Total Effects
 
 The **Adjustment & Total Effects** tool provides a one-stop interface for:
 

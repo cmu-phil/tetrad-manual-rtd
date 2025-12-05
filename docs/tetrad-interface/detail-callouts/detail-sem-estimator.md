@@ -8,6 +8,13 @@ variances, and possibly means) and global fit statistics.
 This estimator is available when the **Parametric Model** connected to the
 Estimator box is a **SEM PM**.
 
+```{figure} ../../_static/images/tetrad-interface/box-by-box/bayes-estimator.png
+:name: tetrad-sem-estimator-screenshot
+:alt: SEM Estimator
+
+SEM Estimator
+```
+
 ## Purpose
 
 - Estimate:

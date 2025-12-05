@@ -8,6 +8,13 @@ zero-probability problems in sparse data.
 This estimator is available whenever the **Parametric Model** connected to the
 Estimator box is a **Bayes PM**.
 
+```{figure} ../../_static/images/tetrad-interface/box-by-box/dirichlet-estimator.png
+:name: tetrad-dirichlet-estimator-screenshot
+:alt: Dirichlet Estimator
+
+Dirichlet Estimator
+```
+
 ## Purpose
 
 - Estimate CPTs using **posterior mean** probabilities under a Dirichlet prior.

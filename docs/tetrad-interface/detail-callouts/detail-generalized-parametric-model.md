@@ -4,6 +4,13 @@ This page describes the **Generalized** model type in the **Parametric Model** a
 **Instantiated Model** boxes. These models offer a flexible framework where you
 specify **functional forms and error distributions by hand**.
 
+```{figure} ../../_static/images/tetrad-interface/box-by-box/generalized-pm.png
+:name: tetrad-beneralized-pm-screenshot
+:alt: Generalized Parametric Model
+
+Generalized Parametric Model
+```
+
 ## When to use Generalized models
 
 Use the Generalized model family when:

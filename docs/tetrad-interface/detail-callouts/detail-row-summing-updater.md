@@ -8,6 +8,13 @@ convenient.
 It is available when the **Updater** box is connected to a discrete **Instantiated Model** or **Estimator**
 output and the updater type is set to *Row Summing Updater*.
 
+```{figure} ../../_static/images/tetrad-interface/box-by-box/row-summing-updater.png
+:name: tetrad-row-summing-screenshot
+:alt: Row Summing Updater
+
+Row Summing Updater
+```
+
 ## Purpose
 
 - Provide a conceptually simple, table-based updating mechanism in discrete models.

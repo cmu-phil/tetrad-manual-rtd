@@ -7,6 +7,13 @@ updating** on an instantiated discrete model, given specified **evidence** (obse
 It is available when the **Updater** box is connected to an **Instantiated Model** (IM) or **Estimator** that
 produces a **discrete Bayesian model**.
 
+```{figure} ../../_static/images/tetrad-interface/box-by-box/junction-tree-updater.png
+:name: tetrad-junction-tree-updater-screenshot
+:alt: Junction Tree Updater
+
+Junction Tree Updater
+```
+
 ## Purpose
 
 - Compute **posterior distributions** for query variables given:

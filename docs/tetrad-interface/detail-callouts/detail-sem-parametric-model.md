@@ -4,6 +4,13 @@ This page describes the **SEM (linear SEM)** model type in the **Parametric Mode
 **Instantiated Model** boxes. These models are **linear Gaussian structural equation models**
 with path coefficients and Gaussian error terms.
 
+```{figure} ../../_static/images/tetrad-interface/box-by-box/sem-pm.png
+:name: tetrad-sem-pm-screenshot
+:alt: SEM Parametric Model
+
+SEM Parametric Model
+```
+
 ## When to use SEM models
 
 Use the SEM model family when:

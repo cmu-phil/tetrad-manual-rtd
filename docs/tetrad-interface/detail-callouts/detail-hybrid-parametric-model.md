@@ -4,6 +4,13 @@ This page describes the **Hybrid (conditional Gaussian)** model type in the **Pa
 **Instantiated Model** boxes. These are **conditional Gaussian (CG)** models that combine discrete
 and continuous variables.
 
+```{figure} ../../_static/images/tetrad-interface/box-by-box/hybrid-pm.png
+:name: tetrad-hybrid-pm-screenshot
+:alt: Hybrid Parametric Model
+
+Hybrid Parametric Model
+```
+
 ## When to use Hybrid models
 
 Use the Hybrid model family when:

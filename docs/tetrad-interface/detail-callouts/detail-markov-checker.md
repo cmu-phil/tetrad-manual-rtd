@@ -3,18 +3,12 @@
 The **Markov Checker** tool helps assess whether a given graph is **Markov to a data set** (or to another graph),
 i.e., whether the conditional independencies implied by the graph are consistent with what you see in the data.
 
-[//]: # (```{note})
+```{figure} ../../_static/images/tetrad-interface/box-by-box/markov-checker.png
+:name: tetrad-markov-checker-screenshot
+:alt: Markov Checker
 
-[//]: # (Suggested screenshot:)
-
-[//]: # ()
-[//]: # (- The Markov Checker dialog, showing selected graph and data, with a list of tested independencies.)
-
-[//]: # (  Save as: ``../../_static/images/tetrad-interface/overview/markov-checker-dialog.png``.)
-
-[//]: # (```)
-
-![](../../_static/images/tetrad-interface/overview/markov-checker-dialog.png)
+Markov Checker
+```
 
 ## Purpose
 

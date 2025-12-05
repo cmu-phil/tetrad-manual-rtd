@@ -5,6 +5,13 @@ This page describes the **Bayes (multinomial)** model type in the **Parametric M
 variable has a finite set of states and is parameterized by **multinomial conditional probability
 tables (CPTs)**.
 
+```{figure} ../../_static/images/tetrad-interface/box-by-box/bayes-pm.png
+:name: tetrad-bayes-pm-screenshot
+:alt: Bayes (Multinomial) Parametric Model
+
+Bayes (Multinomial) Parametric Model
+```
+
 ## When to use Bayes models
 
 Use the Bayes model family when:

@@ -8,6 +8,13 @@ probability tables (CPTs) of a Bayesian network, given fully observed data.
 This estimator is available whenever the **Parametric Model** connected to the
 Estimator box is a **Bayes PM** and a compatible dataset is selected.
 
+```{figure} ../../_static/images/tetrad-interface/box-by-box/ml-bayes-estimator.png
+:name: tetrad-ml-bayes-estimator-screenshot
+:alt: Bayes (Multinomial) Estimator
+
+Bayes (Multinomial) Estimator
+```
+
 ## Purpose
 
 - Estimate **CPT entries** directly from the observed data.
