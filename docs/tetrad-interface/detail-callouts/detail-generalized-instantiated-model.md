@@ -1,4 +1,4 @@
-# Detail: Generalized Instantiated Models
+# Detail: Generalized Instantiated Model
 
 This page describes **Generalized instantiated models** in the
 **Instantiated Model** box. These are **custom models with user-specified

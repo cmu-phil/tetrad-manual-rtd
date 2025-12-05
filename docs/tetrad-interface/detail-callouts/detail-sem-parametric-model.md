@@ -1,4 +1,4 @@
-# Detail: SEM (Linear) Parametric Models
+# Detail: SEM (Linear) Parametric Model
 
 This page describes the **SEM (linear SEM)** model type in the **Parametric Model** and
 **Instantiated Model** boxes. These models are **linear Gaussian structural equation models**

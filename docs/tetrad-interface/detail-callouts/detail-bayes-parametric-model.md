@@ -1,4 +1,4 @@
-# Detail: Bayes (Multinomial) Parametric Models
+# Detail: Bayes (Multinomial) Parametric Model
 
 This page describes the **Bayes (multinomial)** model type in the **Parametric Model** and
 **Instantiated Model** boxes. These models represent **discrete Bayesian networks** where each

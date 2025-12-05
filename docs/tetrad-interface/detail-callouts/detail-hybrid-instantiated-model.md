@@ -1,4 +1,4 @@
-# Detail: Hybrid (Conditional Gaussian) Instantiated Models
+# Detail: Hybrid (Conditional Gaussian) Instantiated Model
 
 This page describes **Hybrid (conditional Gaussian)** instantiated models in
 the **Instantiated Model** box. These are **mixed discrete/continuous

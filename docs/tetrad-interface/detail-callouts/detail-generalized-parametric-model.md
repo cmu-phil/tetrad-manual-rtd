@@ -1,4 +1,4 @@
-# Detail: Generalized Parametric Models
+# Detail: Generalized Parametric Model
 
 This page describes the **Generalized** model type in the **Parametric Model** and
 **Instantiated Model** boxes. These models offer a flexible framework where you

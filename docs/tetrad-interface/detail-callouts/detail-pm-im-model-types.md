@@ -25,10 +25,15 @@ This page summarizes the main model families currently supported in the **Parame
 
 For more details on each family, see:
 
-- `Tetrad Interface → Detail: Bayes (Multinomial) Parametric Models`
-- `Tetrad Interface → Detail: SEM (Linear) Parametric Models`
-- `Tetrad Interface → Detail: Hybrid (Conditional Gaussian) Parametric Models`
-- `Tetrad Interface → Detail: Generalized Parametric Models`
+- `Tetrad Interface → Detail: Bayes (Multinomial) Parametric Model`
+- `Tetrad Interface → Detail: SEM (Linear) Parametric Model`
+- `Tetrad Interface → Detail: Hybrid (Conditional Gaussian) Parametric Model`
+- `Tetrad Interface → Detail: Generalized Parametric Model`
+
+- `Tetrad Interface → Detail: Bayes (Multinomial) Instantiated Model`
+- `Tetrad Interface → Detail: SEM (Linear) Instantiated Model`
+- `Tetrad Interface → Detail: Hybrid (Conditional Gaussian) Instantiated Model`
+- `Tetrad Interface → Detail: Generalized Instantiated Model`
 
 ## Interaction with Estimator and Simulation
 

@@ -1,4 +1,4 @@
-# Detail: Hybrid (Conditional Gaussian) Parametric Models
+# Detail: Hybrid (Conditional Gaussian) Parametric Model
 
 This page describes the **Hybrid (conditional Gaussian)** model type in the **Parametric Model** and
 **Instantiated Model** boxes. These are **conditional Gaussian (CG)** models that combine discrete

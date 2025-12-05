@@ -1,4 +1,4 @@
-# Detail: Bayes (Multinomial) Instantiated Models
+# Detail: Bayes (Multinomial) Instantiated Model
 
 This page describes **Bayes (multinomial) instantiated models** in the
 **Instantiated Model** box. These are **discrete Bayesian networks that have been

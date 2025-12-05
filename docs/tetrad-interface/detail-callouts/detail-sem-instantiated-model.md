@@ -1,4 +1,4 @@
-# Detail: SEM (Linear) Instantiated Models
+# Detail: SEM (Linear) Instantiated Model
 
 This page describes **SEM (linear)** instantiated models in the
 **Instantiated Model** box. These are **linear Gaussian structural equation
