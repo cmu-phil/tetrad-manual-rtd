@@ -105,6 +105,31 @@ of the software.
   and that the resulting node can be used anywhere a normal `Data` node
   can be used.
 
+### 7. Regression box: adjustment and IDA tools
+
+- Updated the **Regression** box documentation to reflect that both:
+    - the **Adjustments and total effects** component (based on Recursive
+      Adjustment / GAC sets), and
+    - the **IDA Check** component  
+      now live in the Regression box, rather than being scattered across other
+      parts of the interface.
+- Added a new **IDA Check** detail page, including:
+    - An explanation of standard IDA (Maathuis et al. 2009) and optional
+      **Optimal IDA** (Witte et al. 2020).
+    - A description of the **Show Optimal IDA** checkbox and the regex-based
+      row filter for the *Pair* column.
+    - Column-by-column documentation of:
+        - `Pair`, `Min TE`, `Max TE`, `IDA Min Effect`, `True TE`,
+          and `Sq Dist`,
+          and how these are interpreted in simulation versus real-data settings.
+    - Clarification that for real data, where the true total effects are
+      unknown, all columns and summary statistics requiring `True TE` are
+      omitted, so the panel reports only the empirical IDA / Optimal IDA
+      intervals.
+- Updated the IDA Check screenshot to show **standard IDA as the default**
+  (the *Show Optimal IDA* checkbox unchecked), preserving backward
+  compatibility with earlier versions of the tool and documentation.
+
 ---
 
 Further tweaks and small additions (for example, new detail callouts or

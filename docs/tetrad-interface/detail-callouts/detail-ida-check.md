@@ -52,7 +52,7 @@ The IDA Check window contains:
 
 ## Table columns
 
-Each row in the table corresponds to one ordered pair \(Y \leftarrow X\).
+Each row in the table corresponds to one ordered pair (X, Y).
 
 - **Pair**  
   Displayed as `Y <- X`, meaning:
@@ -60,13 +60,13 @@ Each row in the table corresponds to one ordered pair \(Y \leftarrow X\).
   - **Outcome**  = `Y`  
 
 - **Min TE**  
-  The **minimum total effect** of \(X\) on \(Y\) over all DAGs and parent
+  The **minimum total effect** of X on Y over all DAGs and parent
   sets consistent with the current graph (standard or Optimal IDA,
   depending on the checkbox). This is the left endpoint of the IDA
   interval.
 
 - **Max TE**  
-  The **maximum total effect** of \(X\) on \(Y\) over all compatible DAGs /
+  The **maximum total effect** of X on Y over all compatible DAGs /
   parent sets, i.e., the right endpoint of the IDA interval.
 
 - **IDA Min Effect**  
@@ -76,14 +76,13 @@ Each row in the table corresponds to one ordered pair \(Y \leftarrow X\).
   Tetrad’s IDA code.
 
 - **True TE**  
-  The **true total effect** of \(X\) on \(Y\), computed from the generating
+  The **true total effect** of X on Y, computed from the generating
   DAG (available only in simulation).
 
 - **Sq Dist**  
   The **squared distance** between the true total effect and the IDA
   interval, defined as:
-  - \(0\) if `True TE` lies **inside** the interval
-    \([ \text{Min TE}, \text{Max TE}]\);
+  - 0 if `True TE` TE lies inside the interval between Min TE and Max TE (including endpoints)
   - otherwise, the square of the distance from `True TE` to the **nearest
     endpoint** of that interval.
 
@@ -142,9 +141,10 @@ known truth.
 
 ## Notes
 
-- This panel is primarily intended for **simulation studies and algorithm
-  comparison**. In real applied data, the “True TE” column is not
-  available.
-- The quality of IDA intervals depends entirely on the estimated graph.
+- For real data, where the True TE column is not available, all columns 
+  and summary statistics that require knowledge of the true total effect are 
+  omitted. In this mode, the panel simply reports the IDA (or Optimal IDA) intervals 
+  themselves, which can be interpreted as empirical bounds on the unknown total effects.
+- The quality of IDA intervals depends on the estimated graph.
   A poor graph may yield intervals that systematically miss the true
   effects, even if the IDA machinery itself is correct.
