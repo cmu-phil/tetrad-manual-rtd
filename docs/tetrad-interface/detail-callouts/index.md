@@ -33,4 +33,5 @@ detail-approximate-updater
 detail-row-summing-updater
 detail-sem-updater
 detail-adjustment-total-effects
+detail-ida-check
 detail-ntad-explorer
