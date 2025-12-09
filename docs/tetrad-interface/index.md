@@ -18,6 +18,7 @@ The pages in this section give a **task-oriented** tour of the interface.
 
 overview/overview
 box-by-box/index
+data-preparation/index
 detail-callouts/index
 ```
 
