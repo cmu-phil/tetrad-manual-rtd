@@ -144,7 +144,7 @@
 - **Short description:** Variables will be rescaled to [min, max] for this min; if min = max no rescaling will be done
 - **Long description:** Variables will be rescaled to [min, max] for this min; if min = max no rescaling will be done
 - **Value type:** Double
-- **Default value:** -1
+- **Default value:** 1
 - **Minimum:** -Infinity
 - **Maximum:** Infinity
 
