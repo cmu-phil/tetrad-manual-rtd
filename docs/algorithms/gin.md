@@ -5,6 +5,8 @@
 
 GIN (“Generalized Independent Noise”) is a latent-variable causal discovery algorithm for Linear, Non-Gaussian Latent variable Models (LiNGLaMs). It uses the GIN condition to locate groups of observed variables that share latent causes, then infers a causal order among those latent variables and builds a latent DAG that explains the observed indicators.  [oai_citation:0‡arXiv](https://arxiv.org/abs/2010.04917?utm_source=chatgpt.com)
 
+The current implementation corresponds to the practical GIN clustering and root-peeling procedure of Xie et al. (2024), applied to a single latent layer over observed variables; the full LaHiCaSl hierarchical extension is not yet implemented in Tetrad.
+
 ---
 
 ## Key Idea
