@@ -1,87 +1,106 @@
 # GIN (Generalized Independent Noise)
 
-**Type:** Latent-variable / constraint-based  
-**Output:** Latent DAG over observed and latent variables (directed edges, with undirected tail–tail edges allowed among some latent nodes)
+## Overview
 
-GIN (“Generalized Independent Noise”) is a latent-variable causal discovery algorithm for Linear, Non-Gaussian Latent variable Models (LiNGLaMs). It uses the GIN condition to locate groups of observed variables that share latent causes, then infers a causal order among those latent variables and builds a latent DAG that explains the observed indicators.  [oai_citation:0‡arXiv](https://arxiv.org/abs/2010.04917?utm_source=chatgpt.com)
+GIN is a causal discovery algorithm for finding latent variables and determining their causal ordering under a linear, non-Gaussian measurement model. It assumes that sets of observed variables arise from shared latent causes, and uses an independent-noise criterion to identify both the latent clusters and the relationships among them.
 
-The current implementation corresponds to the practical GIN clustering and root-peeling procedure of Xie et al. (2024), applied to a single latent layer over observed variables; the full LaHiCaSl hierarchical extension is not yet implemented in Tetrad.
+The algorithm proceeds in two major phases:
 
----
+1. **Clustering:** identifies groups of observed variables that share a single latent parent.
+2. **Latent ordering:** determines a causal order among those latent variables using a root-peeling procedure based on independence tests.
 
-## Key Idea
+The output is a latent-variable DAG with directed edges among latent nodes and directed edges from each latent to its observed indicators.
 
-GIN is built around the GIN condition: for two sets of observed variables \(Y\) and \(Z\), there exists a non-zero vector \(\omega\), determined from the cross-covariance of \(Y\) and \(Z\), such that the scalar surrogate \(E_{Y\mid Z} = \omega^\top Y\) is independent of \(Z\) if and only if certain latent causal relations hold.  [oai_citation:1‡NeurIPS Proceedings](https://proceedings.neurips.cc/paper/2020/file/aa475604668730af60a0a87cc92604da-Paper.pdf?utm_source=chatgpt.com)  The Tetrad implementation follows the recursive learning procedure from the NeurIPS/JMLR papers:
+This implementation follows the practical GIN procedure described in Xie et al. (2020, NeurIPS) and clarified in Xie et al. (2024, JMLR). It applies specifically to a **single layer of latent variables** above the observed variables.
 
-1. **GIN-based clustering (Algorithm 1):**  
-   It searches over subsets of observed variables of increasing size and tests whether a candidate set \(Y\) satisfies the GIN condition relative to the remaining variables \(Z\). Sets that pass are merged into clusters, each interpreted as a group of pure or nearly pure indicators of a latent variable.
+## Requirements
 
-2. **Root-peeling causal ordering (Algorithm 2):**  
-   Using a “half-split” construction on each cluster, GIN repeatedly identifies root latent sets—clusters whose latent variable is causally earliest with respect to the others—by checking appropriate GIN tests. These root sets are peeled off one by one to produce a causal order over latent variables.
+GIN is appropriate when the following modeling assumptions are approximately satisfied:
 
-3. **Latent graph construction:**  
-   Tetrad creates one latent node per cluster, connects earlier latents to later latents according to the learned order, attaches each latent to its observed indicators, and connects any remaining unordered latents with tail–tail undirected edges.
+- The data follow a linear model with **non-Gaussian noise**.
+- Observed variables can be grouped into **latent clusters**, each representing indicators of one latent cause.
+- Indicators satisfy a **double-pure measurement assumption**: each indicator depends on only one latent variable, and indicators are non-redundant.
+- The latent causal structure is **acyclic**.
 
----
+## Parameters
+
+GIN exposes two user-configurable parameters:
+
+| Parameter | Description |
+|----------|-------------|
+| `alpha`  | Significance threshold used when combining p-values via Fisher’s method to test the GIN condition. |
+| `verbose` | If true, prints diagnostic messages during clustering and ordering. |
+
+Independence-test parameters are configured separately through the selected independence test (e.g., KCI).
+
+## How the Algorithm Works
+
+### 1. Clustering observed variables
+
+GIN searches for latent clusters by examining candidate subsets of observed variables:
+
+1. For each candidate subset, a one-dimensional projection is computed from the covariance between that subset and the remaining variables.
+2. The projection is tested for independence against each remaining observed variable.
+3. P-values are combined with Fisher’s method. If the combined p-value is greater than or equal to `alpha`, the subset is accepted as a latent cluster.
+
+Clusters with overlapping membership are merged so that each observed variable appears in at most one cluster.
+
+Observed variables that do not appear in any cluster remain in the final graph without latent parents.
+
+### 2. Ordering latent clusters
+
+Once clusters are formed, GIN tests which latent variables are causal roots:
+
+1. Each cluster is split into two halves to create surrogate variables for independence testing.
+2. Surrogate sets from previously ordered clusters are included as conditioning components.
+3. A cluster is a **root** if its surrogate variable is independent of the second halves of all other remaining clusters.
+
+Roots are appended to the ordered list and removed from the pool. Clusters that cannot be ordered form an **unordered group**.
+
+### 3. Constructing the latent graph
+
+The final graph contains:
+
+- A latent node for each cluster.
+- Directed edges among latent nodes according to the discovered causal order.
+- Undirected edges among latent nodes in the unordered group.
+- Directed edges from each latent node to its observed indicators.
+- Isolated observed nodes corresponding to variables that were not clustered.
+
+## Output
+
+GIN returns a graph consisting of:
+
+- Latent nodes representing discovered latent clusters,
+- Directed edges among latent variables reflecting the recovered causal order,
+- Undirected edges among unordered latent variables, and
+- Directed edges from latent variables to their observed indicators.
 
 ## When to Use
 
-- You believe your data are generated by a **linear, non-Gaussian acyclic causal model** with **latent variables** (LiNGLaM / LiNGLaH setting).  [oai_citation:2‡Journal of Machine Learning Research](https://www.jmlr.org/papers/v25/23-1052.html?utm_source=chatgpt.com)
-- Each latent variable has (approximately) **at least two pure indicators** (double-pure measurement assumption), so that clusters of indicators are meaningful.  [oai_citation:3‡NeurIPS Proceedings](https://proceedings.neurips.cc/paper/2020/file/aa475604668730af60a0a87cc92604da-Paper.pdf?utm_source=chatgpt.com)
-- You want to **explicitly recover latent variables and their causal ordering**, not just a causal graph over observed variables.
-- Your observed variables are **continuous** and you can afford nonparametric independence tests (KCI/HSIC-style) at moderate dimensionality.
-- You are comfortable with stronger assumptions (non-Gaussian noise, linear relations at the latent level) in exchange for **stronger identifiability** of the latent structure.
+Use GIN when:
 
----
+- You expect **one latent layer** generating clusters of indicators.
+- Non-Gaussianity is plausible.
+- Indicators are reasonably pure (each indicator loads on only one latent).
+- A causal ordering among latent variables is desired.
 
-## Prior Knowledge Support
+## When Not to Use
 
-**Does it accept background knowledge?**  
-No. The current Tetrad implementation of GIN does **not** take background knowledge (forbidden/required edges, tiers, etc.) into account. The algorithm is entirely data-driven: clusters and latent ordering are determined solely by GIN tests on the dataset.
+GIN is not suitable when:
 
----
+- There are **multiple hierarchical latent layers** (the full LaHiCaSl algorithm is required and not yet implemented in Tetrad).
+- Indicators load on multiple latent variables.
+- Noise is approximately Gaussian.
+- Strong nonlinearity violates the linear model assumptions.
 
-## Strengths
+## Notes
 
-- **Explicit latent structure:** Recovers latent variables as nodes in the output graph, not just as implicit confounders.
-- **Identifiability under realistic assumptions:** Under LiNGLaM assumptions with non-Gaussian noise and appropriate measurement structure, the latent causal graph is identifiable.  [oai_citation:4‡Journal of Machine Learning Research](https://www.jmlr.org/papers/v25/23-1052.html?utm_source=chatgpt.com)
-- **Causal ordering of latents:** Provides a causal order over latent variables (and hence directional information among them), not just undirected latent blocks.
-- **Modern theory:** Based on the GIN condition, which generalizes the independent noise condition and connects directly to graphical criteria.  [oai_citation:5‡NeurIPS Proceedings](https://proceedings.neurips.cc/paper/2020/file/aa475604668730af60a0a87cc92604da-Paper.pdf?utm_source=chatgpt.com)
+- This implementation corresponds to the **single-layer** algorithm described in Xie et al. (2020) and the practical guidance provided in Xie et al. (2024).
+- The hierarchical extension (LaHiCaSl) is **not** included.
+- Independence testing uses the user-selected test, such as KCI.
 
----
+## References
 
-## Limitations
-
-- **Model assumptions are strong:** Requires linear structural relations at the latent level, non-Gaussian i.i.d. errors, and a double-pure measurement structure; violations can degrade performance or break identifiability.  [oai_citation:6‡Journal of Machine Learning Research](https://www.jmlr.org/papers/v25/23-1052.html?utm_source=chatgpt.com)
-- **Computational cost:** The clustering step enumerates subsets of observed variables, which becomes expensive for large numbers of variables or large cluster sizes.
-- **Continuous, reasonably scaled data:** Designed for continuous variables with meaningful covariance structure; it is not directly suitable for purely discrete data without additional preprocessing.
-- **Limited background-knowledge integration:** There is currently no way to constrain or guide the latent structure with prior knowledge inside GIN.
-
----
-
-## Key Parameters in Tetrad
-
-All parameters appear in the GUI (camelCase form) and in scripting interfaces.
-
-| Parameter (camelCase) | Description |
-|------------------------|-------------|
-| `alpha`   | Significance level used for GIN-based independence decisions. At each GIN test, p-values for surrogate–Z independence are combined via Fisher’s method; clusters and root sets are accepted when the combined p-value is at least `alpha`. Lower values make the algorithm more conservative. |
-| `verbose` | If `true`, Tetrad logs additional information about intermediate clusters, the learned latent causal order, and any unordered clusters, useful for debugging or inspection. |
-
-*(Parameters for the independence test itself—e.g., kernel type, bandwidth—are configured separately in the chosen independence-test object and are not part of GIN’s own parameter list.)*
-
----
-
-## Reference
-
-Xie, F., Huang, B., Chen, Z., Cai, R., Glymour, C., Geng, Z., & Zhang, K. (2024).  
-**Generalized Independent Noise Condition for Estimating Causal Structure with Latent Variables.** *Journal of Machine Learning Research, 25*, 1–61.  [oai_citation:7‡Journal of Machine Learning Research](https://www.jmlr.org/papers/v25/23-1052.html?utm_source=chatgpt.com)
-
-(Original conference version: Xie, F., Cai, R., Huang, B., Glymour, C., Hao, Z., & Zhang, K. (2020).  
-**Generalized Independent Noise Condition for Estimating Latent Variable Causal Graphs.** *NeurIPS*.  [oai_citation:8‡NeurIPS Proceedings](https://proceedings.neurips.cc/paper/2020/file/aa475604668730af60a0a87cc92604da-Paper.pdf?utm_source=chatgpt.com))
-
----
-
-## Summary
-
-GIN is a latent-variable causal discovery algorithm that uses the Generalized Independent Noise condition to simultaneously discover clusters of indicators, recover latent variables, and infer a causal ordering among them—giving you an explicit latent DAG when LiNGLaM assumptions and measurement conditions are reasonably met.  [oai_citation:9‡algorithm.template.md](sediment://file_00000000e37071fd944527e7dafaa5ad)
+- Xie, L., Meng, C., Kanagawa, M., & Schölkopf, B. (2020). *Generalized Independent Noise Condition for Causal Discovery.* NeurIPS.
+- Xie, L., Schölkopf, B., & Kanagawa, M. (2024). *A Versatile Causal Discovery Framework to Allow Causally-Related Hidden Variables.* JMLR.
