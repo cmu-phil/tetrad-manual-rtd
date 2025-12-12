@@ -14,6 +14,7 @@ detail-graph-menu
 detail-display-subgraphs
 detail-markov-checker
 detail-pm-im-model-types
+detail-simulation-types
 detail-bayes-parametric-model
 detail-bayes-instantiated-model
 detail-ml-bayes-estimator

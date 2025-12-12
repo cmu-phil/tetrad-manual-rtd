@@ -38,6 +38,8 @@ tab. This tab offers two main choices:
 2. **Simulation type**  
    You can then choose how data are generated from the graph. Options include:
 
+   For short descriptions of each simulation type, see the [detail callout](../detail-callouts/detail-simulation-types.md):
+
    - **Linear SEM**
    - **Linear Fisher**
    - **Gaussian Process**
