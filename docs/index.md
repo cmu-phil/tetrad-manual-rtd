@@ -21,6 +21,8 @@ graph-and-datasets
 search-algorithms
 tests-and-scores
 parameter.definitions
+contributors
+papers-and-books
 changelog
 ```
 
