@@ -1,172 +1,194 @@
 # Running Searches and Grid Search Tips
 
-Once you have explored your data and chosen a starting set of assumptions and methods (see *Algorithm Selection and Assumptions*), the next step is to **systematically run causal searches** and explore key parameters. This page introduces how to perform searches in Tetrad, basic grid search patterns, and recommended practices for evaluating models across parameter settings.
+Once you have explored your data and chosen a starting set of assumptions and methods (see *Algorithm Selection and Assumptions*), the next step is to **run causal searches systematically**.
 
-Unlike one-shot causal discovery, **systematic search exploration** helps you understand how sensitive your results are to assumptions, test/score choices, and tuning parameters. It also creates a natural path toward evaluating models via diagnostics like the Markov Checker.
+Rather than treating causal discovery as a one-shot operation, Tetrad encourages you to explore how results change across reasonable choices of algorithms, tests or scores, and tuning parameters. The **Grid Search** tool is designed to support exactly this kind of structured exploration.
 
 ---
 
-## When to Use Grid Search
+## Why Use Grid Search?
 
-Tetrad’s **Grid Search** tool is especially helpful when:
+Grid Search is especially useful when you want to:
 
-- You want to explore **multiple parameter settings** for a given algorithm.
-- You want to compare **different algorithms** under similar settings.
-- You want to see how sensitive structures are to test/score choice or tuning.
-- You’re aiming to find **minimal Markov-consistent models** — those that pass diagnostics with minimal complexity.
+- Explore **multiple parameter settings** for a given algorithm
+- Compare **different algorithms** under similar assumptions
+- Understand how sensitive results are to tuning choices
+- Identify **simple models that are consistent with the data**
+- Use diagnostics such as the **Markov Checker** in a systematic way
 
-Grid Search is a flexible exploration tool — and for beginners, the challenge is knowing *which parameters to vary first* and *how to interpret the results*.
+For many users, Grid Search is the *default workflow* for causal discovery in Tetrad.
+
+---
+
+## From Single Runs to Systematic Search
+
+You may begin with a single exploratory run to confirm that an algorithm behaves sensibly on your data. However, interpretation should rarely stop there.
+
+A single run answers:
+> “What happens for *this* choice of parameters?”
+
+Grid Search helps answer:
+> “Which results are **stable** across reasonable choices?”
 
 ---
 
 ## Running a Basic Search
 
-In the Tetrad UI:
+Before using Grid Search, it helps to understand the basic components of a search.
 
-1. **Open the Search dialog**
-    - Choose your preferred causal discovery method (e.g., PC, FCI, GES).
-2. **Select tests or scores**
-    - Pick a conditional independence test or score that matches data type and assumptions.
-3. **Configure parameters**
-    - For test-based methods: significance level (α)
-    - For score-based methods: penalty/discount
-4. **Run the search**
-    - Review the output graph in the **Graph** pane
+In the Tetrad interface:
 
-After the first run, before interpreting results, ask:
+1. Select a **causal discovery algorithm** (e.g., PC, FCI, GES).
+2. Choose an appropriate **test or score** based on your data type.
+3. Set key parameters:
+    - Significance level (α) for test-based methods
+    - Penalty or discount for score-based methods
+4. Run the search and inspect the resulting graph.
 
-- Does the output pass basic sanity checks?
-- Do adjacencies make sense given known relationships?
-- Are there unexpected orientations?
-
-If not, consider running a grid search over key parameters rather than focusing on this single run.
+If the output looks implausible, overly dense, or unstable, that is a strong signal that **systematic exploration** is needed.
 
 ---
 
 ## What to Sweep in Grid Search
 
-When you start exploring with Grid Search, vary *one or two knobs at a time* to keep the analysis interpretable. Some common choices:
+When using Grid Search, vary **only a small number of meaningful parameters** at a time. This keeps results interpretable.
 
-### 1. **Significance Level (α) — For Test-Based Methods**
-- Typical values: 0.01, 0.05, 0.10
-- Lower α → sparser graph
-- Higher α → denser graph
+### 1. Significance Level (α) — Test-Based Methods
 
-Sweep across 3–5 α values to see how sparsity and conditional independence support change.
+Typical values:
+- 0.01
+- 0.05
+- 0.10
 
----
-
-### 2. **Penalty / Discount — For Score-Based Methods**
-- Higher penalties → favor simpler models
-- Lower penalties → allow more edges
-
-Try a range of penalties to see where the balance between fit and complexity lies.
+Lower α tends to produce sparser graphs; higher α produces denser graphs. Sweeping α reveals how much structure is supported by the data.
 
 ---
 
-### 3. **Algorithm Family**
-- Run both constraint-based and score-based methods
-- If you’re allowing latent variables, compare FCI variants vs score–search hybrids
+### 2. Penalty / Discount — Score-Based Methods
 
-This provides practical insight into how robust findings are across families of methods.
+Penalty parameters control the trade-off between model fit and complexity.
+
+- Higher penalties favor simpler models
+- Lower penalties allow more edges
+
+Sweeping the penalty often reveals a clear region where models remain Markov-consistent while becoming increasingly complex.
 
 ---
 
-### 4. **Tests / Scores**
-- On the test side: Fisher-Z vs rank-based vs nonparametric tests
-- On the score side: BIC vs alternative scoring functions
+### 3. Algorithm Choice
 
-Different tests/scores respond to data characteristics differently; sweeping them helps diagnose sensitivity.
+Grid Search allows you to compare:
+
+- Constraint-based methods (e.g., PC, FCI)
+- Score-based methods (e.g., GES, BOSS, GRaSP)
+- Hybrid approaches
+
+Comparing across algorithm families helps distinguish robust features from method-specific artifacts.
+
+---
+
+### 4. Tests and Scores
+
+Different tests and scores respond differently to:
+
+- Non-Gaussianity
+- Nonlinearity
+- Mixed data types
+
+Sweeping across a small set of compatible tests or scores helps diagnose sensitivity to modeling assumptions.
 
 ---
 
 ## Interpreting Grid Search Results
 
-Once your grid search runs complete, you’ll typically have a collection of models varying in sparsity and structure.
+A Grid Search produces a table of results, where each row corresponds to a particular algorithm and parameter combination.
 
-### Two Key Quantities to Focus On
+Two quantities are especially important:
 
-1. **Markov Consistency Statistic**
-    - How well does each graph’s implied conditional independences match the data?
-    - Use the Markov Checker (see *Model Evaluation and Markov Checking*) to compare candidates.
+### 1. Markov Consistency
 
-2. **Model Complexity**
-    - Number of edges (and degrees of freedom, when available)
-    - Simpler models that still pass Markov diagnostics are often preferable.
+- Does the graph’s implied conditional independence structure agree with the data?
+- Diagnostics such as the **Markov Checker** help answer this question.
 
-Plotting these against each other (e.g., complexity vs Markov goodness) can reveal *trade-offs* and help you identify minimal models.
+Graphs that fail Markov diagnostics should generally be treated with skepticism.
+
+---
+
+### 2. Model Complexity
+
+- Number of edges
+- Degrees of freedom (when available)
+
+Among graphs that pass Markov diagnostics, **simpler models are usually preferable** unless there is strong justification for additional complexity.
 
 ---
 
 ## A Practical Starter Pattern
 
-For non-experts, here’s a simple pattern to begin with:
+For many users, the following pattern works well:
 
-1. **Select one algorithm family** (e.g., PC or FCI)
-2. **Sweep α / penalty** across a small range
-3. **Evaluate each result** with:
-    - Markov Checker
-    - Visual inspection for glaring inconsistencies
-4. **Identify minimal models** that pass diagnostics with the fewest edges
-5. **Optionally compare** with a second algorithm family
+1. Select **one algorithm family** (e.g., PC or FCI).
+2. Sweep **one key parameter** (α or penalty).
+3. Evaluate results using:
+    - Markov Checker statistics
+    - Visual inspection of graphs
+4. Identify **minimal models** that pass diagnostics.
+5. Optionally repeat with a second algorithm family.
 
-Repeat with revised assumptions or background knowledge as needed.
-
----
-
-## How to Read Grid Search Output
-
-In the Grid Search results:
-
-- Each row corresponds to a different parameter setting (or algorithm).
-- You will see:
-    - The estimated graph
-    - Key statistics (number of edges, Markov statistics, etc.)
-- Click on a result to inspect the graph.
-
-As you compare results:
-
-- Look for **stable adjacencies/orientations** that appear across settings.
-- Treat **fragile edges** (those that appear only under specific settings) with caution.
-
-The goal is not to find a single “best” graph in isolation but to understand which features are robust across reasonable choices.
+This approach balances thoroughness with interpretability.
 
 ---
 
-## Tips to Avoid Common Pitfalls
+## Reading Grid Search Output
 
-### 🔹 Don’t Sweep Everything at Once
-Exploding the search over too many parameters makes interpretation hard. Start with one or two meaningful dimensions.
+When examining results:
 
----
+- Each row represents a distinct model.
+- Clicking a row allows you to inspect the corresponding graph.
+- Look for:
+    - Adjacencies that appear across many settings
+    - Orientations that remain stable
+    - Edges that disappear or flip easily (these are less reliable)
 
-### 🔹 Keep Background Knowledge Fixed Initially
-Before adding tiers, forbidden edges, or directional constraints, explore search space with minimal knowledge to see what the data alone suggests.
-
----
-
-### 🔹 Use Visual Diagnostics
-Look at graphs generated under extreme parameters (very sparse and very dense) to ensure your choices bracket the most plausible structures.
+The goal is not to find a single “best” graph, but to identify **robust features** of the causal structure.
 
 ---
 
-### 🔹 Document Your Choices
-Keep track of the parameters you use and the resulting models. This transparency helps later when interpreting or reporting results.
+## Common Pitfalls to Avoid
+
+### Don’t Sweep Too Many Parameters at Once
+Large parameter grids can become difficult to interpret. Start small.
 
 ---
 
-## Where This Fits in the Workflow
+### Keep Background Knowledge Fixed Initially
+Explore what the data suggest on their own before adding strong constraints.
 
-Grid Search bridges:
-- **Algorithm selection** (choosing methods and assumptions), and
-- **Model evaluation** (using Markov Checking and other diagnostics).
+---
 
-It helps turn what could be a single guess at a graph into a *systematic exploration* with interpretable outputs.
+### Use Diagnostics Early
+If most models fail Markov diagnostics, reconsider assumptions, tests, or parameter ranges.
+
+---
+
+### Document What You Tried
+Keeping track of what you swept — and why — makes interpretation and reporting much easier.
+
+---
+
+## Where Grid Search Fits in the Workflow
+
+Grid Search sits at the center of the causal analysis workflow:
+
+- After **choosing assumptions and methods**
+- Before **final interpretation and reporting**
+
+It transforms causal discovery from a single run into a structured, evidence-based exploration.
 
 ---
 
 ## 🧭 Next Step
 
-After running searches and collecting candidate models:
+Once you have identified promising candidate models:
 
-→ Continue with **Model Evaluation and Markov Checking** to assess whether those models are consistent with your data.
+→ Continue to **Model Evaluation and Markov Checking** to assess consistency, robustness, and plausibility in greater detail.

@@ -13,3 +13,4 @@ manual-exploration
 grid-search
 markov-checking
 interpretation
+example-worked

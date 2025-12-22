@@ -1,179 +1,198 @@
 # Interpreting Results
 
-After exploring your data, choosing methods, systematically searching, and evaluating candidate models (see *Data Exploration*, *Algorithm Selection*, *Running Searches*, and *Model Evaluation and Markov Checking*), the final step in the causal analysis workflow is **interpreting your results responsibly**.
+After exploring your data, choosing methods, systematically searching, and evaluating candidate models  
+(see *Data Exploration*, *Algorithm Selection and Assumptions*, *Running Searches*, and *Model Evaluation and Markov Checking*),  
+the final step in the causal analysis workflow is **interpreting results responsibly**.
 
-Causal discovery outputs — whether DAGs, CPDAGs, or PAGs — are not definitive “truths.” They are **models that fit patterns in the data under specific assumptions**. This page helps you understand what you can *reasonably conclude* from such outputs, and how to communicate uncertainty and robustness.
-
----
-
-## 1. What Your Target Graph Represents
-
-A causal graph estimated from data is **a hypothesis about causal relationships** that:
-
-- is consistent with the data’s conditional independence structure,
-- reflects the assumptions made (e.g., causal sufficiency, linearity),
-- and is influenced by method and parameter choices.
-
-It is *not* a guaranteed causal truth.
-
-Thus:
-
-> **Interpretation is about plausible conclusions, not certainties.**
+Causal discovery outputs — whether DAGs, CPDAGs, or PAGs — are **not definitive truths**.  
+They are *models that fit patterns in the data under specific assumptions*.  
+This page explains what you can *reasonably conclude*, how to assess robustness, and how to communicate uncertainty clearly.
 
 ---
 
-## 2. Types of Output and What They Mean
+## 1. What a Discovered Graph Represents
 
-### 2.1. Fully Directed Acyclic Graphs (DAGs)
+A graph estimated from data is best understood as:
 
-A fully oriented DAG implies causal directions for all adjacencies.
+- a **hypothesis** about causal structure,
+- consistent with observed conditional independences,
+- dependent on modeling assumptions (e.g., causal sufficiency, functional form),
+- influenced by algorithm and parameter choices.
 
-**When to trust:**
-- Strong assumptions (e.g., causal sufficiency)
-- Good model evaluation support (e.g., Markov consistency)
-- Supporting domain knowledge
+It is *not* a guarantee of causal truth.
 
-**What to report:**
-- Directed edges with supporting tests
-- Explicit assumptions under which those directions hold
-- Notes on edges that are borderline uncertain
+> **Interpretation is about plausibility under assumptions, not certainty.**
+
+Your conclusions should always be read as conditional statements:
+> *“If these assumptions hold, then this structure is plausible.”*
 
 ---
 
-### 2.2. Completed Partially Directed Acyclic Graphs (CPDAGs)
+## 2. Types of Output and Their Meaning
 
-CPDAGs represent an **equivalence class**, where:
-- Some edge orientations are identified
-- Others remain ambiguous
+### 2.1 Fully Directed Acyclic Graphs (DAGs)
+
+A fully oriented DAG proposes causal directions for all adjacencies.
+
+**When they deserve attention:**
+- Strong assumptions are made (e.g., no latent confounding)
+- Models pass evaluation diagnostics (e.g., Markov checking)
+- Results align with domain knowledge
+
+**How to interpret:**
+- Directions are *hypotheses*, not proofs
+- Emphasize which assumptions support each orientation
+
+---
+
+### 2.2 Completed Partially Directed Acyclic Graphs (CPDAGs)
+
+CPDAGs represent a **Markov equivalence class** of DAGs.
 
 **What you can conclude:**
-- Adjacencies are robust under the given assumptions
-- Some directions are invariant across the equivalence class
-- Unoriented edges mean *direction is not identifiable* from the data and assumptions
+- Adjacencies are supported by the data
+- Some orientations are identifiable
+- Unoriented edges indicate directions that cannot be determined from the data and assumptions alone
+
+Unoriented edges are *informative*: they mark genuine limits of identifiability.
 
 ---
 
-### 2.3. Partial Ancestral Graphs (PAGs)
+### 2.3 Partial Ancestral Graphs (PAGs)
 
-PAGs allow for latent confounders and present multiple edge marks:
-- `→`, `←` for oriented relationships
-- `o→`, `o–o`, etc. for uncertain orientations with latent possibilities
+PAGs allow for **latent confounders and selection effects**.
 
-**What to report:**
-- Which adjacencies are robust
-- Which orientations are identified
-- Which relationships remain ambiguous due to potential latent confounding
+They use richer edge markings to represent uncertainty about:
+- causal direction
+- the presence of latent common causes
+
+**Interpretation focus:**
+- Which variables are adjacent
+- Which directions are identifiable
+- Which relationships remain ambiguous due to latent structure
+
+PAGs are often the most honest representation when causal sufficiency is doubtful.
 
 ---
 
-## 3. How to Interpret Common Edge Marks
+## 3. Interpreting Common Edge Marks
 
-| Symbol | Interpretation |
-|--------|----------------|
-| **A → B** | Oriented edge (under assumptions and given test/score) |
-| **A – B** | Adjacent, orientation not identified |
-| **A o→ B** | Orientation with uncertainty or latent possibility |
-| **A ↔ B** | Possible latent confounder implied |
-| **A o–o B** | Both orientation and latent presence uncertain |
+| Mark | Meaning |
+|------|--------|
+| **A → B** | Oriented edge under stated assumptions |
+| **A – B** | Adjacent; direction not identifiable |
+| **A o→ B** | Possible direction with latent uncertainty |
+| **A ↔ B** | Evidence consistent with latent confounding |
+| **A o–o B** | Both direction and confounding unresolved |
 
-> Always explain what assumptions underlie the interpretation of each mark. A casual reader will not know this by default.
+> Always explain edge marks in plain language when presenting results — most readers will not know their formal meaning.
 
 ---
 
 ## 4. Robustness and Stability
 
-Strong conclusions rest on **robust pattern recovery** across:
+Strong conclusions depend on **robustness**, not a single run.
 
-- Different algorithms (e.g., PC vs FCI vs score-based)
-- Different parameter settings (e.g., α or penalty)
-- Different tests/scores
-- Minor data perturbations (e.g., subsampling or bootstrap)
+Look for features that persist across:
+- algorithms (e.g., PC vs FCI vs score-based),
+- parameter settings (α, penalties),
+- tests or scores,
+- reasonable variations in assumptions.
 
-If a structure (edge or orientation) is only produced under narrow settings, treat it as *tentative*.
+Edges or orientations that appear only under narrow settings should be treated as **tentative**.
 
----
-
-## 5. What You *Can* Say (When Appropriate)
-
-- “**X is adjacent to Y**” — if the edge appears robustly across methods/settings.
-- “**X → Y** is plausible” — when orientations are stable and evaluated models pass diagnostics.
-- “**This edge pattern persists** across tests/scores” — conveys stability, not certainty.
-- “**Under assumption set A** this direction holds” — anchors claims in assumptions.
+Grid Search is particularly valuable here, as it exposes which features are stable versus fragile.
 
 ---
 
-## 6. What You *Should Not* Say Without Qualification
+## 5. What You *Can* Say (With Care)
 
-- “**This is the true causal graph**” — causal discovery does not prove truth.
-- “**This orientation is definitely causal**” — unless supported by interventions or strong background knowledge.
-- “**No edges = no causation**” — absence may reflect lack of power, misspecification, or violations of assumptions.
+When supported by diagnostics and robustness:
 
-Always qualify structural claims with assumptions and diagnostic results.
+- “**X and Y are adjacent**”
+- “**X → Y is plausible under these assumptions**”
+- “**This structure is stable across methods**”
+- “**Under causal sufficiency, this orientation holds**”
 
----
-
-## 7. Incorporating Background Knowledge
-
-When you included background knowledge (e.g., time tiers, forbidden edges, prior causal claims):
-
-- Explain what constraints were used
-- Clarify how they influenced search and orientation
-- Discuss whether results are consistent with that knowledge
-
-If results conflict with prior knowledge, that’s important to investigate — it could suggest:
-- Data issues
-- Inappropriate assumptions
-- Genuine novel insights
+These statements convey *support*, not certainty.
 
 ---
 
-## 8. Communicating Uncertainty
+## 6. What You Should Avoid Saying Unqualified
 
-A mature interpretation includes:
+Avoid absolute claims such as:
 
-- **Admitted uncertainty** where models disagree
-- **Highlighting stable features** (edges/orientations that persist)
-- **Explaining why some features are unresolved**
-- **Linking back to assumptions**
+- “This is the true causal graph”
+- “This direction is definitely causal”
+- “No edge means no causal relationship”
+
+Absence of an edge may reflect:
+- limited power,
+- violated assumptions,
+- inappropriate tests or scores.
+
+---
+
+## 7. Using Background Knowledge
+
+If background knowledge was incorporated (e.g., time tiers, forbidden edges):
+
+- State what constraints were imposed
+- Explain how they influenced the results
+- Note whether conclusions depend on those constraints
+
+Conflicts between data-driven results and prior knowledge are *important findings*, not failures.
+
+---
+
+## 8. Communicating Uncertainty Clearly
+
+Responsible interpretation includes:
+
+- identifying stable vs unstable features,
+- explaining unresolved edges or orientations,
+- tying conclusions explicitly to assumptions.
 
 Example phrasing:
 
-> “Under assumptions of causal sufficiency and linearity, the edge X–Y is consistently found; however, its orientation varies across settings, so we refrain from asserting a causal direction.”
+> “Across algorithms and parameter settings, X–Y is consistently adjacent; however, its orientation varies, so we refrain from asserting a causal direction.”
+
+This builds credibility rather than weakening conclusions.
 
 ---
 
-## 9. Documenting Your Interpretation
+## 9. Documenting Your Analysis
 
-Good documentation benefits both *yourself* and *your audience*. For each analysis, record:
+For transparency and reproducibility, record:
 
-- Data exploration findings
-- Assumptions made
-- Algorithms and parameters used
-- Evaluation results (Markov and others)
-- Which features of the graph you interpret with confidence
-- Which features remain tentative
+- data exploration findings,
+- assumptions made,
+- algorithms and parameters explored,
+- evaluation results,
+- which conclusions are robust,
+- which remain tentative.
 
-This makes your conclusions transparent and reproducible.
+This documentation is part of doing causal analysis *well*.
 
 ---
 
 ## 10. Summary
 
-Interpreting causal discovery results is not a matter of reading a graph at face value. It requires:
+Interpreting causal discovery results requires more than reading a graph:
 
-- Understanding algorithmic limitations
-- Tying claims to assumptions and diagnostics
-- Emphasizing robustness
-- Communicating uncertainty clearly
+- Results are conditional on assumptions
+- Robustness matters more than single outputs
+- Simplicity and consistency are guiding principles
+- Uncertainty should be communicated explicitly
 
-Interpretation is where *causal modeling becomes scientific reasoning*, not just graphical output.
+Interpretation is where **causal discovery becomes scientific reasoning**, not just graphical output.
 
 ---
 
 ## 🧭 What’s Next
 
-With interpretive grounding in place, users are equipped to:
+With careful interpretation in place, you are positioned to:
 
-- Report results responsibly
-- Investigate further with interventions or experiments
-- Integrate discovered structure into downstream modeling or decision-making
+- report findings responsibly,
+- refine models with new assumptions or data,
+- integrate results into downstream causal analysis or decision-making.

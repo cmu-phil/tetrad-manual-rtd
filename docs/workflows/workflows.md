@@ -1,64 +1,79 @@
 # Causal Analysis Workflows
 
-This section of the Tetrad Manual walks you through **practical workflows** for causal discovery and causal modeling.  
-Instead of treating causal discovery as a single “run this algorithm and print the answer” operation, these pages guide you through a **reasoned, iterative process** that combines data exploration, assumption setting, systematic search, and model evaluation.
+This section of the Tetrad Manual walks you through **practical workflows** for causal discovery and causal modeling.
 
-Causal analysis is a *scientific workflow*, not a black box — and this section helps you work like a scientist.
+Rather than treating causal discovery as a single “run this algorithm and print the answer” operation, these pages guide you through a **reasoned, iterative process** that combines data exploration, explicit assumptions, systematic search, and model evaluation.
+
+In Tetrad, causal analysis is a *scientific workflow*, not a black box — and this section is designed to help you work like a scientist.
 
 ---
 
 ## 🧭 What You’ll Learn
 
-This section introduces you to:
+This section introduces you to how causal analysis is typically carried out in Tetrad, including how to:
 
-1. **Exploring your data** to form sensible assumptions about relationships.
-2. **Choosing causal discovery methods** based on what the data suggest.
-3. **Using Tetrad’s search tools** (including Grid Search) in a systematic way.
-4. **Evaluating candidate models** using diagnostics like the Markov Checker.
-5. **Iterating and refining** your assumptions, searches, and conclusions.
-6. **Interpreting results responsibly** — including when only partial conclusions are warranted.
-
----
-
-## 📌 Why Workflows Matter
-
-Causal discovery is underdetermined — many models can fit the same data.  
-Rather than hiding this complexity, Tetrad helps you:
-
-- **Look first at your data**, so assumptions are grounded in evidence.
-- **Articulate assumptions explicitly** (e.g., latent confounders, functional form).
-- **Use tools to eliminate bad models** rather than just produce one.
-- **Compare and validate** models across choices of method, parameters, and constraints.
-- **Report results with clarity**, distinguishing robust features from tentative ones.
-
-This workflow approach helps you produce results that are easier to defend and interpret.
+1. **Explore your data** to form sensible assumptions about relationships.
+2. **Decide what kinds of causal models are appropriate** for your data.
+3. **Use Grid Search as a systematic search tool** to explore algorithms, tests, scores, and parameters.
+4. **Compare candidate models** rather than committing prematurely to a single result.
+5. **Evaluate models using diagnostics**, including Markov checking.
+6. **Iterate and refine** assumptions, searches, and conclusions as evidence accumulates.
+7. **Interpret results responsibly**, including cases where conclusions are necessarily partial.
 
 ---
 
-## 🗺️ Navigate the Workflow
+## 📌 Why a Workflow Matters
 
-The causal analysis workflow is organized into the following pages:
+Causal discovery is fundamentally underdetermined: many different causal models may be compatible with the same data.
 
-- **[Data Exploration](data-exploration.md)** — how to examine your dataset and form initial assumptions.
-- **[Algorithm Selection and Assumptions](choose-an-algorithm.md)** — a decision guide for choosing methods based on data and goals.
-- **[Running Searches and Grid Search Tips](grid-search.md)** — how to explore algorithms and parameterizations systematically.
-- **[Model Evaluation and Markov Checking](markov-checking.md)** — how to assess whether candidate graphs are consistent with data.
-- **[Interpreting Results](interpretation.md)** — how to read and report causal outputs responsibly.
-- **Case Studies** — worked examples that walk through the full process from data to interpretation.
+Rather than hiding this complexity, Tetrad is designed to help you **manage it explicitly**. A workflow-oriented approach allows you to:
 
-> Each page builds on the previous ones, but this is not strictly linear — workflows often involve revisiting earlier steps as you refine assumptions and explore alternatives.
+- **Start from the data**, grounding assumptions in observable structure.
+- **State assumptions clearly**, such as the presence of latent variables or functional form.
+- **Systematically compare alternatives**, instead of relying on a single algorithm run.
+- **Eliminate implausible models** using diagnostics rather than selecting a favorite.
+- **Distinguish robust features** of a result from features that depend on modeling choices.
 
----
-
-## 🧠 Tips Before You Begin
-
-- Treat assumptions as *hypotheses to be tested*.
-- Use visual inspection as a first step, not just automated tests.
-- Aim for *minimal models that pass diagnostics*, not just “the first output you get.”
-- Document your exploration and decisions — it helps both interpretation and reproducibility.
+This approach produces results that are more interpretable, defensible, and reproducible.
 
 ---
 
-## 🙌 Next Step
+## 🗺️ How the Workflow Is Organized
 
-Start with **[Data Exploration](data-exploration.md)** to ground your assumptions in your dataset before choosing methods.
+The causal analysis workflow in Tetrad is organized around the following pages:
+
+- **[Data Exploration](data-exploration.md)**  
+  Learn how to examine your dataset and identify features that inform modeling assumptions.
+
+- **[Choosing Assumptions and Methods](choose-an-algorithm.md)**  
+  Understand how properties of the data (e.g., discrete vs. continuous, presence of latent variables) guide methodological choices.
+
+- **[Grid Search: Systematic Causal Discovery](grid-search.md)**  
+  Learn how to use Grid Search as the *default* way to explore algorithms, tests, scores, and parameter settings in a controlled, comparable way.
+
+- **[Model Evaluation and Markov Checking](markov-checking.md)**  
+  Use diagnostic tools to assess whether candidate graphs are consistent with the data and modeling assumptions.
+
+- **[Interpreting Results](interpretation.md)**  
+  Learn how to read causal outputs carefully and report conclusions with appropriate caution.
+
+- **Case Studies**  
+  Worked examples that demonstrate the full workflow, from data exploration through interpretation.
+
+> Although these pages are presented in a logical order, causal analysis is rarely linear. It is normal — and expected — to revisit earlier steps as new insights emerge.
+
+---
+
+## 🧠 Practical Advice Before You Begin
+
+- Treat assumptions as **hypotheses to be explored**, not facts.
+- Use visual and exploratory tools before running searches.
+- Prefer **systematic comparison** over one-off algorithm runs.
+- Look for **features that persist across models**, not just the highest-scoring output.
+- Keep notes on your decisions — this improves both interpretation and reproducibility.
+
+---
+
+## 🙌 Where to Start
+
+Begin with **[Data Exploration](data-exploration.md)** to understand your dataset and form initial assumptions before moving on to systematic search using Grid Search.
