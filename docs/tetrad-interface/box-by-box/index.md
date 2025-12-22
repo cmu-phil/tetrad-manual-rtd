@@ -11,7 +11,8 @@ in the interface.
 
 graph-box
 compare-box
-grid-search-box
+grid-search-box-data
+grid-search-box-simulation
 parametric-model-box
 instantiated-model-box
 estimator-box
