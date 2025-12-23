@@ -24,6 +24,7 @@ It is *not* a guarantee of causal truth.
 > **Interpretation is about plausibility under assumptions, not certainty.**
 
 Your conclusions should always be read as conditional statements:
+
 > *“If these assumptions hold, then this structure is plausible.”*
 
 ---
@@ -71,7 +72,7 @@ They use richer edge markings to represent uncertainty about:
 - Which directions are identifiable
 - Which relationships remain ambiguous due to latent structure
 
-PAGs are often the most honest representation when causal sufficiency is doubtful.
+PAGs are often the most appropriate representation when causal sufficiency is doubtful.
 
 ---
 
@@ -85,7 +86,7 @@ PAGs are often the most honest representation when causal sufficiency is doubtfu
 | **A ↔ B** | Evidence consistent with latent confounding |
 | **A o–o B** | Both direction and confounding unresolved |
 
-> Always explain edge marks in plain language when presenting results — most readers will not know their formal meaning.
+> When presenting results, explain edge marks in plain language — most readers will not know their formal meaning.
 
 ---
 
@@ -101,7 +102,7 @@ Look for features that persist across:
 
 Edges or orientations that appear only under narrow settings should be treated as **tentative**.
 
-Grid Search is particularly valuable here, as it exposes which features are stable versus fragile.
+Grid Search is particularly valuable here, as it highlights which features are stable versus fragile.
 
 ---
 
@@ -114,7 +115,7 @@ When supported by diagnostics and robustness:
 - “**This structure is stable across methods**”
 - “**Under causal sufficiency, this orientation holds**”
 
-These statements convey *support*, not certainty.
+These statements communicate *support*, not certainty.
 
 ---
 
@@ -127,7 +128,7 @@ Avoid absolute claims such as:
 - “No edge means no causal relationship”
 
 Absence of an edge may reflect:
-- limited power,
+- limited statistical power,
 - violated assumptions,
 - inappropriate tests or scores.
 
@@ -141,7 +142,7 @@ If background knowledge was incorporated (e.g., time tiers, forbidden edges):
 - Explain how they influenced the results
 - Note whether conclusions depend on those constraints
 
-Conflicts between data-driven results and prior knowledge are *important findings*, not failures.
+Discrepancies between data-driven results and prior knowledge are *important signals* and worth investigating.
 
 ---
 
@@ -149,7 +150,7 @@ Conflicts between data-driven results and prior knowledge are *important finding
 
 Responsible interpretation includes:
 
-- identifying stable vs unstable features,
+- identifying stable versus unstable features,
 - explaining unresolved edges or orientations,
 - tying conclusions explicitly to assumptions.
 
@@ -157,7 +158,7 @@ Example phrasing:
 
 > “Across algorithms and parameter settings, X–Y is consistently adjacent; however, its orientation varies, so we refrain from asserting a causal direction.”
 
-This builds credibility rather than weakening conclusions.
+This approach strengthens credibility rather than weakening conclusions.
 
 ---
 
@@ -172,7 +173,7 @@ For transparency and reproducibility, record:
 - which conclusions are robust,
 - which remain tentative.
 
-This documentation is part of doing causal analysis *well*.
+This documentation is part of doing causal analysis well.
 
 ---
 

@@ -1,135 +1,135 @@
 # Data Exploration: Understanding Your Data Before Causal Discovery
 
-Before running any causal discovery algorithm, it is essential to explore your dataset.  
-Data exploration helps you form **reasonable modeling assumptions** and avoid applying methods that are poorly matched to the data.
+Exploring a dataset before running causal discovery algorithms is often an important first step.  
+Data exploration helps clarify which modeling assumptions are plausible and which methods are likely to be appropriate for the data at hand.
 
-This page walks you through how to inspect your data using Tetrad’s **Data Box**, and how those observations guide later choices in Grid Search.
+This page describes ways to inspect data using Tetrad’s **Data Box**, and how those observations commonly inform later choices when using Grid Search.
 
 ---
 
 ## 1. Load and Inspect Your Data
 
-After loading your dataset into a **Data Box**, begin by noting a few high-level characteristics:
+After loading a dataset into a **Data Box**, it can be useful to note a few high-level characteristics:
 
 - Are the variables **continuous**, **discrete**, or **mixed**?
 - Are there **missing values**?
 - How many variables are there relative to the sample size?
 
-These properties strongly influence which algorithms, tests, and scores are appropriate later on.
+These properties often influence which algorithms, tests, and scores are suitable in later stages of analysis.
 
-> You do *not* need to answer every modeling question now — the goal is simply to understand what kinds of assumptions are plausible.
+> At this point, the goal is not to settle every modeling decision, but to get a sense of which assumptions seem reasonable.
 
 ---
 
 ## 2. Review Variable Types with *List Attributes*
 
-In the **Data Box**, use **List Attributes** to view:
+In the **Data Box**, **List Attributes** provides a summary of:
 
 - Variable names
 - Data types (continuous vs. discrete)
 - Number of categories (for discrete variables)
 
-This information directly affects which methods can be used:
+This information is relevant because different methods make different assumptions:
 
-- **Continuous data** supports tests like Fisher-Z and nonparametric alternatives.
+- **Continuous data** supports tests such as Fisher-Z and related approaches.
 - **Discrete data** requires discrete tests and scores.
-- **Mixed data** may require specialized or hybrid methods.
+- **Mixed data** may call for hybrid or specialized methods.
 
-Grid Search will later restrict available tests and scores based on these data types.
+Later, Grid Search will automatically restrict available tests and scores based on these data types.
 
 ---
 
 ## 3. Examine Marginal Distributions with Histograms
 
-Use **Histograms** in the **Data Box** to inspect individual variables:
+Histograms in the **Data Box** allow you to inspect individual variables:
 
 - Are distributions roughly symmetric or strongly skewed?
 - Are there heavy tails or extreme outliers?
-- Do discrete variables have very sparse categories?
+- Do discrete variables have sparse or unbalanced categories?
 
-These features can influence:
+These features can matter for:
 
-- The reliability of linear-Gaussian tests
+- The behavior of linear-Gaussian tests
 - Sensitivity to outliers
-- Whether transformations or robust methods are worth considering
+- Whether transformations or robust alternatives might be worth considering
 
-At this stage, you are *not* deciding on a specific test — just noting potential issues.
+At this stage, it is usually sufficient to note potential issues rather than committing to a specific test.
 
 ---
 
 ## 4. Explore Pairwise Relationships with the Plot Matrix
 
-Open the **Plot Matrix** to visually examine relationships between pairs of variables:
+The **Plot Matrix** provides a visual overview of pairwise relationships:
 
 - Scatterplots for continuous variables
-- Evidence of linear or nonlinear dependence
-- Clusters or gaps suggesting latent structure or selection effects
+- Apparent linear or nonlinear trends
+- Clustering or gaps that may suggest latent structure or selection effects
 
-Visual inspection often reveals patterns that no single test can summarize.  
-Strong curvature, stratification, or clustering can suggest that purely linear assumptions may be inadequate.
+Visual inspection often reveals structure that is difficult to summarize with a single statistic.  
+Patterns such as strong curvature or stratification can indicate that purely linear assumptions may be restrictive.
 
 ---
 
 ## 5. Consider Linearity and Gaussianity (Informally)
 
-Many commonly used independence tests assume linearity and/or Gaussian noise.
+Many commonly used independence tests rely on assumptions such as linearity and Gaussian noise.
 
-Ask yourself:
+When examining the data, it can be helpful to consider:
 
-- Do relationships appear approximately linear?
-- Are distributions reasonably close to Gaussian?
-- Are there obvious violations (e.g., strong curvature, multimodality)?
+- Whether relationships appear approximately linear
+- Whether distributions are roughly Gaussian
+- Whether there are clear departures (e.g., strong curvature or multimodality)
 
-These observations help guide whether linear-Gaussian methods are reasonable or whether nonparametric alternatives should be explored in Grid Search.
+These observations can guide whether linear-Gaussian methods are likely to be adequate or whether nonparametric alternatives should be included in Grid Search.
 
 ---
 
 ## 6. Reflect on Causal Sufficiency and Latent Variables
 
-Using both domain knowledge and data patterns, consider:
+Based on domain knowledge and observed patterns, you may wish to consider questions such as:
 
 - Are important common causes likely to be **unmeasured**?
-- Do some variables appear spuriously associated?
-- Is selection bias or conditioning likely to be present?
+- Do some associations appear potentially spurious?
+- Is selection bias or conditioning likely to play a role?
 
-This helps determine whether you should aim to learn:
+These considerations often inform whether the analysis targets:
 
-- A **DAG or CPDAG** (assuming causal sufficiency), or
-- A **PAG** (allowing latent confounders and selection effects)
+- A **DAG or CPDAG**, assuming causal sufficiency, or
+- A **PAG**, allowing for latent confounders and selection effects
 
-You do not need certainty — just a defensible starting assumption.
+Perfect certainty is rarely possible; the goal is simply to adopt a defensible starting point.
 
 ---
 
 ## 7. Clarify Your Modeling Goals
 
-Before running any search, decide what kind of conclusions you are aiming for:
+Before running searches, it can help to clarify what kinds of conclusions are of interest:
 
-- **Adjacencies only** (which variables are connected)
+- **Adjacencies** (which variables are connected)
 - **Partial orientations** (arrowheads where identifiable)
 - **Fully oriented models** under stronger assumptions
 
-Different goals justify different levels of modeling complexity and diagnostic scrutiny.
+Different goals naturally call for different levels of modeling complexity and diagnostic checking.
 
 ---
 
-## 8. Ready to Move On
+## 8. Moving Forward
 
 Once you have:
 
 - Identified variable types,
-- Noted distributional and relational patterns,
+- Noted distributional and relational features,
 - Reflected on causal sufficiency,
 
-you are ready to proceed to the next step: choosing methods and running systematic searches using **Grid Search**.
+you are well positioned to move on to method selection and systematic exploration using **Grid Search**.
 
-Good data exploration makes later results easier to interpret — and easier to trust.
+Careful data exploration often makes later results easier to interpret and evaluate.
 
 ---
 
-## Practical Tips
+## Practical Notes
 
-- Do not skip data exploration — even brief inspection can prevent major mistakes.
-- Use visual tools alongside statistical summaries.
-- Let observations guide your modeling choices, not the other way around.
-- Write down what you notice; it will help when interpreting results later.
+- Even brief exploration can reveal features that affect method choice.
+- Visual tools often complement numerical summaries.
+- Let observations inform modeling decisions where possible.
+- Recording early observations can be helpful when interpreting results later.

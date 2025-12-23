@@ -5,34 +5,34 @@ Manual exploration helps you build intuition about how algorithms behave, how as
 
 This page shows how to use Tetrad’s **Pipelines** interface to experiment step by step — one algorithm, one parameter setting, one result at a time.
 
-> Manual exploration is *optional*.  
-> Many users can go directly to Grid Search, but this stage can be helpful for understanding and confidence-building.
+> Manual exploration is optional.  
+> Many users can go directly to Grid Search, but this stage can be helpful for developing intuition and confidence.
 
 ---
 
 ## Why Do Manual Exploration?
 
-Manual exploration is especially helpful for:
+Manual exploration can be helpful for:
 
 - Seeing how **tests and scores** influence graph structure
 - Understanding how **parameter changes** affect sparsity and orientation
-- Learning how **constraints and background knowledge** shape results
-- Getting comfortable with Tetrad’s modular workflow
+- Observing how **constraints and background knowledge** shape results
+- Becoming familiar with Tetrad’s modular workflow
 
-It is intentionally **lightweight and qualitative** — the goal is intuition, not final answers.
+The emphasis here is **qualitative rather than definitive** — the goal is insight, not final conclusions.
 
 ---
 
 ## When Manual Exploration Is Useful
 
-Manual exploration is most helpful when you:
+Manual exploration is most useful when you:
 
 - Have explored your data (see *Data Exploration*)
-- Have rough assumptions but want to see how sensitive results are
-- Are unfamiliar with a particular algorithm or test
-- Want to sanity-check behavior before a Grid Search
+- Have provisional assumptions and want to understand sensitivity
+- Are new to a particular algorithm or test
+- Want to sanity-check behavior before committing to a Grid Search
 
-If you already know what you want to compare, you can skip directly to Grid Search.
+If you already know what you want to compare, you can proceed directly to Grid Search.
 
 ---
 
@@ -40,11 +40,11 @@ If you already know what you want to compare, you can skip directly to Grid Sear
 
 In Tetrad, a **Pipeline** is a visual workflow connecting:
 
-- A **Data node** (your dataset)
-- One or more **Search nodes** (algorithms)
-- Optional **Diagnostic nodes** (e.g., Markov Checker)
+- A **Data** node (your dataset)
+- One or more **Search** nodes (algorithms)
+- Optional **Diagnostic** nodes (e.g., Markov Checker)
 
-Pipelines let you run and inspect individual searches interactively.
+Pipelines allow you to run and inspect individual searches interactively, making it easier to understand how results are produced.
 
 ---
 
@@ -60,13 +60,13 @@ Pipelines let you run and inspect individual searches interactively.
 6. (Optional) Add a **Markov Checker** node.
 7. Run the pipeline.
 
-Each run produces a graph you can inspect visually.
+Each run produces a graph that you can inspect visually.
 
 ---
 
 ## Examples of Manual Exploration
 
-Below are common exploratory exercises that help build intuition.
+The following exercises illustrate common ways to build intuition.
 
 ---
 
@@ -81,7 +81,7 @@ Below are common exploratory exercises that help build intuition.
 Observe:
 - How edge density changes
 - Which orientations remain stable
-- Whether the graph becomes implausibly dense or sparse
+- Whether the graph becomes implausibly sparse or dense
 
 ---
 
@@ -94,9 +94,9 @@ Observe:
 3. Compare:
     - Adjacencies
     - Orientations
-    - Whether allowing latent confounders changes conclusions
+    - The effect of allowing latent confounders
 
-This helps clarify what different algorithm families are doing.
+This can clarify how different algorithm families behave on the same data.
 
 ---
 
@@ -109,7 +109,7 @@ This helps clarify what different algorithm families are doing.
 Observe:
 - Which edges are forbidden
 - How orientations become more constrained
-- Whether results better align with domain knowledge
+- Whether results align better with domain knowledge
 
 ---
 
@@ -119,7 +119,7 @@ Observe:
 2. Rerun using a nonparametric test (e.g., KCI or RCIT).
 3. Compare the resulting graphs.
 
-This can reveal whether linear assumptions are distorting results.
+This can indicate whether linear assumptions are strongly influencing the results.
 
 ---
 
@@ -129,12 +129,12 @@ After each run:
 
 - Use the **Graph Viewer** to inspect the output.
 - Note:
-    - Number of edges
+    - The number of edges
     - Orientation patterns
-    - Any violations of known constraints
-- Compare results visually rather than numerically.
+    - Any apparent conflicts with prior knowledge
+- Focus on visual and structural differences rather than numeric optimization.
 
-Manual exploration is about *pattern recognition*, not optimization.
+Manual exploration is about recognizing patterns, not selecting a final model.
 
 ---
 
@@ -142,37 +142,37 @@ Manual exploration is about *pattern recognition*, not optimization.
 
 Manual exploration helps answer practical questions such as:
 
-- Which parameters matter most?
-- Which algorithms seem plausible for this data?
-- Which diagnostics are worth emphasizing?
+- Which parameters appear most influential?
+- Which algorithms seem appropriate for this data?
+- Which diagnostics are likely to be informative?
 
-Once you have rough answers, **Grid Search** lets you:
+Once you have provisional answers, **Grid Search** allows you to:
 
 - Systematically sweep parameters
 - Compare algorithms side by side
 - Evaluate results quantitatively
-- Identify minimal models that pass diagnostics
+- Identify models that perform well under diagnostics
 
 ---
 
 ## Tips for Effective Manual Exploration
 
-✔ Change only **one thing at a time**  
-✔ Keep notes or screenshots of runs  
-✔ Use visual comparison, not just intuition  
-✔ Stop early — this is preparation, not the main analysis
+- Change only **one element at a time**
+- Keep brief notes or screenshots of runs
+- Use side-by-side visual comparisons
+- Stop early — this step is preparatory, not exhaustive
 
 ---
 
 ## Summary
 
-Manual exploration is a **low-cost way to build intuition** about causal discovery:
+Manual exploration provides a low-overhead way to understand how causal discovery methods behave:
 
-- It helps you understand algorithm behavior
-- It reveals parameter sensitivity
+- It builds intuition about algorithms and parameters
+- It highlights sensitivity to assumptions
 - It prepares you for systematic comparison
 
-Once you know what to explore, Grid Search turns intuition into structured, defensible analysis.
+Once you have a sense of what matters, Grid Search supports a more structured and defensible analysis.
 
 ---
 
