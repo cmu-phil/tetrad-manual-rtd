@@ -199,7 +199,7 @@ This choice represents a **minimal Markov-consistent CPDAG** under the stated as
 ## 7. Viewing the Selected Graph
 
 1. Open the **View Graphs** tab.
-2. Select **Algorithm = 6**.
+2. Select **Algorithm = 8**.
 
 The displayed graph is the final candidate model for this analysis.
 
