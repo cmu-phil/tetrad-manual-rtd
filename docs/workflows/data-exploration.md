@@ -23,10 +23,13 @@ These properties often influence which algorithms, tests, and scores are suitabl
 
 ## 2. Review Variable Types with *List Attributes*
 
-In the **Data Box**, **List Attributes** provides a summary of:
+In the **Data Box**, look at the columns of th edata to determine:
 
 - Variable names
 - Data types (continuous vs. discrete)
+
+If there are discrete varaibles, consider constructing a Parametric Model (Bayes or Hybrid) to determine:
+
 - Number of categories (for discrete variables)
 
 This information matters because different methods rely on different assumptions:

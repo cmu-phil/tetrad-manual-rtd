@@ -39,7 +39,7 @@ When in doubt, allowing for latent variables is often the more cautious starting
 
 **Question:** Are relationships roughly linear and Gaussian?
 
-- **Yes:** Linear methods (e.g., PC with Fisher-Z, GES/BIC) are often effective.
+- **Yes:** Linear methods (e.g., PC with Fisher-Z, FGES/BIC) are often effective.
 - **No or Unclear:** Nonparametric or rank-based methods may be more appropriate, though they can be slower or require larger samples.
 
 Visual inspection during the Data Exploration step is often more informative than formal tests at this stage.
@@ -95,7 +95,7 @@ Notes:
 
 ### 2.2. Score-Based Methods
 
-**Examples:** GES, BOSS, GRaSP  
+**Examples:** FGES, BOSS, GRaSP  
 **Core idea:** Optimize a global score that balances goodness-of-fit and model complexity.
 
 These methods are often useful when:
@@ -108,17 +108,22 @@ Notes:
 
 ---
 
-### 2.3. Hybrid and Global Methods
+### 2.3. Hybrid Methods
 
-**Examples:** ARGES, hybrid PC variants
+**Examples:** BOSS-FCI, GRaSP-FCI, FCIT
 
-Hybrid approaches combine ideas from constraint-based and score-based methods. They can be helpful when:
+Hybrid methods combine ideas from both constraint-based and score-based approaches.  
+They typically use a score-based procedure to propose or refine adjacencies, followed by
+constraint-based reasoning to orient edges and account for conditional independences.
 
-- Conditioning sets become large
-- Pure constraint-based methods are unstable
-- Pure score-based methods risk local optima
+Hybrid approaches can be useful when:
 
-They often provide a practical middle ground.
+- Purely score-based methods are unavailable or perform poorly for the data type
+- Pure constraint-based methods become unstable due to large conditioning sets
+- Latent variables or selection effects must be accommodated alongside global scoring
+
+These methods often provide a practical middle ground, leveraging the strengths of both
+paradigms while mitigating some of their individual weaknesses.
 
 ---
 
@@ -126,13 +131,13 @@ They often provide a practical middle ground.
 
 The table below summarizes common starting points:
 
-| Assumptions / Goals | Suggested Methods | Notes |
-|--------------------|------------------|-------|
-| Causal sufficiency, linear-Gaussian | PC, GES, BOSS, GRaSP | Standard baseline |
-| Latents possible, linear-Gaussian | FCI, BOSS-FCI, GRaSP-FCI | Produces PAGs |
-| Nonlinear or non-Gaussian | PC/FCI with nonparametric tests | More flexible, often slower |
+| Assumptions / Goals | Suggested Methods                  | Notes |
+|--------------------|------------------------------------|-------|
+| Causal sufficiency, linear-Gaussian | PC, FGES, BOSS, GRaSP              | Standard baseline |
+| Latents possible, linear-Gaussian | FCI, BOSS-FCI, GRaSP-FCI           | Produces PAGs |
+| Nonlinear or non-Gaussian | PC/FCI with nonparametric tests    | More flexible, often slower |
 | Mixed data types | Mixed tests or score-based methods | Check compatibility carefully |
-| High-dimensional data | Penalized scores, hybrid methods | Regularization is helpful |
+| High-dimensional data | Penalized scores, hybrid methods   | Regularization is helpful |
 
 This table is meant as guidance rather than prescription.  
 Grid Search is designed to let you evaluate alternatives directly.
