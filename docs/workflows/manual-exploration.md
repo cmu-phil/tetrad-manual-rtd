@@ -1,16 +1,16 @@
 # Manual Exploration: Try Searches Interactively
 
-Before running systematic **Grid Search** sweeps, it can be useful to explore causal discovery methods interactively.  
-Manual exploration helps you build intuition about how algorithms behave, how assumptions matter, and which choices are worth comparing more carefully.
+Before running systematic **Grid Search** sweeps, it can be useful to explore causal discovery methods interactively.
+Manual exploration helps you understand how algorithms behave, how assumptions influence results, and which choices are worth examining more carefully.
 
-This page shows how to use Tetrad’s **Pipelines** interface to experiment step by step — one algorithm, one parameter setting, one result at a time.
+This page describes how to use Tetrad’s **Pipelines** interface to experiment step by step — one algorithm, one parameter setting, and one result at a time.
 
-> Manual exploration is optional.  
-> Many users can go directly to Grid Search, but this stage can be helpful for developing intuition and confidence.
+> Manual exploration is optional.
+> Many users can proceed directly to Grid Search, but this stage can be helpful for building intuition and confidence.
 
 ---
 
-## Why Do Manual Exploration?
+## Why Use Manual Exploration?
 
 Manual exploration can be helpful for:
 
@@ -19,7 +19,7 @@ Manual exploration can be helpful for:
 - Observing how **constraints and background knowledge** shape results
 - Becoming familiar with Tetrad’s modular workflow
 
-The emphasis here is **qualitative rather than definitive** — the goal is insight, not final conclusions.
+The emphasis here is **qualitative rather than definitive**. The goal is insight and orientation, not final conclusions.
 
 ---
 
@@ -29,10 +29,10 @@ Manual exploration is most useful when you:
 
 - Have explored your data (see *Data Exploration*)
 - Have provisional assumptions and want to understand sensitivity
-- Are new to a particular algorithm or test
+- Are unfamiliar with a particular algorithm or test
 - Want to sanity-check behavior before committing to a Grid Search
 
-If you already know what you want to compare, you can proceed directly to Grid Search.
+If you already know what you want to compare, you can proceed directly to Grid Search without this step.
 
 ---
 
@@ -41,10 +41,10 @@ If you already know what you want to compare, you can proceed directly to Grid S
 In Tetrad, a **Pipeline** is a visual workflow connecting:
 
 - A **Data** node (your dataset)
-- One or more **Search** nodes (algorithms)
+- One or more **Search** nodes (causal discovery algorithms)
 - Optional **Diagnostic** nodes (e.g., Markov Checker)
 
-Pipelines allow you to run and inspect individual searches interactively, making it easier to understand how results are produced.
+Pipelines allow you to run and inspect individual searches interactively, making it easier to see how results are produced.
 
 ---
 
@@ -55,30 +55,29 @@ Pipelines allow you to run and inspect individual searches interactively, making
 3. Add a **Search** node (e.g., PC, FCI, GES).
 4. Connect the Data node to the Search node.
 5. Configure the Search node:
-    - Choose a test or score
-    - Set key parameters (α, penalty, etc.)
+   - Choose a test or score
+   - Set key parameters (α, penalty, etc.)
 6. (Optional) Add a **Markov Checker** node.
 7. Run the pipeline.
 
-Each run produces a graph that you can inspect visually.
+Each run produces a graph that can be inspected visually.
 
 ---
 
 ## Examples of Manual Exploration
 
-The following exercises illustrate common ways to build intuition.
-
----
+The following exercises illustrate common ways to build intuition about algorithm behavior.
 
 ### A. Varying Test Sensitivity
 
 1. Fix the algorithm (e.g., **PC**).
 2. Run with different significance levels:
-    - α = 0.01
-    - α = 0.05
-    - α = 0.10
+   - α = 0.01
+   - α = 0.05
+   - α = 0.10
 
 Observe:
+
 - How edge density changes
 - Which orientations remain stable
 - Whether the graph becomes implausibly sparse or dense
@@ -88,15 +87,15 @@ Observe:
 ### B. Comparing Algorithms
 
 1. Build two pipelines:
-    - PC with Fisher-Z
-    - FCI with the same test
+   - PC with Fisher-Z
+   - FCI with the same test
 2. Run both.
 3. Compare:
-    - Adjacencies
-    - Orientations
-    - The effect of allowing latent confounders
+   - Adjacencies
+   - Orientations
+   - The effect of allowing latent confounders
 
-This can clarify how different algorithm families behave on the same data.
+This helps clarify how different algorithm families behave on the same data.
 
 ---
 
@@ -107,9 +106,10 @@ This can clarify how different algorithm families behave on the same data.
 3. Rerun the pipeline.
 
 Observe:
+
 - Which edges are forbidden
 - How orientations become more constrained
-- Whether results align better with domain knowledge
+- Whether results align more closely with domain knowledge
 
 ---
 
@@ -129,12 +129,11 @@ After each run:
 
 - Use the **Graph Viewer** to inspect the output.
 - Note:
-    - The number of edges
-    - Orientation patterns
-    - Any apparent conflicts with prior knowledge
-- Focus on visual and structural differences rather than numeric optimization.
+  - The number of edges
+  - Orientation patterns
+  - Any apparent conflicts with prior knowledge
 
-Manual exploration is about recognizing patterns, not selecting a final model.
+Focus on visual and structural differences rather than numeric optimization. Manual exploration is about recognizing patterns, not selecting a final model.
 
 ---
 

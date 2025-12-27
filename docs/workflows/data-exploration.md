@@ -1,6 +1,6 @@
 # Data Exploration: Understanding Your Data Before Causal Discovery
 
-Exploring a dataset before running causal discovery algorithms is often an important first step.  
+Exploring a dataset before running causal discovery algorithms is often an important first step.
 Data exploration helps clarify which modeling assumptions are plausible and which methods are likely to be appropriate for the data at hand.
 
 This page describes ways to inspect data using Tetrad’s **Data Box**, and how those observations commonly inform later choices when using Grid Search.
@@ -9,7 +9,7 @@ This page describes ways to inspect data using Tetrad’s **Data Box**, and how 
 
 ## 1. Load and Inspect Your Data
 
-After loading a dataset into a **Data Box**, it can be useful to note a few high-level characteristics:
+After loading a dataset into a **Data Box**, it is useful to note a few high-level characteristics:
 
 - Are the variables **continuous**, **discrete**, or **mixed**?
 - Are there **missing values**?
@@ -17,7 +17,7 @@ After loading a dataset into a **Data Box**, it can be useful to note a few high
 
 These properties often influence which algorithms, tests, and scores are suitable in later stages of analysis.
 
-> At this point, the goal is not to settle every modeling decision, but to get a sense of which assumptions seem reasonable.
+> At this stage, the goal is not to resolve every modeling decision, but to understand which assumptions seem reasonable to explore.
 
 ---
 
@@ -29,13 +29,13 @@ In the **Data Box**, **List Attributes** provides a summary of:
 - Data types (continuous vs. discrete)
 - Number of categories (for discrete variables)
 
-This information is relevant because different methods make different assumptions:
+This information matters because different methods rely on different assumptions:
 
 - **Continuous data** supports tests such as Fisher-Z and related approaches.
 - **Discrete data** requires discrete tests and scores.
 - **Mixed data** may call for hybrid or specialized methods.
 
-Later, Grid Search will automatically restrict available tests and scores based on these data types.
+Later, Grid Search automatically restricts available tests and scores based on these data types.
 
 ---
 
@@ -47,13 +47,13 @@ Histograms in the **Data Box** allow you to inspect individual variables:
 - Are there heavy tails or extreme outliers?
 - Do discrete variables have sparse or unbalanced categories?
 
-These features can matter for:
+These features can affect:
 
 - The behavior of linear-Gaussian tests
 - Sensitivity to outliers
-- Whether transformations or robust alternatives might be worth considering
+- Whether transformations or robust alternatives are worth considering
 
-At this stage, it is usually sufficient to note potential issues rather than committing to a specific test.
+At this point, it is usually enough to note potential issues rather than committing to a specific test.
 
 ---
 
@@ -65,7 +65,7 @@ The **Plot Matrix** provides a visual overview of pairwise relationships:
 - Apparent linear or nonlinear trends
 - Clustering or gaps that may suggest latent structure or selection effects
 
-Visual inspection often reveals structure that is difficult to summarize with a single statistic.  
+Visual inspection often reveals structure that is difficult to summarize with a single statistic.
 Patterns such as strong curvature or stratification can indicate that purely linear assumptions may be restrictive.
 
 ---
@@ -97,7 +97,7 @@ These considerations often inform whether the analysis targets:
 - A **DAG or CPDAG**, assuming causal sufficiency, or
 - A **PAG**, allowing for latent confounders and selection effects
 
-Perfect certainty is rarely possible; the goal is simply to adopt a defensible starting point.
+Perfect certainty is rarely possible; the aim is to adopt a defensible starting point.
 
 ---
 

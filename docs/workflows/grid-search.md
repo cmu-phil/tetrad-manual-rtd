@@ -25,9 +25,11 @@ For many analyses, Grid Search serves as the main workflow for causal discovery 
 It is often helpful to begin with a single exploratory run to confirm that an algorithm behaves sensibly on your data. However, interpretation usually benefits from going beyond a single configuration.
 
 A single run answers:
+
 > *What happens for this specific choice of parameters?*
 
 Grid Search helps address a broader question:
+
 > *Which results remain stable across reasonable choices?*
 
 ---
@@ -41,8 +43,8 @@ In the Tetrad interface:
 1. Select a **causal discovery algorithm** (e.g., PC, FCI, GES).
 2. Choose an appropriate **test or score** based on your data type.
 3. Set key parameters:
-    - Significance level (α) for test-based methods
-    - Penalty or discount for score-based methods
+   - Significance level (α) for test-based methods
+   - Penalty or discount for score-based methods
 4. Run the search and inspect the resulting graph.
 
 If the output appears implausible, overly dense, or unstable, that is often a sign that **systematic exploration** will be useful.
@@ -56,9 +58,10 @@ When using Grid Search, it is usually best to vary **only a small number of mean
 ### 1. Significance Level (α) — Test-Based Methods
 
 Common values include:
-- 0.01
-- 0.05
-- 0.10
+
+- 0.01  
+- 0.05  
+- 0.10  
 
 Lower α values tend to produce sparser graphs; higher values allow more edges. Sweeping α can reveal how strongly the data support particular connections.
 
@@ -68,8 +71,8 @@ Lower α values tend to produce sparser graphs; higher values allow more edges. 
 
 Penalty parameters control the balance between model fit and complexity.
 
-- Higher penalties favor simpler models
-- Lower penalties allow more complex graphs
+- Higher penalties favor simpler models  
+- Lower penalties allow more complex graphs  
 
 Sweeping this parameter often reveals a region where graphs remain Markov-consistent while increasing gradually in complexity.
 
@@ -91,9 +94,9 @@ Comparing across algorithm families helps distinguish robust features from metho
 
 Different tests and scores can respond differently to:
 
-- Non-Gaussianity
-- Nonlinearity
-- Mixed data types
+- Non-Gaussianity  
+- Nonlinearity  
+- Mixed data types  
 
 Exploring a small set of compatible options can clarify how sensitive results are to modeling assumptions.
 
@@ -116,7 +119,7 @@ Graphs that consistently fail Markov diagnostics typically warrant closer scruti
 
 ### 2. Model Complexity
 
-- Number of edges
+- Number of edges  
 - Degrees of freedom (when available)
 
 Among models that pass diagnostics, simpler graphs are often preferred unless there is a clear reason to accept additional complexity.
@@ -130,8 +133,8 @@ A commonly effective approach is:
 1. Choose **one algorithm family** (e.g., PC or FCI).
 2. Sweep **one key parameter** (α or penalty).
 3. Evaluate results using:
-    - Markov Checker statistics
-    - Visual inspection of graphs
+   - Markov Checker statistics
+   - Visual inspection of graphs
 4. Identify **minimal models** that pass diagnostics.
 5. Optionally repeat with a second algorithm family.
 
@@ -146,9 +149,9 @@ When examining the results table:
 - Each row corresponds to a distinct model.
 - Selecting a row allows you to inspect the associated graph.
 - Pay attention to:
-    - Adjacencies that appear across many settings
-    - Orientations that remain stable
-    - Edges that appear or disappear easily (these are typically less robust)
+  - Adjacencies that appear across many settings
+  - Orientations that remain stable
+  - Edges that appear or disappear easily (these are typically less robust)
 
 The aim is not to identify a single “best” graph, but to understand which features are consistently supported.
 
@@ -157,21 +160,25 @@ The aim is not to identify a single “best” graph, but to understand which fe
 ## Common Pitfalls to Avoid
 
 ### Sweeping Too Many Parameters at Once
+
 Large grids can become difficult to interpret. Starting with a small, focused sweep is usually more productive.
 
 ---
 
 ### Changing Background Knowledge Too Early
+
 It can be helpful to first see what the data suggest before adding strong constraints.
 
 ---
 
 ### Delaying Diagnostics
+
 If many models fail Markov diagnostics, it may be worth revisiting assumptions, tests, or parameter ranges early.
 
 ---
 
 ### Not Recording What Was Tried
+
 Keeping brief notes on parameter choices and outcomes can greatly simplify interpretation and reporting.
 
 ---

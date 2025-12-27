@@ -2,13 +2,13 @@
 
 After exploring your data (see *Data Exploration*), the next step in the causal analysis workflow is to choose appropriate discovery methods and clarify the assumptions you are willing to make.
 
-There is no single “best” algorithm for all problems. Different methods rely on different assumptions, emphasize different aspects of the data, and produce different kinds of output. This page is intended to help you make **reasonable starting choices**, rather than final commitments.
+There is no single “best” algorithm for all problems. Different methods rely on different assumptions, emphasize different aspects of the data, and produce different kinds of output. The goal at this stage is to make **reasonable starting choices**, not final commitments.
 
 ---
 
 ## What This Page Covers
 
-This page helps you:
+This page is intended to help you:
 
 - Identify the assumptions that matter most for causal discovery
 - Understand how those assumptions map to families of algorithms
@@ -19,8 +19,7 @@ This page helps you:
 
 ## 1. Which Assumptions Matter?
 
-Causal discovery relies on statistical patterns to infer causal structure.  
-Because different algorithms depend on different assumptions, it is useful to be explicit—at least provisionally—about what you are assuming.
+Causal discovery uses statistical patterns to infer aspects of causal structure. Because different algorithms depend on different assumptions, it is useful to be explicit—at least provisionally—about what you are assuming.
 
 ### 1.1. Causal Sufficiency
 
@@ -32,7 +31,7 @@ Because different algorithms depend on different assumptions, it is useful to be
 > Causal sufficiency is a strong assumption.  
 > If it does not hold, methods that rely on it can yield misleading orientations.
 
-When in doubt, allowing for latent variables is often the more cautious choice.
+When in doubt, allowing for latent variables is often the more cautious starting point.
 
 ---
 
@@ -65,7 +64,7 @@ Different goals justify different levels of modeling complexity and diagnostic s
 - **Large samples:** Support more flexible tests and scores.
 - **Many variables:** Regularization and sparsity penalties become increasingly important.
 
-These factors affect both the stability and interpretability of results.
+These considerations affect both the stability and interpretability of results.
 
 ---
 
@@ -84,7 +83,7 @@ These methods are often useful when:
 - An appropriate independence test can be chosen for the data.
 - You want models that closely reflect observed conditional independencies.
 
-Typical choices:
+Typical choices include:
 - **PC** when assuming causal sufficiency.
 - **FCI** when allowing for latent confounders and selection bias.
 
@@ -105,7 +104,7 @@ These methods are often useful when:
 
 Notes:
 - Scores naturally penalize overly complex graphs.
-- Results can be sensitive to penalty strength.
+- Results can be sensitive to the choice of penalty strength.
 
 ---
 
