@@ -6,6 +6,8 @@ This page documents how the **Adjustment and Total Effects** tool reports result
 The goal of the tool is to compute a *well-defined total causal effect* when such an effect is identifiable from the graph and data,
 and to clearly indicate when it is not.
 
+![Adjustments and Total Effects.](../../_static/images/tetrad-interface/box-by-box/adjustment-total-effects.png)
+
 ---
 
 ## What Is an Amenable Pair?
