@@ -1,21 +1,8 @@
-# Grid Search (Simulation Studies)
+# Grid Search (Simulation)
 
-The **Grid Search** tool can also be used to run **simulation studies**, where data are generated from known models and causal discovery algorithms are evaluated systematically.
+This page describes how to use **Grid Search** in Tetrad when working from a **simulation** rather than a fixed dataset.
 
-This mode is intended for:
-- methodological research,
-- benchmarking algorithms,
-- sensitivity analysis,
-- and teaching causal discovery under controlled assumptions.
-
-This page describes how Grid Search behaves when **no Data box is connected** and simulations are explicitly selected.
-
-```{figure} ../../_static/images/tetrad-interface/box-by-box/grid-search-box-simulation.png
-:name: tetrad-grid-search-box-screenshot
-:alt: Grid Search Box in the Tetrad interface.
-
-Grid Search Box in the Tetrad interface sidebar and main panel.
-```
+In simulation-based Grid Search, Tetrad repeatedly generates data from a specified simulation model and evaluates causal discovery algorithms across multiple parameter settings. This workflow is especially useful for **method comparison**, **sensitivity analysis**, and **benchmarking** under controlled conditions.
 
 ---
 
@@ -23,185 +10,162 @@ Grid Search Box in the Tetrad interface sidebar and main panel.
 
 Simulation-based Grid Search is appropriate when:
 
-- you want to compare algorithms against **known ground truth**,
-- you want to study the effects of:
-    - graph density,
-    - sample size,
-    - noise distributions,
-    - nonlinearity,
-    - latent variables,
-- or you want to reproduce or extend results from the literature.
+- You want to compare algorithms under **known ground truth**
+- You want to understand how performance changes with:
+  - sample size,
+  - noise level,
+  - graph density,
+  - functional form,
+  - or latent structure
+- You are evaluating **robustness or failure modes** of algorithms
+- You are developing or testing new methods
 
-If you already have real data, use the **data-driven Grid Search workflow** instead.
-
----
-
-## Overview of the Workflow
-
-A typical simulation study proceeds as follows:
-
-1. **Select one or more simulations** (Simulation tab)
-2. **Choose algorithms** to evaluate (Algorithms tab)
-3. **Choose table columns** to summarize performance (Table Columns tab)
-4. **Configure and run the comparison** (Comparison tab)
-5. **Inspect estimated graphs and statistics** (View Graphs tab)
-
-Each step may involve parameter sweeps, producing a large number of runs.
+Unlike data-based Grid Search, simulation-based Grid Search is **stochastic**: results depend on random draws unless otherwise fixed.
 
 ---
 
-## Simulation Tab
+## Key Difference from Data-Based Grid Search
 
-### Selecting Simulations
-
-Click **Select Simulation** to define a simulation by choosing:
-
-- a **graph type** (e.g., Erdős–Rényi, Scale-Free, MIM),
-- a **simulation model** (e.g., Linear SEM, Additive Noise, General Noise).
-
-Each selected simulation represents a *family* of data-generating processes.
-
-### Multiple Simulations
-
-In simulation mode, Grid Search supports **multiple simulations**:
-
-- each simulation is run independently,
-- results are grouped by simulation index,
-- comparisons aggregate over runs within each simulation.
-
-This is useful for comparing algorithm performance across regimes.
-
-### Editing Simulation Parameters
-
-Click **Edit Parameters** to set simulation parameters such as:
-
-- number of variables,
-- expected degree,
-- sample size,
-- noise distribution parameters.
-
-Comma-separated values trigger **parameter sweeps**, producing multiple datasets per simulation.
+| Aspect | Data-Based | Simulation-Based |
+|------|-----------|------------------|
+| Data source | Fixed dataset | Generated repeatedly |
+| Randomness | None | Yes (unless seeded) |
+| Ground truth | Unknown | Known |
+| Truth-based statistics | Hidden | Available |
+| Typical use | Applied analysis | Method evaluation |
 
 ---
 
-## Algorithms Tab
+## Step 1: Select a Simulation
 
-Algorithm selection works the same way as in data-driven Grid Search:
+1. Add a **Grid Search** box to the workspace.
+2. Connect it to a **Simulation** box.
+3. In the **Simulation** editor:
+   - Choose a **graph type** (e.g., random DAG, scale-free)
+   - Choose a **simulation model** (e.g., linear Gaussian, nonlinear)
+   - Set simulation parameters (number of variables, sample size, noise level, etc.)
 
-- choose algorithms,
-- choose compatible independence tests and/or scores,
-- edit algorithm parameters via **Edit Parameters**.
-
-In simulation studies, it is common to:
-
-- sweep penalty parameters,
-- compare constraint-based vs score-based methods,
-- compare algorithms under model misspecification.
-
-The **Manage...** dialog lets you remove or reorder algorithms.
+Only **one simulation** may be active at a time.
 
 ---
 
-## Table Columns Tab
+## Step 2: Algorithms Tab
 
-Table columns define how algorithm performance is summarized.
+In the **Algorithms** tab:
 
-In simulation studies, common columns include:
+1. Click **Add Algorithm**
+2. Select one or more causal discovery algorithms
+3. Choose compatible tests or scores
+4. Optionally edit algorithm, test, or score parameters
 
-- adjacency precision / recall,
-- arrowhead precision / recall,
-- structural Hamming distance (SHD),
-- number of edges,
-- elapsed time.
-
-Parameter columns can be included to track experimental settings.
-
-Use **Manage...** to remove or reorder columns.
+As with data-based Grid Search, parameters may be specified as **comma-separated lists**, and all combinations will be explored.
 
 ---
 
-## Comparison Tab
+## Step 3: Table Columns Tab
 
-### Setup Panel
+In the **Table Columns** tab, select statistics and parameters to report.
 
-The setup panel exposes key comparison controls:
+Because the true graph is known in simulation mode, you may include:
 
-- **Comparison Graph Type**
-    - DAG, CPDAG, PAG, etc., depending on assumptions.
-- **# Runs**
-    - Number of independent datasets generated per parameter setting.
-- **Parallelism**
-    - Number of threads used during comparison.
-- **Sort by Utility**
-    - Useful when aggregating multiple statistics.
+- Adjacency precision / recall
+- Arrowhead precision / recall
+- Structural Hamming Distance (SHD)
+- Other truth-based performance measures
 
-### Running the Comparison
+You may also include:
+- Markov checking statistics
+- Estimated graph properties (e.g., number of edges)
+- Parameter values
 
-Click **Run Comparison** to execute the study.
-
-Grid Search will:
-
-- generate data,
-- run all algorithm/parameter combinations,
-- compute statistics,
-- aggregate results over runs.
-
-Progress and diagnostics appear in **Verbose Output**.
+Choose a **small, interpretable set** of columns to keep comparisons readable.
 
 ---
 
-## View Graphs Tab
+## Step 4: Comparison Tab
 
-This tab allows inspection of individual estimated graphs:
+In the **Comparison** tab:
 
-- select a simulation index,
-- select an algorithm index,
-- select a graph index.
+- Choose a **comparison graph type** (e.g., DAG, CPDAG, PAG)
+- Select a **truth graph** or derived graph for evaluation
+- Configure utilities for truth-based statistics if sorting by utility
+- Choose Markov checking options if desired
 
-Graphs are laid out automatically and can be sent to other tools for inspection.
-
----
-
-## Interpreting Results
-
-Simulation-based Grid Search enables principled conclusions such as:
-
-- which algorithms recover structure most accurately,
-- how performance degrades under misspecification,
-- which assumptions matter most in practice.
-
-Because ground truth is known, simulation studies provide insight that is **impossible with real data alone**.
+Truth-based utilities are meaningful here because the ground truth is known.
 
 ---
 
-## Saved Output
+## Step 5: Run Counts and Randomness
 
-Grid Search saves:
+Simulation-based Grid Search allows you to specify how many times each configuration is run.
 
-- generated datasets,
-- true graphs,
-- estimated graphs,
-- comparison tables,
-- verbose logs.
+Key options include:
 
-These files support reproducibility and downstream analysis in R or Python.
+- **Number of runs per configuration**
+- **Random seed** (if reproducibility is desired)
+- **Aggregation method** (e.g., mean statistics across runs)
 
----
-
-## Relationship to Data-Driven Grid Search
-
-- **Simulation Grid Search** answers:  
-  *“Which methods work well under known assumptions?”*
-
-- **Data-Driven Grid Search** answers:  
-  *“Which methods produce models consistent with this data?”*
-
-Both workflows share the same interface but serve different scientific goals.
+Increasing the number of runs improves stability but increases computation time.
 
 ---
 
-## Reference
+## Running the Comparison
 
-Ramsey, J. D., Malinsky, D., & Bui, K. V. (2020).  
-*Algcomparison: Comparing the performance of graphical structure learning algorithms with Tetrad.*  
-Journal of Machine Learning Research, 21(238), 1–6.
+Click **Run Comparison** to begin.
+
+For each algorithm and parameter combination, Grid Search will:
+
+1. Generate data from the simulation
+2. Run the algorithm
+3. Compute selected statistics
+4. Aggregate results across runs
+
+Progress and detailed logs appear in the **Verbose Output** tab.
+
+---
+
+## Interpreting Simulation Results
+
+Simulation-based Grid Search is best interpreted comparatively:
+
+- Compare algorithms under identical conditions
+- Examine trade-offs between:
+  - accuracy,
+  - complexity,
+  - robustness,
+  - and consistency
+- Identify regimes where methods perform well or fail
+
+Avoid focusing on single rows; patterns across conditions are more informative.
+
+---
+
+## Common Pitfalls
+
+- Sweeping too many parameters at once
+- Using too few simulation runs
+- Over-interpreting small differences
+- Ignoring failure cases
+
+Simulation studies are most valuable when they reveal **limitations**, not just successes.
+
+---
+
+## Summary
+
+Simulation-based Grid Search allows you to:
+
+- Evaluate causal discovery methods under controlled conditions
+- Use truth-based performance metrics responsibly
+- Understand sensitivity to modeling choices
+- Compare algorithms systematically
+
+It complements data-based Grid Search by answering *methodological* questions rather than applied ones.
+
+---
+
+## 🧭 Next Steps
+
+- Compare results across multiple simulations
+- Vary assumptions systematically
+- Use insights to guide applied analyses on real data

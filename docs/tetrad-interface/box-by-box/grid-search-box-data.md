@@ -1,201 +1,143 @@
-# Grid Search Box (Data-Driven)
+# Grid Search Box (Data)
 
-The **Grid Search** tool helps you compare causal discovery algorithms on a *single dataset* in a systematic, reproducible way. It is designed to reduce cognitive load while still supporting careful methodological choices—especially around **Markov checking**.
+This page describes how the **Grid Search** box behaves when it is connected to a **Data box**.  
+In this mode, Grid Search performs **systematic comparison of causal discovery methods on a fixed dataset**.
 
-This page describes the **current** Grid Search interface and recommended workflow when a **Data box** is connected. The tool can also be used **without** a Data box, for example, to compare algorithms on simulated data. In both cases, knowledge (a Knowledge box) may be used as an additional input.
-
-```{figure} ../../_static/images/tetrad-interface/box-by-box/grid-search-box-data.png
-:name: tetrad-grid-search-box-screenshot
-:alt: Grid Search Box in the Tetrad interface.
-
-Grid Search Box in the Tetrad interface sidebar and main panel.
-```
-
-## What Grid Search Is (and Is Not)
-
-**Grid Search is for model selection, not deep diagnosis.**
-
-- It lets you **compare algorithms and parameterizations** on the same data.
-- It helps you **eliminate bad models** and **identify promising ones** using principled statistics.
-- It is *not* a replacement for the standalone **Markov Checker** tool, which provides deeper diagnostics.
-
-Think of Grid Search as a **front-end filter**: it narrows the space of models so that detailed analysis becomes feasible.
+No simulations are run in this mode. All results are deterministic and fully reproducible.
 
 ---
 
-## Overview of the Workflow
+## Purpose of Data-Based Grid Search
 
-When Grid Search is driven by data, the workflow is intentionally linear:
+When operating on supplied data, Grid Search is designed to help you:
 
-1. **Review the data summary** (Data tab)
-2. **Choose algorithms** appropriate for the data (Algorithms tab)
-3. **Choose table columns** to summarize results (Table Columns tab)
-4. **Configure and run the comparison** (Comparison tab)
-5. **Inspect candidate graphs** (View Graphs tab)
-6. *(Optional)* Send selected graphs to the **Markov Checker** for deeper analysis
+- Compare **algorithms, tests, scores, and parameter settings**
+- Evaluate candidate models using **diagnostics** (e.g., Markov checking)
+- Identify **simple, Markov-consistent models**
+- Assess **robustness** of features across reasonable modeling choices
 
-Each step is designed to be minimal, explicit, and reversible.
+This is the recommended default workflow for causal discovery in Tetrad.
 
 ---
 
-## Data Tab
+## When This Mode Is Used
 
-When a dataset is connected:
+Grid Search automatically enters **data mode** when:
 
-- The dataset is treated as the **single fixed simulation**.
-- Controls for adding simulations or setting simulation parameters are **hidden**.
-- The tab summarizes:
-    - number of variables and rows,
-    - variable names,
-    - supplied background knowledge (if any).
+- A **Data box** is connected to the Grid Search box, and
+- No simulation is selected.
 
-This ensures that Grid Search remains focused on **algorithm comparison**, not data generation.
+In this case:
+
+- Simulation controls are hidden or disabled
+- Each algorithm–parameter combination is evaluated **once**
+- Results reflect only variation across modeling choices, not random variation
+
+---
+
+## Basic Setup
+
+To use Grid Search with data:
+
+1. Load your dataset into a **Data box**
+2. Draw an edge from the Data box to the **Grid Search** box
+3. Open the Grid Search editor
+
+The editor will configure itself for data-based comparison.
 
 ---
 
 ## Algorithms Tab
 
-### Adding Algorithms
+In the **Algorithms** tab, you select:
 
-Click **Add Algorithm** to choose:
+- One or more **causal discovery algorithms**
+- Required **independence tests** and/or **scores**
+- Parameter ranges for algorithms, tests, and scores
 
-- a causal discovery algorithm,
-- an independence test *and/or* score **compatible with the data type**.
+Parameter values may be entered as comma-separated lists.  
+Grid Search will evaluate **all combinations** of the selected parameters.
 
-Only tests and scores that make sense for the data (continuous, discrete, or mixed) are shown. Invalid combinations are never offered.
-
-### Managing Algorithms
-
-Click **Manage...** to:
-
-- remove selected algorithms,
-- reorder algorithms (the order is preserved in output and saved state).
-
-This replaces the old “Remove Last” behavior and provides precise control.
-
-### Editing Algorithm Parameters
-
-Click **Edit Parameters** to adjust algorithm, test, score, and bootstrapping parameters.
-
-- Parameters are organized into tabs.
-- Tabs appear *only if relevant parameters exist*.
-- Comma-separated values trigger **parameter sweeps**.
+Only tests and scores compatible with the data type (continuous, discrete, mixed) are shown.
 
 ---
 
 ## Table Columns Tab
 
-Table columns define what statistics appear in the comparison table.
+In the **Table Columns** tab, you choose which quantities appear in the comparison table.
 
-### Adding Columns
+Available columns include:
 
-Click **Add Table Column(s)** to select:
+- Algorithm and parameter values
+- Model complexity measures (e.g., number of edges)
+- Diagnostic statistics (e.g., Markov check results)
 
-- statistics (e.g., number of edges, Markov pass indicators),
-- parameter columns (values actually used in the run).
+When working from data, **statistics that require knowledge of the true graph are not shown**, since no ground truth is available.
 
-Helpful shortcuts include:
-
-- **Used Parameters** – select all user-set parameters
-- **Used Statistics** – select statistics used in the previous run
-- **Markov Defaults** – quickly select standard Markov-checking columns
-
-### Managing Columns
-
-Click **Manage...** to:
-
-- remove selected columns,
-- reorder columns.
-
-The order you choose is the order shown in results.
+Columns may be added, reordered, or removed using the **Add** and **Manage** buttons.
 
 ---
 
 ## Comparison Tab
 
-This is where Grid Search is configured and executed.
+The **Comparison** tab controls how results are evaluated and displayed.
 
-### Setup Panel (Top)
+Key options include:
 
-The setup panel exposes the most important controls directly:
+- **Comparison graph type** (e.g., CPDAG or PAG)
+- **Markov Checker test**
+- **Utility settings** for ranking models
 
-- **Comparison Graph Type** (e.g., DAG, CPDAG, PAG)
-- **Sort by Utility** (recommended when doing Markov-based selection)
-- **Markov Checker Test** (filtered to data-compatible tests)
-- **Markov Checker Parameters**
+When you click **Run Comparison**, Grid Search:
 
-If no dataset is supplied (rare), a **# Runs** control is shown; otherwise it is hidden.
+1. Runs each selected algorithm for every parameter combination
+2. Evaluates resulting graphs using selected diagnostics
+3. Populates the comparison table with results
 
-### Running the Comparison
+Progress and detailed output are shown in the **Verbose Output** tab.
 
-Click **Run Comparison** to execute the grid search.
+---
 
-- Results appear in the **Comparison** tab.
-- Detailed logs appear in **Verbose Output**.
-- All results are saved to disk for reproducibility.
+## Interpreting Results
+
+Each row in the comparison table corresponds to a distinct model.
+
+Typical analysis focuses on:
+
+- Whether the model **passes Markov checking**
+- Model **complexity** (e.g., number of edges)
+- Stability of features across nearby parameter settings
+
+Rather than selecting the single highest-utility model, it is usually more informative to identify **minimal models that pass diagnostics**.
 
 ---
 
 ## View Graphs Tab
 
-This tab lets you inspect estimated graphs produced by the comparison.
+After a comparison is complete, the **View Graphs** tab allows you to inspect individual output graphs.
 
-- Select an **algorithm** and **graph index**.
-- The selected graph is remembered when the editor is reopened.
-- The graph can be connected to other Tetrad tools for further analysis.
+- Selecting a row in the table highlights the corresponding graph
+- Graph selections are remembered when the editor is reopened
 
-Since the simulation is fixed, there is no simulation selector here.
-
----
-
-## Markov Checking: Recommended Practice
-
-Grid Search uses a **fixed conditioning-set strategy** internally (typically *Ordered Local Markov MAG*).
-
-This is intentional:
-
-- It avoids overwhelming users with rarely-appropriate choices.
-- It yields stable, comparable results across algorithms.
-
-If you want to:
-
-- explore alternative conditioning-set strategies,
-- diagnose specific violations,
-- examine p-value distributions in detail,
-
-**send the selected graph to the standalone Markov Checker tool.**
-
-Grid Search helps you find *good candidates*; the Markov Checker helps you *understand them*.
+This makes it easy to compare candidate models visually.
 
 ---
 
-## Saved Output
+## Notes and Best Practices
 
-Grid Search saves:
-
-- the comparison table,
-- selected graphs,
-- parameter settings,
-- verbose logs.
-
-These files can be used for follow-up analysis in Tetrad, R, or Python.
+- Sweep only a small number of meaningful parameters at a time
+- Prefer systematic comparison over isolated runs
+- Use diagnostics early to detect mismatched assumptions
+- Treat fragile edges and orientations with caution
 
 ---
 
-## Key Design Principles
+## Summary
 
-- **One dataset → one simulation**
-- **Impossible choices are removed** rather than guarded against
-- **Management dialogs replace incremental undo**
-- **Defaults support Markov-based model selection**
-- **Advanced diagnostics live in dedicated tools**
+When connected to data, the Grid Search box provides a structured, reproducible way to:
 
-The goal is to make principled causal discovery *approachable without being simplistic*.
+- Explore algorithm and parameter sensitivity
+- Evaluate candidate causal models
+- Identify parsimonious models consistent with the data
 
----
-
-## Reference
-
-Ramsey, J. D., Malinsky, D., & Bui, K. V. (2020).  
-*Algcomparison: Comparing the performance of graphical structure learning algorithms with Tetrad.*  
-Journal of Machine Learning Research, 21(238), 1–6.
+This mode forms the backbone of Tetrad’s recommended causal discovery workflow.
