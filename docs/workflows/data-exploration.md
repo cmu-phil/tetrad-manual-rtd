@@ -21,7 +21,7 @@ These properties often influence which algorithms, tests, and scores are suitabl
 
 ---
 
-## 2. Review Variable Types with *List Attributes*
+## 2. Review Variable Types
 
 In the **Data Box**, look at the columns of th edata to determine:
 
