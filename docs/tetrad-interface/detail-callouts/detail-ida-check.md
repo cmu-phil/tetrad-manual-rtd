@@ -1,4 +1,4 @@
-# IDA Check (Regression box)
+# Detail: IDA Check (Regression box)
 
 The **IDA Check** panel in the **Regression box** is designed mainly for
 *evaluating* IDA-based total effect estimates in **simulation studies**, where

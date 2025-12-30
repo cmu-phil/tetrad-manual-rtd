@@ -1,4 +1,4 @@
-# Adjustment and Total Effects: Amenability and Discrete Variables
+# Detail: Adjustment and Total Effects: Amenability and Discrete Variables
 
 This page documents how the **Adjustment and Total Effects** tool reports results, with particular emphasis on
 **amenability** and the handling of **discrete variables**.
