@@ -127,6 +127,20 @@ paradigms while mitigating some of their individual weaknesses.
 
 ---
 
+### 2.4 Time Series Data (Lagged Variables)
+
+If your data consist of repeated measurements over time, Tetrad can handle this by converting the data into a **time-lagged representation**. Each variable is expanded into multiple lagged copies (for example, \(X_t, X_{t-1}, X_{t-2}\)), and **tiered background knowledge is automatically created** to prevent future variables from causing past variables.
+
+Once the data are represented in this form, the same considerations discussed on this page apply:
+
+- causal sufficiency vs. latent variables,
+- choice of tests or scores,
+- constraint-based, score-based, or hybrid methods.
+
+Tetrad provides a **data manipulation tool** to create time-lagged datasets, and this tool automatically generates the corresponding tiered background knowledge needed for time-lagged causal searches. Algorithm selection then proceeds exactly as for cross-sectional data.
+
+---
+
 ## 3. Mapping Assumptions to Starting Choices
 
 The table below summarizes common starting points:
