@@ -96,7 +96,7 @@ Statistically principled but slower.
 Treats discrete variables as “degenerate Gaussians.”  
 Much faster than full CG for large data.
 
-### C. Basis Function (BF) Tests/Scores  **(highly recommended)**
+### C. Basis Function (BF) Tests/Scores
 
 - **Basis Function CI Test** → **[BasisFunctionLrt](tests-and-scores/basis-function-lrt.md)**
 - **Basis Function BIC Score** → **[BasisFunctionBicScore](tests-and-scores/basis-function-bic-score.md)**
@@ -107,8 +107,6 @@ This approach expands continuous variables using orthogonal polynomials (Legendr
 - handles **nonlinear** relationships
 - extremely fast compared to kernel methods
 - sample-size scaling ~ constant
-
-**This is the best general-purpose choice** when data includes both continuous and discrete variables.
 
 ---
 
@@ -155,13 +153,21 @@ If residuals are visibly skewed or heavy-tailed, it is still quite reasonable to
 
 Tetrad provides three practically useful nonlinear CI tests.
 
-### A. Kernel Conditional Independence Test (**KCI**) — *Recommended*
+### A. Kernel Conditional Independence Test (**KCI**)
 
 - **[KCI](tests-and-scores/kci-test.md)**
 
 Captures **arbitrary nonlinear** dependencies.  
 Very powerful but computationally expensive for large N.  
 Best for small–medium datasets.
+
+### B. Random Conditional Independence Test (**RCIT**)
+
+- **[RCIT](tests-and-scores/rcit-test.md)**
+
+Captures **arbitrary nonlinear** dependencies.  
+Faster than KCI.  
+Useful for larger datasets.
 
 ### B. Basis Function Test / Score (**Recommended for scalability**)
 
@@ -172,21 +178,12 @@ Best for small–medium datasets.
 - Post-nonlinear models.
 - Often matches or outperforms KCI on large N due to superior speed.
 
-### C. CCI (Conditional Correlation Independence) — *Minimal recommendation*
-
-- **[CCI Test](tests-and-scores/cci-test.md)**
-
-- Fast additive-noise model test.
-- Works only when the model is truly additive.
-- Empirically weaker and more restrictive than KCI or BF.
-
 **Rule of thumb:**
 
 | Goal | Recommended |
 |------|-------------|
 | Best accuracy for nonlinear CI | **[KCI](tests-and-scores/kci-test.md)** |
 | Best speed + strong accuracy | **[Basis Function Test](tests-and-scores/basis-function-lrt.md)** / **[Basis Function BIC](tests-and-scores/basis-function-bic-score.md)** |
-| Additive-noise special case | **[CCI](tests-and-scores/cci-test.md)** (if you must) |
 
 ---
 
@@ -228,17 +225,17 @@ This is the recommended approach for **latent causal structure without specifyin
 
 ## Summary Table (Practical Defaults)
 
-| Setting | Test | Score | Algorithms |
-|--------|------|--------|-----------|
-| Continuous linear | [Fisher Z](tests-and-scores/fisher-z.md) | [Sem BIC](tests-and-scores/sem-bic-score.md) | PC, FGES, BOSS, GFCI |
-| Discrete | [G²](tests-and-scores/g-square.md) or BDeu-style tests | [BDeu](tests-and-scores/bdeu-score.md) | BOSS\*, FGES, PC |
-| Mixed | [Basis Function Test](tests-and-scores/basis-function-lrt.md) | [Basis Function BIC](tests-and-scores/basis-function-bic-score.md) | PC, FGES, BOSS, GFCI |
-| Linear non-Gaussian | Internal ICA criteria or [Fisher Z](tests-and-scores/fisher-z.md) when using PC/BOSS | [Sem BIC](tests-and-scores/sem-bic-score.md) | DirectLiNGAM, FASK, BOSS (heuristic), FGES |
-| Nonlinear | [KCI](tests-and-scores/kci-test.md) | (none / kernel-based) | PC+KCI, CAM |
-| Nonlinear scalable | [Basis Function Test](tests-and-scores/basis-function-lrt.md) | [Basis Function BIC](tests-and-scores/basis-function-bic-score.md) | PC+BF, GFCI+BF |
-| Latent blocks | Blocks-Test-TS | Blocks-BIC | PC, GFCI, FGES, BOSS |
+| Setting | Test                                                                                | Score                                                                        | Algorithms                                 |
+|--------|-------------------------------------------------------------------------------------|------------------------------------------------------------------------------|--------------------------------------------|
+| Continuous linear | [Fisher Z](tests-and-scores/fisher-z.md)                                            | [Sem BIC](tests-and-scores/sem-bic-score.md)                                 | PC, FGES, BOSS\*, GFCI                     |
+| Discrete | [G²](tests-and-scores/g-square.md) or BDeu-style tests                              | [BDeu](tests-and-scores/bdeu-score.md)                                       | BOSS\*, FGES, PC                           |
+| Mixed | [Degenerate Gaussian Test](tests-and-scores/degenerate-gaussian-lrt.md)             | [Degenerate Gaussian BIC](tests-and-scores/degenerate-gaussian-bic-score.md) | PC, FGES, BOSS, GFCI, FCIT                 |
+| Linear non-Gaussian | Internal ICA criteria or [Fisher Z](tests-and-scores/fisher-z.md) when using PC/BOSS | [Sem BIC](tests-and-scores/sem-bic-score.md)                                 | DirectLiNGAM, FASK, BOSS (heuristic), FGES |
+| Nonlinear | [KCI](tests-and-scores/kci-test.md), [RCIT](tests-and-scores/rcit-test.md)          | (none / kernel-based)                                                        | PC+KCI, CAM                                |
+| Nonlinear scalable | [Basis Function Test](tests-and-scores/basis-function-lrt.md)                       | [Basis Function BIC](tests-and-scores/basis-function-bic-score.md)           | PC+BF, GFCI+BF                             |
+| Latent blocks | Blocks-Test-TS                                                                      | Blocks-BIC                                                                   | PC, GFCI, FGES, BOSS                       |
 
-\* **BOSS is recommended over FGES** unless p is very large.
+\* **BOSS is recommended over FGES** unless the number of variables is very large. GRaSP is a similar algorithm that should be considered as well.
 
 ---
 

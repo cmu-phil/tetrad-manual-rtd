@@ -12,7 +12,6 @@ Tetrad’s statistical tests and scoring methods.
 basis-function-bic-score
 basis-function-lrt
 bdeu-score
-cci-test
 chi-square
 conditional-gaussian-bic-score
 conditional-gaussian-lrt
@@ -31,6 +30,7 @@ mvplrt
 poisson-bic-test
 poisson-prior-score
 probabilistic-test
+rcit-test
 sem-bic-score
 sem-bic-test
 zhang-shen-bound-score
