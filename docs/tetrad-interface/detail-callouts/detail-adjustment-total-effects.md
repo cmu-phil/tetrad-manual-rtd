@@ -96,6 +96,49 @@ and should be made consciously by the user.
 
 ---
 
+## Amenability and Refining Equivalence Classes
+
+In some cases, a treatment–outcome pair ⟨X, Y⟩ is **not amenable** in the graph returned by causal discovery, meaning that a unique total effect cannot be identified under the Generalized Adjustment Criterion (GAC).
+
+This does *not* necessarily mean that the total effect is fundamentally unidentifiable. Instead, it may indicate that the **current equivalence class is too coarse** to support identification.
+
+---
+
+### CPDAGs, Background Knowledge, and maxPDAGs
+
+For **CPDAGs**, non-amenability can sometimes be resolved by incorporating additional background knowledge that orients some of the previously undirected edges. When such orientations are added and the resulting graph is closed under **Meek’s orientation rules**, the result is a **maximally oriented PDAG (maxPDAG)**.
+
+Amenability is then assessed **with respect to this refined graph**, not the original CPDAG.
+
+This is consistent with the theory in Perković et al. (2018): identifying a unique total effect requires ruling out DAGs in the equivalence class that disagree about the causal direction of edges along potentially directed paths from X to Y. Refining a CPDAG to a maxPDAG achieves exactly this kind of restriction.
+
+---
+
+### PAGs: Caution and Current Status
+
+For **PAGs**, which represent equivalence classes of MAGs, the situation is more subtle.
+
+Perković et al. establish amenability and the Generalized Adjustment Criterion for PAGs *as equivalence-class objects*. However, unlike the CPDAG case, it is **not currently established** that arbitrarily refining a PAG by orienting additional edges (and closing under the standard FCI rules) always yields a valid basis for reassessing amenability.
+
+There is active research on how background knowledge can be incorporated into PAGs and how orientations propagate in a sound and complete way. In particular, later work by Perković and collaborators studies principled orientation procedures for PAGs under background knowledge, but these results go beyond the original GAC paper.
+
+As a result, for PAGs it is safest to state:
+
+- Amenability is defined **with respect to the PAG itself**, as returned by causal discovery under the stated assumptions.
+- Whether and how amenability can be recovered by refining a PAG using additional orientation information depends on further theoretical guarantees.
+- One should avoid interpreting arbitrary partially oriented PAGs as valid inputs for total effect identification unless they are known to correspond to a sound refinement of the underlying equivalence class.
+
+---
+
+### Practical Interpretation
+
+- For **CPDAGs**, refining the graph via background knowledge to a **maxPDAG** is a well-founded way to potentially restore amenability.
+- For **PAGs**, amenability should be assessed conservatively, unless a refinement procedure with theoretical justification is being used.
+
+This distinction reflects current theory and avoids overstating what is known for PAGs, while remaining consistent with the Generalized Adjustment Criterion framework.
+
+---
+
 ## Summary
 
 - **Amenability** determines whether a *unique total effect* can be identified.

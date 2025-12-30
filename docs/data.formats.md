@@ -41,6 +41,7 @@ X Y Z
 - Missing values are written by default as: `*`, though other options are also supported.
 - Mixed data (continuous + discrete) is allowed.
 - Variable order in the header determines column order throughout the file.
+- It is important not to end a line with a delimiter, as this can cause parsing errors.
 
 ---
 
@@ -77,7 +78,7 @@ HEIGHT WEIGHT AGE
 Tetrad now supports **two equivalent file formats** for covariance and correlation matrices:
 
 1. A **full square matrix**, preceded by a sample-size line and a variable-name line (current default)  
-2. A **lower-triangular matrix** in the legacy format (still fully supported for backward compatibility)
+2. A **lower-triangular matrix** preceded by a sample-size line and a variable-name line (still fully supported for backward compatibility)
 
 Both formats use the same header:
 
@@ -97,26 +98,26 @@ A valid covariance/correlation file must contain:
 2. **Variable names** (space-separated or tab-separated)  
 3. **Matrix body**, in one of the two supported shapes:
 
+Here p is the number of variables (the number of names on the header line).
+
+- **Lower-triangular format**
+  - Row 1: 1 value
+  - Row 2: 2 values
+  - …
+  - Row p: p values
+  
 - **Full square format (current default)**  
-  - Row 1: `p` values  
-  - Row 2: `p` values  
+  - Row 1: p values  
+  - Row 2: p values  
   - …  
-  - Row *p*: `p` values  
-
-- **Legacy lower-triangular format**  
-  - Row 1: 1 value  
-  - Row 2: 2 values  
-  - …  
-  - Row *p*: *p* values  
-
-Here *p* is the number of variables (the number of names on the header line).
-
+  - Row *p*: `p` values
+  
 ---
 
-### 5.2 Legacy Covariance Matrix Example (Lower Triangle)
+### 5.2 Lower Triangle Covariance Matrix Example
 
 Below is a complete, valid **lower-triangular** covariance file.  
-This is the classic example that has been used by Tetrad historically.
+This is a classic example that has been used by Tetrad historically.
 
 ```text
 164
@@ -130,7 +131,7 @@ ABILITY GPQ PREPROD QFJ SEX CITES PUBS
  .18 .15 .19 .41 .43 .55 1.0
 ```
 
-#### Important Characteristics of the Legacy Format
+#### Important Characteristics of the Lower Triangular Format
 
 - **Line 1:** sample size (`164`)  
 - **Line 2:** variable names (7 variables)  
@@ -139,7 +140,8 @@ ABILITY GPQ PREPROD QFJ SEX CITES PUBS
 - Diagonal entries must be included (`1.0` above)  
 - No commas (`1,0` is invalid)  
 - No extra blank lines at the end  
-- The number of rows in the lower triangle must equal the number of variables  
+- The number of rows in the lower triangle must equal the number of variables
+- It is important not to end a line with a delimiter, as this can cause parsing errors.
 
 This format is still accepted for both covariance and correlation matrices.
 
@@ -164,8 +166,9 @@ ABILITY GPQ PREPROD QFJ SEX CITES PUBS
 
 You may use tabs, spaces, or the chosen delimiter; the key requirement is that:
 
-- The matrix is **square**, with exactly *p* values on each of *p* lines,  
+- The matrix is **square**, with exactly p values on each of p lines,  
 - The order of variables matches the header line.
+- It is important not to end a line with a delimiter, as this can cause parsing errors.
 
 ---
 
@@ -174,7 +177,7 @@ You may use tabs, spaces, or the chosen delimiter; the key requirement is that:
 Correlation matrices use **the same two formats** as covariance matrices:
 
 - Full square matrix (current export default)  
-- Legacy lower triangle (still accepted)
+- Lower triangle (still accepted)
 
 Example (full square):
 
@@ -186,7 +189,7 @@ X Y Z
 -0.10 0.35 1.0
 ```
 
-Legacy lower-triangular example:
+Lower-triangular example:
 
 ```text
 500
@@ -204,7 +207,7 @@ Users often encounter:
 
 - **Missing sample size** (first line must be an integer)
 - **Variable names not matching matrix dimensions**  
-  - For square format: not exactly *p* values per row, or not exactly *p* rows  
+  - For square format: not exactly p values per row, or not exactly p rows  
   - For lower-triangular format: wrong number of values in a given row
 - **Mixing square and triangular conventions** in a single file
 - **Trailing blank lines**
@@ -215,12 +218,12 @@ Each of these produces a **“Could not parse covariance matrix”** error.
 
 ---
 
-## 6. Legacy Lower-Triangular Format
+## 6. Lower-Triangular Format
 
-The lower-triangular matrix format is kept as a **legacy** option:
+The lower-triangular matrix format is kept as a legacy option:
 
 - All existing covariance and correlation files using the old lower-triangular convention  
-  will continue to load without modification.
+  will continue to load without modification, provided the user selects the Lower Triangular option.
 - New users are encouraged to use the **square format**, which aligns with conventions in R and Python.
 - Internally, Tetrad treats both formats as representing the same symmetric matrix.
 
@@ -250,7 +253,7 @@ Tetrad can export:
 Export behavior:
 
 - Covariance and correlation matrices are now exported in **full square format** by default.  
-- The legacy **lower-triangular** format is **no longer used for export**, but is still supported for import.
+- The **lower-triangular** format is **no longer used for export**, but is still supported for import.
 
 This means:
 
@@ -261,10 +264,9 @@ This means:
 
 ## 8. Summary
 
-| Format Type                               | Supported? | Notes                                                       |
-|-------------------------------------------|------------|-------------------------------------------------------------|
-| Tabular data                              | ✔          | Standard space/tab/comma-separated file                     |
-| Covariance matrix (lower triangle)        | ✔ (legacy) | Fully supported for backward compatibility                  |
-| Correlation matrix (lower triangle)       | ✔ (legacy) | Same legacy format as covariance                            |
-| Full covariance/correlation square matrix | ✔          | Current default import/export format                        |
-| Graph formats                             | ✔          | See graph file section                                      |
+| Format Type                                  | Supported? | Notes                                                       |
+|----------------------------------------------|------------|-------------------------------------------------------------|
+| Tabular data                                 | ✔          | Standard space/tab/comma-separated file                     |
+| Lower Triangle covariance/correlation matrix | ✔ (legacy) | Fully supported for backward compatibility                  | |
+| Full covariance/correlation square matrix    | ✔          | Current default import/export format                        |
+| Graph formats                                | ✔          | See graph file section                                      |
