@@ -44,6 +44,9 @@ The IDA Check window contains:
   - `X*` – all variables whose names start with `X`  
   - `?bar` – any one-letter prefix followed by `bar` (for example `Abar`, `Zbar`)
 
+- **Hide zero-effect pairs** (checkbox)
+  When enabled, ordered pairs whose IDA interval is exactly [0, 0] are omitted from the table.
+
 - **Run** (button)  
   After editing **Treatments (X)** and/or **Outcomes (Y)**, click **Run** to:
 
@@ -98,11 +101,9 @@ The remaining columns are:
   and parent sets (again, standard vs Optimal IDA depending on the checkbox).
   This is the right endpoint of the IDA interval.
 
-- **IDA Min Effect**  
-  The IDA point estimate used in the evaluation. In many settings this
-  is the effect corresponding to the minimum absolute value in the IDA
-  interval, but the exact definition follows the implementation in Tetrad’s
-  IDA code.
+  - **IDA Min Effect**  
+    The IDA point estimate used in the evaluation. This is the signed total 
+    effect whose absolute value is minimal among the IDA effects for the pair.
 
 - **True TE**  
   The true total effect of X on Y, computed from the generating
