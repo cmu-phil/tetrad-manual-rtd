@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The **Nonlinearity Checks** tool provides a systematic way to assess whether the conditional expectation E(Y | X) appears to be linear, nonlinear but additive, or genuinely non-additive, using several complementary statistical tests.
+The **Nonlinearity Checks** tool provides a systematic way to assess whether the conditional expectation E(Y | X) appears to be linear or nonlinear, using several complementary statistical tests.
 
 This tool is intended to help users:
 - diagnose whether linear modeling assumptions are reasonable,
@@ -15,65 +15,208 @@ The tool is **descriptive and diagnostic**, not a causal discovery algorithm by 
 
 ## Conceptual Background
 
-Many classical causal discovery methods rely (explicitly or implicitly) on **linear conditional expectations**:
+Most classical causal discovery methods rely (explicitly or implicitly) on **linear conditional expectations**:
+E(Y | X) = β₀ + βᵀX.
 
-E(Y | X) = β₀ + βᵀX
+However, many real-world mechanisms violate this assumption. In particular:
 
-However, real data often violate this assumption. Common alternatives include:
+- **Additive nonlinear mechanisms**:  
+  Y = f₁(X₁) + ··· + fₖ(Xₖ) + e  
+  (also known as generalized additive or additive-noise models)
 
-- **Additive nonlinear mechanisms** (generalized additive models, GAMs):
-  Y = f₁(X₁) + ··· + fₖ(Xₖ) + e
-
-- **Non-additive nonlinear mechanisms**:
+- **Non-additive nonlinear mechanisms**:  
   Y = f(X₁, …, Xₖ) + e
 
-- **Fully general mechanisms**:
+- **Fully general mechanisms**:  
   Y = f(X₁, …, Xₖ, e)
 
-The Nonlinearity Checks tool helps distinguish among these possibilities by combining fast screening tests with more computationally intensive diagnostics.
+The Nonlinearity Checks tool evaluates evidence against linearity of E(Y | X) using multiple, complementary tests.
 
 ---
 
 ## Modes of Operation
 
-### 1. Pairwise Mode
+The interface supports two modes:
 
+### 1. Pairwise Mode
 Each treatment X is tested individually against each outcome Y.
 
-### 2. Conditional Mode
+This answers questions such as:
+- “Is the relationship between X and Y linear?”
+- “Does X have a nonlinear marginal effect on Y?”
 
+### 2. Conditional Mode
 Each outcome Y is tested conditional on **all specified treatments X₁,…,Xₖ**.
+
+This answers questions such as:
+- “Is E(Y | X₁,…,Xₖ) linear in the predictors?”
+- “Does a linear multivariate regression adequately describe the conditional mean?”
 
 ---
 
-## Fast Tests (Always Run)
+## Implemented Tests
+
+Each row in the results table reports the outcome of the following tests.
 
 ### 1. Ramsey RESET Test
 
-Detects misspecification by adding powers of fitted values to a linear model.
+**Idea:**  
+Tests whether nonlinear functions of the fitted values improve a linear regression.
 
-Reference: Ramsey (1969).
+**Method:**
+- Fit a linear model Y ~ X.
+- Augment the model with powers of the fitted values (e.g., Ŷ², Ŷ³).
+- Perform an F-test for the additional terms.
 
-### 2. Conditional Moment Test
+**Interpretation:**
+- Rejecting suggests misspecification of the linear functional form.
 
-Checks whether nonlinear features of X explain linear-model residuals.
+**Strengths:**
+- Simple, classical, fast.
+
+**Limitations:**
+- Detects only certain types of nonlinearity.
+- Power depends on chosen polynomial order.
+
+**Reference:**  
+Ramsey, J. B. (1969). *Tests for specification errors in classical linear least-squares regression analysis.*  
+Journal of the Royal Statistical Society, Series B.
 
 ---
 
-## Slow Tests (Optional)
+### 2. Spline vs Linear Likelihood Ratio Test
 
-Enabled via **Include slow tests**.
+**Idea:**  
+Compare a linear model to a flexible spline-based regression.
 
-### 3. CV Linear vs Nonlinear
+**Method:**
+- Fit a linear regression.
+- Fit a regression using spline basis expansions of X.
+- Perform a likelihood ratio (or approximate chi-square) test.
 
-Linear ridge vs RFF-based nonlinear regression.
+**Interpretation:**
+- Rejection indicates evidence for smooth nonlinear structure.
 
-### 4. Additivity Check
+**Strengths:**
+- Sensitive to smooth nonlinearities.
+- Interpretable as a nested model comparison.
 
-Additive hinge-basis GAM vs non-additive RFF regression.
+**Limitations:**
+- Requires choice of spline basis and degrees of freedom.
+
+**Reference:**  
+Hastie, T., Tibshirani, R., & Friedman, J. (2009).  
+*The Elements of Statistical Learning*, Section 5.4.
+
+---
+
+### 3. Kernel Regression Linearity Test
+
+**Idea:**  
+Test whether a nonparametric kernel regression significantly improves predictive performance over linear regression.
+
+**Method:**
+- Fit a linear regression.
+- Fit a kernel regression (e.g., Nadaraya–Watson).
+- Compare cross-validated prediction error.
+
+**Interpretation:**
+- Improved predictive performance suggests nonlinear conditional expectation.
+
+**Strengths:**
+- Nonparametric and flexible.
+- Sensitive to a wide range of nonlinearities.
+
+**Limitations:**
+- Computationally heavier.
+- Requires bandwidth selection.
+
+**Reference:**  
+Härdle, W., Müller, M., Sperlich, S., & Werwatz, A. (2004).  
+*Nonparametric and Semiparametric Models.*
+
+---
+
+### 4. Random Fourier Feature (RFF) Regression Test
+
+**Idea:**  
+Approximate an RBF-kernel regression using random Fourier features and compare against linear regression.
+
+**Method:**
+- Map X into random Fourier feature space Φ(X).
+- Fit ridge regression Y ~ Φ(X).
+- Compare fit or cross-validated error against linear regression.
+
+**Slow Tests Option:**
+- Some tests—particularly those based on cross-validated nonparametric models—can be computationally intensive for large datasets.
+- The **“Include slow tests”** checkbox enables or disables these tests: 
+    - Random Fourier Feature (RFF) regression comparison
+    - Additivity check (additive vs fully nonparametric model)
+- When unchecked, these tests are skipped and marked as **“Skipped”** in the results table.
+
+**Interpretation:**
+Significant improvement indicates evidence of non-additive structure, meaning that interactions among predictors contribute to E(Y | X) beyond what can be captured by an additive model. Failure to reject should be interpreted as “additivity is not contradicted by the data”, not as proof that the true mechanism is additive.
+
+**Strengths:**
+- Scales to larger datasets.
+- Closely related to methods used in RFF-BIC.
+
+**Limitations:**
+- Randomized (though averaged for stability).
+- Requires tuning number of features.
+
+**References:**  
+Rahimi, A., & Recht, B. (2007). *Random features for large-scale kernel machines.*  
+Gretton et al. (2005). *Measuring statistical dependence with Hilbert-Schmidt norms.*
+
+### 5. Additivity Check
+
+**Idea:**
+Check to see whether the regression can be sensibly interpreted as an additive function of the parents plus noise.
+
+**Method:**
+- Fit additive model Y ~ f₁(X₁) + ··· + fₖ(Xₖ) + e.
+- Compare cross-validated prediction loss against a fully nonparametric model that allows interactions.
+
+**Interpretation:**
+- Significant improvement indicates nonlinear structure that is additive in nature.
+
+**Strengths:**
+- Helps assess whether algorithms that assume additive structure (e.g., CAM) are plausibly appropriate.
+
+**Limitations:**
+- Can be slow.
+
+**References:**
+Hastie, T., Tibshirani, R., & Friedman, J. (2009). *The Elements of Statistical Learning*
+Buja, A., Hastie, T., & Tibshirani, R. (1989). Linear smoothers and additive models.  The Annals of Statistics, 17(2), 453–510.
+
+---
+
+## Output Interpretation
+
+For each test, the tool reports:
+
+- **Statistic**: test-specific measure of nonlinearity.
+- **p-value** (when applicable).
+- **Decision**: labeled as *Linear* or *Nonlinear* for clarity.
+
+Disagreement between tests is expected and informative:
+- Some nonlinearities are local, smooth, or interaction-driven.
+- No single test dominates in all regimes.
+
+---
+
+## Practical Guidance
+
+- Consistent rejection across multiple tests strongly suggests nonlinear structure.
+- Pairwise nonlinearity does **not** imply conditional nonlinearity.
+- Conditional nonlinearity is most relevant for causal discovery algorithms.
+
+This tool is best used as a **diagnostic companion** to causal modeling and search.
 
 ---
 
 ## Summary
 
-This tool helps distinguish linear, nonlinear-additive, and nonlinear-nonadditive mechanisms and guides appropriate causal modeling choices.
+The Nonlinearity Checks tool fills a long-standing gap in Tetrad by providing a principled, multi-test assessment of linearity assumptions. It helps explain when and why nonlinear causal discovery methods are needed—and when simpler linear approaches may suffice.
