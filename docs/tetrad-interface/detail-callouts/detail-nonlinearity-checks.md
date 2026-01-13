@@ -2,8 +2,7 @@
 
 ## Purpose
 
-The **Nonlinearity Checks** tool provides a systematic way to assess whether the conditional expectation  
-E(Y | X) appears to be linear or nonlinear, using several complementary statistical tests.
+The **Nonlinearity Checks** tool provides a systematic way to assess whether the conditional expectation E(Y | X) appears to be linear or nonlinear, using several complementary statistical tests.
 
 This tool is intended to help users:
 - diagnose whether linear modeling assumptions are reasonable,

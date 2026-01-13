@@ -34,6 +34,7 @@ detail-junction-tree-updater
 detail-approximate-updater
 detail-row-summing-updater
 detail-sem-updater
+detail-nonlinearity-checks
 detail-adjustment-total-effects
 detail-ida-check
 detail-ntad-explorer
