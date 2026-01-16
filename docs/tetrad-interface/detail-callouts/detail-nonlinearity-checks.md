@@ -2,55 +2,65 @@
 
 ## Purpose
 
-The **Nonlinearity Checks** tool provides a systematic way to assess whether the conditional expectation E(Y | X) appears to be linear or nonlinear, using several complementary statistical tests.
+The **Nonlinearity Checks** tool provides a systematic, multi-test assessment of whether the conditional expectation
+
+E(Y | X)
+
+is adequately described by a linear model, or whether there is evidence for nonlinear structure.
 
 This tool is intended to help users:
-- diagnose whether linear modeling assumptions are reasonable,
-- decide whether nonlinear causal discovery methods (e.g., RFF-BIC, KCV-BIC, BF-based methods) are warranted,
-- understand *why* certain algorithms succeed or fail on a given dataset.
 
-The tool is **descriptive and diagnostic**, not a causal discovery algorithm by itself.
+- diagnose whether linear modeling assumptions are reasonable for a given set of variables,
+- decide whether nonlinear causal discovery methods (e.g., RFF-BIC, BF-based methods) are warranted,
+- understand why linear methods may succeed or fail on a given dataset.
+
+The tool is **descriptive and diagnostic**. It does not perform causal discovery by itself.
 
 ---
 
 ## Conceptual Background
 
-Most classical causal discovery methods rely (explicitly or implicitly) on **linear conditional expectations**:
-E(Y | X) = β₀ + βᵀX.
+Many classical causal discovery methods rely, explicitly or implicitly, on the assumption that the conditional mean of a variable is linear in its causes:
 
-However, many real-world mechanisms violate this assumption. In particular:
+E(Y | X) = beta0 + beta^T X
 
-- **Additive nonlinear mechanisms**:  
-  Y = f₁(X₁) + ··· + fₖ(Xₖ) + e  
-  (also known as generalized additive or additive-noise models)
+Real-world data often violate this assumption. Common departures include:
 
-- **Non-additive nonlinear mechanisms**:  
-  Y = f(X₁, …, Xₖ) + e
+- **Additive nonlinear structure**:
 
-- **Fully general mechanisms**:  
-  Y = f(X₁, …, Xₖ, e)
+  Y = f1(X1) + f2(X2) + ... + fk(Xk) + e
 
-The Nonlinearity Checks tool evaluates evidence against linearity of E(Y | X) using multiple, complementary tests.
+- **Non-additive nonlinear structure** (interactions among predictors):
+
+  Y = f(X1, X2, ..., Xk) + e
+
+The Nonlinearity Checks tool evaluates evidence against linearity of the conditional mean using several complementary statistical tests.
+
+It does not attempt to test independence of noise variables or distinguish causal noise models.
 
 ---
 
 ## Modes of Operation
 
-The interface supports two modes:
+The interface supports two modes.
 
 ### 1. Pairwise Mode
+
 Each treatment X is tested individually against each outcome Y.
 
 This answers questions such as:
-- “Is the relationship between X and Y linear?”
-- “Does X have a nonlinear marginal effect on Y?”
+- Is the marginal relationship between X and Y linear?
+- Does X have a nonlinear effect on Y by itself?
 
 ### 2. Conditional Mode
-Each outcome Y is tested conditional on **all specified treatments X₁,…,Xₖ**.
+
+Each outcome Y is tested conditional on **all specified treatments X1, X2, ..., Xk**.
 
 This answers questions such as:
-- “Is E(Y | X₁,…,Xₖ) linear in the predictors?”
-- “Does a linear multivariate regression adequately describe the conditional mean?”
+- Is E(Y | X1, ..., Xk) linear in the predictors?
+- Does a multivariate linear regression adequately describe the conditional mean?
+
+Conditional mode is generally more relevant for causal discovery.
 
 ---
 
@@ -60,23 +70,28 @@ Each row in the results table reports the outcome of the following tests.
 
 ### 1. Ramsey RESET Test
 
-**Idea:**  
+**Idea:**
+
 Tests whether nonlinear functions of the fitted values improve a linear regression.
 
 **Method:**
-- Fit a linear model Y ~ X.
-- Augment the model with powers of the fitted values (e.g., Ŷ², Ŷ³).
-- Perform an F-test for the additional terms.
+
+- Fit a linear regression Y ~ X.
+- Augment the model with powers of the fitted values (for example, Y-hat squared, Y-hat cubed).
+- Perform an F-test for the added terms.
 
 **Interpretation:**
-- Rejecting suggests misspecification of the linear functional form.
+
+Rejecting suggests misspecification of the linear functional form.
 
 **Strengths:**
-- Simple, classical, fast.
+
+- Classical, simple, fast.
 
 **Limitations:**
-- Detects only certain types of nonlinearity.
-- Power depends on chosen polynomial order.
+
+- Detects only certain forms of nonlinearity.
+- Power depends on the chosen polynomial order.
 
 **Reference:**  
 Ramsey, J. B. (1969). *Tests for specification errors in classical linear least-squares regression analysis.*  
@@ -84,126 +99,152 @@ Journal of the Royal Statistical Society, Series B.
 
 ---
 
-### 2. Spline vs Linear Likelihood Ratio Test
+### 2. Cross-Validated Linear vs Nonlinear Prediction (RFF)
 
-**Idea:**  
-Compare a linear model to a flexible spline-based regression.
+**Idea:**
+
+Test whether a flexible nonlinear predictor improves predictive performance over a linear model.
 
 **Method:**
-- Fit a linear regression.
-- Fit a regression using spline basis expansions of X.
-- Perform a likelihood ratio (or approximate chi-square) test.
+
+- Fit a linear ridge regression.
+- Fit a nonlinear kernel ridge regression approximated using Random Fourier Features (RFF).
+- Compare cross-validated mean squared error.
 
 **Interpretation:**
-- Rejection indicates evidence for smooth nonlinear structure.
+Rejecting indicates evidence that E(Y | X) is nonlinear.
 
 **Strengths:**
-- Sensitive to smooth nonlinearities.
-- Interpretable as a nested model comparison.
+
+- Sensitive to a wide range of nonlinearities.
+- Scales better than full kernel methods.
+- Closely related to RFF-BIC.
 
 **Limitations:**
-- Requires choice of spline basis and degrees of freedom.
 
-**Reference:**  
-Hastie, T., Tibshirani, R., & Friedman, J. (2009).  
-*The Elements of Statistical Learning*, Section 5.4.
+- Computationally heavier than parametric tests.
+- Randomized (averaged for stability).
+
+**Note:**
+This test is only run when “Include slow tests” is enabled.
 
 ---
 
-### 3. Kernel Regression Linearity Test
+### 3. Conditional-Moment / Nonlinear-Features LM Test
 
-**Idea:**  
-Test whether a nonparametric kernel regression significantly improves predictive performance over linear regression.
+**Idea:**
+
+Check whether nonlinear transformations of the predictors explain structure left in the residuals of a linear model.
 
 **Method:**
+
+- Fit a linear model Y ~ X.
+- Compute residuals.
+- Regress residuals on nonlinear features of X (squares, cubes, and pairwise products).
+- Use an LM-style test statistic.
+
+**Interpretation:**
+
+Rejecting suggests the linear conditional mean is misspecified.
+
+**Strengths:**
+
+- Targets specific nonlinear structure.
+- Fast relative to fully nonparametric methods.
+
+**Limitations:**
+
+- Uses a limited feature set.
+- May miss very smooth or high-order nonlinearities.
+
+**Reference:**  
+
+Hastie, T., Tibshirani, R., & Friedman, J. (2009). *The Elements of Statistical Learning*, Section 5.4.
+
+---
+
+### 4. Additive-Component (Hinge-Basis) Test
+
+**Idea:**
+
+Assess whether allowing nonlinear but additive effects improves a linear model.
+
+**Method:**
+
 - Fit a linear regression.
-- Fit a kernel regression (e.g., Nadaraya–Watson).
+- Augment the model with per-predictor hinge-basis functions.
+- Perform an F-test comparing the augmented model to the linear model.
+
+**Interpretation:**
+
+Rejecting indicates nonlinear structure consistent with an additive model.
+
+**Strengths:**
+
+- Helps diagnose departures from linearity without introducing interactions.
+- Computationally moderate.
+
+**Limitations:**
+
+- Assumes additivity.
+- Does not detect interaction effects.
+
+**References:**
+
+Hastie, T., Tibshirani, R., & Friedman, J. (2009). The Elements of Statistical Learning.
+
+---
+
+### 5. Additivity Check: Additive vs Fully Nonparametric (RFF)
+
+**Idea:**
+
+Determine whether interactions among predictors are needed beyond additive nonlinear effects.
+
+**Method:**
+
+- Fit an additive nonlinear model using hinge-basis functions.
+- Fit a fully nonparametric model using RFF-based kernel ridge regression.
 - Compare cross-validated prediction error.
 
 **Interpretation:**
-- Improved predictive performance suggests nonlinear conditional expectation.
+
+- Reject: Non-additive. Interactions likely matter.
+- Fail to reject: Additive OK. No evidence against additivity.
 
 **Strengths:**
-- Nonparametric and flexible.
-- Sensitive to a wide range of nonlinearities.
 
-**Limitations:**
-- Computationally heavier.
-- Requires bandwidth selection.
-
-**Reference:**  
-Härdle, W., Müller, M., Sperlich, S., & Werwatz, A. (2004).  
-*Nonparametric and Semiparametric Models.*
-
----
-
-### 4. Random Fourier Feature (RFF) Regression Test
-
-**Idea:**  
-Approximate an RBF-kernel regression using random Fourier features and compare against linear regression.
-
-**Method:**
-- Map X into random Fourier feature space Φ(X).
-- Fit ridge regression Y ~ Φ(X).
-- Compare fit or cross-validated error against linear regression.
-
-**Slow Tests Option:**
-- Some tests—particularly those based on cross-validated nonparametric models—can be computationally intensive for large datasets.
-- The **“Include slow tests”** checkbox enables or disables these tests: 
-    - Random Fourier Feature (RFF) regression comparison
-    - Additivity check (additive vs fully nonparametric model)
-- When unchecked, these tests are skipped and marked as **“Skipped”** in the results table.
-
-**Interpretation:**
-Significant improvement indicates evidence of non-additive structure, meaning that interactions among predictors contribute to E(Y | X) beyond what can be captured by an additive model. Failure to reject should be interpreted as “additivity is not contradicted by the data”, not as proof that the true mechanism is additive.
-
-**Strengths:**
-- Scales to larger datasets.
-- Closely related to methods used in RFF-BIC.
-
-**Limitations:**
-- Randomized (though averaged for stability).
-- Requires tuning number of features.
-
-**References:**  
-Rahimi, A., & Recht, B. (2007). *Random features for large-scale kernel machines.*  
-Gretton et al. (2005). *Measuring statistical dependence with Hilbert-Schmidt norms.*
-
-### 5. Additivity Check
-
-**Idea:**
-Check to see whether the regression can be sensibly interpreted as an additive function of the parents plus noise.
-
-**Method:**
-- Fit additive model Y ~ f₁(X₁) + ··· + fₖ(Xₖ) + e.
-- Compare cross-validated prediction loss against a fully nonparametric model that allows interactions.
-
-**Interpretation:**
-- Significant improvement indicates nonlinear structure that is additive in nature.
-
-**Strengths:**
-- Helps assess whether algorithms that assume additive structure (e.g., CAM) are plausibly appropriate.
-
-**Limitations:**
-- Can be slow.
+- Directly probes interaction structure.
+- Useful for assessing suitability of additive-model algorithms (for example, CAM).
 
 **References:**
+
 Hastie, T., Tibshirani, R., & Friedman, J. (2009). *The Elements of Statistical Learning*
 Buja, A., Hastie, T., & Tibshirani, R. (1989). Linear smoothers and additive models.  The Annals of Statistics, 17(2), 453–510.
 
+**Limitations:**
+- Computationally expensive.
+- Failure to reject does not prove true additivity.
+
+**Note:**
+This test is only run when “Include slow tests” is enabled.
+
 ---
 
-## Output Interpretation
+### Output Interpretation
 
-For each test, the tool reports:
+For each test, the table reports:
 
-- **Statistic**: test-specific measure of nonlinearity.
-- **p-value** (when applicable).
-- **Decision**: labeled as *Linear* or *Nonlinear* for clarity.
+- **Statistic**: test-specific measure of nonlinearity (visible via “Show Stats”).
+- **Decision:** Linear / Nonlinear, or Additive OK / Non-additive
+- **p-value** (when applicable)
+
+Selecting a row and clicking “Show Stats” displays the full test statistics and p-values.
 
 Disagreement between tests is expected and informative:
-- Some nonlinearities are local, smooth, or interaction-driven.
-- No single test dominates in all regimes.
+- Some nonlinearities are smooth,
+- others involve interactions,
+- no single test dominates in all regimes.
 
 ---
 
@@ -211,12 +252,13 @@ Disagreement between tests is expected and informative:
 
 - Consistent rejection across multiple tests strongly suggests nonlinear structure.
 - Pairwise nonlinearity does **not** imply conditional nonlinearity.
-- Conditional nonlinearity is most relevant for causal discovery algorithms.
+- Conditional nonlinearity is most relevant for causal discovery.
+- Additivity checks help decide whether additive-model assumptions are plausible.
 
 This tool is best used as a **diagnostic companion** to causal modeling and search.
 
 ---
 
-## Summary
+### Summary
 
-The Nonlinearity Checks tool fills a long-standing gap in Tetrad by providing a principled, multi-test assessment of linearity assumptions. It helps explain when and why nonlinear causal discovery methods are needed—and when simpler linear approaches may suffice.
+The Nonlinearity Checks tool provides a principled, multi-test diagnostic for assessing linearity assumptions in conditional means. It helps explain when nonlinear causal discovery methods are needed, and when simpler linear approaches may suffice, without making strong assumptions about causal noise structure.
