@@ -1,7 +1,8 @@
 # StARS
 
 **Type:** Wrapper / regularization-path stability tuner (Stability Approach to Regularization Selection)  
-**Output:** Same graph class as the wrapped algorithm (DAG / CPDAG / PAG / etc.)
+**Output:** Same graph class as the wrapped algorithm (DAG / CPDAG / PAG / etc.)  
+**Availability:** Scripts only. StARS is a library wrapper, applied in `algcomparison` runs and from py-tetrad. It is not offered in the algorithm chooser in the Tetrad interface.
 
 StARS wraps a base Tetrad `Algorithm` and selects a value of a single tuning parameter (such as a penalty λ) using the Stability Approach to Regularization Selection.  
 It repeatedly runs the base algorithm on bootstrap subsamples across a range of parameter values, measures how unstable the adjacencies are, and chooses the largest parameter that keeps instability below a user-specified cutoff.

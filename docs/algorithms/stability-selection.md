@@ -1,7 +1,8 @@
 # StabilitySelection
 
 **Type:** Wrapper / resampling ensemble (bootstrap-based)  
-**Output:** Same graph class as the wrapped algorithm (typically CPDAG / PAG / DAG / etc.)
+**Output:** Same graph class as the wrapped algorithm (typically CPDAG / PAG / DAG / etc.)  
+**Availability:** Scripts only. `StabilitySelection` is a library wrapper, applied in `algcomparison` runs and from py-tetrad. It is not offered in the algorithm chooser in the Tetrad interface.
 
 `StabilitySelection` is a **generic wrapper** that repeatedly runs a base Tetrad algorithm on bootstrap resamples of the data and then **keeps only edges that appear often enough** across runs.  
 It does not define its own score or CI test; instead, it delegates all modeling assumptions and graph semantics to the **wrapped `Algorithm`**, and then performs stability selection on that algorithm’s output.

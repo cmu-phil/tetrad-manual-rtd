@@ -19,7 +19,6 @@ cpc
 cstar
 dagma
 direct-lingam
-dm
 factor-analysis
 fas
 fask
@@ -33,7 +32,6 @@ fofc
 ftfc
 gfci
 gffc
-gin
 grasp
 grasp-fci
 ica-lingam

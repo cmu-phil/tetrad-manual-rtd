@@ -134,7 +134,6 @@ If you are new to Tetrad or want a curated subset of recommended methods, start 
 
 | Algorithm                                                                | Description |
 |--------------------------------------------------------------------------|-------------|
-| **DM** [DM](algorithms/dm.md) 🧪                                         | Detect–Mimic (intermediate-latent preprocessing). |
 | **Cstar** [CStaR](algorithms/cstar.md) 🧪                                | Bounds on causal effects via edge-orientation patterns. |
 | **SingleGraphAlg** [Single Graph Alg](algorithms/single-graph-alg.md) 🧪 | Wrapper for running Tetrad on a fixed imported graph. |
 
