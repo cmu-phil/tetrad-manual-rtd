@@ -24,8 +24,9 @@ You use this box to:
 Cluster results by themselves only group variables; they do **not** yet specify a full causal structure
 over the latent variables. To use latent clusters in **Simulation** mode, you typically:
 
-1. Derive a latent structure (in the *Latent Structure* box) that introduces latent nodes and
-   edges among them, using the clusters as indicators.
+1. Derive a latent structure by making this box the parent of a *Search* box and running a
+   block-based search there, which introduces latent nodes and edges among them, using the
+   clusters as indicators.
 2. Use that latent structure model (possibly converted to a parametric model) as the source in
    the *Simulation* box.
 
@@ -103,4 +104,5 @@ See also:
   - *Data* (provides the dataset to be clustered).
   - *Graph* (may receive derived graphs with latent variables).
   - *Parametric Model* (can define SEMs or multiple-indicator models over discovered clusters).
-  - *Latent Structure* (for more detailed latent-variable modeling).
+  - *Search* (make this box its parent to run a block-based latent-variable search over the
+    discovered clusters).

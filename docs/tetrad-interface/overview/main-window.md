@@ -61,36 +61,49 @@ A common pattern is:
 
 ## Menus and toolbar
 
-The **menu bar** in the version of Tetrad described in this manual includes:
+The **menu bar** has seven menus: **Tetrad**, **File**, **Edit**, **Logging**, **Pipelines**,
+**Window** and **Help**.
 
+- **Tetrad**  
+  The application menu, first in the bar. It holds **About Tetrad**, **Warranty**, **License** and
+  **Contributors**, then **Settings...**, then **Quit Tetrad**. On macOS the system's own
+  application menu is wired to the same About and Settings items, so either route works.
 - **File**  
-  Open and save sessions, import/export data and graphs, save a workspace image, show the session
-  version, and exit the application.  
-  The **File → Settings** submenu controls:
-    - **Logging** – where log output is written (only to the logging pane, or also to a log file).
-    - **Number Format** – the numeric formatting used throughout the application.
-    - **Enable Experimental** – whether experimental algorithms and options are shown
-      (for example, in the *Search* box).
+  Session handling: **New Session**, **Load Session**, **Close Session**, **Save Session**,
+  **Save Session As**, and **Save Session Workspace Image...**, which writes a picture of the
+  workbench.
 - **Edit**  
-  Undo/redo (where supported) and basic editing commands.
+  Basic editing commands for the workbench.
 - **Logging**  
-  Controls runtime logging:
-    - **Start Logging** opens a logging pane at the bottom of the main window and begins routing
-      log messages from algorithms and tools to it.  
-      If logging to files has been configured in **File → Settings → Logging**, this also starts
-      a new log file on disk.
-    - **Stop Logging** stops sending messages to the logging pane and, if a log file is open,
-      closes the file.
+  **Start Logging** opens a logging pane at the bottom of the main window and begins routing log
+  messages from algorithms and tools to it. If logging to a file has been configured on the
+  **Logging** tab of the Settings dialog, this also starts a new log file on disk. **Stop
+  Logging** hides the pane and closes the file.
 - **Pipelines**  
-  Offers templates for **pre-wired workbench pipelines**. Choosing an entry places a fully
-  connected set of session boxes on the workbench (for example, Data → Search → Compare).
-  Each box in the pipeline can then be **double-clicked and filled in** with your chosen
-  data, algorithms, and models.
+  Pre-wired workbench pipelines, in two labelled groups. Under **Analyze a real dataset**: *Load
+  data and search*; *Load data, add knowledge, then search*; *Load data, search, then run a Markov
+  check*; *Search then estimate*; *Search, estimate, then update*; and *Latent Clustering and
+  Structure Search*. Under **Simulation studies**: *Simulate from a given graph, then search*; and
+  *Simulate, search, then compare*. Choosing an entry places a connected set of boxes on the
+  workbench, which you then fill in by double-clicking each one.
 - **Window**  
-  Standard window-management actions, such as showing or hiding panes and focusing different
-  parts of the interface.
+  Window-management actions.
 - **Help**  
-  Version information and links to this manual and the Tetrad website.
+  **Website**, **Manual** (which opens this site), **Algorithm Flowchart**, and **Suggestion
+  Box!**, which opens Tetrad's issue tracker so you can send a suggestion or report a problem.
+
+## Settings
+
+**Tetrad → Settings...** opens a dialog with three tabs:
+
+- **General** — **Dark Mode**, **Show experimental algorithms everywhere** (which is what reveals
+  the methods marked experimental; see [Experimental Methods](../../experimental-methods.md)), and
+  **UI font size**.
+- **Numbers** — the numeric formatting used throughout the application.
+- **Logging** — where log output is written: only to the logging pane, or also to a log file.
+
+In earlier versions these settings were a **File → Settings** submenu. That submenu is gone; use
+the Tetrad menu.
 
 The **toolbar** (below the menu) exposes common shortcuts such as opening/saving sessions, running
 the currently selected configuration, and graph layout/zoom controls. Hover over a button to see

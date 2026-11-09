@@ -46,4 +46,4 @@ After selecting the algorithm and desired test/score, click on "Set parameters" 
 
 After optionally changing any search parameters, click on "Run Search and Generate Graph" which will execute the search.
 
-Notably there are some experimental algorithms available in this box. To see these, select File->Settings->Enable Experimental.
+Notably there are some experimental algorithms available in this box. To see these, open Tetrad->Settings... and turn on "Show experimental algorithms everywhere" on the General tab.
