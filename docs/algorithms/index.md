@@ -14,7 +14,9 @@ boss
 bpc
 cam
 ccd
+cd-nod-boss
 cdnod
+cfci
 cpc
 cstar
 dagma
@@ -25,9 +27,11 @@ fask
 fask-vote
 fci
 fci-iod
+fci-max
 fcit
 fges
 fges-mb
+flop
 fofc
 ftfc
 gfci
@@ -37,6 +41,7 @@ grasp-fci
 ica-lingam
 ica-lingd
 images
+ion
 latent-cluster
 lv-heuristic
 mimbuild-bollen
@@ -47,12 +52,16 @@ pc
 pc-max
 pcmb
 pcmci
+r3
 restricted-boss
 rfci
 rfci-bsc
 single-graph-alg
+skew
 sp
 sp-fci
 stability-selection
 stars
+trek-mimic
 tsc
+```

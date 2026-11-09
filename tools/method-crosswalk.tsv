@@ -6,10 +6,10 @@ ALG	boss-ccd	BOSS-CCD	X		undocumented-experimental
 ALG	boss-topk	BOSS-TopK	X		undocumented-experimental	
 ALG	cam	CAM	X	algorithms/cam.md	documented	
 ALG	ccd	CCD		algorithms/ccd.md	documented	
-ALG	cd-nod-boss	CD-NOD-BOSS			undocumented	cdnod.md covers only the PC-based CD-NOD
+ALG	cd-nod-boss	CD-NOD-BOSS		algorithms/cd-nod-boss.md	documented-generated	cdnod.md covers only the PC-based CD-NOD; description generated from Tetrad's built-in manual
 ALG	cdnod	CD-NOD	X	algorithms/cdnod.md	documented	
 ALG	cdnodpag	CD-NOD-PAG	X		undocumented-experimental	cdnod.md does not cover the PAG version
-ALG	cfci	CFCI			undocumented	Conservative FCI; cpc.md is Conservative PC, a different method
+ALG	cfci	CFCI		algorithms/cfci.md	documented-generated	Conservative FCI; cpc.md is Conservative PC, a different method; description generated from Tetrad's built-in manual
 ALG	cpc	CPC		algorithms/cpc.md	documented	
 ALG	cpw	CPW	X		undocumented-experimental	
 ALG	cstar	CStaR		algorithms/cstar.md	documented	
@@ -22,18 +22,18 @@ ALG	fask-pool	FASK-Pool	X		undocumented-experimental
 ALG	fask-pw	FASK-PW		algorithms/pairwise.md	documented	shared hub page with r-skew
 ALG	fask-vote	FASK-Vote	X	algorithms/fask-vote.md	documented	
 ALG	fci	FCI		algorithms/fci.md	documented	
-ALG	fci-max	FCI-Max			undocumented	pc-max.md is PC-Max, a different method
+ALG	fci-max	FCI-Max		algorithms/fci-max.md	documented-generated	pc-max.md is PC-Max, a different method; description generated from Tetrad's built-in manual
 ALG	fcit-sl	FCIT-SL	X		undocumented-experimental	
 ALG	fcit-zm	FCIT-ZM	X		undocumented-experimental	
 ALG	fges	FGES		algorithms/fges.md	documented	
 ALG	fges-mb	FGES-MB		algorithms/fges-mb.md	documented	
-ALG	flop	FLOP			undocumented	
+ALG	flop	FLOP		algorithms/flop.md	documented-generated	description generated from Tetrad's built-in manual
 ALG	gfci	GFCI		algorithms/gfci.md	documented	
 ALG	gmas	GMAS	X		undocumented-experimental	
 ALG	grasp	GRASP		algorithms/grasp.md	documented	
 ALG	grasp-fci	GRASP-FCI		algorithms/grasp-fci.md	documented	
 ALG	iod	IOD		algorithms/fci-iod.md	documented-renamed	page is titled FCI-IOD; command is iod
-ALG	ion	ION			undocumented	fci-iod.md covers IOD only, not ION
+ALG	ion	ION		algorithms/ion.md	documented-generated	fci-iod.md covers IOD only, not ION; description generated from Tetrad's built-in manual
 ALG	ling-d	LiNG-D		algorithms/ica-lingd.md	documented-renamed	page is titled ICA LingD; command is ling-d
 ALG	lingam	LiNGAM		algorithms/ica-lingam.md	documented-renamed	page is titled ICA Lingam; command is lingam
 ALG	lv-heuristic	LV-Heuristic	X	algorithms/lv-heuristic.md	documented	
@@ -47,14 +47,14 @@ ALG	pc-mb	PC-MB		algorithms/pcmb.md	documented-renamed	page slug is pcmb; comman
 ALG	pcmci	PCMCI	X	algorithms/pcmci.md	documented	
 ALG	r-boss	Restricted-BOSS		algorithms/restricted-boss.md	documented-renamed	page is titled Restricted BOSS; command is r-boss
 ALG	r-skew	RSkew		algorithms/pairwise.md	documented	shared hub page with fask-pw
-ALG	r3	R3			undocumented	pairwise.md covers FaskPw and RSkew only
+ALG	r3	R3		algorithms/r3.md	documented-generated	pairwise.md covers FaskPw and RSkew only; description generated from Tetrad's built-in manual
 ALG	rfci	RFCI		algorithms/rfci.md	documented	
 ALG	rfci-bsc	RFCI-BSC	X	algorithms/rfci-bsc.md	documented	
 ALG	rlcd	RLCD	X		undocumented-experimental	
-ALG	skew	Skew			undocumented	pairwise.md covers FaskPw and RSkew only
+ALG	skew	Skew		algorithms/skew.md	documented-generated	pairwise.md covers FaskPw and RSkew only; description generated from Tetrad's built-in manual
 ALG	sp	SP	X	algorithms/sp.md	documented	
 ALG	spfci	SP-FCI		algorithms/sp-fci.md	documented-renamed	page slug is sp-fci; command is spfci
-ALG	trek-mimic	Trek-MIMIC			undocumented	
+ALG	trek-mimic	Trek-MIMIC		algorithms/trek-mimic.md	documented-generated	description generated from Tetrad's built-in manual
 ALG	twostep	Two-Step (FastICA, cyclic)	D		undocumented-deprecated	hidden from the choosers
 BLOCK	bpc	BPC		algorithms/bpc.md	documented	reached through the Latent Clusters box
 BLOCK	fofc	FOFC		algorithms/fofc.md	documented	reached through the Latent Clusters box
@@ -62,49 +62,49 @@ BLOCK	ftfc	FTFC		algorithms/ftfc.md	documented	reached through the Latent Cluste
 BLOCK	gffc	GFFC		algorithms/gffc.md	documented	reached through the Latent Clusters box
 BLOCK	tsc	TSC		algorithms/tsc.md	documented	reached through the Latent Clusters box
 SCORE	bdeu-score	BDeu Score		tests-and-scores/bdeu-score.md	documented	
-SCORE	bf-bge-score	BF-BGe (Basis Function BGe)			undocumented	
+SCORE	bf-bge-score	BF-BGe (Basis Function BGe)		tests-and-scores/bf-bge-score.md	documented-generated	description generated from Tetrad's built-in manual
 SCORE	bf-bic-score	BF-BIC (Basis Function BIC)		tests-and-scores/basis-function-bic-score.md	documented-renamed	page title says Basis Function; command is bf-bic-score
-SCORE	bge-score	BGe Score			undocumented	
-SCORE	blocks-bic-score	Blocks-BIC			undocumented	
+SCORE	bge-score	BGe Score		tests-and-scores/bge-score.md	documented-generated	description generated from Tetrad's built-in manual
+SCORE	blocks-bic-score	Blocks-BIC		tests-and-scores/blocks-bic-score.md	documented-generated	description generated from Tetrad's built-in manual
 SCORE	cg-bic-score	CG-BIC (Conditional Gaussian BIC Score)		tests-and-scores/conditional-gaussian-bic-score.md	documented-renamed	GUI shows CG-BIC
-SCORE	dg-bge-score	DG-BGe (Degenerate Gaussian BGe Score)			undocumented	
+SCORE	dg-bge-score	DG-BGe (Degenerate Gaussian BGe Score)		tests-and-scores/dg-bge-score.md	documented-generated	description generated from Tetrad's built-in manual
 SCORE	dg-bic-score	DG-BIC (Degenerate Gaussian BIC Score)		tests-and-scores/degenerate-gaussian-bic-score.md	documented-renamed	GUI shows DG-BIC
 SCORE	disc-bic-score	Discrete BIC Score		tests-and-scores/discrete-bic-score.md	documented	
 SCORE	ebic-score	EBIC Score		tests-and-scores/ebic-score.md	documented	
-SCORE	ffml-score	FFML Score			undocumented	
+SCORE	ffml-score	FFML Score		tests-and-scores/ffml-score.md	documented-generated	description generated from Tetrad's built-in manual
 SCORE	gic-scores	Generalized Information Criterion Scores		tests-and-scores/gic-scores.md	documented	
-SCORE	is-bdeu-score	Instance-specific BDeu Score			undocumented	
+SCORE	is-bdeu-score	Instance-specific BDeu Score		tests-and-scores/is-bdeu-score.md	documented-generated	description generated from Tetrad's built-in manual
 SCORE	kml-score	KML Score	X		undocumented-experimental	
 SCORE	m-sep-score	M-separation Score		tests-and-scores/msep-score.md	documented	
 SCORE	poisson-prior-score	Poisson Prior Score		tests-and-scores/poisson-prior-score.md	documented	
 SCORE	sem-bic-score	Sem BIC Score		tests-and-scores/sem-bic-score.md	documented	
-SCORE	trff-bic-score	TRFF BIC Score			undocumented	
+SCORE	trff-bic-score	TRFF BIC Score		tests-and-scores/trff-bic-score.md	documented-generated	description generated from Tetrad's built-in manual
 SCORE	zsbound-score	ZS Bound Score		tests-and-scores/zhang-shen-bound-score.md	documented-renamed	GUI shows ZS Bound Score
 TEST	be-gcm-test	BE-GCM (Basis-Expanded GCM Test)	X		undocumented-experimental	
 TEST	bf-lr-test	BF-LRT (Basis Function Likelihood Ratio Test)		tests-and-scores/basis-function-lrt.md	documented-renamed	GUI shows BF-LRT
-TEST	blocks-test-ts	Blocks-Test-TS (Trek separation)			undocumented	
+TEST	blocks-test-ts	Blocks-Test-TS (Trek separation)		tests-and-scores/blocks-test-ts.md	documented-generated	description generated from Tetrad's built-in manual
 TEST	cg-lr-test	CG-LRT (Conditional Gaussian Likelihood Ratio Test)		tests-and-scores/conditional-gaussian-lrt.md	documented-renamed	GUI shows CG-LRT
 TEST	chi-square-test	Chi Square Test		tests-and-scores/chi-square.md	documented	
-TEST	cord-test	CORD			undocumented	
+TEST	cord-test	CORD		tests-and-scores/cord-test.md	documented-generated	description generated from Tetrad's built-in manual
 TEST	dg-lr-test	DG-LRT (Degenerate Gaussian Likelihood Ratio Test)		tests-and-scores/degenerate-gaussian-lrt.md	documented-renamed	GUI shows DG-LRT
-TEST	equivalence-test	Equivalence (TOST)			undocumented	
-TEST	ffci-test	FFCI (Fourier Features Conditional Independence)			undocumented	
+TEST	equivalence-test	Equivalence (TOST)		tests-and-scores/equivalence-test.md	documented-generated	description generated from Tetrad's built-in manual
+TEST	ffci-test	FFCI (Fourier Features Conditional Independence)		tests-and-scores/ffci-test.md	documented-generated	description generated from Tetrad's built-in manual
 TEST	fisher-z-test	Fisher Z		tests-and-scores/fisher-z.md	documented	
-TEST	fisherz-cl-test	Fisher Z, Causal Learn (Python)			undocumented	causal-learn bridge
+TEST	fisherz-cl-test	Fisher Z, Causal Learn (Python)		tests-and-scores/fisherz-cl-test.md	documented-generated	causal-learn bridge; description generated from Tetrad's built-in manual
 TEST	g-square-test	G Square Test		tests-and-scores/g-square.md	documented	
-TEST	gcm-test	GCM (Generalized Covariance Measure)			undocumented	
-TEST	kci-cl-test	KCI, Causal Learn (Python)			undocumented	causal-learn bridge
+TEST	gcm-test	GCM (Generalized Covariance Measure)		tests-and-scores/gcm-test.md	documented-generated	description generated from Tetrad's built-in manual
+TEST	kci-cl-test	KCI, Causal Learn (Python)		tests-and-scores/kci-cl-test.md	documented-generated	causal-learn bridge; description generated from Tetrad's built-in manual
 TEST	kci-test	KCI (Kernel Conditional Independence Test)		tests-and-scores/kci-test.md	documented	
 TEST	m-sep-test	M-Separation Test		tests-and-scores/m-separation-test.md	documented	
-TEST	minimax-ci-test	Minimax Conditional Independence Test			undocumented	
+TEST	minimax-ci-test	Minimax Conditional Independence Test		tests-and-scores/minimax-ci-test.md	documented-generated	description generated from Tetrad's built-in manual
 TEST	poisson-prior-test	Poisson Prior Test		tests-and-scores/poisson-bic-test.md	documented-renamed	page is titled Poisson BIC Test; GUI shows Poisson Prior Test
 TEST	prob-test	Probabilistic Test		tests-and-scores/probabilistic-test.md	documented	
-TEST	rcit-cl-test	RCIT, Causal Learn (Python)			undocumented	causal-learn bridge
+TEST	rcit-cl-test	RCIT, Causal Learn (Python)		tests-and-scores/rcit-cl-test.md	documented-generated	causal-learn bridge; description generated from Tetrad's built-in manual
 TEST	rcit-test	RCIT (Random Conditional Independence Test)		tests-and-scores/rcit-test.md	documented	
 TEST	sem-bic-test	SEM BIC Test		tests-and-scores/sem-bic-test.md	documented	
-TEST	stratified-rank-test	Stratified Rank (Domain-Pooled)			undocumented	
-TEST	trff-lr-test	TRFF-LR-Test			undocumented	
-TEST	tsbi	TSBI (Trek Separation Blocks Independence)			undocumented	
+TEST	stratified-rank-test	Stratified Rank (Domain-Pooled)		tests-and-scores/stratified-rank-test.md	documented-generated	description generated from Tetrad's built-in manual
+TEST	trff-lr-test	TRFF-LR-Test		tests-and-scores/trff-lr-test.md	documented-generated	description generated from Tetrad's built-in manual
+TEST	tsbi	TSBI (Trek Separation Blocks Independence)		tests-and-scores/tsbi.md	documented-generated	description generated from Tetrad's built-in manual
 PAGE				algorithms/images.md	concept	IMaGES is now the poolDataSets parameter, not an algorithm entry
 PAGE				algorithms/latent-cluster.md	hub	hub page for the five Latent Clusters block discoverers
 PAGE				algorithms/single-graph-alg.md	script-only	GUI-internal wrapper for a fixed imported graph; not in the chooser
