@@ -1,0 +1,115 @@
+kind	command	name	flags	page	status	note
+ALG	FCIT	FCIT	X	algorithms/fcit.md	documented	
+ALG	bfci	BFCI	X	algorithms/bfci.md	documented	renamed from BOSS-FCI in this round
+ALG	boss	BOSS		algorithms/boss.md	documented	
+ALG	boss-ccd	BOSS-CCD	X		undocumented-experimental	
+ALG	boss-topk	BOSS-TopK	X		undocumented-experimental	
+ALG	cam	CAM	X	algorithms/cam.md	documented	
+ALG	ccd	CCD		algorithms/ccd.md	documented	
+ALG	cd-nod-boss	CD-NOD-BOSS			undocumented	cdnod.md covers only the PC-based CD-NOD
+ALG	cdnod	CD-NOD	X	algorithms/cdnod.md	documented	
+ALG	cdnodpag	CD-NOD-PAG	X		undocumented-experimental	cdnod.md does not cover the PAG version
+ALG	cfci	CFCI			undocumented	Conservative FCI; cpc.md is Conservative PC, a different method
+ALG	cpc	CPC		algorithms/cpc.md	documented	
+ALG	cpw	CPW	X		undocumented-experimental	
+ALG	cstar	CStaR		algorithms/cstar.md	documented	
+ALG	dagma	DAGMA		algorithms/dagma.md	documented	
+ALG	direct-lingam	Direct-LiNGAM		algorithms/direct-lingam.md	documented	
+ALG	factor-anal	Factor Analysis		algorithms/factor-analysis.md	documented-renamed	page slug/title say factor-analysis; command is factor-anal
+ALG	fas	FAS		algorithms/fas.md	documented	
+ALG	fask	FASK		algorithms/fask.md	documented	
+ALG	fask-pool	FASK-Pool	X		undocumented-experimental	
+ALG	fask-pw	FASK-PW		algorithms/pairwise.md	documented	shared hub page with r-skew
+ALG	fask-vote	FASK-Vote	X	algorithms/fask-vote.md	documented	
+ALG	fci	FCI		algorithms/fci.md	documented	
+ALG	fci-max	FCI-Max			undocumented	pc-max.md is PC-Max, a different method
+ALG	fcit-sl	FCIT-SL	X		undocumented-experimental	
+ALG	fcit-zm	FCIT-ZM	X		undocumented-experimental	
+ALG	fges	FGES		algorithms/fges.md	documented	
+ALG	fges-mb	FGES-MB		algorithms/fges-mb.md	documented	
+ALG	flop	FLOP			undocumented	
+ALG	gfci	GFCI		algorithms/gfci.md	documented	
+ALG	gmas	GMAS	X		undocumented-experimental	
+ALG	grasp	GRASP		algorithms/grasp.md	documented	
+ALG	grasp-fci	GRASP-FCI		algorithms/grasp-fci.md	documented	
+ALG	iod	IOD		algorithms/fci-iod.md	documented-renamed	page is titled FCI-IOD; command is iod
+ALG	ion	ION			undocumented	fci-iod.md covers IOD only, not ION
+ALG	ling-d	LiNG-D		algorithms/ica-lingd.md	documented-renamed	page is titled ICA LingD; command is ling-d
+ALG	lingam	LiNGAM		algorithms/ica-lingam.md	documented-renamed	page is titled ICA Lingam; command is lingam
+ALG	lv-heuristic	LV-Heuristic	X	algorithms/lv-heuristic.md	documented	
+ALG	mimbuild-bollen	Mimbuild (Bollen)		algorithms/mimbuild-bollen.md	documented	
+ALG	mimbuild-pca	Mimbuild (PCA)		algorithms/mimbuild-pca.md	documented	
+ALG	pag-sampling-rfci	PAG-Sampling-RFCI		algorithms/pag-sampling-rfci.md	documented	
+ALG	pc	PC		algorithms/pc.md	documented	
+ALG	pc-ar	PC-AR	X		undocumented-experimental	
+ALG	pc-max	PC-Max		algorithms/pc-max.md	documented	
+ALG	pc-mb	PC-MB		algorithms/pcmb.md	documented-renamed	page slug is pcmb; command is pc-mb
+ALG	pcmci	PCMCI	X	algorithms/pcmci.md	documented	
+ALG	r-boss	Restricted-BOSS		algorithms/restricted-boss.md	documented-renamed	page is titled Restricted BOSS; command is r-boss
+ALG	r-skew	RSkew		algorithms/pairwise.md	documented	shared hub page with fask-pw
+ALG	r3	R3			undocumented	pairwise.md covers FaskPw and RSkew only
+ALG	rfci	RFCI		algorithms/rfci.md	documented	
+ALG	rfci-bsc	RFCI-BSC	X	algorithms/rfci-bsc.md	documented	
+ALG	rlcd	RLCD	X		undocumented-experimental	
+ALG	skew	Skew			undocumented	pairwise.md covers FaskPw and RSkew only
+ALG	sp	SP	X	algorithms/sp.md	documented	
+ALG	spfci	SP-FCI		algorithms/sp-fci.md	documented-renamed	page slug is sp-fci; command is spfci
+ALG	trek-mimic	Trek-MIMIC			undocumented	
+ALG	twostep	Two-Step (FastICA, cyclic)	D		undocumented-deprecated	hidden from the choosers
+BLOCK	bpc	BPC		algorithms/bpc.md	documented	reached through the Latent Clusters box
+BLOCK	fofc	FOFC		algorithms/fofc.md	documented	reached through the Latent Clusters box
+BLOCK	ftfc	FTFC		algorithms/ftfc.md	documented	reached through the Latent Clusters box
+BLOCK	gffc	GFFC		algorithms/gffc.md	documented	reached through the Latent Clusters box
+BLOCK	tsc	TSC		algorithms/tsc.md	documented	reached through the Latent Clusters box
+SCORE	bdeu-score	BDeu Score		tests-and-scores/bdeu-score.md	documented	
+SCORE	bf-bge-score	BF-BGe (Basis Function BGe)			undocumented	
+SCORE	bf-bic-score	BF-BIC (Basis Function BIC)		tests-and-scores/basis-function-bic-score.md	documented-renamed	page title says Basis Function; command is bf-bic-score
+SCORE	bge-score	BGe Score			undocumented	
+SCORE	blocks-bic-score	Blocks-BIC			undocumented	
+SCORE	cg-bic-score	CG-BIC (Conditional Gaussian BIC Score)		tests-and-scores/conditional-gaussian-bic-score.md	documented-renamed	GUI shows CG-BIC
+SCORE	dg-bge-score	DG-BGe (Degenerate Gaussian BGe Score)			undocumented	
+SCORE	dg-bic-score	DG-BIC (Degenerate Gaussian BIC Score)		tests-and-scores/degenerate-gaussian-bic-score.md	documented-renamed	GUI shows DG-BIC
+SCORE	disc-bic-score	Discrete BIC Score		tests-and-scores/discrete-bic-score.md	documented	
+SCORE	ebic-score	EBIC Score		tests-and-scores/ebic-score.md	documented	
+SCORE	ffml-score	FFML Score			undocumented	
+SCORE	gic-scores	Generalized Information Criterion Scores		tests-and-scores/gic-scores.md	documented	
+SCORE	is-bdeu-score	Instance-specific BDeu Score			undocumented	
+SCORE	kml-score	KML Score	X		undocumented-experimental	
+SCORE	m-sep-score	M-separation Score		tests-and-scores/msep-score.md	documented	
+SCORE	poisson-prior-score	Poisson Prior Score		tests-and-scores/poisson-prior-score.md	documented	
+SCORE	sem-bic-score	Sem BIC Score		tests-and-scores/sem-bic-score.md	documented	
+SCORE	trff-bic-score	TRFF BIC Score			undocumented	
+SCORE	zsbound-score	ZS Bound Score		tests-and-scores/zhang-shen-bound-score.md	documented-renamed	GUI shows ZS Bound Score
+TEST	be-gcm-test	BE-GCM (Basis-Expanded GCM Test)	X		undocumented-experimental	
+TEST	bf-lr-test	BF-LRT (Basis Function Likelihood Ratio Test)		tests-and-scores/basis-function-lrt.md	documented-renamed	GUI shows BF-LRT
+TEST	blocks-test-ts	Blocks-Test-TS (Trek separation)			undocumented	
+TEST	cg-lr-test	CG-LRT (Conditional Gaussian Likelihood Ratio Test)		tests-and-scores/conditional-gaussian-lrt.md	documented-renamed	GUI shows CG-LRT
+TEST	chi-square-test	Chi Square Test		tests-and-scores/chi-square.md	documented	
+TEST	cord-test	CORD			undocumented	
+TEST	dg-lr-test	DG-LRT (Degenerate Gaussian Likelihood Ratio Test)		tests-and-scores/degenerate-gaussian-lrt.md	documented-renamed	GUI shows DG-LRT
+TEST	equivalence-test	Equivalence (TOST)			undocumented	
+TEST	ffci-test	FFCI (Fourier Features Conditional Independence)			undocumented	
+TEST	fisher-z-test	Fisher Z		tests-and-scores/fisher-z.md	documented	
+TEST	fisherz-cl-test	Fisher Z, Causal Learn (Python)			undocumented	causal-learn bridge
+TEST	g-square-test	G Square Test		tests-and-scores/g-square.md	documented	
+TEST	gcm-test	GCM (Generalized Covariance Measure)			undocumented	
+TEST	kci-cl-test	KCI, Causal Learn (Python)			undocumented	causal-learn bridge
+TEST	kci-test	KCI (Kernel Conditional Independence Test)		tests-and-scores/kci-test.md	documented	
+TEST	m-sep-test	M-Separation Test		tests-and-scores/m-separation-test.md	documented	
+TEST	minimax-ci-test	Minimax Conditional Independence Test			undocumented	
+TEST	poisson-prior-test	Poisson Prior Test		tests-and-scores/poisson-bic-test.md	documented-renamed	page is titled Poisson BIC Test; GUI shows Poisson Prior Test
+TEST	prob-test	Probabilistic Test		tests-and-scores/probabilistic-test.md	documented	
+TEST	rcit-cl-test	RCIT, Causal Learn (Python)			undocumented	causal-learn bridge
+TEST	rcit-test	RCIT (Random Conditional Independence Test)		tests-and-scores/rcit-test.md	documented	
+TEST	sem-bic-test	SEM BIC Test		tests-and-scores/sem-bic-test.md	documented	
+TEST	stratified-rank-test	Stratified Rank (Domain-Pooled)			undocumented	
+TEST	trff-lr-test	TRFF-LR-Test			undocumented	
+TEST	tsbi	TSBI (Trek Separation Blocks Independence)			undocumented	
+PAGE				algorithms/images.md	concept	IMaGES is now the poolDataSets parameter, not an algorithm entry
+PAGE				algorithms/latent-cluster.md	hub	hub page for the five Latent Clusters block discoverers
+PAGE				algorithms/single-graph-alg.md	script-only	GUI-internal wrapper for a fixed imported graph; not in the chooser
+PAGE				algorithms/stability-selection.md	script-only	algcomparison/py-tetrad wrapper; not in the chooser
+PAGE				algorithms/stars.md	script-only	algcomparison/py-tetrad wrapper; not in the chooser
+PAGE				tests-and-scores/cci-test.md	orphan	cci-test annotation is commented out; also in no toctree
+PAGE				tests-and-scores/mvp-bic-score.md	orphan	mvp-bic-score annotation is commented out
+PAGE				tests-and-scores/mvplrt.md	orphan	mvplr-test annotation is commented out
