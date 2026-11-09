@@ -31,14 +31,14 @@ LV-Heuristic **is**:
 
 LV-Heuristic is **not**:
 
-- a full replacement for FCI/GFCI/BOSS-FCI/FCIT
+- a full replacement for FCI/GFCI/BFCI/FCIT
 - guaranteed to detect all latent confounders
 - theoretically complete
 
 It is best viewed as a **lightweight companion** to the more powerful mixed-strategy algorithms.
 
 Cross-refs:  
-👉 [BOSS-FCI](boss-fci.md) •  
+👉 [BFCI](bfci.md) •  
 👉 [GRaSP-FCI](grasp-fci.md) •  
 👉 [FCIT](fcit.md) •  
 👉 [GFCI](gfci.md) •  
@@ -64,7 +64,7 @@ Only when the DAG structure **cannot** be explained without a hidden common caus
 This keeps false positive bidirected edges extremely low.
 
 ### 4. Enforce legality
-Just like in FCIT and BOSS-FCI, LV-Heuristic ensures the output is:
+Just like in FCIT and BFCI, LV-Heuristic ensures the output is:
 
 - ancestral
 - acyclic
@@ -104,13 +104,13 @@ LV-Heuristic often functions as a “first draft PAG.”
 - Not a complete characterization of the latent structure
 - Will miss subtle unmeasured confounders that require CI-based reasoning
 - Not designed to detect selection bias
-- Not a replacement for BOSS-FCI or FCIT in scientific inference
+- Not a replacement for BFCI or FCIT in scientific inference
 
 ---
 
 ## How LV-Heuristic Differs From Other Mixed-Strategy Algorithms
 
-### vs. **BOSS-FCI** / **GRaSP-FCI**
+### vs. **BFCI** / **GRaSP-FCI**
 - LV-Heuristic is **much simpler**.
 - It does **not** perform the full refinement / collider-correction logic.
 - It produces cleaner but more **conservative** PAGs.

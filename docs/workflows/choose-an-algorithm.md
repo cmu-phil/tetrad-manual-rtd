@@ -110,7 +110,7 @@ Notes:
 
 ### 2.3. Hybrid Methods
 
-**Examples:** BOSS-FCI, GRaSP-FCI, FCIT
+**Examples:** BFCI, GRaSP-FCI, FCIT
 
 Hybrid methods combine ideas from both constraint-based and score-based approaches.  
 They typically use a score-based procedure to propose or refine adjacencies, followed by
@@ -148,7 +148,7 @@ The table below summarizes common starting points:
 | Assumptions / Goals | Suggested Methods                  | Notes |
 |--------------------|------------------------------------|-------|
 | Causal sufficiency, linear-Gaussian | PC, FGES, BOSS, GRaSP              | Standard baseline |
-| Latents possible, linear-Gaussian | FCI, BOSS-FCI, GRaSP-FCI           | Produces PAGs |
+| Latents possible, linear-Gaussian | FCI, BFCI, GRaSP-FCI           | Produces PAGs |
 | Nonlinear or non-Gaussian | PC/FCI with nonparametric tests    | More flexible, often slower |
 | Mixed data types | Mixed tests or score-based methods | Check compatibility carefully |
 | High-dimensional data | Penalized scores, hybrid methods   | Regularization is helpful |

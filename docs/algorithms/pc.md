@@ -55,7 +55,7 @@ These constraints are respected during both adjacency removal and orientation pr
 - Produces a **clean CPDAG** with explicit orientation logic
 - Works with many types of CI tests (parametric, nonparametric, hybrid)
 - Often very fast, especially with sparse graphs
-- Serves as the foundation for many advanced algorithms (FCI, GFCI, BOSS-FCI, FCIT)
+- Serves as the foundation for many advanced algorithms (FCI, GFCI, BFCI, FCIT)
 
 ---
 

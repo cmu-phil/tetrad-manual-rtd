@@ -97,7 +97,7 @@ The algorithm is simple but factorial in `p`, which is why it is mostly used for
     - [BOSS](boss.md) adopts a permutation-based viewpoint (like SP) but uses Grow–Shrink Trees and heuristic pruning to scale to much larger graphs.
 
 - **Hybrid latent-variable extensions**
-    - [SP-FCI](sp-fci.md) combines SP with FCI-style corrections to produce PAGs; it is practical only for very small models but provides a useful comparison point to [BOSS-FCI](boss-fci.md) and [GRaSP-FCI](grasp-fci.md).
+    - [SP-FCI](sp-fci.md) combines SP with FCI-style corrections to produce PAGs; it is practical only for very small models but provides a useful comparison point to [BFCI](bfci.md) and [GRaSP-FCI](grasp-fci.md).
 
 ---
 

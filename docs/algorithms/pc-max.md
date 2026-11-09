@@ -70,7 +70,7 @@ All constraints are enforced consistently during adjacency removal and orientati
 
 - Same as PC: assumes DAGs without latent confounding  
 - Faithfulness and suitable CI tests required  
-- For latent confounders, use FCI/GFCI/BOSS-FCI/FCIT
+- For latent confounders, use FCI/GFCI/BFCI/FCIT
 
 ---
 

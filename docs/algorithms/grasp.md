@@ -41,7 +41,7 @@ GRaSP is a good choice when:
 Less ideal when:
 
 - \( p \) is very large and you need maximal scalability (then [FGES](fges.md) or [BOSS](boss.md) may be more practical).
-- You’re primarily interested in latent-variable structure—in that case use [GFCI](gfci.md), [BOSS-FCI](boss-fci.md), [GRaSP-FCI](grasp-fci.md), or [FCIT](fcit.md).
+- You’re primarily interested in latent-variable structure—in that case use [GFCI](gfci.md), [BFCI](bfci.md), [GRaSP-FCI](grasp-fci.md), or [FCIT](fcit.md).
 
 ---
 

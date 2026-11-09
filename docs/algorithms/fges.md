@@ -110,7 +110,7 @@ All constraints are enforced consistently during the forward and backward phases
 
 - Less accurate on **very small** or **very dense** models
 - Requires a well-behaved score (BIC, SEM-BIC, GLM-BIC, etc.)
-- Assumes causal sufficiency unless hybridized (see GFCI, BOSS-FCI, FCIT)
+- Assumes causal sufficiency unless hybridized (see GFCI, BFCI, FCIT)
 
 ---
 

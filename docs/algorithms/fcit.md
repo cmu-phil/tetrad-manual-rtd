@@ -77,8 +77,8 @@ Thus, FCIT produces a **legal PAG at every intermediate step**, not just at the 
 - GFCI uses FGES for skeletons; FCIT uses **score-guided test prioritization** instead.
 - FCIT tends to produce cleaner PAGs with fewer false positives.
 
-### vs. **BOSS-FCI / GRaSP-FCI**
-- BOSS-FCI and GRaSP-FCI replace the skeleton; FCIT replaces the **testing schedule**.
+### vs. **BFCI / GRaSP-FCI**
+- BFCI and GRaSP-FCI replace the skeleton; FCIT replaces the **testing schedule**.
 - FCIT is often the most **stable** of the mixed-strategy algorithms.
 
 ### vs. **LV-Heuristic**
@@ -86,7 +86,7 @@ Thus, FCIT produces a **legal PAG at every intermediate step**, not just at the 
 - FCIT is a principled hybrid consistent with FCI logic.
 
 Cross-references:
-👉 [BOSS-FCI](boss-fci.md) •  
+👉 [BFCI](bfci.md) •  
 👉 [GRaSP-FCI](grasp-fci.md) •  
 👉 [GFCI](gfci.md) •  
 👉 [FCI](fci.md) •  
@@ -96,7 +96,7 @@ Cross-references:
 
 ## Prior Knowledge Support
 
-**FCIT is fully knowledge-aware**, just like PC, FGES, FCI, GFCI, and BOSS-FCI.
+**FCIT is fully knowledge-aware**, just like PC, FGES, FCI, GFCI, and BFCI.
 
 Knowledge constraints affect:
 

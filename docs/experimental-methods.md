@@ -19,8 +19,9 @@ this manual. A few do, and those pages may describe an earlier version of the me
 the one in the release you are running. Where a manual page and the program disagree about an
 experimental method, the program is correct.
 
-If you need a method whose behavior is documented and stable, choose one that is not on the list
-below. The short list of recommended algorithms contains no experimental methods.
+If you need a method whose behavior is documented and stable, prefer one that is not on the list
+below. Note that two entries on the short list of recommended algorithms, BFCI and FCIT, are
+marked experimental in this release.
 
 ## Seeing them in the interface
 
@@ -37,7 +38,7 @@ release. Where a page exists in this manual, it is linked.
 
 | Method | Manual page |
 |---|---|
-| BFCI | none |
+| BFCI | [BFCI](algorithms/bfci.md) |
 | BOSS-CCD | none |
 | BOSS-TopK | none |
 | CAM | [CAM](algorithms/cam.md) |

@@ -72,7 +72,7 @@ These are the scores used by score-based and hybrid search methods.
 
 - **Constraint-based algorithms** (PC, CPC, RFCI, FCI, PCMCI) take **any independence test** listed above.
 - **Score-based algorithms** (FGES, BOSS, GRaSP, SP, IMaGES) take **any score** listed above.
-- **Hybrid algorithms** (GFCI, GRaSP-FCI, BOSS-FCI, SP-FCI, FCIT) use both:
+- **Hybrid algorithms** (GFCI, GRaSP-FCI, BFCI, SP-FCI, FCIT) use both:
     - a score to propose or prune adjacencies, and
     - a CI test for collider orientation or selective FCI-style checking.
 

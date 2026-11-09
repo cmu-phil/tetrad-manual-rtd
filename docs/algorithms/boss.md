@@ -29,7 +29,7 @@ BOSS is a good default when:
 - You are comfortable assuming that a **good score** (e.g., BIC/BDeu/BF-BIC/BF-LRT) will identify high-quality structures.
 - You want a method that **scales well even for moderately or very dense graphs** (e.g., average degree up to 20, as demonstrated in the paper).
 - You may later feed the DAG into downstream algorithms such as:
-    - [BOSS-FCI](boss-fci.md) for latent-variable PAGs.
+    - [BFCI](bfci.md) for latent-variable PAGs.
     - [LV-Heuristic](lv-heuristic.md) for a fast preliminary PAG.
 
 Less suitable when:
@@ -76,7 +76,7 @@ The BOSS paper shows that GSTs give **near-SP-level accuracy** with far better s
   GST-based pruning and caching make order-based search practical for substantially larger graphs than naive SP-style permutation search.
 
 - **Good foundation for latent-variable extensions**  
-  Serves as the backbone for [BOSS-FCI](boss-fci.md) and as the DAG input to [LV-Heuristic](lv-heuristic.md).
+  Serves as the backbone for [BFCI](bfci.md) and as the DAG input to [LV-Heuristic](lv-heuristic.md).
 
 - **Parallelizable**  
   Scoring of different candidate parents/orders can be parallelized across threads.
@@ -86,7 +86,7 @@ The BOSS paper shows that GSTs give **near-SP-level accuracy** with far better s
 ## Limitations
 
 - **No explicit latent variables**  
-  BOSS outputs a CPDAG over the observed variables; latent confounding must be handled by downstream methods (e.g., BOSS-FCI, FCIT, etc.).
+  BOSS outputs a CPDAG over the observed variables; latent confounding must be handled by downstream methods (e.g., BFCI, FCIT, etc.).
 
 - **Score and penalty sensitive**  
   As with other score-based methods, performance depends on:
@@ -110,7 +110,7 @@ The BOSS paper shows that GSTs give **near-SP-level accuracy** with far better s
     - [GRaSP](grasp.md) relaxes SP into a greedy local search; BOSS uses a related order-based perspective but with **GSTs** and design choices that improve scalability.
 
 - **As a building block for latent-variable PAGs**
-    - [BOSS-FCI](boss-fci.md) and [FCIT](fcit.md) use BOSS as their score-based component.
+    - [BFCI](bfci.md) and [FCIT](fcit.md) use BOSS as their score-based component.
 
 ---
 
@@ -154,4 +154,4 @@ These constraints are enforced at the **ordering and parent-selection** levels, 
 
 ## Summary
 
-BOSS is Tetrad’s **workhorse order-based score search**: it leverages Grow–Shrink Trees to explore permutations efficiently, yielding accurate DAGs/CPDAGs at meaningful scales and serving as a core building block for modern latent-variable methods like BOSS-FCI and FCIT.
+BOSS is Tetrad’s **workhorse order-based score search**: it leverages Grow–Shrink Trees to explore permutations efficiently, yielding accurate DAGs/CPDAGs at meaningful scales and serving as a core building block for modern latent-variable methods like BFCI and FCIT.

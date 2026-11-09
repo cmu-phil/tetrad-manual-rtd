@@ -9,8 +9,8 @@ Tetrad’s structure-learning methods.
 :maxdepth: 1
 :numbered:
 
+bfci
 boss
-boss-fci
 bpc
 cam
 ccd

@@ -69,8 +69,7 @@ If you are new to Tetrad or want a curated subset of recommended methods, start 
 | **Grasp** — [GRaSP](algorithms/grasp.md) 📏                              | Greedy Relaxations of Sparsest Permutation.                       |
 | **LV-Heuristic** — [LV-Heuristic](algorithms/lv-heuristic.md) 🪶         | Heuristic PAG from BOSS DAG; lightweight alternative to FCI/FCIT. |
 | **Sp** — [SP](algorithms/sp.md) 📏                                       | Sparsest Permutation; exact but only for very small models.       |
-| **Images** 🧩🧠📏 — [IMaGES](algorithms/images.md)                       | Multi-sample FGES with cross-sample consistency.                  |
-| **IMaGESBoss** 🧩🧠📏 — [IMaGES](algorithms/images.md)                   | Multi-sample BOSS with cross-sample consistency.                  |
+| **IMaGES** 🧩🧠📏 — [IMaGES](algorithms/images.md)                       | Not a separate algorithm. Pool several datasets into one search by setting `poolDataSets` on any score- or test-based algorithm. |
 
 ---
 
@@ -82,7 +81,7 @@ If you are new to Tetrad or want a curated subset of recommended methods, start 
 |----------|-------------|
 | **Gfci** — [GFCI](algorithms/gfci.md) 🌀🧩 | FGES → FCI refinement yielding a PAG. |
 | **GraspFci** — [GRaSP-FCI](algorithms/grasp-fci.md) 🌀🧩 | GRaSP → FCI refinement. |
-| **BossFci** — [BOSS-FCI](algorithms/boss-fci.md) 🌀🧩 | BOSS → FCI refinement. |
+| **Bfci** — [BFCI](algorithms/bfci.md) 🌀🧩 | BOSS → FCI refinement. |
 | **SpFci** — [SP-FCI](algorithms/sp-fci.md) 🌀🧩 | Sparsest Permutation → FCI refinement. |
 | **Fcit** — [FCIT](algorithms/fcit.md) 🌀🧩 | Score-guided selective testing; efficient, legal-PAG output. |
 

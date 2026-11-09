@@ -44,7 +44,7 @@ You may skip this step for your first run.
    (and from the Knowledge box if you're using one).
 3. Double-click the Search box and choose an algorithm:
     - **PC**, **FGES**, **BOSS** — if no hidden confounders (DAG/CPDAG)
-    - **FCI**, **GFCI**, **BOSS-FCI** — if hidden confounders are possible
+    - **FCI**, **GFCI**, **BFCI** — if hidden confounders are possible
 4. Set parameters if needed.
 5. Click **Run Search and Generate Graph**.
 

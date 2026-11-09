@@ -106,7 +106,7 @@ The PAG captures all invariant ancestral relations implied by the observed CIs.
 
 - PC: special case assuming no latent confounders or selection bias; outputs a CPDAG.
 - RFCI: faster but sometimes more conservative.
-- GFCI, BOSS-FCI, GRaSP-FCI: hybrids that use score-based initialization followed by FCI-style refinement.
+- GFCI, BFCI, GRaSP-FCI: hybrids that use score-based initialization followed by FCI-style refinement.
 - FCIT: retains FCI’s PAG semantics but uses targeted, score-guided test scheduling.
 
 ## Strengths

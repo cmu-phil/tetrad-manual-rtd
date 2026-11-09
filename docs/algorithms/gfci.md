@@ -11,7 +11,7 @@ GFCI is a **hybrid latent-variable causal discovery algorithm** that combines:
 to produce a **PAG** that is sound for models containing **latent confounding** and **selection bias**.
 
 It serves as the **parent template** for the other hybrid latent-variable algorithms in Tetrad, including:  
-➡️ **BOSS-FCI**, **GRaSP-FCI**, and **FCIT**.
+➡️ **BFCI**, **GRaSP-FCI**, and **FCIT**.
 
 ---
 
@@ -46,7 +46,7 @@ smaller set of adjacencies—making it faster and more robust.
 - You expect **latent confounding** or **selection bias**.  
 - You want a **PAG** but need more **efficiency** or **robustness** than pure FCI.  
 - You trust a **score-based model** (FGES) to find a good CPDAG skeleton.  
-- You want a strong hybrid baseline before trying BOSS-FCI, GRaSP-FCI, or FCIT.
+- You want a strong hybrid baseline before trying BFCI, GRaSP-FCI, or FCIT.
 
 GFCI remains one of the most practical algorithms for medium-to-large models with latent structure.
 
@@ -102,7 +102,7 @@ Knowledge is honored during both FGES and the FCI-style refinement.
 - **FCI** — Constraint-only PAG learning  
 - **RFCI** — Faster, more conservative variant  
 - **GFCI** — Hybrid: *FGES → FCI refinement*  
-- **BOSS-FCI** — Uses **BOSS** instead of FGES  
+- **BFCI** — Uses **BOSS** instead of FGES  
 - **GRaSP-FCI** — Uses **GRaSP** instead of FGES  
 - **FCIT** — Uses **targeted testing** guided by scores
 

@@ -1,132 +1,77 @@
-# IMaGES — Independent Multiple-sample Greedy Equivalence Search
+# IMaGES — Pooled Multi-Dataset Scoring
 
-**Type:** Score-based (multi-dataset)  
-**Output:** CPDAG
+**Type:** Scoring mode, not a separate algorithm  
+**Output:** Same graph class as the algorithm you pool (CPDAG for BOSS or FGES, and so on)
 
-IMaGES extends GES/FGES to the case where you have **multiple datasets** measured on the *same set of variables*, assuming that **all datasets share the same causal structure** even if their noise distributions differ.
+IMaGES is no longer a separate entry in Tetrad's algorithm list. It is now a parameter,
+`poolDataSets`, which any score-based or test-based algorithm can use. Running BOSS with a
+pooled score **is** IMaGES with that score, and the same idea extends to tests: running PC with
+a pooled test is a pooled PC.
 
-Typical use cases:
-- fMRI data from multiple subjects performing the same task
-- Multi-site or multi-scanner datasets
-- Repeated measurements or multiple sessions
-- Any situation with several independent datasets measuring the same variables
+If you are looking for the old **IMaGES**, **IMaGES-BOSS** or **IMaGES-FGES** entries, this is
+where they went. Nothing was lost; the capability was generalized so that it works with any
+score rather than only with the one IMaGES shipped with.
 
-IMaGES modifies the scoring step of GES/FGES:
+## How to use it
 
-## Key Idea
-For each candidate edge addition or removal, compute **one BIC score per dataset**, then **average the scores**:
+1. Supply more than one dataset, measured on the same variables. One dataset is not enough, and
+   with a single dataset the option has no effect.
+2. Choose a score-based or test-based algorithm — BOSS, FGES, GRaSP, PC, FCI and the like.
+3. Set `poolDataSets` to Yes in the algorithm's parameter panel.
 
-    Score_IMaGES = (1/M) * Σ_{m=1}^M BIC_m
+The algorithm then runs **once**, with its score replaced by a single score formed from the
+per-dataset scores, and its independence test, if it uses one, replaced by the Fisher
+combination of the per-dataset p-values. With the option off, which is the default, the
+algorithm runs separately on each dataset and you get one graph per dataset.
 
-This produces:
-- More stable structure estimates
-- Fewer false positives due to dataset-specific noise
-- The ability to use multiple small datasets without concatenating them
+Not every algorithm can pool. Tetrad requires one that takes a score or a test, and it reports
+an error naming the option if you ask an algorithm that cannot.
 
-The greedy search (forward + backward phases) proceeds just like FGES, but uses this averaged score.
+## What the pooled score is
 
----
+By default the pooled score is an equally weighted average of the per-dataset scores, so each
+sample counts equally and a dataset influences the result in proportion to its sample size. An
+alternative weighting rescales each dataset's contribution so that its vote does not depend on
+its sample size.
 
-## Variants
+## When pooling is the right choice
 
-### IMaGES
-Uses **FGES** as the greedy engine with the IMaGES averaged score.  
-Output: CPDAG.
+Pooling suits data that were collected in separate batches but are believed to share one causal
+structure:
 
-### IMaGES-BOSS
-Uses **BOSS** as the search engine but applies the IMaGES score at each step.  
-Often more scalable and robust than FGES-based IMaGES, especially for mixed data or larger models.
+- fMRI data from several subjects performing the same task
+- multi-site or multi-scanner studies
+- repeated measurements, sessions, or regions
+- several small datasets that you do not want to concatenate
 
----
+Concatenating such datasets instead would mix their means and variances and can create
+associations that exist in no single dataset. Pooling the score avoids that.
 
-## When to Use
+## Assumptions and limits
 
-- You have **multiple independent datasets** with identical variable sets
-- You believe the underlying **causal structure is shared**
-- You want a more **stable CPDAG estimate** than running searches separately
-- Particularly effective for:
-    - fMRI studies
-    - clinical multi-site data
-    - repeated measurements
-    - large cohorts with multiple sessions
+- The datasets share one causal structure. If their mechanisms differ in ways you care about,
+  pool nothing and compare the separate graphs instead.
+- The datasets are independent of one another.
+- Pooling does not address latent confounding. For that, pool a latent-variable algorithm such
+  as GFCI, BFCI or FCIT rather than a CPDAG search.
+- Time lags are applied to each dataset separately before pooling.
+- Bootstrapping resamples rows within each dataset.
 
----
+## Prior knowledge
 
-## Prior Knowledge Support
-
-**IMaGES fully supports background knowledge.**
-
-You may connect a **Knowledge** box to the IMaGES Search box in the GUI, or supply a `Knowledge` object programmatically (Java, py-tetrad, or rpy-tetrad). IMaGES will enforce:
-
-- **Forbidden edges**
-- **Required edges**
-- **Tier/temporal ordering constraints**
-- Any other structural constraints supported by FGES/BOSS
-
-Because IMaGES performs a **score-based CPDAG search** (via FGES or BOSS) but aggregates scores across multiple datasets, **all knowledge constraints are applied uniformly to each scoring step**, ensuring that the pooled/averaged score respects the user’s assumptions across all datasets.
-
-If a constraint is incompatible with any dataset in the collection, IMaGES will still enforce it globally, just as standard FGES/BOSS would.
-
----
-
-## Strengths
-
-- Highly stable compared to single-dataset GES/FGES
-- Avoids incorrect concatenation of datasets
-- Reduces sampling noise
-- Parallelizable (each dataset’s score can be computed independently)
-- Still outputs a clean, interpretable **CPDAG**
-
----
-
-## Limitations
-
-- Requires the assumption of a **shared causal structure** across datasets
-- Not appropriate if datasets differ meaningfully in mechanisms
-- Cannot by itself handle latent confounding (use GFCI/BOSS-FCI/FCIT for that)
-
----
-
-## Key Parameters in Tetrad
-
-IMaGES exposes several parameters that control both the FGES/BOSS search step and the multi-dataset scoring behavior. All parameters appear in the Tetrad GUI and scripting interfaces using the **camelCase** versions shown here.
-
-| Parameter (camelCase) | Description |
-|------------------------|-------------|
-| `penaltyDiscount` | Multiplies the BIC penalty term. Larger values → sparser graphs. |
-| `semBicStructurePrior` | Prior over graph structures used in SEM-BIC scoring. |
-| `semBicRule` | Choice of local scoring rule (e.g., “SEM-BIC Score Rule”). |
-| `precomputeCovariances` | Whether to cache covariances for efficiency across datasets. |
-| `singularityLambda` | Regularization constant applied when covariance matrices are near-singular. |
-| `effectiveSampleSize` | Overrides sample size used in scoring (used with weighting or meta-designs). |
-| `symmetricFirstStep` | Whether the initial forward step uses a symmetric score evaluation. |
-| `maxDegree` | Maximum allowed degree per node (structural regularization). |
-| `numThreads` | Number of threads for parallel FGES/BOSS operations. |
-| `faithfulnessAssumed` | If true, assumes perfect faithfulness during adjacency search. |
-| `timeLag` | Lag (τ) when IMaGES is applied to time-series or lagged datasets. |
-| `timeLagReplicatingGraph` | Whether lagged graphs should be structurally replicated across time slices. |
-| `randomSelectionSize` | Size of random subsets considered during order or edge evaluation. |
-| `imagesMetaAlg` | Which score-driven meta-algorithm to use for multi-dataset merging. |
-| `verbose` | Print detailed scoring/decision information during search. |
-
-These parameters allow IMaGES to:
-
-- share information across multiple datasets,
-- encourage stability and reduce noise in scoring,
-- scale to large multi-subject studies (e.g., neuroimaging),
-- and enforce structural constraints across datasets or time-slices.
-
----
+Background knowledge is honored. Connect a Knowledge box, or supply a `Knowledge` object from
+Java, py-tetrad or rpy-tetrad, and the constraints are applied to every scoring step, so the
+pooled score respects them across all datasets. If no Knowledge box is connected, Tetrad will
+use knowledge carried on the first dataset.
 
 ## Reference
 
-Ramsey, J. D., Hanson, S. J., & Glymour, C. (2011).  
-**Multi-subject search correctly identifies causal connections and most causal directions in the DCM models of the Smith et al. simulation study.**  
+Ramsey, J. D., Hanson, S. J., & Glymour, C. (2011).
+**Multi-subject search correctly identifies causal connections and most causal directions in the
+DCM models of the Smith et al. simulation study.**
 *NeuroImage*, 58(3), 838–848.
-
----
 
 ## Summary
 
-**IMaGES = GES/FGES/BOSS + averaged BIC scores across datasets.**  
-A robust and stable multi-sample CPDAG algorithm for repeated-measure or multi-subject data.
+**IMaGES = any score-based or test-based algorithm + `poolDataSets`.** Set the parameter rather
+than looking for an algorithm by that name.

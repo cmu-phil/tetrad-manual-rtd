@@ -20,7 +20,7 @@ A quick rule of thumb:
   (FGES, BOSS, PC, PC-Max)
 
 - **Hidden confounders possible** → Use **PAG** methods  
-  (FCI, GFCI, BOSS-FCI, FCIT)
+  (FCI, GFCI, BFCI, FCIT)
 
 ---
 
@@ -68,10 +68,10 @@ Extends PC with additional pruning and orientation rules (R0–R10) to represent
 Uses FGES to obtain a CPDAG, then upgrades it to a PAG via FCI-style pruning/orientation. Parent design for newer hybrids.  
 → Full page: [GFCI](algorithms/gfci.md)
 
-**BOSS-FCI**  
+**BFCI**  
 🌀 Hybrid • 🧩 Latent-capable • Output: PAG  
 Replaces FGES with BOSS, producing a sharper starting point and improved pruning/orientation accuracy. Excellent general-purpose PAG learner.  
-→ Full page: [BOSS-FCI](algorithms/boss-fci.md)
+→ Full page: [BFCI](algorithms/bfci.md)
 
 **FCIT — FCI with Targeted Testing**  
 🌀 Hybrid • 🧩 Latent-capable • 🎯 Targeted CI tests • Output: PAG  

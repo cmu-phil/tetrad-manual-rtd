@@ -13,7 +13,7 @@ It compares a full model (X depends on Y and S) to a reduced model (X depends on
 
 - Relationships may be **nonlinear** or **smooth but non-Gaussian**.
 - Dataset includes **mixed variable types**.
-- You want a parametric and scalable test for PC, PC-Max, BOSS-FCI, FCIT, or other nonlinear workflows.
+- You want a parametric and scalable test for PC, PC-Max, BFCI, FCIT, or other nonlinear workflows.
 
 ## Assumptions
 

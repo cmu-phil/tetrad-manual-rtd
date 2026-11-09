@@ -5,7 +5,7 @@
 **Knowledge:** Fully supported (all Tetrad knowledge constraints)
 
 GRaSP-FCI is one of the mixed-strategy latent-variable algorithms introduced in  
-**Ramsey, Andrews & Spirtes (2025)**. It follows the same *X-FCI template* as BOSS-FCI and GFCI, but uses **GRaSP**—a permutation-based score search—for the initial CPDAG before performing an FCI-style latent-variable correction.
+**Ramsey, Andrews & Spirtes (2025)**. It follows the same *X-FCI template* as BFCI and GFCI, but uses **GRaSP**—a permutation-based score search—for the initial CPDAG before performing an FCI-style latent-variable correction.
 
 The result is a **PAG** that often shows better adjacency recall than FGES-based hybrids and more stable performance on certain permutation-favorable models.
 
@@ -62,9 +62,9 @@ GRaSP-FCI thus combines **permutation scoring** (which behaves well for some dat
 
 ## How It Differs From Related Algorithms
 
-- **vs. BOSS-FCI**
+- **vs. BFCI**
     - GRaSP-FCI uses **permutations**, not variable orders.
-    - Typically slower than BOSS-FCI; sometimes better on medium-sized datasets with specific structure.
+    - Typically slower than BFCI; sometimes better on medium-sized datasets with specific structure.
 
 - **vs. GFCI**
     - GFCI uses FGES for skeleton discovery; GRaSP-FCI uses GRaSP.
@@ -80,7 +80,7 @@ GRaSP-FCI thus combines **permutation scoring** (which behaves well for some dat
 
 Cross-references:  
 👉 [GRaSP](grasp.md) •  
-👉 [BOSS-FCI](boss-fci.md) •  
+👉 [BFCI](bfci.md) •  
 👉 [GFCI](gfci.md) •  
 👉 [FCIT](fcit.md) •  
 👉 [LV-Heuristic](lv-heuristic.md)

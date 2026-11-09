@@ -106,7 +106,7 @@ The output is a list of **disjoint pure clusters**, each intended to represent o
 - Clusters are **disjoint**: no observed variable belongs to more than one latent factor in the BPC solution.
 - These clusters can be used to:
     - Build a **measurement model** (one latent per cluster), then
-    - Run a structural discovery algorithm (e.g., PC, GFCI, BOSS-FCI) on the latents.
+    - Run a structural discovery algorithm (e.g., PC, GFCI, BFCI) on the latents.
 
 ---
 

@@ -57,7 +57,7 @@ When you run a search, use the state of the **Test** and **Score** dropdowns as 
 - If the **Score** dropdown is *enabled*, you should select the score you want to use.  
   This includes score-based searches such as **FGES** or **BOSS**.
 - If **both** dropdowns are enabled, you should select one test **and** one score.  
-  This includes hybrid algorithms such as **BOSS-FCI**.
+  This includes hybrid algorithms such as **BFCI**.
 - If **both** dropdowns are greyed out, then the algorithm does not use a test or a score.
 
 ## Setting parameters

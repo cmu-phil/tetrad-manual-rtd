@@ -1,10 +1,19 @@
-# BOSS-FCI — Best-Order Score Search + FCI Refinement
+# BFCI — Best-Order Score Search + FCI Refinement
 
 **Type:** Hybrid (score-based + CI tests)  
 **Output:** PAG  
-**Knowledge:** Fully supported (all Tetrad knowledge constraints)
+**Knowledge:** Fully supported (all Tetrad knowledge constraints)  
+**Command:** `bfci`
 
-BOSS-FCI is one of the *mixed-strategy latent-variable algorithms* introduced in  
+This algorithm was called **BOSS-FCI** through Tetrad 7.6.10 and is the same algorithm under a
+new name. The old name survives in the program only so that sessions saved by those versions
+still open; new work should use BFCI.
+
+BFCI is marked **experimental** in the current release, so it is hidden from the algorithm
+chooser until you turn experimental methods on, and the description below may lag the code. See
+[Experimental Methods](../experimental-methods.md).
+
+BFCI is one of the *mixed-strategy latent-variable algorithms* introduced in  
 **Ramsey, Andrews & Spirtes (2025)**. It combines:
 
 1. **BOSS** — a *score-based ordering search* that produces a high-quality CPDAG, and
@@ -16,7 +25,7 @@ The resulting algorithm is faster than GFCI and usually more accurate, particula
 
 ## Key Idea
 
-BOSS-FCI follows the general ***X-FCI template***:
+BFCI follows the general ***X-FCI template***:
 
 1. **Score phase**
     - Run **BOSS** to produce a CPDAG (causal sufficiency assumed for this step).
@@ -30,7 +39,7 @@ BOSS-FCI follows the general ***X-FCI template***:
         - PAG legality checks (maximality, acyclicity, almost-cycles, endpoint corrections)
 
     - This yields a **PAG** that accounts for latent confounders and (optionally) selection bias. 
-    - BOSS-FCI is therefore a **hybrid** algorithm: it uses score-based reasoning for adjacency decisions and Zhang-style constraint-based logic for completing a PAG.
+    - BFCI is therefore a **hybrid** algorithm: it uses score-based reasoning for adjacency decisions and Zhang-style constraint-based logic for completing a PAG.
 ---
 
 ## When to Use
@@ -69,15 +78,15 @@ BOSS-FCI follows the general ***X-FCI template***:
 
 - **vs. GRaSP-FCI**
     - GRaSP uses permutation scoring; BOSS uses order-based BIC optimization.
-    - BOSS-FCI is typically more stable on mixed/continuous data.
+    - BFCI is typically more stable on mixed/continuous data.
 
 - **vs. FCIT**
     - FCIT uses targeted CI testing guided by BOSS and guarantees PAG legality,  
-      whereas BOSS-FCI still uses a traditional FCI refinement phase.
+      whereas BFCI still uses a traditional FCI refinement phase.
 
 - **vs. LV-Heuristic **
     - LV-Heuristic heuristically converts a BOSS DAG directly to a PAG.
-    - BOSS-FCI is a *principled* algorithm with sound PAG-correction steps.
+    - BFCI is a *principled* algorithm with sound PAG-correction steps.
 
 Cross-references:  
 👉 [BOSS](boss.md) •  
@@ -90,7 +99,7 @@ Cross-references:
 
 ## Prior Knowledge Support
 
-BOSS-FCI **fully supports knowledge**.
+BFCI **fully supports knowledge**.
 
 You may connect a **Knowledge** box in the Tetrad GUI or provide a  
 `Knowledge` object programmatically.
@@ -111,7 +120,7 @@ Knowledge is enforced during **both**:
 
 ## Key Parameters in Tetrad
 
-BOSS-FCI inherits parameters from **BOSS** *and* from the FCI refinement step.  
+BFCI inherits parameters from **BOSS** *and* from the FCI refinement step.  
 CamelCase names (GUI / script API) shown.
 
 ### BOSS-stage parameters
@@ -146,5 +155,5 @@ arXiv:2510.04263.
 
 ## Summary
 
-**BOSS-FCI = BOSS CPDAG + FCI latent-variable correction.**  
+**BFCI = BOSS CPDAG + FCI latent-variable correction.**  
 A fast, accurate hybrid PAG learner that outperforms GFCI in most settings while remaining fully knowledge-aware and scalable.

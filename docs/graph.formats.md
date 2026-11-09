@@ -103,7 +103,7 @@ PAGs are produced by:
 - FCI
 - RFCI
 - GFCI
-- BOSS-FCI
+- BFCI
 - FCIT (targeted-testing hybrid)
 
 ---

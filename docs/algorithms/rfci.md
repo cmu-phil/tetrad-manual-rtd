@@ -40,7 +40,7 @@ The result is a **PAG-like graph** with **fewer orientations** than full FCI, bu
 
 Related algorithms:
 - Use **FCI** when full orientation power is needed.
-- Use **GFCI**, **BOSS-FCI**, **GRaSP-FCI**, or **FCIT** when hybrid score–test methods are preferred.
+- Use **GFCI**, **BFCI**, **GRaSP-FCI**, or **FCIT** when hybrid score–test methods are preferred.
 
 ---
 
