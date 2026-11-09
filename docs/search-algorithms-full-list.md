@@ -51,7 +51,7 @@ If you are new to Tetrad or want a curated subset of recommended methods, start 
 | **Fas** — [FAS](algorithms/fas.md) 🔍                | Fast Adjacency Search (the adjacency phase of PC). |
 | **Fci** — [FCI](algorithms/fci.md) 🔍🧩              | Full PAG search with latent confounding & selection bias. |
 | **Rfci** — [RFCI](algorithms/rfci.md) 🔍🧩           | Fast approximation to FCI (reduced complexity). |
-| **FciIod** — [FCI-IOD](algorithms/fci-iod.md) 🔍🧩🧠 | FCI variant for multi-dataset / partially overlapping variable sets. |
+| **Iod** — [IOD](algorithms/iod.md) 🔍🧩🧠 | FCI variant for multi-dataset / partially overlapping variable sets. |
 | **Pcmci** — [PCMCI](algorithms/pcmci.md) 🔍🔁        | CI-based causal discovery for time-series data. |
 | **Ccd** — [CCD](algorithms/ccd.md) 🔍                | Cyclic Causal Discovery (allows feedback loops). |
 ---
@@ -94,8 +94,8 @@ If you are new to Tetrad or want a curated subset of recommended methods, start 
 | Algorithm                                                          | Description                                           |
 |--------------------------------------------------------------------|-------------------------------------------------------|
 | **DirectLingam** — [Direct LiNGAM](algorithms/direct-lingam.md) 🎨 | Direct LiNGAM for linear non-Gaussian models.         |
-| **IcaLingam** — [ICA LiNGAM](algorithms/ica-lingam.md) 🎨          | ICA-based LiNGAM (classic).                           |
-| **IcaLingD** — [ICA LiNG-D](algorithms/ica-lingd.md) 🎨            | Cyclic LiNGAM (Lacerda et al.).                       |
+| **Lingam** — [LiNGAM](algorithms/lingam.md) 🎨                     | ICA-based LiNGAM (classic).                           |
+| **LingD** — [LiNG-D](algorithms/ling-d.md) 🎨                      | Cyclic LiNGAM (Lacerda et al.).                       |
 | **Fask** — [FASK](algorithms/fask.md) 🎨                           | FAS skeleton + skewness-based orientation.            |
 | **FaskVote** — [FASK-Vote](algorithms/fask-vote.md) 🎨📦           | Voting ensemble of FASK.                              |
 | **Pairwise** — [Pairwise](algorithms/pairwise.md) 🎨               | Pairwise-skewness orientation.                        |

@@ -39,8 +39,6 @@ kci-test
 m-separation-test
 minimax-ci-test
 msep-score
-mvp-bic-score
-mvplrt
 poisson-bic-test
 poisson-prior-score
 probabilistic-test

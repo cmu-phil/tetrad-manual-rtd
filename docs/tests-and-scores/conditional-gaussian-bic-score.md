@@ -1,5 +1,8 @@
 # Conditional Gaussian BIC Score
 
+**In Tetrad's chooser:** CG-BIC (Conditional Gaussian BIC Score)  
+**Command:** `cg-bic-score`
+
 ## Summary
 
 The Conditional Gaussian BIC Score is a BIC-type score for **conditional

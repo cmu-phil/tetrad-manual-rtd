@@ -1,5 +1,8 @@
 # Degenerate Gaussian BIC Score
 
+**In Tetrad's chooser:** DG-BIC (Degenerate Gaussian BIC Score)  
+**Command:** `dg-bic-score`
+
 ## Summary
 
 The Degenerate Gaussian BIC Score is a BIC-type score for **mixed discrete/continuous data**. It is designed for the case where some variables are multinomial (categorical with finitely many levels) and others are continuous. Each multinomial variable is expanded into a set of binary indicator variables (one indicator per category, with one category omitted so that the last category is implied deterministically). A multivariate **Gaussian** model is then fit to this expanded set of variables.

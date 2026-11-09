@@ -1,5 +1,8 @@
 # Conditional Gaussian Likelihood Ratio Test
 
+**In Tetrad's chooser:** CG-LRT (Conditional Gaussian Likelihood Ratio Test)  
+**Command:** `cg-lr-test`
+
 ## Summary
 
 The Conditional Gaussian Likelihood Ratio Test is designed for **conditional

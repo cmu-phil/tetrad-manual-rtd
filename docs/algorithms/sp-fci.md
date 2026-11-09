@@ -4,7 +4,9 @@
 **Output:** PAG  
 **Takes Knowledge:** ✔️ fully knowledge-aware  
 **Parent Algorithms:** [FCI](fci.md), [SP](sp.md)  
-**Sibling Variants:** [BFCI](bfci.md), [GRaSP-FCI](grasp-fci.md), [FCIT](fcit.md)
+**Sibling Variants:** [BFCI](bfci.md), [GRaSP-FCI](grasp-fci.md), [FCIT](fcit.md)  
+**In Tetrad's chooser:** SP-FCI  
+**Command:** `spfci`
 
 SP-FCI is an **FCI-style latent-variable causal discovery algorithm** that swaps FCI’s **exhaustive adjacency search** for a **permutation-based score search** (the **Sparsest Permutation** algorithm, SP).  
 It follows the same design philosophy as BFCI and GRaSP-FCI: use a **model-based adjacency search** to obtain a high-precision skeleton, then run FCI’s orientation procedures (including all latent-variable edge marks).

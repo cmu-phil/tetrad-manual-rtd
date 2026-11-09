@@ -26,7 +26,6 @@ fas
 fask
 fask-vote
 fci
-fci-iod
 fci-max
 fcit
 fges
@@ -38,11 +37,12 @@ gfci
 gffc
 grasp
 grasp-fci
-ica-lingam
-ica-lingd
 images
+iod
 ion
 latent-cluster
+ling-d
+lingam
 lv-heuristic
 mimbuild-bollen
 mimbuild-pca

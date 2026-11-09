@@ -1,5 +1,8 @@
 # Basis Function Likelihood Ratio Test
 
+**In Tetrad's chooser:** BF-LRT (Basis Function Likelihood Ratio Test)  
+**Command:** `bf-lr-test`
+
 ## Summary
 
 The Basis Function Likelihood Ratio Test is a flexible nonlinear conditional-independence test using finite basis expansions. It supports **continuous**, **categorical**, and **mixed** data by expanding:

@@ -1,8 +1,10 @@
-# FCI-IOD — FCI with Independent Overlapping Datasets
+# IOD — FCI with Independent Overlapping Datasets
 
 **Type:** Constraint-based (multi-dataset)
 **Output:** PAG
-**Reference:** Tillman & Spirtes (2011). *Learning equivalence classes of acyclic models with latent and selection variables from multiple datasets with overlapping variables.* AISTATS.
+**Reference:** Tillman & Spirtes (2011). *Learning equivalence classes of acyclic models with latent and selection variables from multiple datasets with overlapping variables.* AISTATS.  
+**In Tetrad's chooser:** IOD  
+**Command:** `iod`
 
 FCI-IOD extends the standard **Fast Causal Inference (FCI)** algorithm to work with **multiple datasets that contain different (but overlapping) subsets of variables**.
 It uses the **IOD (Independent Overlapping Datasets)** independence test, which pools CI information across datasets to infer a single PAG over the union of variables.

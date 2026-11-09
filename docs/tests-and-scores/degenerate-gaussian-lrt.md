@@ -1,5 +1,8 @@
 # Degenerate Gaussian Likelihood Ratio Test
 
+**In Tetrad's chooser:** DG-LRT (Degenerate Gaussian Likelihood Ratio Test)  
+**Command:** `dg-lr-test`
+
 ## Summary
 
 The Degenerate Gaussian Likelihood Ratio Test is a conditional independence test for **mixed discrete/continuous data**. It is paired with the Degenerate Gaussian BIC Score and uses the same modeling idea: discrete multinomial variables are expanded into sets of binary indicator variables, and a (possibly rank-deficient) **Gaussian model** is fit to these expanded variables.

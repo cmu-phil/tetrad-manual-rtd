@@ -1,7 +1,9 @@
 # Factor Analysis
 
 **Category:** Latent Structure / Measurement Models  
-**Type:** Classical factor analysis (linear-Gaussian)
+**Type:** Classical factor analysis (linear-Gaussian)  
+**In Tetrad's chooser:** Factor Analysis  
+**Command:** `factor-anal`
 
 Factor Analysis is the standard statistical method for learning continuous
 measurement models. It assumes that each observed variable is a linear

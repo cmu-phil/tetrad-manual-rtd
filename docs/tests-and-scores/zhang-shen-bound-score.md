@@ -1,5 +1,8 @@
 # Zhang–Shen Bound Score
 
+**In Tetrad's chooser:** ZS Bound Score  
+**Command:** `zsbound-score`
+
 ## Summary
 
 The Zhang–Shen Bound Score is an experimental score for linear Gaussian

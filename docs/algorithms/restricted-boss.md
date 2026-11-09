@@ -1,7 +1,9 @@
 # Restricted BOSS — Target-Focused Best Order Score Search
 
 **Type:** Score-based (CPDAG, variable-order search)  
-**Output:** CPDAG (trimmed around specified targets)
+**Output:** CPDAG (trimmed around specified targets)  
+**In Tetrad's chooser:** Restricted-BOSS  
+**Command:** `r-boss`
 
 Restricted BOSS is a **target-focused variant of BOSS** designed for **fast, repeated runs on large datasets** when you care about a **small set of target variables**.  
 It first uses BOSS with tier constraints to identify a **restricted neighborhood** around the targets, then **re-runs BOSS only on that reduced variable set**, and finally trims the resulting CPDAG around the targets.

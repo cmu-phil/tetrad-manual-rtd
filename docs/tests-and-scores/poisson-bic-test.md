@@ -1,5 +1,8 @@
 # Poisson BIC Test
 
+**In Tetrad's chooser:** Poisson Prior Test  
+**Command:** `poisson-prior-test`
+
 ## Summary
 
 The Poisson BIC Test is simply the **Poisson Prior Score used as a

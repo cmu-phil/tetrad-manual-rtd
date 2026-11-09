@@ -1,8 +1,10 @@
-# ICA Lingam — ICA-Based LiNGAM
+# LiNGAM — ICA-Based LiNGAM
 
 **Type:** Non-Gaussian / Moment-based / ICA-based  
 **Output:** DAG  
-**Assumptions:** Linear SEM with independent, non-Gaussian errors
+**Assumptions:** Linear SEM with independent, non-Gaussian errors  
+**In Tetrad's chooser:** LiNGAM  
+**Command:** `lingam`
 
 ICA-LiNGAM is the original LiNGAM algorithm. It uses **Independent Component Analysis (ICA)** to estimate the mixing matrix of a linear, non-Gaussian SEM. After ICA identifies independent components, the algorithm determines a causal ordering and constructs a fully directed DAG.
 

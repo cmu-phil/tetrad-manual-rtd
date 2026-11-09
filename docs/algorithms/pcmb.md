@@ -1,7 +1,9 @@
 # PC-MB — PC Markov Blanket Search
 
 **Type:** Constraint-based (local)  
-**Output:** CPDAG (local to a target variable)
+**Output:** CPDAG (local to a target variable)  
+**In Tetrad's chooser:** PC-MB  
+**Command:** `pc-mb`
 
 PcMb is a **local variant of PC/CPC** designed to recover the **Markov blanket of a single target variable** rather than the entire graph.  
 Given a target T, PcMb uses conditional independence tests to construct a **local CPDAG** whose structure encodes **all Markov blankets of T** that are compatible with the CI information.

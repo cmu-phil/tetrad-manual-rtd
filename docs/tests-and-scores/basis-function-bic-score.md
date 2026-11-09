@@ -1,5 +1,8 @@
 # Basis Function BIC Score
 
+**In Tetrad's chooser:** BF-BIC (Basis Function BIC)  
+**Command:** `bf-bic-score`
+
 ## Summary
 
 The Basis Function BIC Score is a BIC-type score for **nonlinear additive or partially nonlinear models** built using finite basis expansions. It supports **continuous variables** (using polynomial or orthogonal basis functions) and **discrete variables** (expanded into indicator bases). This makes it suitable for **mixed continuous/discrete datasets**.

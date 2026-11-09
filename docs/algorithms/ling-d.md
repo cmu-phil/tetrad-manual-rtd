@@ -1,8 +1,10 @@
-# ICA LingD — Cyclic LiNGAM (Lacerda et al.)
+# LiNG-D — Cyclic LiNGAM (Lacerda et al.)
 
 **Type:** Non-Gaussian / Moment-based / ICA-based  
 **Output:** Directed cyclic graph (DCG)  
-**Assumptions:** Linear SEM with independent, non-Gaussian noise; cycles allowed
+**Assumptions:** Linear SEM with independent, non-Gaussian noise; cycles allowed  
+**In Tetrad's chooser:** LiNG-D  
+**Command:** `ling-d`
 
 IcaLingD is the **cyclic extension** of the LiNGAM framework proposed by Lacerda et al. It generalizes ICA-LiNGAM so that **feedback cycles** are permitted. Instead of assuming a strictly acyclic causal ordering, IcaLingD recovers an **almost-directed** structure that can include **strongly connected components (SCCs)** corresponding to causal feedback loops.
 
