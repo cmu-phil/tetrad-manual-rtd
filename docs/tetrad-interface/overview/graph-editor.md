@@ -45,13 +45,81 @@ The editor shows these marks directly on the graph. Some edge types are not allo
 
 ## Layout and visualization
 
-The editor supports automatic layout of graphs using the **Layout** menu (or equivalent toolbar buttons). Typical actions include:
+Graphs are arranged by the **Layout** menu. You can always drag nodes by hand afterwards, and
+zoom, re-center and fit the graph to the window from the editor's own controls.
 
-- Applying an automatic layout to spread nodes out and reduce edge crossings.
-- Re-centering the graph in the view.
-- Zooming in, zooming out, and fitting the graph to the window.
+### The default: Richard's Layout
 
-You can also drag nodes by hand to adjust their positions after an automatic layout, if you want a specific arrangement (for example, for a figure in a paper).
+A graph that arrives without positions — from a search, from a file, from a regression — is laid
+out by **Richard's Layout**, which is why Tetrad's graphs flow down and to the right, with the
+exogenous variables at the upper left. It is worth knowing roughly what it does, because the
+arrangement carries information.
+
+It is deterministic: the same graph in the same node order gives the same picture every time. It
+works in four steps.
+
+1. **Layering by causal depth.** Each node goes in the first layer where everything with an arrow
+   into it is already placed, using the directed structure only. For a PAG this means an edge
+   `x o-> y` puts `y` below `x`, which matches the reading that `y` is not an ancestor of `x`. If
+   the directed structure has a cycle, one edge per cycle is set aside for the layering, so those
+   edges — and only those — are drawn pointing up. Everything downstream of a cycle is still
+   layered by depth.
+2. **Crossing reduction.** Alternating sweeps reorder each layer by the mean position of its
+   neighbours, then adjacent nodes are exchanged wherever that reduces the crossing count, until no
+   exchange helps. All edge types vote, including edges that span more than one layer, and the best
+   ordering seen over all sweeps is kept.
+3. **Coordinate assignment.** Nodes are packed by their actual box widths and then pulled toward
+   the mean horizontal position of their neighbours, so children line up under their parents.
+4. **Shear.** Each layer is shifted right in proportion to its depth, which produces the
+   down-and-right flow.
+
+### Choosing a different layout
+
+The menu also offers **Circle**, **Square**, **Fruchterman-Reingold**, **Kamada-Kawai** and
+**Causal Order**.
+
+These six entries behave differently from an ordinary command, and it is worth being clear about
+it: choosing one **both lays out the current graph and makes that layout the default for graphs
+that arrive without one**. They are a single-choice group, so the one currently ticked is the
+default in force. If you want to try a layout on one graph without changing what happens
+everywhere else, use **Undo Layout Change** afterwards, or set the default back.
+
+**Undo Layout Change** and **Redo Layout Change** step through layout changes specifically, which
+is what you want after an experiment you did not like.
+
+### Layouts that use other information
+
+- **Layout by Knowledge** arranges the graph by the tiers in your background knowledge. It appears
+  only when knowledge is available to the editor.
+- **Layout by Knowledge Indices** uses the knowledge ordering rather than the tiers.
+- **Distance From Selected** arranges nodes by graph distance from the node you have selected,
+  which is a quick way to read the neighbourhood of one variable in a large graph.
+- For a **time-lag model** the menu additionally offers **Top to bottom**, **Left to right**,
+  **Bottom to top**, **Right to left** and **Copy lag 0**, which lays out the lagged slices to
+  match the contemporaneous one. These appear only for time-lag graphs.
+
+### Keeping layouts consistent across boxes
+
+Comparing two graphs is much easier when the same variable sits in the same place in both. Two
+features support that.
+
+**Copy Layout** and **Paste Layout** move an arrangement from one graph to another by variable
+name.
+
+**Inherit Layout From** ties this graph's layout to another box's, and keeps it tied. The rule is
+worth understanding, because it is designed not to throw away your own adjustments: a node you have
+moved since the last synchronization — dragged, laid out, pasted, or put back by an undo — keeps
+its own position, and every other node the reference also has takes the reference's position. A
+graph with no record yet takes the whole layout of its reference. A node the reference does not
+have, or has not positioned, keeps where it is. **Reset to Inherited Layout** discards the local
+changes and takes the reference's layout wholesale.
+
+### Curved edges
+
+Edges are drawn as curves, routed around intervening nodes, which is why moving one node can
+change the shape of edges that are not attached to it. Above 600 edges the routing is switched off
+and every edge is drawn straight, since at that density the curves cost more in render time than
+they repay in legibility.
 
 ## Background knowledge and tiers
 
