@@ -28,3 +28,6 @@ html_theme_options = {
 }
 # Let raw HTML be rendered inside Markdown (MyST handles this).
 myst_heading_anchors = 3
+# Prefix autosectionlabel targets with the document name, so that common headings
+# ("Summary", "Limitations", "When to use") on the per-method pages do not collide.
+autosectionlabel_prefix_document = True
