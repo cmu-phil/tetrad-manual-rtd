@@ -121,3 +121,20 @@ detail:
 These pages are intended to be practical. They do not replace full
 statistical texts on data cleaning, but they should help you make better
 use of the tools already built into Tetrad.
+
+---
+
+## Start with the Data Audit
+
+Before any of the above, run the **Data Audit** on a dataset you have not
+analyzed before. It reports the properties of the data that bear on which
+search you can trust — coded values masquerading as measurements, censored
+ceilings, deterministic relations among variables, serial dependence between
+rows — most of which are invisible in a spreadsheet view and fatal to a search
+if ignored. It also offers to act on several of them in place.
+
+```{toctree}
+:maxdepth: 1
+
+data-audit
+```
