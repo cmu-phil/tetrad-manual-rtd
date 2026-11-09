@@ -14,3 +14,6 @@ grid-search
 markov-checking
 interpretation
 example-worked
+example-worked-extended
+example-worked-with-estimation
+```

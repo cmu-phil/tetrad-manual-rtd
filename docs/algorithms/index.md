@@ -1,5 +1,3 @@
-:orphan:
-
 # Search Algorithms — Alphabetical
 
 Below is the complete set of per-algorithm documentation pages for

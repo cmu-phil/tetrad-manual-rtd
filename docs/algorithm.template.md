@@ -1,3 +1,7 @@
+---
+orphan: true
+---
+
 # {Algorithm Name}
 
 **Type:** {score-based / constraint / hybrid / time-series / etc.}  

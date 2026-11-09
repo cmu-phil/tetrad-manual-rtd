@@ -1,5 +1,3 @@
-:orphan:
-
 # Tests and Scores — Alphabetical
 
 Below is the complete set of per-test and per-score documentation pages for

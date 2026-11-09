@@ -1,3 +1,7 @@
+---
+orphan: true
+---
+
 (tetrad-manual)=
 
 # Classic Manual

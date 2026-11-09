@@ -1,6 +1,65 @@
 # Change Log
 
-This change log describes updates to the Tetrad documentation (this ReadTheDocs manual). These changes will first appear in the next public release of Tetrad; the manual is not yet linked from any released version of the software.
+This change log describes updates to the Tetrad documentation (this ReadTheDocs manual).
+
+This manual is what **Help → Manual** opens in Tetrad, from version 8.0.0 onward. Entries are
+newest first.
+
+⸻
+
+## 8.0.0 — November 2026
+
+Tetrad 8.0.0 was published to Maven Central on 9 November 2026, and is the first release whose
+Help menu links to this site. The manual had not been updated since January 2026, so this round
+brought it back in line with the software.
+
+**Reference material is now generated from Tetrad itself rather than maintained by hand.**
+
+- The **Parameters** page is generated from the same `parameter.definitions.html` that Tetrad reads
+  at runtime, so the two cannot disagree. It went from 316 to 529 parameters, and every entry now
+  has a heading and an anchor, grouped A–Z with a jump list; previously none of them did.
+- Pages for 27 methods that had no documentation here were generated from Tetrad's own built-in
+  descriptions. Every method a user can select is now documented, apart from those marked
+  experimental.
+- A **method crosswalk** (`tools/method-crosswalk.tsv`) records, for all 106 selectable methods,
+  which page documents it, and a checker fails if the two drift apart.
+
+**Methods.**
+
+- New page: [Experimental Methods](experimental-methods.md), stating once that experimental
+  methods carry no documentation commitment, and listing all of them.
+- **BOSS-FCI** renamed to **BFCI** throughout, matching the name Tetrad now uses. The old name was
+  retained in the program only so that sessions saved by 7.6.10 and earlier still open.
+- **IMaGES** is no longer a separate algorithm; its page now explains how to get it from the
+  `poolDataSets` parameter on any score- or test-based algorithm.
+- Pages retired for methods no longer offered: PCD, DM, GIN, CCI Test, MVPLRT, MVP BIC Score.
+- `StARS` and `StabilitySelection` are now labelled as available from scripts only.
+- Fifteen pages whose titles did not match the chooser now state the interface name and the
+  command.
+
+**The interface section.**
+
+- The **menu bar** documentation was rewritten: there is now a **Tetrad** application menu, and the
+  old **File → Settings** submenu has been replaced by a Settings dialog with General, Numbers and
+  Logging tabs.
+- The **Latent Structure** box was removed from Tetrad in October 2026; its page now explains where
+  its searches went and that older sessions still open.
+- New page: [Data Audit](tetrad-interface/data-preparation/data-audit.md), covering all 28 finding
+  codes and what to do about each.
+- New page: [Causal Unmix](tetrad-interface/data-preparation/causal-unmix.md).
+- New page: [NN Estimator](tetrad-interface/detail-callouts/detail-nn-estimator.md).
+- The **Layout** section of the graph editor was rewritten around Richard's layout, now the default.
+
+**Housekeeping.**
+
+- Eight toctree blocks were missing their closing fence.
+- Pages that were built but unreachable from the navigation have been wired in, marked as
+  deliberate orphans, or retired. The two extended worked examples are now in the Workflows
+  section.
+
+Screenshots have deliberately **not** been retaken in this round. All 140 predate the menu
+refactor, the layout change and the box consolidation, and they are best redone in one pass once
+the interface has settled.
 
 ⸻
 

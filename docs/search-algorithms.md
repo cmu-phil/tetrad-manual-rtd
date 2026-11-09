@@ -21,3 +21,4 @@ for what the marking means and for the current list.
 search-algorithms-short-list
 search-algorithms-full-list
 algorithms/index
+```
