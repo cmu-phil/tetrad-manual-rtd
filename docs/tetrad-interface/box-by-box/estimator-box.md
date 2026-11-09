@@ -101,6 +101,7 @@ Use the links below to see the detail pages for each estimator.
 | SEM PM                | SEM Estimator               | `Tetrad Interface → SEM Estimator`               |
 | Hybrid CG PM          | Hybrid CG Estimator         | `Tetrad Interface → Hybrid CG Estimator`         |
 | Generalized SEM PM    | Generalized SEM Estimator   | `Tetrad Interface → Generalized SEM Estimator`   |
+| *(none — takes a DAG and data)* | NN Estimator      | `Tetrad Interface → NN Estimator`                |
 
 ## Related pages
 

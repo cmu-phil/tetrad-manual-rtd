@@ -27,6 +27,7 @@ detail-sem-estimator
 detail-hybrid-parametric-model
 detail-hybrid-instantiated-model
 detail-hybrid-cg-estimator
+detail-nn-estimator
 detail-generalized-parametric-model
 detail-generalized-instantiated-model
 detail-generalized-sem-estimator
@@ -38,3 +39,4 @@ detail-nonlinearity-checks
 detail-adjustment-total-effects
 detail-ida-check
 detail-ntad-explorer
+```
