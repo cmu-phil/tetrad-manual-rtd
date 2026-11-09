@@ -66,6 +66,7 @@ then double‑click the Compare node, you typically see a dialog like this:
   - *Graph Intersections*
 - **Independence Facts Comparison**
   - *Markov Check*
+  - *Vertex Checker*
   - *IDA Check*
 - **Simulation–Algorithm Comparisons**
   - *Model Fit*
@@ -158,6 +159,15 @@ respect to the data**.
 See also:
 
 - `Tetrad Interface → Detail: Markov Check` (planned/elsewhere in the manual).
+
+### Vertex Checker
+
+The **Vertex Checker** localizes a failed Markov check to particular **vertices**, and can then
+**repair** the graph by searching for edge edits that reduce the violations.
+
+See also:
+
+- `Tetrad Interface → Detail: Vertex Checker`
 
 ### IDA Check
 

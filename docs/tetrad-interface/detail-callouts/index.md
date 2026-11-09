@@ -13,6 +13,7 @@ detail-data-subset-resample
 detail-graph-menu
 detail-display-subgraphs
 detail-markov-checker
+detail-vertex-checker
 detail-bootstrapping
 detail-pm-im-model-types
 detail-simulation-types
