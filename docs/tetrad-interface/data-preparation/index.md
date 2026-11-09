@@ -133,8 +133,15 @@ ceilings, deterministic relations among variables, serial dependence between
 rows — most of which are invisible in a spreadsheet view and fatal to a search
 if ignored. It also offers to act on several of them in place.
 
+## When one dataset holds more than one mechanism
+
+If the rows may come from several populations, conditions or epochs, a single search over the
+pooled data recovers neither mechanism but an average of them. **Causal Unmix** splits such a
+dataset by latent regime so that each part can be searched on its own.
+
 ```{toctree}
 :maxdepth: 1
 
 data-audit
+causal-unmix
 ```
