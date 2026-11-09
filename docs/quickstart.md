@@ -73,7 +73,7 @@ Here you can:
 
 ## 5. Save and Export
 
-- **Save** the project (File → Save Project)
+- **Save** the session (File → Save Session, or Save Session As)
 - **Export** graphs (Text, JSON, other formats)
 
 ---

@@ -19,13 +19,13 @@ Table A1 is sufficient to understand the basic meaning of edge types in PAGs. No
 
 The PAG in Figure 2 shows examples of each type of edge, and the CBNs. Figure 1. show some examples of what kinds of CBNs can be represented by that PAG.
 
-![](/_static/images/classic-manual/appendix_figure_1a.png)
+![](/_static/images/appendices/appendix_figure_1a.png)
 
-![](/_static/images/classic-manual/appendix_figure_1b.png)
+![](/_static/images/appendices/appendix_figure_1b.png)
 
 Figure 1. Two CBNs that FCI (as well as FCI+, GFCI, and RFCI) cannot distinguish.
 
-![](/_static/images/classic-manual/appendix_figure_2.png)
+![](/_static/images/appendices/appendix_figure_2.png)
 
 Figure 2. The PAG that represents the CBN s in both Figures 1a and 1b.
 
@@ -42,15 +42,15 @@ In the following examples, the DAG representing a causal process is on the left,
 
 Example of an edge C ➔ D that is definitely visible (green) and definitely direct (bold):
 
-![](/_static/images/classic-manual/arc_specialization_1.png)
+![](/_static/images/appendices/arc_specialization_1.png)
 
 Example of an edge (C ➔ E) that is definitely visible (green) and not definitely direct (not bold):
 
-![](/_static/images/classic-manual/arc_specialization_2.png)
+![](/_static/images/appendices/arc_specialization_2.png)
 
 Example of an edge (F ➔ E) that is not definitely visible (black) and not definitely direct (not bold):
 
-![](/_static/images/classic-manual/arc_specialization_3.png)
+![](/_static/images/appendices/arc_specialization_3.png)
 
 It is conjectured that it is not possible for an edge to be definitely direct (bold) and not definitely visible (black).
 
@@ -59,31 +59,4 @@ It is conjectured that it is not possible for an edge to be definitely direct (b
 
 By default, Java will allocate the smaller option of 1/4 system memory or 1GB to the Java virtual machine (JVM). If you run out of memory (heap memory space) running your analyses you should increase the memory allocated to the JVM with the following switch '-XmxXXG' where XX is the number of gigabytes of ram you allow the JVM to utilize. To run Tetrad with more memory you need to start it from the command line or terminal. For example to allocate 8 gigabytes of ram you would add -Xmx8G immediately after the java command e.g., java -Xmx8G -jar tetrad-gui.jar.
 
-
-## Glossary of Terms
-
-Two vertices in a graph are adjacent if there is a directed, or undirected, or double-headed edge between them.
-
-The total number of edges directed both into and out of a vertex.
-
-The number of edges directed into a vertex.
-
-In a variable set V, with joint probability Pr, the Markov Blanket of a variable X in V is the smallest subset M of V \ {X} such that X II V \ M | M. In a DAG model, the Markov Blanket of X is the union of the set of direct causes (parents) of X, the set of direct effects (children) of X, and the set of direct causes of direct effects of X.
-
-Two directed acyclic graphs (DAGS) are Markov Equivalent if they have the same adjacencies and for every triple X – Y – Z of adjacent vertices, if X and Z are not adjacent, X -> Y <- Z in both graphs or in neither graph.
-
-Rules for finding all directions of edges implied by a CPDAG, consistent with any specified “knowledge” constraints on directions. See https://arxiv.org/pdf/1302. 4972.pdf
-
-An acyclic graph with directed and undirected edges. Directed edges have the same interpretation as in DAGs. Undirected edges represent common causes. See Richardson, T. (2003). Markov properties for acyclic directed mixed graphs. Scandinavian Journal of Statistics, 30(1), 145-157.
-
-A graphical model in which unmeasured variables each have multiple measured effects. There may be directed edges between unmeasured variables, but no directed edges from measured variables to unmeasured variables are allowed.
-
-The number of edges directed out of a vertex.
-
-See PAG description in this manual.
-
-A graphical representation of a Markov Equivalence Class or Classes, having both directed and undirected edges, with an undirected edge indicating that for each possible direction of the edge, there is a graph in the class or classes having that edge direction.
-
-A network in which the frequency of nodes with degree k obeys a power law--the relation between log of degree and log of frequency is roughly linear. See https://cs.brynmawr.edu/Courses/cs380/ spring2013/section02/slides/10_ScaleFreeNetworks.pdf.
-
-A trek between X and Y is a directed path from X to Y or from Y to X, or two directed paths from a third variable Z into X and Y that do not intersect except at Z.
+See also the [Glossary](glossary.md).

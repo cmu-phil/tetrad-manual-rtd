@@ -15,6 +15,7 @@ This site is the **Read the Docs** version of the Tetrad manual, reorganized int
 :maxdepth: 2
 
 about
+quickstart
 workflows/index
 tetrad-interface/index
 python-r-bindings
@@ -23,6 +24,8 @@ search-algorithms
 tests-and-scores
 experimental-methods
 parameter.definitions
+glossary
+appendices
 contributors
 papers-and-books
 changelog

@@ -50,6 +50,18 @@ brought it back in line with the software.
 - New page: [NN Estimator](tetrad-interface/detail-callouts/detail-nn-estimator.md).
 - The **Layout** section of the graph editor was rewritten around Richard's layout, now the default.
 
+**The classic manual retired.**
+
+- The `classic-manual` section has been removed. It was a one-time export of Tetrad's built-in
+  HTML manual, it had diverged from both the software and the rest of this site, and the
+  `tetrad-interface` section now covers the same ground.
+- Three things it held that nothing else did were kept and promoted out of it: the
+  [Quickstart](quickstart.md), the [Glossary](glossary.md), and the
+  [Appendices](appendices.md) — an introduction to PAGs, the arc specializations, and the
+  out-of-memory note.
+- The glossary's terms had been lost when the section was first converted from HTML, leaving
+  definitions with nothing to define. They have been recovered from the original.
+
 **Housekeeping.**
 
 - Eight toctree blocks were missing their closing fence.
