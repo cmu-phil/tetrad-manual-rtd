@@ -47,7 +47,6 @@ pag-sampling-rfci
 pairwise
 pc
 pc-max
-pcd
 pcmb
 pcmci
 restricted-boss

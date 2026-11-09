@@ -21,6 +21,7 @@ python-r-bindings
 graph-and-datasets
 search-algorithms
 tests-and-scores
+experimental-methods
 parameter.definitions
 contributors
 papers-and-books

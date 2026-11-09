@@ -10,6 +10,10 @@ This section provides:
 
 Use these pages together when selecting modeling assumptions for PC, FGES, BOSS, GFCI, and related algorithms.
 
+A few tests and scores are marked **experimental**, are hidden from the chooser by default, and are
+offered without a documentation commitment. See [Experimental Methods](experimental-methods.md) for
+what the marking means and for the current list.
+
 ```{toctree}
 :maxdepth: 1
 

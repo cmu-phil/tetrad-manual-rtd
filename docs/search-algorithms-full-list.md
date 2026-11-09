@@ -47,7 +47,6 @@ If you are new to Tetrad or want a curated subset of recommended methods, start 
 | **Pc** — [PC](algorithms/pc.md) 🔍                   | Classic constraint-based CPDAG search (CI-test–driven). |
 | **Pc-Max** — [PC-Max](algorithms/pc.md) 🔍           | PC variant maximizing p-value for collider orientation. |
 | **CPC** — [CPC](algorithms/cpc.md) 🔍                | Conservative collider rule reducing false orientations. |
-| **Pcd** — [PCD](algorithms/pcd.md) ♻️                | PC variant robust to deterministic relations. |
 | **PcMb** [PC-MB](algorithms/pcmb.md) 🔍              | Local Markov blanket discovery via PC-style logic. |
 | **Fas** — [FAS](algorithms/fas.md) 🔍                | Fast Adjacency Search (the adjacency phase of PC). |
 | **Fci** — [FCI](algorithms/fci.md) 🔍🧩              | Full PAG search with latent confounding & selection bias. |

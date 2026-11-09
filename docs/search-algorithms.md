@@ -9,6 +9,10 @@ documentation that goes with them. It’s organized at three levels:
 
 Use this page as your entry point into the search-algorithm documentation.
 
+Some algorithms are marked **experimental**, are hidden from the chooser by default, and are
+offered without a documentation commitment. See [Experimental Methods](experimental-methods.md)
+for what the marking means and for the current list.
+
 ---
 
 ```{toctree}
