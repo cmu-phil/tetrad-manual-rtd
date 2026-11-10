@@ -7,9 +7,10 @@ run search algorithms, inspect results, and use additional tools like simulation
 
 Tetrad’s GUI is organized around a few core ideas:
 
-- A **project workspace** where data, graphs, and results live as nodes in a tree.
-- A **main window** with tabs/panels for editing graphs, configuring searches, and viewing output.
-- A set of **tools and wizards** that wrap common workflows (simulation, grid search, model checking, etc.).
+- A **session**: a workbench on which you place **boxes** and connect them with arrows.
+- A **box palette** down the left side of the session window, from which boxes are added.
+- **Boxes** that each hold one thing — data, knowledge, a search, a graph, a model — and that open in
+  their own windows when double-clicked.
 
 The pages in this section give a **task-oriented** tour of the interface.
 

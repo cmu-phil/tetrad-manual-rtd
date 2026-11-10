@@ -1,65 +1,112 @@
 # Main Window
 
-The Tetrad main window is the starting point for most workflows. It provides:
+The Tetrad main window has three parts:
 
-- A **menu bar** and **toolbar** for global actions (open/save, logging, pipelines, etc.).
-- A **project tree** listing data sets, graphs, models, and results.
-- A **work area** where editors and result views appear in tabs.
-- A **status bar** (and optional logging pane) with progress and message reporting.
+- A **menu bar** across the top, for sessions, settings, logging and ready-made pipelines.
+- A **desktop** below it, holding one window per open **session**.
+- An optional **logging pane** along the bottom, shown while logging is on.
+
+Each session window has two parts of its own: a **box palette** down the left side and a
+**workbench** filling the rest. All work in Tetrad is done by placing **boxes** on the workbench,
+connecting them with arrows, and double-clicking them.
 
 ![](../../_static/images/tetrad-interface/overview/main-window-overview.png)
 
 In a typical session you will:
 
-1. Load or create data and graphs.
-2. Configure algorithms in boxes (Data, Search, Compare, etc.).
-3. Run algorithms and inspect their outputs in tabs.
+1. Place boxes on the workbench and connect them (for example, Data → Search).
+2. Double-click each box to fill it in: load the data, pick and run the algorithm, and so on.
+3. Inspect each result inside the box that produced it.
 4. Save the session for later.
 
-## Project tree
+## Sessions
 
-On the left, the **project tree** shows the objects in your current Tetrad session. Each entry
-corresponds to something you can open, run, or use as input to another tool:
+A **session** is one workbench together with everything on it: the boxes, the arrows between
+them, and the contents of every box — data, graphs, models and results. A session is saved and
+loaded as a single file from the **File** menu.
 
-- **Data nodes**  
-  Continuous data sets, mixed data sets, or covariance matrices.
-- **Graph nodes**  
-  DAGs, CPDAGs, PAGs, and other graph objects produced by search or imported from files.
-- **Algorithm and configuration nodes**  
-  Search boxes, simulation setups, estimators, updaters, and other configured tools.
-- **Result nodes**  
-  Graphs, tables, and reports created by algorithms and utilities.
+Several sessions can be open at once, each in its own window on the desktop. The **Window** menu
+lists the open sessions so you can bring one to the front.
 
-You can usually:
+## The box palette
 
-- **Double-click** a node to open it in the work area (for example, double-click a graph to open
-  the graph editor).
-- **Right-click** a node to access context actions such as rename, delete, export, or run.
-- **Drag** certain nodes (such as graphs or data sets) into boxes on the workbench that accept them.
+The palette on the left of every session window is a column of buttons. The top two are tools;
+the rest each add one kind of box. They appear in this order, in groups separated by a small gap.
 
-Deleting a node from the project tree removes it from the session; closing a tab in the work area
-does not.
+**Tools**
 
-## Work area and tabs
+1. **Select and Move** — select boxes, or groups of boxes, and drag them around the workbench.
+   This is the resting tool; the palette returns to it after most actions.
+2. **Draw Edge** — draw an arrow from one box to another, declaring that the first box's contents
+   are an input to the second.
 
-The central work area displays one or more tabs. Each tab shows an editor or a result view associated
-with a node in the project tree:
+**Working with data: load, constrain, search, look**
 
-- **Graph editors** – interactive views where you can add, remove, and orient edges.
-- **Data views** – tables showing raw data, summary statistics, or covariance matrices.
-- **Configuration dialogs** – parameter settings for search algorithms, simulations, estimators, etc.
-- **Result views** – edge lists, fit indices, comparison tables, or logs of algorithm behavior.
+3. [**Data**](../box-by-box/data-box.md) — load, view, transform and audit data.
+4. [**Knowledge**](../box-by-box/knowledge-box.md) — background knowledge: tiers, and required and
+   forbidden edges.
+5. [**Search**](../box-by-box/search-box.md) — run a search algorithm.
+6. [**Latent Clusters**](../box-by-box/latent-clusters-box.md) — cluster measured variables by
+   their latent causes. To search over the clusters, make this box a parent of a Search box.
+7. [**Graph**](../box-by-box/graph-box.md) — draw, edit and analyze a graph.
+8. [**Compare**](../box-by-box/compare-box.md) — compare graphs or models, and check a graph
+   against data.
 
-Tabs can be opened and closed independently. Closing a tab does **not** delete the underlying node
-in the project tree; you can always re-open it by double-clicking the node again.
+**Modeling and inference on a graph**
 
-A common pattern is:
+9. [**Parametric Model**](../box-by-box/parametric-model-box.md) — choose a model family for a
+   graph.
+10. [**Estimator**](../box-by-box/estimator-box.md) — fit a parametric model to data.
+11. [**Updater**](../box-by-box/updater-box.md) — update a fitted model on evidence or
+    interventions.
+12. [**Regression**](../box-by-box/regression-box.md) — run a regression.
+13. [**Instantiated Model**](../box-by-box/instantiated-model-box.md) — a model with specific
+    parameter values.
 
-1. Double-click a configuration node (e.g., a Search box) to adjust parameters.
-2. Run the configuration from the toolbar or context menu.
-3. Double-click the resulting graph or table node to view the results in a new tab.
+**Simulation and benchmarking**
 
-## Menus and toolbar
+14. [**Simulation**](../box-by-box/simulation-box.md) — generate data from a model.
+15. **Grid Search** — compare algorithms and settings, on
+    [your own data](../box-by-box/grid-search-box-data.md) or on
+    [simulated data](../box-by-box/grid-search-box-simulation.md).
+
+**Annotation**
+
+16. [**Note**](../box-by-box/note-box.md) — a text note on the workbench.
+
+The [Box by Box](../box-by-box/index.md) section documents the boxes in this same order.
+
+Earlier versions had a **Latent Structure** button between Latent Clusters and Graph. It was
+removed in October 2026; see [Latent Structure Box (removed)](../box-by-box/latent-structure-box.md).
+
+## The workbench
+
+**Placing a box.** Click a box button in the palette, then click the workbench where the box
+should go. The palette then returns to Select and Move. To place several boxes of the same kind,
+hold **Shift** while clicking; the box button stays selected until you release it.
+
+**Connecting boxes.** Click **Draw Edge**, then drag from one box to another. The arrow means
+that the first box feeds the second: Data → Search gives the search its data, and Knowledge →
+Search gives it background knowledge. Draw Edge stays selected so you can draw several arrows in
+a row; click Select and Move when you are done.
+
+**Opening a box.** Double-click a box. The first time, Tetrad asks whatever it needs in order to
+create the box's contents, such as which kind of model or which algorithm. After that,
+double-clicking opens the box's editor in its own window. A result lives inside the box that
+produced it: the graph from a search is in the Search box, and a fitted model is in the
+Estimator box.
+
+**The right-click menu.** Right-clicking a box offers:
+
+- **Create Contents**, **Edit Contents** and **Destroy Contents** — make, open or discard what
+  the box holds. Destroying the contents keeps the box and its arrows.
+- **Propagate changes downstream** — fill in this box and every box downstream of it,
+  overwriting any contents those boxes already have.
+- **Rename Box**, **Clone Box** and **Delete Box**.
+- **Edit Parameters...** — edit the box's parameters.
+- **Help** — a short description of the box.
+
+## Menus
 
 The **menu bar** has seven menus: **Tetrad**, **File**, **Edit**, **Logging**, **Pipelines**,
 **Window** and **Help**.
@@ -105,22 +152,11 @@ The **menu bar** has seven menus: **Tetrad**, **File**, **Edit**, **Logging**, *
 In earlier versions these settings were a **File → Settings** submenu. That submenu is gone; use
 the Tetrad menu.
 
-The **toolbar** (below the menu) exposes common shortcuts such as opening/saving sessions, running
-the currently selected configuration, and graph layout/zoom controls. Hover over a button to see
-its tooltip.
+## Logging pane
 
-## Status bar, logging pane, and messages
+When you choose **Logging → Start Logging**, a **logging pane** opens along the bottom of the main
+window, below the desktop, and shows log output from algorithms and tools as they run. Choosing
+**Logging → Stop Logging** hides the pane and, if file logging is enabled, closes the current log
+file.
 
-At the bottom of the main window, a status area reports:
-
-- Running tasks (for example, “Executing FGES…”).
-- Progress indicators, where available.
-- Warnings or errors reported by algorithms and tools.
-
-When you choose **Logging → Start Logging**, a **logging pane** appears (typically docked above the
-status bar). This pane shows streaming log output from algorithms and utilities while they run.
-Choosing **Logging → Stop Logging** hides the logging pane and, if file logging is enabled,
-closes the current log file.
-
-For long-running algorithms, you can watch both the status area and the logging pane to monitor
-progress, see any warnings, and, in some cases, cancel the run from the associated controls.
+For a long-running algorithm, the logging pane is the place to watch progress and warnings.

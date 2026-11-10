@@ -18,7 +18,7 @@ A typical pattern is:
 
 1. **Prepare data**
 
-   Make sure you have an appropriate **Data** or **Simulation** node in the project tree:
+   Make sure you have an appropriate **Data** or **Simulation** box on the workbench:
    - Continuous, discrete, or mixed, depending on the model family.
    - Cleaned and typed correctly (variable types set as needed).
 
@@ -61,14 +61,14 @@ A typical pattern is:
      - Optimization settings (maximum iterations, convergence criteria),
      - Regularization or constraints, where applicable.
 
-   Click **Run** to fit the model. When estimation completes, the Estimator box typically produces:
+   Click **Run** to fit the model. When estimation completes, the Estimator box holds:
 
-   - An **Instantiated Model** node (with fitted parameters),
+   - The **fitted model**, an instantiated model with estimated parameters,
    - Optionally, **fit indices** and diagnostic tables.
 
 ## Inspecting the fitted model
 
-Double-click the resulting **Instantiated Model** node to open it:
+Double-click the **Estimator** box to open the fitted model:
 
 - For SEM models, you will see:
   - Estimated path coefficients,
@@ -80,7 +80,7 @@ Double-click the resulting **Instantiated Model** node to open it:
   - The parameters appropriate to the chosen family (e.g., conditional Gaussian components,
     basis-function coefficients, or user-defined functions).
 
-From the Instantiated Model view, you can:
+From the fitted model's window, you can:
 
 - Inspect parameter values and standard errors (where provided).
 - Export parameter tables for use in external software.

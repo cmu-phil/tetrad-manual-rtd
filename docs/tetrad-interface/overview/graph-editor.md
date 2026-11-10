@@ -1,7 +1,7 @@
 # Graph Editor
 
 The graph editor is where you **create, inspect, and modify** causal graphs (DAGs, CPDAGs, PAGs, etc.) within Tetrad.
-Most search results and many tools ultimately produce graph nodes that you can open here.
+Most search results and many tools ultimately produce graphs that you can open here.
 
 ![](../../_static/images/tetrad-interface/overview/graph-editor.png)
 
@@ -11,11 +11,12 @@ Most search results and many tools ultimately produce graph nodes that you can o
 
 You can obtain a graph in several ways:
 
-- **From a search algorithm** – most search boxes output one or more graphs that appear as nodes in the project tree.
+- **From a search algorithm** – the result graph is held in the **Search** box. To edit it, draw an arrow
+  from the Search box to a **Graph** box.
 - **By importing** from a file (for example, a Tetrad graph `.txt` file).
 - **By creating a blank graph**, using a menu item such as **Graph → New Graph** or an equivalent toolbar button.
 
-To edit a graph, **double-click** its node in the project tree. The graph opens in a new tab in the work area.
+To edit a graph, **double-click** its **Graph** box on the workbench. The graph opens in its own window.
 
 ## Basic editing operations
 
@@ -135,7 +136,7 @@ These constraints are saved with the knowledge object and used by algorithms tha
 
 ## Saving and exporting graphs
 
-Graph nodes can be:
+Graphs can be:
 
 - **Stored in the current Tetrad session**, so you can close and reopen the session with graphs intact.
 - **Exported** to simple text or image formats (for example, a Tetrad graph `.txt` file or a PNG image) for use in papers or external tools.

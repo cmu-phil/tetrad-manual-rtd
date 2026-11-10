@@ -12,7 +12,7 @@ main workbench.
 
 A typical workflow is:
 
-1. Make sure you have at least one **data node** in the project tree  
+1. Make sure you have at least one **Data** box on the workbench with data loaded  
    (and optionally an initial graph or background knowledge).
 2. Place a **Search** box on the workbench and connect it to:
     - A **Data** box (required), and
@@ -20,7 +20,6 @@ A typical workflow is:
 3. **Double-click** the Search node on the workbench.  
    This opens the **algorithm configuration dialog**, where you select:
     - The **algorithm** to run (PC, FGES, GFCI, CStaR, BOSS, etc.).
-    - The **data set** to use (from the list of loaded data nodes).
     - A **test** and/or **score** (depending on the algorithm).
     - The **graph type** to produce (e.g., DAG, CPDAG, PAG), if configurable.
     - Any algorithm-specific **parameters**.
@@ -28,8 +27,7 @@ A typical workflow is:
 When you click **Run** (or the equivalent button):
 
 - Tetrad executes the algorithm.
-- One or more **result graphs** (and sometimes tables) are created as new nodes in the project tree.
-- The primary result graph usually opens automatically in the graph editor.
+- The **result graph** is placed in the Search box, and is displayed when the search finishes.
 
 ## Choosing tests and scores
 
@@ -47,7 +45,7 @@ The algorithm dialog typically restricts the available **tests** and **scores** 
     - Basis-function LRT/BIC,
     - Kernel-based tests such as *Kci*, when appropriate.
 
-The dialog lists only those tests and scores that match the **data type** of the selected data node.  
+The dialog lists only those tests and scores that match the **data type** of the connected data.  
 For details on individual tests and scores, see the **Tests & Scores** section of the manual.
 
 When you run a search, use the state of the **Test** and **Score** dropdowns as a guide:
@@ -81,15 +79,12 @@ The **Parameters** and **Tests & Scores** sections of the manual describe these 
 
 When you start a run:
 
-- The **status bar** at the bottom of the main window reports that the algorithm is executing.
-- Some algorithms display a **progress indicator** or a rough notion of how far they have proceeded.
 - If **Logging → Start Logging** is enabled, you will see log messages in the logging pane as the algorithm runs.
 
 When the run completes:
 
-- New result nodes (graphs, tables, or summary reports) appear under the corresponding **Search** branch in the
-  project tree.
-- The main result graph typically opens immediately in the graph editor so you can inspect it.
+- The result graph is shown in the Search box's window, and stays in the Search box. Double-click the
+  box again later to return to it.
 
 ## Re-running with modified settings
 
@@ -100,7 +95,8 @@ To try different settings:
     - The test or score,
     - One or more parameter values (e.g., a different `alpha`),
     - Or options such as allowing latent variables or selection bias.
-3. Click **Run** to produce a new set of results.
+3. Click **Run**. The new result replaces the previous one in that Search box; to keep both, use
+   **Clone Box** from the right-click menu and change the settings in the copy.
 
 This makes it easy to:
 
