@@ -7,9 +7,9 @@ evaluated) on data**, starting from a Generalized parametric model.
 
 ```{figure} ../../_static/images/tetrad-interface/box-by-box/generalized-im.png
 :name: tetrad-beneralized-im-screenshot
-:alt: Generalized Estimator
+:alt: Generalized Instantiated Model
 
-Generalized Estimator
+Generalized Instantiated Model
 ```
 
 A Generalized instantiated model contains:
