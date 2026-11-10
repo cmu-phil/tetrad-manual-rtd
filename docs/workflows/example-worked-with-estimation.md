@@ -40,7 +40,7 @@ Because of this mixture, the data should be loaded as **mixed data** with a maxi
 
 ### Visual Exploration
 
-![Plot matrix for the Auto MPG data.](../../_static/images/tetrad-interface/box-by-box/example-data-plotmatrix.png)
+![Plot matrix for the Auto MPG data.](../_static/images/tetrad-interface/box-by-box/example-data-plotmatrix.png)
 
 Using the **Plot Matrix** tool in the Data box, we observe:
 
@@ -161,7 +161,7 @@ Grid Search will:
 - Compute Markov-check statistics for each resulting CPDAG
 - Summarize the results in a comparison table
 
-![Grid Search comparison results for the Auto MPG data.](../../_static/images/tetrad-interface/box-by-box/example-data-comparison.png)
+![Grid Search comparison results for the Auto MPG data.](../_static/images/tetrad-interface/box-by-box/example-data-comparison.png)
 
 ---
 
@@ -192,7 +192,7 @@ In this example, that corresponds to:
 
 This choice represents a **minimal Markov-consistent CPDAG** under the stated assumptions.
 
-![Selected CPDAG for the Auto MPG example.](../../_static/images/tetrad-interface/box-by-box/example-data-graph8.png)
+![Selected CPDAG for the Auto MPG example.](../_static/images/tetrad-interface/box-by-box/example-data-graph8.png)
 
 ---
 

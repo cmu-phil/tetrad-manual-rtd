@@ -1,5 +1,12 @@
 # Data Audit
 
+```{figure} ../../_static/images/tetrad-interface/box-by-box/data-audit.png
+:name: tetrad-data-audit-screenshot
+:alt: Data Audit window for the Auto MPG data.
+
+The Data Audit for the Auto MPG data used in the worked example.
+```
+
 The **Data Audit** reports properties of a dataset that bear on the choice and the reliability of a
 causal search. It is the first thing worth running on a dataset you have not analyzed before,
 because most of what it finds is invisible in a spreadsheet view and fatal to a search if ignored.

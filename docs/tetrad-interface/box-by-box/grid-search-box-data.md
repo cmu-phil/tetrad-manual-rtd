@@ -1,5 +1,12 @@
 # Grid Search Box (Data)
 
+```{figure} ../../_static/images/tetrad-interface/box-by-box/grid-search-box-data.png
+:name: tetrad-grid-search-box-data-screenshot
+:alt: Grid Search box connected to a Data box, on its Algorithms tab.
+
+A Grid Search box connected to a Data box, on its Algorithms tab, with one algorithm and score chosen.
+```
+
 This page describes how the **Grid Search** box behaves when it is connected to a **Data box**.  
 In this mode, Grid Search performs **systematic comparison of causal discovery methods on a fixed dataset**.
 

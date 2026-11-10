@@ -1,5 +1,12 @@
 # Grid Search (Simulation)
 
+```{figure} ../../_static/images/tetrad-interface/box-by-box/grid-search-box-simulation.png
+:name: tetrad-grid-search-box-simulation-screenshot
+:alt: Grid Search box with no data connected, on its Simulations tab.
+
+A Grid Search box with no data connected, on its Simulations tab, before a simulation is chosen.
+```
+
 This page describes how to use **Grid Search** in Tetrad when working from a **simulation** rather than a fixed dataset.
 
 In simulation-based Grid Search, Tetrad repeatedly generates data from a specified simulation model and evaluates causal discovery algorithms across multiple parameter settings. This workflow is especially useful for **method comparison**, **sensitivity analysis**, and **benchmarking** under controlled conditions.

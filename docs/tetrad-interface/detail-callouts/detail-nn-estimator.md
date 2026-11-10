@@ -1,5 +1,12 @@
 # Detail: NN Estimator
 
+```{figure} ../../_static/images/tetrad-interface/box-by-box/nn-estimator.png
+:name: tetrad-nn-estimator-screenshot
+:alt: NN Estimator, on its Cross-Validation tab.
+
+The NN Estimator, on its Cross-Validation tab, before cross-validation is run.
+```
+
 The **NN Estimator** fits a nonparametric model to a DAG. For each variable it trains a small
 neural network to model that variable given its parents, then runs the DAG forward in causal order
 to generate synthetic rows, and compares those rows with the data. Nothing assumes a parametric

@@ -1,5 +1,12 @@
 # Detail: Vertex Checker
 
+```{figure} ../../_static/images/tetrad-interface/box-by-box/vertex-checker.png
+:name: tetrad-vertex-checker-screenshot
+:alt: Vertex Checker.
+
+The Vertex Checker, with the first vertex selected.
+```
+
 The **Vertex Checker** takes the Markov check one step further. Where the
 [Markov Checker](detail-markov-checker.md) tells you *whether* a graph is Markov to your data, the
 Vertex Checker localizes the trouble to particular **vertices** and then offers to **repair** the

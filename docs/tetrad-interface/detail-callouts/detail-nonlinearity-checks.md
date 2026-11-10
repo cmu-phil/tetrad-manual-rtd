@@ -1,5 +1,12 @@
 # Detail: Nonlinearity Checks
 
+```{figure} ../../_static/images/tetrad-interface/box-by-box/nonlinearity-checks.png
+:name: tetrad-nonlinearity-checks-screenshot
+:alt: Nonlinearity Checks window for the Auto MPG data.
+
+The Nonlinearity Checks window for the Auto MPG data, before treatments and outcomes are chosen.
+```
+
 ## Purpose
 
 The **Nonlinearity Checks** tool provides a systematic, multi-test assessment of whether the conditional expectation

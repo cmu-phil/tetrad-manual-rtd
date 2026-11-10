@@ -1,5 +1,12 @@
 # Regression box
 
+```{figure} ../../_static/images/tetrad-interface/box-by-box/regression-box.png
+:name: tetrad-regression-box-screenshot
+:alt: Regression box, set to Multiple Linear Regression.
+
+The Regression box, set to Multiple Linear Regression, before a response and predictors are chosen.
+```
+
 The **Regression box** is used to estimate numerical relationships
 between variables *after* a causal model (or adjustment strategy) has
 been selected. Unlike search or graph-editing boxes, the Regression box

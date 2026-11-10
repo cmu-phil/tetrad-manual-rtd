@@ -40,7 +40,7 @@ Because of this mixture, the data should be loaded as **mixed data** with a maxi
 
 ### Visual Exploration
 
-![Plot matrix for the Auto MPG data.](../../_static/images/tetrad-interface/box-by-box/example-data-plotmatrix.png)
+![Plot matrix for the Auto MPG data.](../_static/images/tetrad-interface/box-by-box/example-data-plotmatrix.png)
 
 Using the **Plot Matrix** tool in the Data box, we observe:
 
